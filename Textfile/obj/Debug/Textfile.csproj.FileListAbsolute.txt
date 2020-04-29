@@ -1,0 +1,9 @@
+C:\PUS-Home\Textfile\bin\Debug\Textfile.exe.config
+C:\PUS-Home\Textfile\bin\Debug\Textfile.exe
+C:\PUS-Home\Textfile\bin\Debug\Textfile.pdb
+C:\PUS-Home\Textfile\obj\Debug\Textfile.csprojAssemblyReference.cache
+C:\PUS-Home\Textfile\obj\Debug\Textfile.Form1.resources
+C:\PUS-Home\Textfile\obj\Debug\Textfile.Properties.Resources.resources
+C:\PUS-Home\Textfile\obj\Debug\Textfile.csproj.GenerateResource.cache
+C:\PUS-Home\Textfile\obj\Debug\Textfile.exe
+C:\PUS-Home\Textfile\obj\Debug\Textfile.pdb

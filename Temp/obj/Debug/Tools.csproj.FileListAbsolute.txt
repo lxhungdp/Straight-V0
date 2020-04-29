@@ -1,0 +1,12 @@
+C:\PUS-Home\Temp\bin\Debug\Temp.exe.config
+C:\PUS-Home\Temp\bin\Debug\Temp.exe
+C:\PUS-Home\Temp\bin\Debug\Temp.pdb
+C:\PUS-Home\Temp\bin\Debug\EPPlus.dll
+C:\PUS-Home\Temp\bin\Debug\EPPlus.xml
+C:\PUS-Home\Temp\obj\Debug\Tools.csprojAssemblyReference.cache
+C:\PUS-Home\Temp\obj\Debug\Tools.Mainform.resources
+C:\PUS-Home\Temp\obj\Debug\Temp.Properties.Resources.resources
+C:\PUS-Home\Temp\obj\Debug\Tools.csproj.GenerateResource.cache
+C:\PUS-Home\Temp\obj\Debug\Tools.csproj.CopyComplete
+C:\PUS-Home\Temp\obj\Debug\Temp.exe
+C:\PUS-Home\Temp\obj\Debug\Temp.pdb

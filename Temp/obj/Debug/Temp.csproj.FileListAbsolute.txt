@@ -1,0 +1,24 @@
+D:\Google Drive\PUS Program\PUS-Home\Temp\obj\Debug\Temp.csprojAssemblyReference.cache
+D:\Google Drive\PUS Program\PUS-Home\Temp\obj\Debug\Temp.Mainform.resources
+D:\Google Drive\PUS Program\PUS-Home\Temp\obj\Debug\Temp.Properties.Resources.resources
+D:\Google Drive\PUS Program\PUS-Home\Temp\obj\Debug\Temp.csproj.GenerateResource.cache
+D:\Google Drive\PUS Program\PUS-Home\Temp\obj\Debug\Temp.csproj.CoreCompileInputs.cache
+D:\Google Drive\PUS Program\PUS-Home\Temp\bin\Debug\Temp.exe.config
+D:\Google Drive\PUS Program\PUS-Home\Temp\bin\Debug\Temp.exe
+D:\Google Drive\PUS Program\PUS-Home\Temp\bin\Debug\Temp.pdb
+D:\Google Drive\PUS Program\PUS-Home\Temp\obj\Debug\Temp.exe
+D:\Google Drive\PUS Program\PUS-Home\Temp\obj\Debug\Temp.pdb
+D:\Google Drive\PUS Program\PUS-Home\Temp\bin\Debug\DevComponents.DotNetBar2.dll
+D:\Google Drive\PUS Program\PUS-Home\Temp\obj\Debug\Temp.csproj.CopyComplete
+C:\PUS-Home\Temp\bin\Debug\Temp.exe.config
+C:\PUS-Home\Temp\bin\Debug\Temp.exe
+C:\PUS-Home\Temp\bin\Debug\Temp.pdb
+C:\PUS-Home\Temp\bin\Debug\EPPlus.dll
+C:\PUS-Home\Temp\bin\Debug\EPPlus.xml
+C:\PUS-Home\Temp\obj\Debug\Temp.csprojAssemblyReference.cache
+C:\PUS-Home\Temp\obj\Debug\Temp.Mainform.resources
+C:\PUS-Home\Temp\obj\Debug\Temp.Properties.Resources.resources
+C:\PUS-Home\Temp\obj\Debug\Temp.csproj.GenerateResource.cache
+C:\PUS-Home\Temp\obj\Debug\Temp.csproj.CopyComplete
+C:\PUS-Home\Temp\obj\Debug\Temp.exe
+C:\PUS-Home\Temp\obj\Debug\Temp.pdb
