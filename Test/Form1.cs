@@ -22,9 +22,24 @@ namespace Test
             InitializeComponent();
         }
 
-        
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            double[] a = new double[] { 1, 2, 3, 4 };
+            double[] b = new double[a.GetLength(0) + 1];
+            b[0] = 0;
+            for (int i = 1; i < a.GetLength(0)+1; i++)
+            {                
+                b[i] = 0;
+                for (int j = 0; j < i; j++)
+                    b[i] = a[j] + b[i];
+            }
+
+            for (int i = 0; i < b.GetLength(0); i++)
+               MessageBox.Show(b[i].ToString());
+           
 
 
+        }
     }
 
 

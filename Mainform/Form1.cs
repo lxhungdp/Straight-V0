@@ -1,13 +1,19 @@
-﻿using Mainform.Properties;
+﻿using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
+using Mainform.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Mainform
 {
@@ -23,7 +29,7 @@ namespace Mainform
             //Change color
             Setinitialize();
 
-            
+
             //MessageBox.Show(a.GetLength(0).ToString());
 
 
@@ -32,7 +38,7 @@ namespace Mainform
 
 
         //Change background color
-        private void Setinitialize() 
+        private void Setinitialize()
         {
             flowLayoutPanel1.BackColor = Color.FromArgb(33, 115, 70);
             panel1.BackColor = Color.FromArgb(33, 115, 70);
@@ -68,7 +74,7 @@ namespace Mainform
             Setgridview(gridWeb);
             Setgridview(gridCon);
 
-            pictureBox1.Load(@"C:\Home1\Picture\Section.PNG");
+            pictureBox1.Load(@"C:\Home2\Picture\Section.PNG");
         }
 
         private void Setgridview(DataGridView grid)
@@ -111,7 +117,7 @@ namespace Mainform
 
             TabPage[] a = { pageSteel, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
             showtabpage(a);
-            
+
         }
 
         private void btGeneral_Click(object sender, EventArgs e)
@@ -119,7 +125,7 @@ namespace Mainform
 
             TabPage[] a = { pageGeneral };
             showtabpage(a);
-            
+
 
         }
 
@@ -129,18 +135,18 @@ namespace Mainform
             TabPage[] a = { pageAnalysis };
             showtabpage(a);
 
-           
+
 
         }
 
-        
+
         void showtabpage(TabPage[] a)
-        {   
+        {
             metroTabControl1.TabPages.Clear();
             foreach (TabPage page in metroTabControl1.TabPages)
                 metroTabControl1.TabPages.Remove(page);
             foreach (TabPage a1 in a)
-                metroTabControl1.TabPages.Add(a1); 
+                metroTabControl1.TabPages.Add(a1);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -192,18 +198,18 @@ namespace Mainform
             metroTabControl1.SelectedTab = pageProp;
         }
 
-        
+
         // Limit the input value in datagridview is only numec
-       
+
         private void Column1_KeyPress(object sender, KeyPressEventArgs e)
         {
             // allow only number and dot
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') )
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
             //only allow one decimal point
-            if (e.KeyChar == '.'  && (sender as TextBox).Text.IndexOf('.') > -1)
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
             }
@@ -214,16 +220,16 @@ namespace Mainform
             e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
             if (gridAB.CurrentCell.ColumnIndex == 0 || gridAB.CurrentCell.ColumnIndex == 1 || gridAB.CurrentCell.ColumnIndex == 2 || gridAB.CurrentCell.ColumnIndex == 3 || gridAB.CurrentCell.ColumnIndex == 4 || gridAB.CurrentCell.ColumnIndex == 5 || gridAB.CurrentCell.ColumnIndex == 6) //Desired Column
             {
-                
+
                 TextBox tb = e.Control as TextBox;
-                if (tb != null) 
+                if (tb != null)
                 {
                     tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
                 }
             }
         }
 
-               
+
         //Allow only input number and "+"
         private void txtSpan_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -239,15 +245,27 @@ namespace Mainform
             {
                 case "pageGeneral":
                     {
+                        TabPage[] a = { pageCross };
+                        showtabpage(a);
+
+                    }
+                    break;
+
+
+                case "pageCross":
+                    {
                         TabPage[] a = { pageSteel, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
                         showtabpage(a);
                         metroTabControl1.SelectedTab = pageSteel;
                     }
                     break;
+
+
+
                 case "pageSteel":
-                    {                        
+                    {
                         metroTabControl1.SelectedTab = pageDeck;
-                        
+
 
                     }
                     break;
@@ -261,15 +279,16 @@ namespace Mainform
         {
             switch (metroTabControl1.SelectedTab.Name)
             {
-                case "pageSteel":
+                case "pageCross":
                     {
                         TabPage[] a = { pageGeneral };
-                        showtabpage(a);                        
+                        showtabpage(a);
                     }
                     break;
-                case "pageDeck":
+                case "pageSteel":
                     {
-                        metroTabControl1.SelectedTab = pageSteel;
+                        TabPage[] a = { pageCross };
+                        showtabpage(a);
                     }
                     break;
 
@@ -279,18 +298,26 @@ namespace Mainform
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            int value = Convert.ToInt32(this.numericUpDown1.Value);
+            int value = Convert.ToInt32(this.numgirder.Value);
         }
 
+
+        static string DBstring = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Const.Constring + @"\PUS1.accdb";
+        OleDbConnection con = new OleDbConnection(DBstring);
+
+
+        double[,] Atop = new double[3, 1];
+        double[,] Abot = new double[3, 1];
+        double[,] Aweb = new double[3, 1];
+        double[,] Acon = new double[2, 1];
+        double[,] Across;
+        double[,] Across_grid;
         
+        double[,] Atran;        
 
-        double[,] Arr_top = new double[3, 1];
-        double[,] Arr_bot = new double[3, 1];
-        double[,] Arr_web = new double[3, 1];
-        double[,] Arr_con = new double[2, 1];
-
-        double[] Arr_span;
+        double[] Aspan;
         double sumspan;
+        int ngirder;
         private void btApply_Click(object sender, EventArgs e)
         {
             switch (metroTabControl1.SelectedTab.Name)
@@ -298,39 +325,233 @@ namespace Mainform
                 case "pageGeneral":
                     {
 
-                        
-                        Arr_span = Array.ConvertAll(txtSpan.Text.ToString().Split('+'), Double.Parse);
-                        sumspan = Arr_span.Sum();
+                        ngirder = Convert.ToInt32(numgirder.Value);
+                       
+                        Atran = new double[3, ngirder + 1];
+                        for (int i = 0; i < Atran.GetLength(1); i++)
+                        {
+                            if (i == 0 || i == Atran.GetLength(1) - 1)
+                            {
+                                Atran[1, i] = 0;
+                                Atran[2, i] = 0;
+                            }
+                            else
+                            {
+                                Atran[1, i] = i;
+                                Atran[2, i] = i;
 
-                        Arr_top = new double[3, 1] { { 0 }, { 0 }, { 0 } };
-                        Arr_top[0, 0] = sumspan;
-                        Tools.ArraytoGrid(gridTop, Arr_top);
+                            }
 
-                        Arr_bot = new double[3, 1] { { 0 }, { 0 }, { 0 } };
-                        Arr_bot[0, 0] = sumspan;
-                        Tools.ArraytoGrid(gridBot, Arr_bot);
-
-                        Arr_web = new double[3, 1] { { 0 }, { 0 }, { 0 } };
-                        Arr_web[0, 0] = sumspan;
-                        Tools.ArraytoGrid(gridWeb, Arr_web);
-
-                        Arr_con = new double[2, 1] { { 0 }, { 0 }};
-                        Arr_con[0, 0] = sumspan;
-                        Tools.ArraytoGrid(gridCon, Arr_con);
+                        }
+                        gridTran.DataSource = null;
+                        DGV.ArraytoGrid_tran(gridTran, Atran);
+                        Deco(gridTran, Atran);
 
 
+                        Aspan = Array.ConvertAll(txtSpan.Text.ToString().Split('+'), Double.Parse);
+                        sumspan = Aspan.Sum();
+
+                        Atop = new double[3, 1] { { 0 }, { 0 }, { 0 } };
+                        Atop[0, 0] = sumspan;
+                        DGV.ArraytoGrid(gridTop, Atop);
+
+                        Abot = new double[3, 1] { { 0 }, { 0 }, { 0 } };
+                        Abot[0, 0] = sumspan;
+                        DGV.ArraytoGrid(gridBot, Abot);
+
+                        Aweb = new double[3, 1] { { 0 }, { 0 }, { 0 } };
+                        Aweb[0, 0] = sumspan;
+                        DGV.ArraytoGrid(gridWeb, Aweb);
+
+                        Acon = new double[2, 1] { { 0 }, { 0 } };
+                        Acon[0, 0] = sumspan;
+                        DGV.ArraytoGrid(gridCon, Acon);
+
+                        // Convert 1D array Arr_span to 2D_Array Arr_cross
+                        Across_grid = new double[3, Aspan.GetLength(0)];
+                        Across = new double[1, Aspan.GetLength(0)];
+                        for (int i = 0; i < Aspan.GetLength(0); i++)
+                        {
+                            Across_grid[2, i] = Aspan[i];
+                            Across_grid[0, i] = 2.0;
+                            Across_grid[1, i] = i + 1;
+                            Across[0, i] = Aspan[i];
+                        }
+                        Across_grid[0, 0] = 1.0;
+
+                        gridCross.DataSource = null;
+                        DGV.ArraytoGrid(gridCross, Across);
+                        Deco(gridCross, Across_grid);
 
                     }
                     break;
-                case "pageSteel":
+                case "pageCross":
                     {
-                        double a;
-                        a = gridTop.Rows[2].Height;
-                        MessageBox.Show(a.ToString());
+                        double[] Longcu = new double[Across_grid.GetLength(1) + 1];
+                        Longcu[0] = 0;
+                        for (int i = 1; i < Across_grid.GetLength(1) + 1; i++ )
+                        {
+                            Longcu[i] = 0;
+                            for (int j = 0; j < i; j++)
+                                Longcu[i] = Across_grid[2, j] + Longcu[i];                                                   
+                        }
+
+                        double[] Trancu = new double[Atran.GetLength(1) -1];
+                        
+                        Trancu[0] = 0;
+                        for (int i = 1; i < Atran.GetLength(1) - 1; i++)
+                        {
+                            Trancu[i] = 0;
+                            for (int j = 0; j < i; j++)
+                                Trancu[i] = Atran[0, j+1] + Trancu[i];
+                        }
+
+                        List<Node> Node = new List<Node>();
+                        int k = 1;
+                        for (int i = 0; i < Trancu.GetLength(0); i++)
+                        {
+                            for (int j = 0; j < Longcu.GetLength(0); j++)
+                            {
+                                Node a = new Node();
+                                a.Type = j == Longcu.GetLength(0) - 1 ? 1 : Across_grid[0, j];
+                                a.BeamID = i == Trancu.GetLength(0) - 1 ? ngirder : Atran[2, i + 1];
+                                a.X = Longcu[j];
+                                a.Y = Trancu[i];
+                                a.Z = 0;
+                                a.Label = a.BeamID < 10 ? a.BeamID * 100 + j + 1 : (ngirder + k) * 100 + j+1;
+                                Node.Add(a);
+                            }
+                            k = Atran[2, i + 1] > 10 ? k + 1 : k;
+                        }
+                                                
+                        Node = Node.OrderBy(n => n.Label).ToList();  
+                        //List<Node> Node = Trancu.Select(p => new Node() { X = p}).ToList(); 
+                        
+                        Tools.Access.writeList(Node, "Node",con, "All");
+
+                        // Plot to the chart
+
+                        List<ChartValues<ObservablePoint>> GirderPoint = new List<ChartValues<ObservablePoint>>();
+
+                        for (int j = 0; j < ngirder; j ++)
+                        {
+                            ChartValues<ObservablePoint> List1Points = new ChartValues<ObservablePoint>();
+                            
+                            for (int i = 0; i < Longcu.GetLength(0); i++)
+                            {
+                                List1Points.Add(new ObservablePoint
+                                {
+                                    X = Node[j* (Longcu.GetLength(0)) + i].X,
+                                    Y = Node[j * (Longcu.GetLength(0)) + i].Y
+                                });
+                            }
+                            GirderPoint.Add(List1Points);
+                        }
+
+                        cartesianChart1.Series = new SeriesCollection();
+                        
+                        for (int i = 0; i< GirderPoint.Count; i++)
+                        {
+                            cartesianChart1.Series.Add(new LineSeries
+                            {
+                                Title = "Girder " + (i+1).ToString(),
+                                Values = GirderPoint[i],
+                                LineSmoothness = 0,
+                                Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(69, 141, 207)),
+                                Fill = System.Windows.Media.Brushes.Transparent,
+                                //StrokeThickness = 4,
+                            });
+                        }
+
+                        List<ChartValues<ObservablePoint>> StringerPoint = new List<ChartValues<ObservablePoint>>();
+
+                        for (int j = 0; j < Trancu.GetLength(0) - ngirder; j++)
+                        {
+                            ChartValues<ObservablePoint> List1Points = new ChartValues<ObservablePoint>();
+
+                            for (int i = 0; i < Longcu.GetLength(0); i++)
+                            {
+                                List1Points.Add(new ObservablePoint
+                                {
+                                    X = Node[ngirder * Longcu.GetLength(0) + j * Longcu.GetLength(0) + i].X,
+                                    Y = Node[ngirder * Longcu.GetLength(0) + j * Longcu.GetLength(0) + i].Y
+                                });
+                            }
+                            StringerPoint.Add(List1Points);
+                        }
+
+                        for (int i = 0; i < StringerPoint.Count; i++)
+                        {
+                            cartesianChart1.Series.Add(new LineSeries
+                            {
+                                Title = "Girder " + (i + 1).ToString(),
+                                Values = StringerPoint[i],
+                                LineSmoothness = 0,
+                                Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(69, 141, 207)),
+                                Fill = System.Windows.Media.Brushes.Transparent,
+                                StrokeDashArray = new System.Windows.Media.DoubleCollection { 2 },
+                                //StrokeThickness = 4,
+                            });
+                        }
+
+                        cartesianChart1.AxisY = new AxesCollection();
+                        cartesianChart1.AxisY.Add(new Axis
+                        {
+                            MinValue = 0,
+                            Separator = new Separator
+                            {
+                                IsEnabled = false
+                            },
+                            ShowLabels = false
+
+                        }); ; ;
+                        
+                        cartesianChart1.AxisX = new AxesCollection();
+                        cartesianChart1.AxisX.Add(new Axis
+                        {
+
+                            Separator = new Separator
+                            {
+                                IsEnabled = false
+                            },
+                            ShowLabels = false
+                        });
+
+
                     }
                     break;
 
             }
+        }
+
+
+        public void Deco(DataGridView dgv, double[,] arr)
+        {
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                if (arr[1, i] == 0)
+                {
+                    dgv.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                    dgv.EnableHeadersVisualStyles = false;
+                    dgv.Columns[i].HeaderCell.Style.BackColor = Color.White;
+                }
+                else if (arr[1, i] % 2 == 0)
+                {
+                    dgv.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(221, 235, 247);
+                    dgv.EnableHeadersVisualStyles = false;
+                    dgv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(221, 235, 247);
+                }
+
+                else
+                {
+                    dgv.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(226, 239, 218);
+                    dgv.EnableHeadersVisualStyles = false;
+                    dgv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(226, 239, 218);
+
+                }
+            }
+
+
         }
 
         int index;
@@ -343,42 +564,78 @@ namespace Mainform
 
             contextMenuStrip1.Show(Cursor.Position);
             index = e.ColumnIndex;
-            if (index == a.ColumnCount-1)
-                deleteTool.Enabled = false;
-            else
-                deleteTool.Enabled = true;
-            SelectedDGV = a;
 
+            if (a == gridCross)
+            {
+                if (Across_grid[0, index] == 1 || Across_grid[0, index] == 2)
+                    deleteTool.Enabled = false;
+                else
+                    deleteTool.Enabled = true;
+            }
+
+            else if (a == gridTran)
+            {
+                if (Atran[2, index] < 10)
+                    deleteTool.Enabled = false;
+                else
+                    deleteTool.Enabled = true;
+
+                if (Atran[2, index] == 0)
+                    addTool.Enabled = false;
+                else
+                    addTool.Enabled = true;
+            }
+
+            else
+            {
+                if (index == a.ColumnCount - 1)
+                    deleteTool.Enabled = false;
+                else
+                    deleteTool.Enabled = true;
+            }
+            SelectedDGV = a;
         }
 
-        
+
 
         private void addTool_Click(object sender, EventArgs e)
         {
 
             if (SelectedDGV == gridTop)
             {
-                Arr_top = Matrix.Seperate(Arr_top, index);
-                Tools.ArraytoGrid(gridTop, Arr_top);
+                Atop = Matrix.Seperate(Atop, index);
+                DGV.ArraytoGrid(gridTop, Atop);
             }
-            
+
             else if (SelectedDGV == gridBot)
             {
-                Arr_bot = Matrix.Seperate(Arr_bot, index);
-                Tools.ArraytoGrid(gridBot, Arr_bot);
+                Abot = Matrix.Seperate(Abot, index);
+                DGV.ArraytoGrid(gridBot, Abot);
             }
             else if (SelectedDGV == gridWeb)
             {
-                Arr_web = Matrix.Seperate(Arr_web, index);
-                Tools.ArraytoGrid(gridWeb, Arr_web);
+                Aweb = Matrix.Seperate(Aweb, index);
+                DGV.ArraytoGrid(gridWeb, Aweb);
             }
             else if (SelectedDGV == gridCon)
             {
-                Arr_con = Matrix.Seperate(Arr_con, index);
-                Tools.ArraytoGrid(gridCon, Arr_con);
+                Acon = Matrix.Seperate(Acon, index);
+                DGV.ArraytoGrid(gridCon, Acon);
             }
+            else if (SelectedDGV == gridCross)
+            {
+                Across = Matrix.Seperate_cross(Across, index);
+                Across_grid = Matrix.Seperate_cross(Across_grid, index);
+                DGV.ArraytoGrid(gridCross, Across);
+                Deco(SelectedDGV, Across_grid);
+            }
+            else if (SelectedDGV == gridTran)
+            {               
+                Atran = Matrix.Seperate_tran(Atran, index);
+                DGV.ArraytoGrid_tran(gridTran, Atran);
+                Deco(SelectedDGV, Atran);
 
-
+            }
 
             if (SelectedDGV.Columns.Count > 10)
                 foreach (DataGridViewColumn c in SelectedDGV.Columns)
@@ -395,35 +652,48 @@ namespace Mainform
             int row = e.RowIndex;
             int col = e.ColumnIndex;
             if (sender == gridTop)
-            {               
-                Arr_top = Tools.GridtoArray(gridTop);
-                Arr_top = Matrix.Update(Arr_top, sumspan);
-                Tools.ArraytoGrid(gridTop, Arr_top);
+            {
+                Atop = DGV.GridtoArray(gridTop);
+                Atop = Matrix.Update(Atop, sumspan);
+                DGV.ArraytoGrid(gridTop, Atop);
                 gridTop.MultiSelect = false;
             }
             else if (sender == gridBot)
-            {                
-                Arr_bot = Tools.GridtoArray(gridBot);
-                Arr_bot = Matrix.Update(Arr_bot, sumspan);
-                Tools.ArraytoGrid(gridBot, Arr_bot);
+            {
+                Abot = DGV.GridtoArray(gridBot);
+                Abot = Matrix.Update(Abot, sumspan);
+                DGV.ArraytoGrid(gridBot, Abot);
                 gridBot.MultiSelect = false;
             }
             else if (sender == gridWeb)
             {
-                Arr_web = Tools.GridtoArray(gridWeb);
-                Arr_web = Matrix.Update(Arr_web, sumspan);
-                Tools.ArraytoGrid(gridWeb, Arr_web);
+                Aweb = DGV.GridtoArray(gridWeb);
+                Aweb = Matrix.Update(Aweb, sumspan);
+                DGV.ArraytoGrid(gridWeb, Aweb);
                 gridWeb.MultiSelect = false;
             }
             else if (sender == gridCon)
             {
-                Arr_con = Tools.GridtoArray(gridCon);
-                Arr_con = Matrix.Update(Arr_con, sumspan);
-                Tools.ArraytoGrid(gridCon, Arr_con);
+                Acon = DGV.GridtoArray(gridCon);
+                Acon = Matrix.Update(Acon, sumspan);
+                DGV.ArraytoGrid(gridCon, Acon);
                 gridCon.MultiSelect = false;
             }
-
-
+            else if (sender == gridCross)
+            {
+                Across = DGV.GridtoArray(gridCross);
+                for (int i = 0; i < Across.GetLength(1); i++)
+                    Across_grid[2, i] = Across[0, i];
+                Across_grid = Matrix.Update_cross(Across_grid, Aspan);
+                for (int i = 0; i < Across.GetLength(1); i++)
+                    Across[0, i] = Across_grid[2, i];
+                DGV.ArraytoGrid(gridCross, Across);
+                gridCross.MultiSelect = false;
+            }
+            else if (sender == gridTran)
+            {
+                Atran = DGV.GridtoArray_tran(gridTran,Atran);
+            }
             //gridTop.Rows[row+1].Cells[col].Selected = true;
         }
 
@@ -432,30 +702,43 @@ namespace Mainform
 
             if (SelectedDGV == gridTop)
             {
-                Arr_top = Matrix.Combine(Arr_top, index);
-                Tools.ArraytoGrid(gridTop, Arr_top);
-               
+                Atop = Matrix.Combine(Atop, index);
+                DGV.ArraytoGrid(gridTop, Atop);
+
 
             }
             else if (SelectedDGV == gridBot)
             {
-                Arr_bot = Matrix.Combine(Arr_bot, index);
-                Tools.ArraytoGrid(gridBot, Arr_bot);                
+                Abot = Matrix.Combine(Abot, index);
+                DGV.ArraytoGrid(gridBot, Abot);
 
             }
             else if (SelectedDGV == gridWeb)
             {
-                Arr_web = Matrix.Combine(Arr_web, index);
-                Tools.ArraytoGrid(gridWeb, Arr_web);
+                Aweb = Matrix.Combine(Aweb, index);
+                DGV.ArraytoGrid(gridWeb, Aweb);
 
             }
             else if (SelectedDGV == gridCon)
             {
-                Arr_con = Matrix.Combine(Arr_con, index);
-                Tools.ArraytoGrid(gridCon, Arr_con);
+                Acon = Matrix.Combine(Acon, index);
+                DGV.ArraytoGrid(gridCon, Acon);
 
             }
+            else if (SelectedDGV == gridCross)
+            {
+                Across = Matrix.Combine_cross(Across, index);
+                Across_grid = Matrix.Combine_cross(Across_grid, index);
+                DGV.ArraytoGrid(gridCross, Across);
+                Deco(SelectedDGV, Across_grid);
+            }
 
+            else if (SelectedDGV == gridTran)
+            {
+                Atran = Matrix.Combine_tran(Atran, index);
+                DGV.ArraytoGrid_tran(gridTran, Atran);
+                Deco(SelectedDGV, Atran);
+            }
 
             if (SelectedDGV.Columns.Count <= 10)
                 foreach (DataGridViewColumn c in SelectedDGV.Columns)
@@ -469,8 +752,11 @@ namespace Mainform
 
         }
 
+
+
+
         //OK
     }
 
-    
+
 }

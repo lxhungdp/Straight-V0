@@ -62,11 +62,10 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(27, 37);
+            this.dataGridView1.Location = new System.Drawing.Point(23, 40);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(371, 174);
+            this.dataGridView1.Size = new System.Drawing.Size(318, 189);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dataGridView_MouseUp);
             // 
             // Column1
             // 
@@ -90,11 +89,10 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
-            this.dataGridView2.Location = new System.Drawing.Point(449, 37);
+            this.dataGridView2.Location = new System.Drawing.Point(385, 40);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(371, 174);
+            this.dataGridView2.Size = new System.Drawing.Size(318, 189);
             this.dataGridView2.TabIndex = 1;
-            this.dataGridView2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dataGridView_MouseUp);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -118,11 +116,10 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.dataGridView3.Location = new System.Drawing.Point(27, 231);
+            this.dataGridView3.Location = new System.Drawing.Point(23, 250);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(371, 174);
+            this.dataGridView3.Size = new System.Drawing.Size(318, 189);
             this.dataGridView3.TabIndex = 2;
-            this.dataGridView3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dataGridView_MouseUp);
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -146,11 +143,10 @@
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9});
-            this.dataGridView4.Location = new System.Drawing.Point(449, 231);
+            this.dataGridView4.Location = new System.Drawing.Point(385, 250);
             this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(371, 174);
+            this.dataGridView4.Size = new System.Drawing.Size(318, 189);
             this.dataGridView4.TabIndex = 3;
-            this.dataGridView4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dataGridView_MouseUp);
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -173,14 +169,13 @@
             this.addToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 48);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.addToolStripMenuItem.Text = "Add";
-            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
@@ -190,9 +185,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(967, 492);
+            this.ClientSize = new System.Drawing.Size(1230, 734);
             this.Controls.Add(this.dataGridView4);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
