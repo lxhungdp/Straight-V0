@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tools
+namespace Classes
 {
-    public class Dim
+    public class Dimtemp
     {
         public double v1
         { get; set; }

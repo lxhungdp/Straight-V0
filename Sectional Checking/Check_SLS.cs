@@ -1,11 +1,11 @@
-﻿using Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Classes;
 
-namespace Checking
+namespace Sectional_Checking
 {
     public class Check_SLS
     {
@@ -238,6 +238,5 @@ namespace Checking
             get { return Flexure == "Positive" ? "-" : (Math.Abs(fs) <= 0.8 * Material.Fyb ? "OK" : "NG"); }
         }
 
-        // End Hello Iam LXH heheheh ok 
     }
 }

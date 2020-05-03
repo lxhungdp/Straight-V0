@@ -13,6 +13,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Provider;
+using Classes;
 
 
 namespace Mainform
@@ -74,7 +76,8 @@ namespace Mainform
             Setgridview(gridWeb);
             Setgridview(gridCon);
 
-            pictureBox1.Load(@"C:\Home2\Picture\Section.PNG");
+            pictureBox1.Load(Const.Constring + @"\Picture\Section.PNG");
+            pictureBox2.Load(Const.Constring + @"\Picture\Section all.PNG");
         }
 
         private void Setgridview(DataGridView grid)
@@ -387,135 +390,15 @@ namespace Mainform
                     break;
                 case "pageCross":
                     {
-                        double[] Longcu = new double[Across_grid.GetLength(1) + 1];
-                        Longcu[0] = 0;
-                        for (int i = 1; i < Across_grid.GetLength(1) + 1; i++ )
-                        {
-                            Longcu[i] = 0;
-                            for (int j = 0; j < i; j++)
-                                Longcu[i] = Across_grid[2, j] + Longcu[i];                                                   
-                        }
-
-                        double[] Trancu = new double[Atran.GetLength(1) -1];
+                        // Generate List of grid bridge
+                        List<Node> Node = Matrix.Gridarrtolist(Across_grid, Atran, ngirder);  
                         
-                        Trancu[0] = 0;
-                        for (int i = 1; i < Atran.GetLength(1) - 1; i++)
-                        {
-                            Trancu[i] = 0;
-                            for (int j = 0; j < i; j++)
-                                Trancu[i] = Atran[0, j+1] + Trancu[i];
-                        }
-
-                        List<Node> Node = new List<Node>();
-                        int k = 1;
-                        for (int i = 0; i < Trancu.GetLength(0); i++)
-                        {
-                            for (int j = 0; j < Longcu.GetLength(0); j++)
-                            {
-                                Node a = new Node();
-                                a.Type = j == Longcu.GetLength(0) - 1 ? 1 : Across_grid[0, j];
-                                a.BeamID = i == Trancu.GetLength(0) - 1 ? ngirder : Atran[2, i + 1];
-                                a.X = Longcu[j];
-                                a.Y = Trancu[i];
-                                a.Z = 0;
-                                a.Label = a.BeamID < 10 ? a.BeamID * 100 + j + 1 : (ngirder + k) * 100 + j+1;
-                                Node.Add(a);
-                            }
-                            k = Atran[2, i + 1] > 10 ? k + 1 : k;
-                        }
-                                                
-                        Node = Node.OrderBy(n => n.Label).ToList();  
-                        //List<Node> Node = Trancu.Select(p => new Node() { X = p}).ToList(); 
+                        //Write to Database
                         
-                        Tools.Access.writeList(Node, "Node",con, "All");
+                        Access.writeList(Node, "Node",con, "All");
 
                         // Plot to the chart
-
-                        List<ChartValues<ObservablePoint>> GirderPoint = new List<ChartValues<ObservablePoint>>();
-
-                        for (int j = 0; j < ngirder; j ++)
-                        {
-                            ChartValues<ObservablePoint> List1Points = new ChartValues<ObservablePoint>();
-                            
-                            for (int i = 0; i < Longcu.GetLength(0); i++)
-                            {
-                                List1Points.Add(new ObservablePoint
-                                {
-                                    X = Node[j* (Longcu.GetLength(0)) + i].X,
-                                    Y = Node[j * (Longcu.GetLength(0)) + i].Y
-                                });
-                            }
-                            GirderPoint.Add(List1Points);
-                        }
-
-                        cartesianChart1.Series = new SeriesCollection();
-                        
-                        for (int i = 0; i< GirderPoint.Count; i++)
-                        {
-                            cartesianChart1.Series.Add(new LineSeries
-                            {
-                                Title = "Girder " + (i+1).ToString(),
-                                Values = GirderPoint[i],
-                                LineSmoothness = 0,
-                                Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(69, 141, 207)),
-                                Fill = System.Windows.Media.Brushes.Transparent,
-                                //StrokeThickness = 4,
-                            });
-                        }
-
-                        List<ChartValues<ObservablePoint>> StringerPoint = new List<ChartValues<ObservablePoint>>();
-
-                        for (int j = 0; j < Trancu.GetLength(0) - ngirder; j++)
-                        {
-                            ChartValues<ObservablePoint> List1Points = new ChartValues<ObservablePoint>();
-
-                            for (int i = 0; i < Longcu.GetLength(0); i++)
-                            {
-                                List1Points.Add(new ObservablePoint
-                                {
-                                    X = Node[ngirder * Longcu.GetLength(0) + j * Longcu.GetLength(0) + i].X,
-                                    Y = Node[ngirder * Longcu.GetLength(0) + j * Longcu.GetLength(0) + i].Y
-                                });
-                            }
-                            StringerPoint.Add(List1Points);
-                        }
-
-                        for (int i = 0; i < StringerPoint.Count; i++)
-                        {
-                            cartesianChart1.Series.Add(new LineSeries
-                            {
-                                Title = "Girder " + (i + 1).ToString(),
-                                Values = StringerPoint[i],
-                                LineSmoothness = 0,
-                                Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(69, 141, 207)),
-                                Fill = System.Windows.Media.Brushes.Transparent,
-                                StrokeDashArray = new System.Windows.Media.DoubleCollection { 2 },
-                                //StrokeThickness = 4,
-                            });
-                        }
-
-                        cartesianChart1.AxisY = new AxesCollection();
-                        cartesianChart1.AxisY.Add(new Axis
-                        {
-                            MinValue = 0,
-                            Separator = new Separator
-                            {
-                                IsEnabled = false
-                            },
-                            ShowLabels = false
-
-                        }); ; ;
-                        
-                        cartesianChart1.AxisX = new AxesCollection();
-                        cartesianChart1.AxisX.Add(new Axis
-                        {
-
-                            Separator = new Separator
-                            {
-                                IsEnabled = false
-                            },
-                            ShowLabels = false
-                        });
+                        Chart.Bridgegrid(Node, gridchart);
 
 
                     }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Classes;
 
-namespace Mainform
+namespace Provider
 {
     public class Matrix
     {
@@ -189,32 +190,32 @@ namespace Mainform
         {
             double[,] b = new double[a.GetLength(0), a.GetLength(1) + 1];
             if (a.GetLength(0) > 1)
-            for (int i = 0; i < b.GetLength(0); i++)
-                for (int j = 0; j < b.GetLength(1); j++)
-                {
-                    if (j <= index)
-                        b[i, j] = a[i, j];
-                    else if (j == index+1)
-                    {
-                        b[0, j] = a[0, j-1];
-                        b[1, j] = a[1, j - 1];
-                        b[2, j] = a[1, j - 1] > 10 ? a[1, j - 1] : a[1, j - 1]*10+1;
-                    }
-                    else
-                        b[i, j] = a[i, j-1];
-                }
-            else               
+                for (int i = 0; i < b.GetLength(0); i++)
                     for (int j = 0; j < b.GetLength(1); j++)
                     {
                         if (j <= index)
-                            b[0, j] = a[0, j];
+                            b[i, j] = a[i, j];
                         else if (j == index + 1)
                         {
-                            b[0, j] = a[0, j - 1];                           
+                            b[0, j] = a[0, j - 1];
+                            b[1, j] = a[1, j - 1];
+                            b[2, j] = a[1, j - 1] > 10 ? a[1, j - 1] : a[1, j - 1] * 10 + 1;
                         }
                         else
-                            b[0, j] = a[0, j - 1];
+                            b[i, j] = a[i, j - 1];
                     }
+            else
+                for (int j = 0; j < b.GetLength(1); j++)
+                {
+                    if (j <= index)
+                        b[0, j] = a[0, j];
+                    else if (j == index + 1)
+                    {
+                        b[0, j] = a[0, j - 1];
+                    }
+                    else
+                        b[0, j] = a[0, j - 1];
+                }
 
 
             return b;
@@ -226,13 +227,54 @@ namespace Mainform
                 for (int j = 0; j < b.GetLength(1); j++)
                 {
                     if (j < index)
-                        b[i, j] = a[i, j];                       
+                        b[i, j] = a[i, j];
                     else
                         b[i, j] = a[i, j + 1];
                 }
 
 
             return b;
+        }
+        public static List<Node> Gridarrtolist(double[,] Across_grid, double [,] Atran, int ngirder)
+        {
+            double[] Longcu = new double[Across_grid.GetLength(1) + 1];
+            Longcu[0] = 0;
+            for (int i = 1; i < Across_grid.GetLength(1) + 1; i++)
+            {
+                Longcu[i] = 0;
+                for (int j = 0; j < i; j++)
+                    Longcu[i] = Across_grid[2, j] + Longcu[i];
+            }
+
+            double[] Trancu = new double[Atran.GetLength(1) - 1];
+
+            Trancu[0] = 0;
+            for (int i = 1; i < Atran.GetLength(1) - 1; i++)
+            {
+                Trancu[i] = 0;
+                for (int j = 0; j < i; j++)
+                    Trancu[i] = Atran[0, j + 1] + Trancu[i];
+            }
+
+            List<Node> Node = new List<Node>();
+            int k = 1;
+            for (int i = 0; i < Trancu.GetLength(0); i++)
+            {
+                for (int j = 0; j < Longcu.GetLength(0); j++)
+                {
+                    Node a = new Node();
+                    a.Type = j == Longcu.GetLength(0) - 1 ? 1 : Across_grid[0, j];
+                    a.BeamID = i == Trancu.GetLength(0) - 1 ? ngirder : Atran[2, i + 1];
+                    a.X = Longcu[j];
+                    a.Y = Trancu[i];
+                    a.Z = 0;
+                    a.Label = a.BeamID < 10 ? a.BeamID * 100 + j + 1 : (ngirder + k) * 100 + j + 1;
+                    Node.Add(a);
+                }
+                k = Atran[2, i + 1] > 10 ? k + 1 : k;
+            }
+            Node = Node.OrderBy(n => n.Label).ToList();
+            return Node;
         }
     }
 }

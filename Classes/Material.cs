@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Checking
+namespace Classes
 {
     public class Material
     {
-
         public static string Flange { get; set; }
 
         public static string Web { get; set; }
@@ -16,7 +15,7 @@ namespace Checking
         // Determine Fu
         // Determine Fy       
 
-        private static List<Tuple<string, double,double,double,double,double, double>> ListofFy = new List<Tuple<string, double, double, double, double, double, double>>
+        private static List<Tuple<string, double, double, double, double, double, double>> ListofFy = new List<Tuple<string, double, double, double, double, double, double>>
         {
             Tuple.Create( "SS235", 235.0, 225.0, 205.0, 205.0, 195.0, 330.0 ),
             Tuple.Create( "SS275", 275.0, 265.0, 245.0, 245.0, 235.0, 410.0 ),
@@ -41,16 +40,16 @@ namespace Checking
         {
             if (tw <= 16)
                 return ListofFy.Where(t => t.Item1 == a).First().Item2;
-            else if (tw <=40)
+            else if (tw <= 40)
                 return ListofFy.Where(t => t.Item1 == a).First().Item3;
-            else if (tw <=75)
+            else if (tw <= 75)
                 return ListofFy.Where(t => t.Item1 == a).First().Item4;
             else if (tw <= 100)
                 return ListofFy.Where(t => t.Item1 == a).First().Item5;
             else
                 return ListofFy.Where(t => t.Item1 == a).First().Item6;
         }
-        
+
 
         public static double Es { get; set; }
 
@@ -61,7 +60,7 @@ namespace Checking
         public static double Fyb { get; set; }
 
         public static double Esb { get; set; }
-        
+
 
         private static Dictionary<double, double> fcktofcm = new Dictionary<double, double>()
         {
@@ -85,9 +84,10 @@ namespace Checking
 
         public static double nEb
         {
-            get { return Es / Ecb; }        }
+            get { return Es / Ecb; }
+        }
 
-       
+
 
         public static double frd
         {

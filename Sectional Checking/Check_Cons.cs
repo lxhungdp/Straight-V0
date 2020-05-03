@@ -1,16 +1,16 @@
-﻿using Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Classes;
 
-namespace Checking
+namespace Sectional_Checking
 {
     public class Check_Cons
     {
         private string _Label, _Flexure, Flange, Web;
-        private double R, ntop, btop, ttop, bbot, tbot, cbot, D, tw, b, w, ts, nst, Hst, tst, nsb, Hsb, tsb, Lb, ns, d0, A1, Ac, As, Ah, S,Hw,
+        private double R, ntop, btop, ttop, bbot, tbot, cbot, D, tw, b, w, ts, nst, Hst, tst, nsb, Hsb, tsb, Lb, ns, d0, A1, Ac, As, Ah, S, Hw,
             M1, M2, M3, S1, S2, S3, T1, T2, T3,
             YU1, YL1, YU2s, YL2s, _Sc_top, _Sc_bot, _Sta;
         public Check_Cons(string Label, string Flexure, double R, double ntop, double btop, double ttop, double bbot, double tbot, double cbot, double D, double tw, double b, double w, double ts,
@@ -159,7 +159,7 @@ namespace Checking
 
         public double Lp
         {
-            get { return 1.0 * rt * Math.Sqrt(Material.Es / Material.Fy(Flange,ttop)); }
+            get { return 1.0 * rt * Math.Sqrt(Material.Es / Material.Fy(Flange, ttop)); }
         }
 
         public double fl
@@ -174,7 +174,7 @@ namespace Checking
 
         public string Check_fl_ratio
         {
-            get { return fl == 0 ? "Inf" : Math.Round((0.6 * Material.Fy(Flange, ttop) / Math.Abs(fl)),2).ToString(); }
+            get { return fl == 0 ? "Inf" : Math.Round((0.6 * Material.Fy(Flange, ttop) / Math.Abs(fl)), 2).ToString(); }
         }
 
         public double fy06
@@ -427,18 +427,18 @@ namespace Checking
 
 
         public double Fnc_BF
-        {            
+        {
             get
             {
                 if (BFOFcom == "OF")
                     return 0;
                 else
-                return Fcb * Math.Sqrt(1 - (fv_NC / Fcv) * (fv_NC / Fcv));
+                    return Fcb * Math.Sqrt(1 - (fv_NC / Fcv) * (fv_NC / Fcv));
             }
         }
 
         // Return BF or OF for compression flange
-        
+
 
         // Return BF or OF for tension flange
         public string BFOFten
@@ -516,7 +516,7 @@ namespace Checking
                 else if (Sc_com + flcom == 0)
                     return "Inf";
                 else
-                    return Math.Round((Rh * Material.Fy(Flange, ttop) / (Sc_com + flcom)),2).ToString();
+                    return Math.Round((Rh * Material.Fy(Flange, ttop) / (Sc_com + flcom)), 2).ToString();
             }
         }
 
@@ -535,7 +535,7 @@ namespace Checking
 
         public string Check_com_ratio
         {
-            get { return Sc_com + flcom / 3.0 == 0 ? "Inf" : Math.Round((Fnc / (Sc_com + flcom / 3.0)),2).ToString(); }
+            get { return Sc_com + flcom / 3.0 == 0 ? "Inf" : Math.Round((Fnc / (Sc_com + flcom / 3.0)), 2).ToString(); }
         }
 
         public double Fnt
@@ -567,7 +567,7 @@ namespace Checking
 
         public string Check_ten_ratio
         {
-            get { return Sc_ten + flten == 0 ? "Inf" : Math.Round((Fnt / (Sc_ten + flten)),2).ToString(); }
+            get { return Sc_ten + flten == 0 ? "Inf" : Math.Round((Fnt / (Sc_ten + flten)), 2).ToString(); }
         }
 
         //3. Checking web Bend-Buckling Resistance for slender web
@@ -670,18 +670,18 @@ namespace Checking
         //3. Checking Shear
         public double Vu
         {
-            get { return (S1 + S2 + S3) * 1.25 / 2.0; }            
+            get { return (S1 + S2 + S3) * 1.25 / 2.0; }
         }
 
         public double Vui
         {
-            get { return Vu/ Math.Cos(Math.Atan(S)); }
+            get { return Vu / Math.Cos(Math.Atan(S)); }
         }
         // k = shear - buckling coefficient
 
         public double k_shear
         {
-            get { return 5 + 5 / (d0 / D) / (d0 / D); }           
+            get { return 5 + 5 / (d0 / D) / (d0 / D); }
         }
 
         public double C
@@ -689,14 +689,14 @@ namespace Checking
             get
             {
                 double C1_Cons;
-            C1_Cons = Math.Sqrt(Material.Es * k_shear / Material.Fy(Web, tw));
+                C1_Cons = Math.Sqrt(Material.Es * k_shear / Material.Fy(Web, tw));
                 if (Hw / tw <= 1.12 * C1_Cons)
                     return 1.0;
                 else if (Hw / tw <= 1.40 * C1_Cons)
                     return 1.12 / (Hw / tw) * C1_Cons;
                 else
                     return 1.57 * C1_Cons * C1_Cons / (Hw / tw) / (Hw / tw);
-            }            
+            }
         }
 
         public double Vp
@@ -710,17 +710,14 @@ namespace Checking
         }
 
         public string Check_shear
-        {            
-            get {return  Math.Abs(Vui) <= Vn ? "OK" : "NG"; }          
+        {
+            get { return Math.Abs(Vui) <= Vn ? "OK" : "NG"; }
         }
 
         public string Check_shear_ratio
         {
-            get { return Vui == 0 ? "Inf" : (Vn / Math.Abs(Vui)).ToString(); }            
+            get { return Vui == 0 ? "Inf" : (Vn / Math.Abs(Vui)).ToString(); }
         }
-
-
-        //End of Checking Constructibility ^__^
 
     }
 }

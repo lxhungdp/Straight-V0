@@ -1,26 +1,26 @@
-﻿using Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Classes;
 
-namespace Checking
+namespace Sectional_Checking
 {
     public class Check_ULS
     {
         private string _Label, _Flexure, Flange, Web;
-        private double R, ntop, btop, ttop, bbot, tbot, cbot, w,a,b, D, tw, nsb, tsb, Hsb, nst, tst, Hst, d0, ns, Arb, Art, srb, Ac, th, ts, crt, crb, Hc,S, Hw, As,
-            M1, M2, M3, M4, Mw, MLLmax, MLLmin, T4, Tw, TLLmax, TLLmin,S1,S2,S3,S4,Sw,SLLmax,SLLmin,
+        private double R, ntop, btop, ttop, bbot, tbot, cbot, w, a, b, D, tw, nsb, tsb, Hsb, nst, tst, Hst, d0, ns, Arb, Art, srb, Ac, th, ts, crt, crb, Hc, S, Hw, As,
+            M1, M2, M3, M4, Mw, MLLmax, MLLmin, T4, Tw, TLLmax, TLLmin, S1, S2, S3, S4, Sw, SLLmax, SLLmin,
             SU1, SL1, I2s, YL2s, SL2s, SU2l, SL2l, I3s, YU3s, YL3s, SU3s, SL3s, SU3l, SL3l, I4s, YU4s, YL4s, SU4s, SL4s, SU4l, SL4l, _fv_NC,
-            _Su_bot, _Su_top, _xf2,_k_plate, _Fcv, _Vp, _Ypna, _Mp;         
-            
-        public Check_ULS(string Label, string Flexure, double R, double ntop, double btop, double ttop, double bbot, double tbot, double cbot, double w,double a,double b, double D, double tw, double nsb, double tsb,
-            double Hsb, double nst, double tst, double Hst, double d0, double ns, double Arb, double Art, double srb, double Ac, double th, double ts, double crt, double crb, double Hc,double S, double Hw, double As,
+            _Su_bot, _Su_top, _xf2, _k_plate, _Fcv, _Vp, _Ypna, _Mp;
+
+        public Check_ULS(string Label, string Flexure, double R, double ntop, double btop, double ttop, double bbot, double tbot, double cbot, double w, double a, double b, double D, double tw, double nsb, double tsb,
+            double Hsb, double nst, double tst, double Hst, double d0, double ns, double Arb, double Art, double srb, double Ac, double th, double ts, double crt, double crb, double Hc, double S, double Hw, double As,
             double M1, double M2, double M3, double M4, double Mw, double MLLmax, double MLLmin, double T4, double Tw, double TLLmax, double TLLmin, double S1, double S2, double S3, double S4, double Sw, double SLLmax, double SLLmin,
             double SU1, double SL1, double I2s, double YL2s, double SL2s, double SU2l, double SL2l, double I3s, double YU3s, double YL3s, double SU3s, double SL3s, double SU3l, double SL3l, double I4s, double YU4s, double YL4s,
             double SU4s, double SL4s, double SU4l, double SL4l, double fv_NC,
-            double Su_bot, double Su_top,  double xf2, double k_plate, double Fcv, double Vp, string Flange, string Web)
+            double Su_bot, double Su_top, double xf2, double k_plate, double Fcv, double Vp, string Flange, string Web)
         {
             this._Label = Label;
             this._Flexure = Flexure;
@@ -106,7 +106,7 @@ namespace Checking
             this.Web = Web;
         }
 
-        
+
         public string Label
         {
             get { return _Label; }
@@ -132,7 +132,7 @@ namespace Checking
         //1. Determine the location of PNA
         public double Ptop
         {
-            get { return ntop * btop * ttop * Material.Fy(Flange,ttop) / 1000; }
+            get { return ntop * btop * ttop * Material.Fy(Flange, ttop) / 1000; }
         }
 
         public double Pbot
@@ -448,7 +448,7 @@ namespace Checking
             get
             {
                 if (Flexure == "Positive")
-                    return (Material.Fy(Flange,tbot) / 1000000 - MD1 / STsteel - MD2 / STbot - MD3 / STlongtime) * STshorttime;
+                    return (Material.Fy(Flange, tbot) / 1000000 - MD1 / STsteel - MD2 / STbot - MD3 / STlongtime) * STshorttime;
                 else
                     return -(Material.Fy(Flange, ttop) / 1000000 + MD1 / STsteel + MD2 / STbot + MD3 / STlongtime) * STshorttime;
             }
@@ -529,7 +529,7 @@ namespace Checking
                 if (Flexure != "Positive" && Hc == 0)
                     return "-";
                 else
-                    return Dp <= 0.42 * Dt_duc ? "OK" : "NG";               
+                    return Dp <= 0.42 * Dt_duc ? "OK" : "NG";
             }
         }
 
@@ -596,7 +596,7 @@ namespace Checking
 
         public double Delta
         {
-            get { return Math.Sqrt(1 - fv * fv / Material.Fy(Flange,ttop) / Material.Fy(Flange, ttop)); }
+            get { return Math.Sqrt(1 - fv * fv / Material.Fy(Flange, ttop) / Material.Fy(Flange, ttop)); }
         }
 
         //Calcualating Rh
@@ -617,25 +617,25 @@ namespace Checking
 
         public double Afn
         {
-            get { return YU - ttop >= YL - tbot ? ntop * btop * ttop : bbot * tbot; }           
+            get { return YU - ttop >= YL - tbot ? ntop * btop * ttop : bbot * tbot; }
         }
 
         public double fn
         {
-            get { return Math.Max(Material.Fy(Flange, ttop), Math.Max(Math.Abs(Su_top), Math.Abs(Su_bot))); }            
+            get { return Math.Max(Material.Fy(Flange, ttop), Math.Max(Math.Abs(Su_top), Math.Abs(Su_bot))); }
         }
         public double rho
         {
-            get { return Math.Min(Material.Fy(Web, tw) / fn, 1.0); }            
+            get { return Math.Min(Material.Fy(Web, tw) / fn, 1.0); }
         }
         public double beta
         {
-            get { return 2 * Dn * tw / Afn; }            
+            get { return 2 * Dn * tw / Afn; }
         }
 
         public double Rh
         {
-            get { return Material.Fy(Web, tw) >= Material.Fy(Flange, ttop) ? 1.0 : (12 + beta * (3 * rho - rho * rho * rho)) / (12 + 2 * beta); }            
+            get { return Material.Fy(Web, tw) >= Material.Fy(Flange, ttop) ? 1.0 : (12 + beta * (3 * rho - rho * rho * rho)) / (12 + 2 * beta); }
         }
 
         //Calcualation Fcb, Fcv
@@ -649,12 +649,12 @@ namespace Checking
         }
         public double xr
         {
-            get { return 0.95 * Math.Sqrt(Material.Es * k_plate / (Delta - 0.3) / Material.Fy(Flange, tbot)); }            
+            get { return 0.95 * Math.Sqrt(Material.Es * k_plate / (Delta - 0.3) / Material.Fy(Flange, tbot)); }
         }
 
         public double xp
         {
-            get { return 0.57 * Math.Sqrt(Material.Es * k_plate / Material.Fy(Flange, tbot) / Delta); }            
+            get { return 0.57 * Math.Sqrt(Material.Es * k_plate / Material.Fy(Flange, tbot) / Delta); }
         }
         public double Fcb
         {
@@ -671,7 +671,7 @@ namespace Checking
 
         public double Fcv
         {
-            get { return _Fcv; }          
+            get { return _Fcv; }
         }
 
         //Calcualtion Fnc, Fnt
@@ -699,7 +699,7 @@ namespace Checking
 
         public double Fnc
         {
-            get { return Flexure == "Positive" ? Fnc_Pos : Fnc_Neg; }            
+            get { return Flexure == "Positive" ? Fnc_Pos : Fnc_Neg; }
         }
 
         public double Fnt
@@ -756,8 +756,8 @@ namespace Checking
                 }
                 return Dcp / Math.Cos(Math.Atan(S));
             }
-        }     
-       
+        }
+
         public string Compact
         {
             get
@@ -782,7 +782,7 @@ namespace Checking
             }
         }
 
-       
+
         //Checking flexure
 
 
@@ -873,7 +873,7 @@ namespace Checking
         public double Vu
         {
             get { return (1.25 * (S1 + S2 + S3 + S4) + 1.5 * Sw + 1.8 * ((1.25 * (S1 + S2 + S3 + S4) + 1.5 * Sw) >= 0 ? SLLmax : SLLmin)) / 2.0; }
-            
+
         }
 
         public double Vui
@@ -884,7 +884,7 @@ namespace Checking
 
         public double k_shear
         {
-            get { return Stiffened == "Stiffened" ? (5 + 5 / (d0 / D) / (d0 / D)) : 5.0; }            
+            get { return Stiffened == "Stiffened" ? (5 + 5 / (d0 / D) / (d0 / D)) : 5.0; }
         }
 
         public double C
@@ -927,15 +927,12 @@ namespace Checking
         public string Check_shear
         {
             get { return Math.Abs(Vui) <= Vn ? "OK" : "NG"; }
-           
+
         }
 
         public string Check_shear_ratio
         {
-            get { return Vui == 0 ? "Inf" : (Vn / Math.Abs(Vui)).ToString(); }            
+            get { return Vui == 0 ? "Inf" : (Vn / Math.Abs(Vui)).ToString(); }
         }
-
-        // End of checking ULS
-
     }
 }

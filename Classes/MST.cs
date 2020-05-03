@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Checking
+namespace Classes
 {
     public class MST
     {
-        public string Label { get; set; } 
+        public string Label { get; set; }
         public double M1 { get; set; }
         public double M2 { get; set; }
         public double M3 { get; set; }
@@ -99,6 +99,5 @@ namespace Checking
         {
             get { return 0.8 * 1.15 * TTmin; }
         }
-
     }
 }

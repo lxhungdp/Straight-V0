@@ -1,16 +1,16 @@
-﻿using Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Classes;
 
-namespace Checking
+namespace Sectional_Checking
 {
     public class Sec
     {
         private string _Label;
-        private double ntop, btop, ttop, ctop, bbot, tbot, cbot, D, tw, Hc, ts, bs, th, bh, b, w, a, drt, art, crt, drb, arb, crb, srb, nsb, Hsb, tsb, 
+        private double ntop, btop, ttop, ctop, bbot, tbot, cbot, D, tw, Hc, ts, bs, th, bh, b, w, a, drt, art, crt, drb, arb, crb, srb, nsb, Hsb, tsb,
             nst, Hst, tst, S, Hw, Ac, Ic, As, Is1, Ah, Ih, Art, Arb, Irt, Irb;
         public Sec(string Label, double ntop, double btop, double ttop, double ctop, double bbot, double tbot, double cbot, double D, double tw, double Hc, double ts, double bs, double th,
             double bh, double b, double w, double a, double drt, double art, double crt, double drb, double arb, double crb, double srb, double nsb, double Hsb,
@@ -67,7 +67,7 @@ namespace Checking
             this.Irb = Irb;
         }
 
-                
+
 
         public string Label
         {
@@ -79,7 +79,7 @@ namespace Checking
         public double A1
         {
             get { return ntop * btop * ttop + bbot * tbot + Hw * tw * 2 + nsb * tsb * Hsb + nst * tst * Hst; }
-            
+
         }
 
         public double YL1
@@ -109,7 +109,7 @@ namespace Checking
 
 
         //Calculating for Stage 2-1: Steel + bottom concrete (shorttime)     
-        
+
         public double A2s
         {
             get { return A1 + Ac / Material.nEb; }
@@ -125,7 +125,7 @@ namespace Checking
             get { return D + tbot + ttop - YL2s; }
         }
 
-        public  double I2s
+        public double I2s
         {
             get { return I1 + A1 * (YL2s - YL1) * (YL2s - YL1) + Ic / Material.nEb + Ac / Material.nEb * (YL2s - tbot - Hc / 2) * (YL2s - tbot - Hc / 2); }
         }
@@ -137,7 +137,7 @@ namespace Checking
 
         public double SU2s
         {
-            get { return I2s /YU2s; }
+            get { return I2s / YU2s; }
         }
 
         //Calculating for Stage 2-2: Steel + bottom concrete (longtime)
@@ -183,14 +183,14 @@ namespace Checking
             get { return (A1 * YL1 + As * (tbot + D + th + ts / 2) / Material.nEd + Ah * (tbot + D + 2 * th / 3.0) / Material.nEd) / A3s; }
         }
 
-        public  double YU3s
+        public double YU3s
         {
             get { return D + tbot + ttop - YL3s; }
         }
 
         public double I3s
         {
-            get { return I1 + A1 * (YL3s - YL1) * (YL3s - YL1) + Is1 / Material.nEd + As / Material.nEd * (YU3s - ttop + th + ts / 2.0) * (YU3s - ttop + th + ts / 2) + Ih / Material.nEd + Ah / Material.nEd * (YU3s - ttop + 2*th/3) * (YU3s - ttop + 2 * th / 3); }
+            get { return I1 + A1 * (YL3s - YL1) * (YL3s - YL1) + Is1 / Material.nEd + As / Material.nEd * (YU3s - ttop + th + ts / 2.0) * (YU3s - ttop + th + ts / 2) + Ih / Material.nEd + Ah / Material.nEd * (YU3s - ttop + 2 * th / 3) * (YU3s - ttop + 2 * th / 3); }
         }
 
         public double SL3s
@@ -222,7 +222,7 @@ namespace Checking
 
         public double I3l
         {
-            get { return I1 + A1 * (YL3l - YL1) * (YL3l - YL1) + Is1 / 3 / Material.nEd + As / 3 / Material.nEd * (YU3l - ttop + th + ts / 2) * (YU3l - ttop + th + ts / 2) + Ih/3 / Material.nEd + Ah/3 / Material.nEd * (YU3l - ttop + 2 * th / 3) * (YU3l - ttop + 2 * th / 3); }
+            get { return I1 + A1 * (YL3l - YL1) * (YL3l - YL1) + Is1 / 3 / Material.nEd + As / 3 / Material.nEd * (YU3l - ttop + th + ts / 2) * (YU3l - ttop + th + ts / 2) + Ih / 3 / Material.nEd + Ah / 3 / Material.nEd * (YU3l - ttop + 2 * th / 3) * (YU3l - ttop + 2 * th / 3); }
         }
 
         public double SL3l
@@ -236,7 +236,7 @@ namespace Checking
         }
 
         //Calculating for Stage 4-1: Steel + Bottom concrete + Rebar shortime 
-       
+
 
         public double A4s
         {
@@ -299,9 +299,6 @@ namespace Checking
         {
             get { return I4l / YU4l; }
         }
-
-        
-
 
     }
 }

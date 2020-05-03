@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Checking
+namespace Classes
 {
     public class Dim
     {
@@ -18,12 +18,12 @@ namespace Checking
         public double btop { get; set; }
         public double ttop { get; set; }
         public double ctop { get; set; }
-        
+
         //Bottom flange
         public double bbot { get; set; }
         public double tbot { get; set; }
         public double cbot { get; set; }
-        
+
         //Web
         public double D { get; set; }
         public double tw { get; set; }
@@ -63,7 +63,7 @@ namespace Checking
         public double Hst { get; set; }
         public double tst { get; set; }
 
-        
+
 
         //ds, d0 and Lb
         public double ns { get; set; }
@@ -77,9 +77,9 @@ namespace Checking
 
         public double S
         {
-            get {return (w - (bbot - (2 * cbot))) / 2.0 / D; }
+            get { return (w - (bbot - (2 * cbot))) / 2.0 / D; }
         }
-        
+
         // The length of web along the slope
         public double Hw
         {
@@ -135,7 +135,6 @@ namespace Checking
         {
             get { return Math.Floor(bs / arb) * Math.PI * drb * drb * drb * drb / 64.0; }
         }
-
 
     }
 }
