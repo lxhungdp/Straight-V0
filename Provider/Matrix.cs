@@ -9,9 +9,9 @@ namespace Provider
 {
     public class Matrix
     {
-        public static double[,] Seperate(double[,] a, int index)
+        public static double[,] Seperate(double[,] a, int index, int ndiv)
         {
-            double[,] b = new double[a.GetLength(0), a.GetLength(1) + 1];
+            double[,] b = new double[a.GetLength(0), a.GetLength(1) + ndiv-1];
             for (int i = 0; i < a.GetLength(0); i++)
                 for (int j = 0; j < a.GetLength(1); j++)
                 {
@@ -19,13 +19,16 @@ namespace Provider
                         b[i, j] = a[i, j];
                     else if (j == index)
                     {
-                        b[i, j] = a[i, j];
-                        b[i, j + 1] = a[i, j];
-                        b[0, j] = a[0, j] / 2.0;
-                        b[0, j + 1] = a[0, j] / 2.0;
+                        
+                        for (int k = j; k < j + ndiv; k++ )
+                        {
+                            b[i, k] = a[i, j];
+                            b[0, k] = a[0, j] / ndiv;
+                        }
+                        
                     }
                     else
-                        b[i, j + 1] = a[i, j];
+                        b[i, j + ndiv-1] = a[i, j];
                 }
 
             return b;
@@ -63,9 +66,9 @@ namespace Provider
 
             return b;
         }
-        public static double[,] Seperate_cross(double[,] a, int index)
+        public static double[,] Seperate_cross(double[,] a, int index, int ndiv)
         {
-            double[,] b = new double[a.GetLength(0), a.GetLength(1) + 1];
+            double[,] b = new double[a.GetLength(0), a.GetLength(1) + ndiv - 1];
             if (a.GetLength(0) > 1)
             {
                 for (int i = 0; i < a.GetLength(0); i++)
@@ -75,15 +78,17 @@ namespace Provider
                             b[i, j] = a[i, j];
                         else if (j == index)
                         {
-                            b[2, j] = a[2, j] / 2.0;
-                            b[2, j + 1] = a[2, j] / 2.0;
-                            b[0, j] = a[0, j];
-                            b[0, j + 1] = 3.0;
-                            b[1, j] = a[1, j];
-                            b[1, j + 1] = a[1, j];
+                            for (int k = j; k < j + ndiv; k++)
+                            {
+                                b[2, k] = a[2, j] / ndiv;
+                                b[1, k] = a[1, j];
+                                b[0, k] = 3.0;
+                                b[0, index] = a[0, j];
+                            }
+                           
                         }
                         else
-                            b[i, j + 1] = a[i, j];
+                            b[i, j + ndiv - 1] = a[i, j];
                     }
             }
             else
@@ -94,11 +99,13 @@ namespace Provider
                         b[0, j] = a[0, j];
                     else if (j == index)
                     {
-                        b[0, j] = a[0, j] / 2.0;
-                        b[0, j + 1] = a[0, j] / 2.0;
+                        for (int k = j; k < j + ndiv; k++)
+                        {
+                            b[0, k] = a[0, j] / ndiv;
+                        }                        
                     }
                     else
-                        b[0, j + 1] = a[0, j];
+                        b[0, j + ndiv - 1] = a[0, j];
                 }
             }
 
@@ -269,12 +276,82 @@ namespace Provider
                     a.Y = Trancu[i];
                     a.Z = 0;
                     a.Label = a.BeamID < 10 ? a.BeamID * 100 + j + 1 : (ngirder + k) * 100 + j + 1;
+
+                    //Determine default restrain
+                    // Not work if adding crossbeam or stringer
+                    //will be updated later
+                    
+                    if ((a.Type == 1 || a.Type ==2) && (a.BeamID < 10))
+                    {
+                        if (i == Convert.ToInt32(Math.Floor(Atran.GetLength(1) / 2.0 - 1)))
+                        {
+                            if (j == Convert.ToInt32(Math.Floor(Across_grid.GetLength(1) / 2.0)) )
+                                a.Restrain = "Fixed";
+                            else
+                                a.Restrain = "TranFixed";
+                        }
+                        else
+                        {
+                            if (j == Convert.ToInt32(Math.Floor(Across_grid.GetLength(1) / 2.0)))
+                                a.Restrain = "LongFixed";
+                            else
+                                a.Restrain = "Free";
+                        }
+                    }
+                    else                    
+                    a.Restrain = "";
+
+                    
                     Node.Add(a);
                 }
                 k = Atran[2, i + 1] > 10 ? k + 1 : k;
             }
             Node = Node.OrderBy(n => n.Label).ToList();
             return Node;
+        }
+
+        //Cumulate length of matrix Atop, Abot, ...
+        public static double[,] Arrcumulate (double[,] a)
+        {
+            double[,] b = new double[a.GetLength(0), a.GetLength(1) + 1];
+
+            b[0, 0] = 0;
+            for (int i = 1; i < a.GetLength(1) + 1; i++)
+            {
+                b[0, i] = 0;
+                for (int j = 0; j < i; j++)
+                    b[0, i] = a[0, j] + b[0, i];
+            }
+
+
+            for (int i = 1; i < a.GetLength(0); i++)
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                    b[i, j] = a[i, j];
+            }
+
+            return b;
+           
+        }
+
+
+        public static List<Node> Addtoptolist(List<Node> Node1, double[,] Atop)
+        {
+            //Cumulate the Atop
+            var b = Arrcumulate(Atop);
+
+            for (int i = 0; i < b.GetLength(1); i++)
+            {
+                if (Node1.Select(p=>p.X).ToList().IndexOf(b[0,i]) == -1)
+                {
+                    Node a = new Node();
+                    a.X = b[0, i];
+                    a.Type = 4;
+                    Node1.Add(a);
+                }
+            }
+
+            return Node1;
         }
     }
 }

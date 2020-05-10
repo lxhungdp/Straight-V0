@@ -21,6 +21,7 @@ namespace Mainform
 {
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
@@ -34,7 +35,8 @@ namespace Mainform
 
             //MessageBox.Show(a.GetLength(0).ToString());
 
-
+           
+           
             //MessageBox.Show(b[1, 1].ToString());
         }
 
@@ -118,7 +120,7 @@ namespace Mainform
             timer1.Start();
 
 
-            TabPage[] a = { pageSteel, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
             showtabpage(a);
 
         }
@@ -154,49 +156,49 @@ namespace Mainform
 
         private void button3_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageSteel, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
             showtabpage(a);
-            metroTabControl1.SelectedTab = pageSteel;
+            metroTabControl1.SelectedTab = pageGirder;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageSteel, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
             showtabpage(a);
             metroTabControl1.SelectedTab = pageDeck;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageSteel, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
             showtabpage(a);
             metroTabControl1.SelectedTab = pageStiffeners;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageSteel, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
             showtabpage(a);
             metroTabControl1.SelectedTab = pageCross;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageSteel, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
             showtabpage(a);
             metroTabControl1.SelectedTab = pageSectional;
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageSteel, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
             showtabpage(a);
             metroTabControl1.SelectedTab = pageSupports;
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageSteel, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
             showtabpage(a);
             metroTabControl1.SelectedTab = pageProp;
         }
@@ -257,15 +259,15 @@ namespace Mainform
 
                 case "pageCross":
                     {
-                        TabPage[] a = { pageSteel, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+                        TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
                         showtabpage(a);
-                        metroTabControl1.SelectedTab = pageSteel;
+                        metroTabControl1.SelectedTab = pageGirder;
                     }
                     break;
 
 
 
-                case "pageSteel":
+                case "pageGirder":
                     {
                         metroTabControl1.SelectedTab = pageDeck;
 
@@ -288,7 +290,7 @@ namespace Mainform
                         showtabpage(a);
                     }
                     break;
-                case "pageSteel":
+                case "pageGirder":
                     {
                         TabPage[] a = { pageCross };
                         showtabpage(a);
@@ -321,6 +323,8 @@ namespace Mainform
         double[] Aspan;
         double sumspan;
         int ngirder;
+        List<Node> Node;
+
         private void btApply_Click(object sender, EventArgs e)
         {
             switch (metroTabControl1.SelectedTab.Name)
@@ -330,6 +334,10 @@ namespace Mainform
 
                         ngirder = Convert.ToInt32(numgirder.Value);
                        
+                        // Atran has 3 rows
+                        // 1st row: length
+                        //2nd row : order of sections - to set color
+                        //3rd row: BeamID : main beam 1->5; stringer: 21 ->51
                         Atran = new double[3, ngirder + 1];
                         for (int i = 0; i < Atran.GetLength(1); i++)
                         {
@@ -352,7 +360,7 @@ namespace Mainform
 
 
                         Aspan = Array.ConvertAll(txtSpan.Text.ToString().Split('+'), Double.Parse);
-                        sumspan = Aspan.Sum();
+                        sumspan = Aspan.Sum()*1000;
 
                         Atop = new double[3, 1] { { 0 }, { 0 }, { 0 } };
                         Atop[0, 0] = sumspan;
@@ -370,39 +378,59 @@ namespace Mainform
                         Acon[0, 0] = sumspan;
                         DGV.ArraytoGrid(gridCon, Acon);
 
-                        // Convert 1D array Arr_span to 2D_Array Arr_cross
+                        // Convert 1D array Across and Across_grid
+                        //Description about Across_grid
+                        //Across_grid has 3 rows: 
+                        //1st row = Type: 1 abut, 2 pier, 3 cross, 4 stiffener, 5 section changed
+                        // 2nd row = order of section, to set different color for different sections
+                        // 3rd row = length
+                        
                         Across_grid = new double[3, Aspan.GetLength(0)];
                         Across = new double[1, Aspan.GetLength(0)];
                         for (int i = 0; i < Aspan.GetLength(0); i++)
                         {
-                            Across_grid[2, i] = Aspan[i];
+                            Across_grid[2, i] = Aspan[i]*1000;
                             Across_grid[0, i] = 2.0;
                             Across_grid[1, i] = i + 1;
-                            Across[0, i] = Aspan[i];
+                            Across[0, i] = Aspan[i]*1000;
                         }
                         Across_grid[0, 0] = 1.0;
 
                         gridCross.DataSource = null;
                         DGV.ArraytoGrid(gridCross, Across);
                         Deco(gridCross, Across_grid);
+                        gridCross.ClearSelection();
+                        gridCross.CurrentCell = null;
+                        
 
                     }
                     break;
                 case "pageCross":
                     {
                         // Generate List of grid bridge
-                        List<Node> Node = Matrix.Gridarrtolist(Across_grid, Atran, ngirder);  
+                        Node = Matrix.Gridarrtolist(Across_grid, Atran, ngirder);  
                         
                         //Write to Database
                         
-                        Access.writeList(Node, "Node",con, "All");
+                        //Access.writeList(Node, "Node",con, "All");
 
                         // Plot to the chart
                         Chart.Bridgegrid(Node, gridchart);
+                        
 
 
                     }
                     break;
+                
+                case "pageGirder":
+                    {
+                        var b = Matrix.Arrcumulate(Atop);
+                        DGV.ArraytoGrid(dataGridView1, b);
+
+                    }
+                    break;
+
+
 
             }
         }
@@ -450,6 +478,8 @@ namespace Mainform
 
             if (a == gridCross)
             {
+                divideTool.Enabled = true;
+                addTool.Enabled = true;
                 if (Across_grid[0, index] == 1 || Across_grid[0, index] == 2)
                     deleteTool.Enabled = false;
                 else
@@ -458,19 +488,22 @@ namespace Mainform
 
             else if (a == gridTran)
             {
+                divideTool.Enabled = false;
                 if (Atran[2, index] < 10)
                     deleteTool.Enabled = false;
                 else
                     deleteTool.Enabled = true;
 
-                if (Atran[2, index] == 0)
-                    addTool.Enabled = false;
+                if (Atran[2, index] == 0)                
+                    addTool.Enabled = false; 
                 else
                     addTool.Enabled = true;
             }
 
             else
             {
+                divideTool.Enabled = true;
+                addTool.Enabled = true;
                 if (index == a.ColumnCount - 1)
                     deleteTool.Enabled = false;
                 else
@@ -483,32 +516,32 @@ namespace Mainform
 
         private void addTool_Click(object sender, EventArgs e)
         {
-
+            ndiv = 2;
             if (SelectedDGV == gridTop)
             {
-                Atop = Matrix.Seperate(Atop, index);
+                Atop = Matrix.Seperate(Atop, index,ndiv);
                 DGV.ArraytoGrid(gridTop, Atop);
             }
 
             else if (SelectedDGV == gridBot)
             {
-                Abot = Matrix.Seperate(Abot, index);
+                Abot = Matrix.Seperate(Abot, index, ndiv);
                 DGV.ArraytoGrid(gridBot, Abot);
             }
             else if (SelectedDGV == gridWeb)
             {
-                Aweb = Matrix.Seperate(Aweb, index);
+                Aweb = Matrix.Seperate(Aweb, index, ndiv);
                 DGV.ArraytoGrid(gridWeb, Aweb);
             }
             else if (SelectedDGV == gridCon)
             {
-                Acon = Matrix.Seperate(Acon, index);
+                Acon = Matrix.Seperate(Acon, index, ndiv);
                 DGV.ArraytoGrid(gridCon, Acon);
             }
             else if (SelectedDGV == gridCross)
             {
-                Across = Matrix.Seperate_cross(Across, index);
-                Across_grid = Matrix.Seperate_cross(Across_grid, index);
+                Across = Matrix.Seperate_cross(Across, index,ndiv);
+                Across_grid = Matrix.Seperate_cross(Across_grid, index,ndiv);
                 DGV.ArraytoGrid(gridCross, Across);
                 Deco(SelectedDGV, Across_grid);
             }
@@ -634,6 +667,85 @@ namespace Mainform
 
 
         }
+
+        int ndiv;
+        private void divideToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fAddmore f = new fAddmore();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                ndiv = f.ndiv;
+                if (SelectedDGV == gridTop)
+                {
+                    Atop = Matrix.Seperate(Atop, index, ndiv);
+                    DGV.ArraytoGrid(gridTop, Atop);
+                }
+
+                else if (SelectedDGV == gridBot)
+                {
+                    Abot = Matrix.Seperate(Abot, index, ndiv);
+                    DGV.ArraytoGrid(gridBot, Abot);
+                }
+                else if (SelectedDGV == gridWeb)
+                {
+                    Aweb = Matrix.Seperate(Aweb, index, ndiv);
+                    DGV.ArraytoGrid(gridWeb, Aweb);
+                }
+                else if (SelectedDGV == gridCon)
+                {
+                    Acon = Matrix.Seperate(Acon, index, ndiv);
+                    DGV.ArraytoGrid(gridCon, Acon);
+                }
+                else if (SelectedDGV == gridCross)
+                {
+                    Across = Matrix.Seperate_cross(Across, index,ndiv);
+                    Across_grid = Matrix.Seperate_cross(Across_grid, index,ndiv);
+                    DGV.ArraytoGrid(gridCross, Across);
+                    Deco(SelectedDGV, Across_grid);
+                }
+                else if (SelectedDGV == gridTran)
+                {
+                    Atran = Matrix.Seperate_tran(Atran, index);
+                    DGV.ArraytoGrid_tran(gridTran, Atran);
+                    Deco(SelectedDGV, Atran);
+
+                }
+
+                if (SelectedDGV.Columns.Count > 10)
+                    foreach (DataGridViewColumn c in SelectedDGV.Columns)
+                    {
+                        c.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                        c.MinimumWidth = 80;
+                        SelectedDGV.Height = SelectedDGV.Rows.Count * 23 + 32 + 19;
+                    }
+                SelectedDGV.ClearSelection();
+
+               
+               
+            }
+        }
+
+        string Scheck;
+        private void gridchart_DataClick(object sender, ChartPoint chartPoint)
+        {
+            var asPixels = gridchart.Base.ConvertToPixels(chartPoint.AsPoint());
+            fRestrain f = new fRestrain();
+            f.Location = new Point(Cursor.Position.X - f.Size.Width / 2, Cursor.Position.Y - f.Size.Height);
+            if (f.ShowDialog() == DialogResult.OK )
+            {
+                Scheck = f.Scheck;
+                if (Scheck != "" && Scheck != null)
+                    Node.Where(p => p.X == chartPoint.X && p.Y == chartPoint.Y).ToList().ForEach(i => i.Restrain = Scheck);
+
+                Chart.Bridgegrid(Node, gridchart);
+                // MessageBox.Show(Scheck);
+            }
+        }
+
+        
+
+
+
 
 
 

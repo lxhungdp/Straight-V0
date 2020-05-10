@@ -44,6 +44,8 @@ namespace Provider
             }
 
             grid.DataSource = dt;
+            grid.ClearSelection();
+            grid.CurrentCell = null;
 
             //for (int r = 0; r < height; r++)
             //{
