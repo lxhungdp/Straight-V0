@@ -48,16 +48,13 @@ namespace Mainform
             panel1.BackColor = Color.FromArgb(33, 115, 70);
             btGeneral.BackColor = Color.FromArgb(33, 115, 70);
             btBridge.BackColor = Color.FromArgb(33, 115, 70);
-            button3.BackColor = Color.FromArgb(44, 152, 93);
-            button4.BackColor = Color.FromArgb(44, 152, 93);
-            button5.BackColor = Color.FromArgb(44, 152, 93);
-            button6.BackColor = Color.FromArgb(44, 152, 93);
-            button7.BackColor = Color.FromArgb(44, 152, 93);
-            button8.BackColor = Color.FromArgb(44, 152, 93);
-            button9.BackColor = Color.FromArgb(44, 152, 93);
+            btGrid.BackColor = Color.FromArgb(44, 152, 93);
+            btDim.BackColor = Color.FromArgb(44, 152, 93);
+            btStif.BackColor = Color.FromArgb(44, 152, 93);            
             btBack.BackColor = Color.FromArgb(33, 115, 70);
             btApply.BackColor = Color.FromArgb(33, 115, 70);
             btNext.BackColor = Color.FromArgb(33, 115, 70);
+            btMaterial.BackColor = Color.FromArgb(33, 115, 70);
             btAnalysis.BackColor = Color.FromArgb(33, 115, 70);
 
             gridAB.RowCount = 1;
@@ -71,12 +68,17 @@ namespace Mainform
             labelCode3.Text = "(3) AASHTO LRFD, (2017)";
 
 
-            metroTabControl1.SelectedTab = pageGeneral;
+            TabPage[] a = { pageGeneral };
+            showtabpage(a);
 
             Setgridview(gridTop);
             Setgridview(gridBot);
             Setgridview(gridWeb);
             Setgridview(gridCon);
+            Setgridview(gridRibtop);
+            Setgridview(gridRibbot);
+            Setgridview(gridStif);
+            Setgridview(gridTranstif);
 
             pictureBox1.Load(Const.Constring + @"\Picture\Section.PNG");
             pictureBox2.Load(Const.Constring + @"\Picture\Section all.PNG");
@@ -120,7 +122,7 @@ namespace Mainform
             timer1.Start();
 
 
-            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageCross, pageGirder, pageStiffeners};
             showtabpage(a);
 
         }
@@ -137,13 +139,18 @@ namespace Mainform
         private void button1_Click(object sender, EventArgs e)
         {
 
-            TabPage[] a = { pageAnalysis };
+            TabPage[] a = { pageMaterial };
             showtabpage(a);
 
 
 
         }
 
+        private void btAnalysis_Click(object sender, EventArgs e)
+        {
+            TabPage[] a = { pageAnalysis };
+            showtabpage(a);
+        }
 
         void showtabpage(TabPage[] a)
         {
@@ -156,49 +163,49 @@ namespace Mainform
 
         private void button3_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageCross, pageGirder, pageStiffeners };
             showtabpage(a);
-            metroTabControl1.SelectedTab = pageGirder;
+            metroTabControl1.SelectedTab = pageCross;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageCross, pageGirder, pageStiffeners };
             showtabpage(a);
-            metroTabControl1.SelectedTab = pageDeck;
+            metroTabControl1.SelectedTab = pageGirder;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageCross, pageGirder, pageStiffeners };
             showtabpage(a);
             metroTabControl1.SelectedTab = pageStiffeners;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageGirder, pageMaterial, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
             showtabpage(a);
             metroTabControl1.SelectedTab = pageCross;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageGirder, pageMaterial, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
             showtabpage(a);
             metroTabControl1.SelectedTab = pageSectional;
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageGirder, pageMaterial, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
             showtabpage(a);
             metroTabControl1.SelectedTab = pageSupports;
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            TabPage[] a = { pageGirder, pageMaterial, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
             showtabpage(a);
             metroTabControl1.SelectedTab = pageProp;
         }
@@ -250,8 +257,10 @@ namespace Mainform
             {
                 case "pageGeneral":
                     {
-                        TabPage[] a = { pageCross };
+                        TabPage[] a = { pageCross, pageGirder, pageStiffeners };
                         showtabpage(a);
+                        metroTabControl1.SelectedTab = pageCross;
+                        
 
                     }
                     break;
@@ -259,7 +268,7 @@ namespace Mainform
 
                 case "pageCross":
                     {
-                        TabPage[] a = { pageGirder, pageDeck, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+                        TabPage[] a = { pageCross, pageGirder, pageStiffeners };
                         showtabpage(a);
                         metroTabControl1.SelectedTab = pageGirder;
                     }
@@ -269,12 +278,31 @@ namespace Mainform
 
                 case "pageGirder":
                     {
-                        metroTabControl1.SelectedTab = pageDeck;
+                        TabPage[] a = { pageCross, pageGirder, pageStiffeners };
+                        showtabpage(a);
+                        metroTabControl1.SelectedTab = pageStiffeners;
 
 
                     }
                     break;
 
+                case "pageStiffeners":
+                    {
+                        TabPage[] a = { pageMaterial };
+                        showtabpage(a);
+
+
+                    }
+                    break;
+
+                case "pageMaterial":
+                    {
+                        TabPage[] a = { pageAnalysis };
+                        showtabpage(a);
+
+
+                    }
+                    break;
             }
 
 
@@ -292,7 +320,28 @@ namespace Mainform
                     break;
                 case "pageGirder":
                     {
-                        TabPage[] a = { pageCross };
+                        TabPage[] a = { pageCross, pageGirder, pageStiffeners };
+                        showtabpage(a);
+                        metroTabControl1.SelectedTab = pageCross;
+                    }
+                    break;
+                case "pageStiffeners":
+                    {
+                        TabPage[] a = { pageCross, pageGirder, pageStiffeners };
+                        showtabpage(a);
+                        metroTabControl1.SelectedTab = pageGirder;
+                    }
+                    break;
+                case "pageMaterial":
+                    {
+                        TabPage[] a = { pageCross, pageGirder, pageStiffeners };
+                        showtabpage(a);
+                        metroTabControl1.SelectedTab = pageStiffeners;
+                    }
+                    break;
+                case "pageAnalysis":
+                    {
+                        TabPage[] a = { pageMaterial };
                         showtabpage(a);
                     }
                     break;
@@ -315,15 +364,24 @@ namespace Mainform
         double[,] Abot = new double[3, 1];
         double[,] Aweb = new double[3, 1];
         double[,] Acon = new double[2, 1];
+        double[,] Aribtop = new double[4, 1];
+        double[,] Aribbot = new double[4, 1];
+        double[,] Astif = new double[4, 1];
+        double[,] Atranstif;
+        double[,] Atranstif_grid;
+
         double[,] Across;
         double[,] Across_grid;
+        double[] Across1;
         
         double[,] Atran;        
 
         double[] Aspan;
+
         double sumspan;
         int ngirder;
         List<Node> Node;
+        List<Node> Node1;
 
         private void btApply_Click(object sender, EventArgs e)
         {
@@ -360,7 +418,9 @@ namespace Mainform
 
 
                         Aspan = Array.ConvertAll(txtSpan.Text.ToString().Split('+'), Double.Parse);
-                        sumspan = Aspan.Sum()*1000;
+                        for (int i = 0; i < Aspan.GetLength(0); i++)
+                            Aspan[i] = Aspan[i] * 1000;
+                        sumspan = Aspan.Sum();
 
                         Atop = new double[3, 1] { { 0 }, { 0 }, { 0 } };
                         Atop[0, 0] = sumspan;
@@ -378,29 +438,44 @@ namespace Mainform
                         Acon[0, 0] = sumspan;
                         DGV.ArraytoGrid(gridCon, Acon);
 
+                        Aribtop = new double[4, 1];
+                        Aribtop[0, 0] = sumspan;
+                        DGV.ArraytoGrid(gridRibtop, Aribtop);
+
+                        Aribbot = new double[4, 1];
+                        Aribbot[0, 0] = sumspan;
+                        DGV.ArraytoGrid(gridRibbot, Aribbot);
+
+                        Astif = new double[4, 1];
+                        Astif[0, 0] = sumspan;
+                        DGV.ArraytoGrid(gridStif, Astif);
+
+                        Atranstif = new double[1, 1];
+                        Atranstif[0, 0] = sumspan;
+                        DGV.ArraytoGrid(gridTranstif, Atranstif);
+
                         // Convert 1D array Across and Across_grid
                         //Description about Across_grid
                         //Across_grid has 3 rows: 
-                        //1st row = Type: 1 abut, 2 pier, 3 cross, 4 stiffener, 5 section changed
+                        //1st row = Type: 1 abut, 2 pier, 3 cross, 4 section changed
                         // 2nd row = order of section, to set different color for different sections
                         // 3rd row = length
-                        
+
                         Across_grid = new double[3, Aspan.GetLength(0)];
                         Across = new double[1, Aspan.GetLength(0)];
                         for (int i = 0; i < Aspan.GetLength(0); i++)
                         {
-                            Across_grid[2, i] = Aspan[i]*1000;
+                            Across_grid[2, i] = Aspan[i];
                             Across_grid[0, i] = 2.0;
                             Across_grid[1, i] = i + 1;
-                            Across[0, i] = Aspan[i]*1000;
+                            Across[0, i] = Aspan[i];
                         }
                         Across_grid[0, 0] = 1.0;
 
                         gridCross.DataSource = null;
                         DGV.ArraytoGrid(gridCross, Across);
                         Deco(gridCross, Across_grid);
-                        gridCross.ClearSelection();
-                        gridCross.CurrentCell = null;
+                        
                         
 
                     }
@@ -408,7 +483,8 @@ namespace Mainform
                 case "pageCross":
                     {
                         // Generate List of grid bridge
-                        Node = Matrix.Gridarrtolist(Across_grid, Atran, ngirder);  
+                        Node = Matrix.Gridarrtolist(Across_grid, Atran, ngirder);
+                        
                         
                         //Write to Database
                         
@@ -416,7 +492,21 @@ namespace Mainform
 
                         // Plot to the chart
                         Chart.Bridgegrid(Node, gridchart);
+
+                        //Fill the transverse stiffener grid
+                        Atranstif = Across;
+                        Atranstif_grid = Across_grid;
+                        Across1 = new double[Across.GetLength(1)];
+                        for (int i = 0; i < Atranstif_grid.GetLength(1); i++)
+                        {
+                            Atranstif_grid[1, i] = i + 1;
+                            Atranstif_grid[0, i] = 1;
+                            Across1[i] = Across[0, i];
+                        }
+                            
+                       
                         
+                        DGV.ArraytoGrid(gridTranstif, Atranstif);
 
 
                     }
@@ -424,9 +514,57 @@ namespace Mainform
                 
                 case "pageGirder":
                     {
-                        var b = Matrix.Arrcumulate(Atop);
-                        DGV.ArraytoGrid(dataGridView1, b);
+                        //Select node without type 4 again
+                        
+                        Node = Node.Where(p => p.Type != 4).ToList();
 
+                        //Insert node
+                        Node = Matrix.Addpoint(Node, Atop);
+                        Node = Matrix.Addpoint(Node, Abot);
+                        Node = Matrix.Addpoint(Node, Aweb);
+                        Node = Matrix.Addpoint(Node, Acon);
+
+                        //Insert top, bottom flange, web, bottom concrete
+                        Node = Matrix.Addprop(Node, Atop, "btop,ttop");
+                        Node = Matrix.Addprop(Node, Abot, "bbot,tbot");
+                        Node = Matrix.Addprop(Node, Aweb, "D,tw");
+                        Node = Matrix.Addprop(Node, Acon, "Hc");
+
+                        //Insert others to Node
+
+                        double [] S = new double[] { radioRa.Checked == Enabled ? Convert.ToDouble(numSr.Value) : Math.Tan(Convert.ToDouble(numSd.Value) * Math.PI / 180.0) };
+                        decimal[] ts = new decimal[] {numcbot.Value, numctop.Value, numts.Value, numth.Value, numbh.Value, numdrt.Value, numart.Value, numcrt.Value, numdrb.Value, numarb.Value, numcrb.Value };
+                        double[] ts1 = Array.ConvertAll(ts, p => (double)p);
+                        Node = Matrix.Add1prop(Node, ts1, "cbot,ctop,ts,th,bh,drt,art,crt,drb,arb,crb");
+                        Node = Matrix.Add1prop(Node, S, "S");
+
+                        //Write to DB
+                        Access.writeList(Node, "Node", con, "All");
+
+                       
+
+                    }
+                    break;
+                
+                case "pageStiffeners":
+                    {
+                        //Select node without type 5 again
+                        
+                        Node = Node.Where(p => p.Type != 5).ToList();
+
+                        //Insert node
+                        Node = Matrix.Addpoinstiff(Node, Aribtop);
+                        Node = Matrix.Addpoinstiff(Node, Aribbot);
+                        Node = Matrix.Addpoinstiff(Node, Astif);
+
+                        Node = Matrix.Addprop(Node, Aribtop, "nst,Hst,tst");
+                        Node = Matrix.Addprop(Node, Aribbot, "nsb,Hsb,tsb");
+                        Node = Matrix.Addprop(Node, Astif, "ns,ds1,ds2");
+
+                        Node = Matrix.Addd0(Node, Across, "Lp");
+                        Node = Matrix.Addd0(Node, Atranstif, "d0");
+                        //Write to DB
+                        Access.writeList(Node, "Node", con, "All");
                     }
                     break;
 
@@ -442,22 +580,22 @@ namespace Mainform
             {
                 if (arr[1, i] == 0)
                 {
-                    dgv.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                    dgv.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(146, 205, 220);
                     dgv.EnableHeadersVisualStyles = false;
-                    dgv.Columns[i].HeaderCell.Style.BackColor = Color.White;
+                    dgv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(146, 205, 220);
                 }
                 else if (arr[1, i] % 2 == 0)
                 {
-                    dgv.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(221, 235, 247);
+                    dgv.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(217, 217, 217);
                     dgv.EnableHeadersVisualStyles = false;
-                    dgv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(221, 235, 247);
+                    dgv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(217, 217, 217);
                 }
 
                 else
                 {
-                    dgv.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(226, 239, 218);
+                    dgv.Columns[i].DefaultCellStyle.BackColor = Color.White;
                     dgv.EnableHeadersVisualStyles = false;
-                    dgv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(226, 239, 218);
+                    dgv.Columns[i].HeaderCell.Style.BackColor = Color.White;
 
                 }
             }
@@ -481,6 +619,15 @@ namespace Mainform
                 divideTool.Enabled = true;
                 addTool.Enabled = true;
                 if (Across_grid[0, index] == 1 || Across_grid[0, index] == 2)
+                    deleteTool.Enabled = false;
+                else
+                    deleteTool.Enabled = true;
+            }
+            else if (a == gridTranstif)
+            {
+                divideTool.Enabled = true;
+                addTool.Enabled = true;
+                if (Atranstif_grid[0, index] == 1)
                     deleteTool.Enabled = false;
                 else
                     deleteTool.Enabled = true;
@@ -545,6 +692,13 @@ namespace Mainform
                 DGV.ArraytoGrid(gridCross, Across);
                 Deco(SelectedDGV, Across_grid);
             }
+            else if (SelectedDGV == gridTranstif)
+            {
+                Atranstif = Matrix.Seperate_cross(Atranstif, index, ndiv);
+                Atranstif_grid = Matrix.Seperate_cross(Atranstif_grid, index, ndiv);
+                DGV.ArraytoGrid(gridTranstif, Atranstif);
+                Deco(SelectedDGV, Atranstif_grid);
+            }
             else if (SelectedDGV == gridTran)
             {               
                 Atran = Matrix.Seperate_tran(Atran, index);
@@ -552,6 +706,22 @@ namespace Mainform
                 Deco(SelectedDGV, Atran);
 
             }
+            else if (SelectedDGV == gridRibtop)
+            {
+                Aribtop = Matrix.Seperate(Aribtop, index, ndiv);
+                DGV.ArraytoGrid(gridRibtop, Aribtop);
+            }
+            else if (SelectedDGV == gridRibbot)
+            {
+                Aribbot = Matrix.Seperate(Aribbot, index, ndiv);
+                DGV.ArraytoGrid(gridRibbot, Aribbot);
+            }
+            else if (SelectedDGV == gridStif)
+            {
+                Astif = Matrix.Seperate(Astif, index, ndiv);
+                DGV.ArraytoGrid(gridStif, Astif);
+            }
+
 
             if (SelectedDGV.Columns.Count > 10)
                 foreach (DataGridViewColumn c in SelectedDGV.Columns)
@@ -606,9 +776,41 @@ namespace Mainform
                 DGV.ArraytoGrid(gridCross, Across);
                 gridCross.MultiSelect = false;
             }
+            else if (sender == gridTranstif)
+            {
+                Atranstif = DGV.GridtoArray(gridTranstif);
+                for (int i = 0; i < Atranstif.GetLength(1); i++)
+                    Atranstif_grid[2, i] = Atranstif[0, i];
+                Atranstif_grid = Matrix.Update_cross(Atranstif_grid, Across1); //??
+                for (int i = 0; i < Atranstif.GetLength(1); i++)
+                    Atranstif[0, i] = Atranstif_grid[2, i];
+                DGV.ArraytoGrid(gridTranstif, Atranstif);
+                gridTranstif.MultiSelect = false;
+            }
             else if (sender == gridTran)
             {
                 Atran = DGV.GridtoArray_tran(gridTran,Atran);
+            }
+            else if (sender == gridRibtop)
+            {
+                Aribtop = DGV.GridtoArray(gridRibtop);
+                Aribtop = Matrix.Update(Aribtop, sumspan);
+                DGV.ArraytoGrid(gridRibtop, Aribtop);
+                gridRibtop.MultiSelect = false;
+            }
+            else if (sender == gridRibbot)
+            {
+                Aribbot = DGV.GridtoArray(gridRibbot);
+                Aribbot = Matrix.Update(Aribbot, sumspan);
+                DGV.ArraytoGrid(gridRibbot, Aribbot);
+                gridRibbot.MultiSelect = false;
+            }
+            else if (sender == gridStif)
+            {
+                Astif = DGV.GridtoArray(gridStif);
+                Astif = Matrix.Update(Astif, sumspan);
+                DGV.ArraytoGrid(gridStif, Astif);
+                gridStif.MultiSelect = false;
             }
             //gridTop.Rows[row+1].Cells[col].Selected = true;
         }
@@ -649,11 +851,39 @@ namespace Mainform
                 Deco(SelectedDGV, Across_grid);
             }
 
+            else if (SelectedDGV == gridTranstif)
+            {
+                Atranstif = Matrix.Combine_cross(Atranstif, index);
+                Atranstif_grid = Matrix.Combine_cross(Atranstif_grid, index);
+                DGV.ArraytoGrid(gridTranstif, Atranstif);
+                Deco(SelectedDGV, Atranstif_grid);
+            }
             else if (SelectedDGV == gridTran)
             {
                 Atran = Matrix.Combine_tran(Atran, index);
                 DGV.ArraytoGrid_tran(gridTran, Atran);
                 Deco(SelectedDGV, Atran);
+            }
+            else if (SelectedDGV == gridRibtop)
+            {
+                Aribtop = Matrix.Combine(Aribtop, index);
+                DGV.ArraytoGrid(gridRibtop, Aribtop);
+
+
+            }
+            else if (SelectedDGV == gridRibbot)
+            {
+                Aribbot = Matrix.Combine(Aribbot, index);
+                DGV.ArraytoGrid(gridRibbot, Aribbot);
+
+
+            }
+            else if (SelectedDGV == gridStif)
+            {
+                Astif = Matrix.Combine(Astif, index);
+                DGV.ArraytoGrid(gridStif, Astif);
+
+
             }
 
             if (SelectedDGV.Columns.Count <= 10)
@@ -703,6 +933,13 @@ namespace Mainform
                     DGV.ArraytoGrid(gridCross, Across);
                     Deco(SelectedDGV, Across_grid);
                 }
+                else if (SelectedDGV == gridTranstif)
+                {
+                    Atranstif = Matrix.Seperate_cross(Atranstif, index, ndiv);
+                    Atranstif_grid = Matrix.Seperate_cross(Atranstif_grid, index, ndiv);
+                    DGV.ArraytoGrid(gridTranstif, Atranstif);
+                    Deco(SelectedDGV, Atranstif_grid);
+                }
                 else if (SelectedDGV == gridTran)
                 {
                     Atran = Matrix.Seperate_tran(Atran, index);
@@ -710,6 +947,23 @@ namespace Mainform
                     Deco(SelectedDGV, Atran);
 
                 }
+                else if (SelectedDGV == gridRibtop)
+                {
+                    Aribtop = Matrix.Seperate(Aribtop, index, ndiv);
+                    DGV.ArraytoGrid(gridRibtop, Aribtop);
+                }
+                else if (SelectedDGV == gridRibbot)
+                {
+                    Aribbot = Matrix.Seperate(Aribbot, index, ndiv);
+                    DGV.ArraytoGrid(gridRibbot, Aribbot);
+                }
+                else if (SelectedDGV == gridStif)
+                {
+                    Astif = Matrix.Seperate(Astif, index, ndiv);
+                    DGV.ArraytoGrid(gridStif, Astif);
+                }
+
+
 
                 if (SelectedDGV.Columns.Count > 10)
                     foreach (DataGridViewColumn c in SelectedDGV.Columns)
@@ -742,7 +996,11 @@ namespace Mainform
             }
         }
 
-        
+       
+
+
+
+
 
 
 
