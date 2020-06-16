@@ -82,6 +82,12 @@ namespace Mainform
 
             pictureBox1.Load(Const.Constring + @"\Picture\Section.PNG");
             pictureBox2.Load(Const.Constring + @"\Picture\Section all.PNG");
+
+            //Tag material
+            cbMattype.SelectedIndex = 0;
+            numWeight.Value = 25;
+            numFc.Value = 35;
+
         }
 
         private void Setgridview(DataGridView grid)
@@ -268,8 +274,7 @@ namespace Mainform
 
                 case "pageCross":
                     {
-                        TabPage[] a = { pageCross, pageGirder, pageStiffeners };
-                        showtabpage(a);
+                        
                         metroTabControl1.SelectedTab = pageGirder;
                     }
                     break;
@@ -278,8 +283,7 @@ namespace Mainform
 
                 case "pageGirder":
                     {
-                        TabPage[] a = { pageCross, pageGirder, pageStiffeners };
-                        showtabpage(a);
+                        
                         metroTabControl1.SelectedTab = pageStiffeners;
 
 
@@ -320,15 +324,13 @@ namespace Mainform
                     break;
                 case "pageGirder":
                     {
-                        TabPage[] a = { pageCross, pageGirder, pageStiffeners };
-                        showtabpage(a);
+                        
                         metroTabControl1.SelectedTab = pageCross;
                     }
                     break;
                 case "pageStiffeners":
                     {
-                        TabPage[] a = { pageCross, pageGirder, pageStiffeners };
-                        showtabpage(a);
+                        
                         metroTabControl1.SelectedTab = pageGirder;
                     }
                     break;
@@ -539,7 +541,7 @@ namespace Mainform
                         Node = Matrix.Add1prop(Node, S, "S");
 
                         //Write to DB
-                        Access.writeList(Node, "Node", con, "All");
+                        //Access.writeList(Node, "Node", con, "All");
 
                        
 
@@ -996,7 +998,33 @@ namespace Mainform
             }
         }
 
-       
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbMattype.SelectedIndex == 0)
+            {
+                numWeight.Value = 25;
+                groupSteel.Visible = false;
+                groupConcrete.Visible = true;
+
+            }
+
+            else
+            {
+                numWeightC.Value = 25;
+                groupSteel.Visible = true;
+                groupConcrete.Visible = false;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked = true)
+            {
+                //
+            }
+        }
+
+
 
 
 
