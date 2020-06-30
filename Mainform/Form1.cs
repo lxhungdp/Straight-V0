@@ -84,9 +84,16 @@ namespace Mainform
             pictureBox2.Load(Const.Constring + @"\Picture\Section all.PNG");
 
             //Tag material
+            txtMatname.Text = "Mat1";
             cbMattype.SelectedIndex = 0;
-            numWeight.Value = 25;
+            numWs.Value = 75;
+            numEs.Value = 210000;
+            numG.Value = 81000;
+            numFy.Value = 380;
+            numFu.Value = 500;
+            numWc.Value = 25;
             numFc.Value = 35;
+            pictureMat.Load(Const.Constring + @"\Picture\Mat.PNG");
 
         }
 
@@ -1001,29 +1008,67 @@ namespace Mainform
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbMattype.SelectedIndex == 0)
-            {
-                numWeight.Value = 25;
-                groupSteel.Visible = false;
+            {                
+                groupSteel1.Visible = false;
+                groupSteel2.Visible = false;
+                groupSteel3.Visible = false;
+                checkSteel.Enabled = false;
+                comboSteel.Enabled = false;
                 groupConcrete.Visible = true;
 
             }
 
             else
-            {
-                numWeightC.Value = 25;
-                groupSteel.Visible = true;
+            {                
+                groupSteel1.Visible = true;
+                groupSteel2.Visible = true;
+                groupSteel3.Visible = false;
                 groupConcrete.Visible = false;
+                checkSteel.Enabled = true;               
+                
             }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked = true)
+            if (checkBox1.Checked == true)
             {
-                //
+                if (fcktofcm.ContainsKey(Convert.ToDouble(numFc.Value)))
+                    numEc.Value = Convert.ToDecimal(0.077 * Math.Pow(2500, 1.5) * Math.Pow(fcktofcm[Convert.ToDouble(numFc.Value)], (1 / 3.0)));
+                else
+                {
+                    MessageBox.Show("Please input f'c again");
+                    checkBox1.Checked = false;
+                    numEc.Value = 0;
+                }                    
             }
         }
 
+        private static Dictionary<double, double> fcktofcm = new Dictionary<double, double>()
+        {
+            { 18, 22 }, { 21, 25 }, { 24, 28 }, { 27, 31 }, { 30, 34 }, { 35, 39 }, { 40, 44 }, { 50, 56 }, { 60, 66 }, { 70, 76 }, { 80, 86 }, { 90, 96 }
+        };
+
+        private void checkSteel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkSteel.Checked == true)
+            {
+                comboSteel.Enabled = true;
+                groupSteel2.Visible = false;
+                groupSteel3.Visible = true;
+                BindingSource bs = new BindingSource();
+                bs.DataSource = new List<string> { "SS235", "SS275", "SM275", "SM355", "SM420", "SM460", "HSB380", "HSB460", "HSB690" };
+                comboSteel.DataSource = bs;
+            }                
+
+            else
+            {
+                comboSteel.Enabled = false;
+                groupSteel2.Visible = true;
+                groupSteel3.Visible = false;
+            }
+                
+        }
 
 
 

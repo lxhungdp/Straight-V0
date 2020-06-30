@@ -182,33 +182,6 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.pageMaterial = new MetroFramework.Controls.MetroTabPage();
-            this.groupBox25 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label66 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.groupSteel = new System.Windows.Forms.GroupBox();
-            this.numWeight = new System.Windows.Forms.NumericUpDown();
-            this.label64 = new System.Windows.Forms.Label();
-            this.numG = new System.Windows.Forms.NumericUpDown();
-            this.label56 = new System.Windows.Forms.Label();
-            this.numFu = new System.Windows.Forms.NumericUpDown();
-            this.label57 = new System.Windows.Forms.Label();
-            this.numFy = new System.Windows.Forms.NumericUpDown();
-            this.numEs = new System.Windows.Forms.NumericUpDown();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
-            this.groupConcrete = new System.Windows.Forms.GroupBox();
-            this.numWeightC = new System.Windows.Forms.NumericUpDown();
-            this.label65 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.numEc = new System.Windows.Forms.NumericUpDown();
-            this.numFc = new System.Windows.Forms.NumericUpDown();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.cbMattype = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -216,6 +189,28 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox23 = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.comboSteel = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupSteel1 = new System.Windows.Forms.GroupBox();
+            this.numWs = new System.Windows.Forms.NumericUpDown();
+            this.label64 = new System.Windows.Forms.Label();
+            this.numG = new System.Windows.Forms.NumericUpDown();
+            this.label56 = new System.Windows.Forms.Label();
+            this.numEs = new System.Windows.Forms.NumericUpDown();
+            this.label61 = new System.Windows.Forms.Label();
+            this.groupConcrete = new System.Windows.Forms.GroupBox();
+            this.numWc = new System.Windows.Forms.NumericUpDown();
+            this.label65 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.numEc = new System.Windows.Forms.NumericUpDown();
+            this.numFc = new System.Windows.Forms.NumericUpDown();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.cbMattype = new System.Windows.Forms.ComboBox();
+            this.txtMatname = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
             this.pageSectional = new MetroFramework.Controls.MetroTabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.gridAB = new System.Windows.Forms.DataGridView();
@@ -238,6 +233,14 @@
             this.addTool = new System.Windows.Forms.ToolStripMenuItem();
             this.divideTool = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupSteel2 = new System.Windows.Forms.GroupBox();
+            this.numFu = new System.Windows.Forms.NumericUpDown();
+            this.label67 = new System.Windows.Forms.Label();
+            this.numFy = new System.Windows.Forms.NumericUpDown();
+            this.label68 = new System.Windows.Forms.Label();
+            this.groupSteel3 = new System.Windows.Forms.GroupBox();
+            this.pictureMat = new System.Windows.Forms.PictureBox();
+            this.checkSteel = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.panelBP.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
@@ -296,25 +299,28 @@
             this.groupBox18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRibtop)).BeginInit();
             this.pageMaterial.SuspendLayout();
-            this.groupBox25.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.groupSteel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numWeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEs)).BeginInit();
-            this.groupConcrete.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numWeightC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFc)).BeginInit();
             this.groupBox22.SuspendLayout();
             this.groupBox24.SuspendLayout();
             this.groupBox23.SuspendLayout();
+            this.groupBox25.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.groupSteel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numWs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEs)).BeginInit();
+            this.groupConcrete.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numWc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFc)).BeginInit();
             this.pageSectional.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAB)).BeginInit();
             this.panel2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.groupSteel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFy)).BeginInit();
+            this.groupSteel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMat)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -2168,79 +2174,138 @@
             this.pageMaterial.VerticalScrollbarHighlightOnWheel = false;
             this.pageMaterial.VerticalScrollbarSize = 3;
             // 
+            // groupBox22
+            // 
+            this.groupBox22.BackColor = System.Drawing.Color.White;
+            this.groupBox22.Controls.Add(this.groupBox24);
+            this.groupBox22.Controls.Add(this.groupBox23);
+            this.groupBox22.Location = new System.Drawing.Point(687, 3);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(646, 207);
+            this.groupBox22.TabIndex = 2;
+            this.groupBox22.TabStop = false;
+            this.groupBox22.Text = "Define Materials";
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.button3);
+            this.groupBox24.Controls.Add(this.button2);
+            this.groupBox24.Controls.Add(this.button1);
+            this.groupBox24.Location = new System.Drawing.Point(30, 16);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(284, 172);
+            this.groupBox24.TabIndex = 2;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Click to";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(19, 114);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(220, 30);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Delete material";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(19, 69);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(220, 30);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Modify material ...";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(19, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(220, 30);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Add new material ...";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox23
+            // 
+            this.groupBox23.Controls.Add(this.listBox1);
+            this.groupBox23.Location = new System.Drawing.Point(339, 11);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(284, 172);
+            this.groupBox23.TabIndex = 0;
+            this.groupBox23.TabStop = false;
+            this.groupBox23.Text = "Material";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 17;
+            this.listBox1.Location = new System.Drawing.Point(15, 24);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(248, 140);
+            this.listBox1.TabIndex = 0;
+            // 
             // groupBox25
             // 
             this.groupBox25.BackColor = System.Drawing.Color.White;
-            this.groupBox25.Controls.Add(this.comboBox1);
-            this.groupBox25.Controls.Add(this.label66);
+            this.groupBox25.Controls.Add(this.checkSteel);
+            this.groupBox25.Controls.Add(this.comboSteel);
             this.groupBox25.Controls.Add(this.flowLayoutPanel2);
             this.groupBox25.Controls.Add(this.cbMattype);
-            this.groupBox25.Controls.Add(this.textBox3);
+            this.groupBox25.Controls.Add(this.txtMatname);
             this.groupBox25.Controls.Add(this.label3);
             this.groupBox25.Controls.Add(this.label55);
             this.groupBox25.Location = new System.Drawing.Point(3, 3);
             this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(647, 630);
+            this.groupBox25.Size = new System.Drawing.Size(647, 660);
             this.groupBox25.TabIndex = 3;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "Material Properties";
             // 
-            // comboBox1
+            // comboSteel
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboSteel.FormattingEnabled = true;
+            this.comboSteel.Items.AddRange(new object[] {
             "Concrete",
             "Steel"});
-            this.comboBox1.Location = new System.Drawing.Point(345, 91);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(169, 25);
-            this.comboBox1.TabIndex = 10;
-            // 
-            // label66
-            // 
-            this.label66.AutoSize = true;
-            this.label66.Location = new System.Drawing.Point(43, 94);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(118, 17);
-            this.label66.TabIndex = 9;
-            this.label66.Text = "Select from Library";
+            this.comboSteel.Location = new System.Drawing.Point(345, 91);
+            this.comboSteel.Name = "comboSteel";
+            this.comboSteel.Size = new System.Drawing.Size(169, 25);
+            this.comboSteel.TabIndex = 10;
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.AutoScroll = true;
-            this.flowLayoutPanel2.Controls.Add(this.groupSteel);
+            this.flowLayoutPanel2.Controls.Add(this.groupSteel1);
+            this.flowLayoutPanel2.Controls.Add(this.groupSteel2);
             this.flowLayoutPanel2.Controls.Add(this.groupConcrete);
+            this.flowLayoutPanel2.Controls.Add(this.groupSteel3);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(6, 129);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(626, 482);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(626, 505);
             this.flowLayoutPanel2.TabIndex = 8;
             // 
-            // groupSteel
+            // groupSteel1
             // 
-            this.groupSteel.Controls.Add(this.numWeight);
-            this.groupSteel.Controls.Add(this.label64);
-            this.groupSteel.Controls.Add(this.numG);
-            this.groupSteel.Controls.Add(this.label56);
-            this.groupSteel.Controls.Add(this.numFu);
-            this.groupSteel.Controls.Add(this.label57);
-            this.groupSteel.Controls.Add(this.numFy);
-            this.groupSteel.Controls.Add(this.numEs);
-            this.groupSteel.Controls.Add(this.label60);
-            this.groupSteel.Controls.Add(this.label61);
-            this.groupSteel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupSteel.Location = new System.Drawing.Point(3, 3);
-            this.groupSteel.Name = "groupSteel";
-            this.groupSteel.Size = new System.Drawing.Size(593, 183);
-            this.groupSteel.TabIndex = 8;
-            this.groupSteel.TabStop = false;
-            this.groupSteel.Text = "Property Data";
+            this.groupSteel1.Controls.Add(this.numWs);
+            this.groupSteel1.Controls.Add(this.label64);
+            this.groupSteel1.Controls.Add(this.numG);
+            this.groupSteel1.Controls.Add(this.label56);
+            this.groupSteel1.Controls.Add(this.numEs);
+            this.groupSteel1.Controls.Add(this.label61);
+            this.groupSteel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupSteel1.Location = new System.Drawing.Point(3, 3);
+            this.groupSteel1.Name = "groupSteel1";
+            this.groupSteel1.Size = new System.Drawing.Size(593, 127);
+            this.groupSteel1.TabIndex = 8;
+            this.groupSteel1.TabStop = false;
+            this.groupSteel1.Text = "Property Data";
             // 
-            // numWeight
+            // numWs
             // 
-            this.numWeight.Location = new System.Drawing.Point(328, 26);
-            this.numWeight.Name = "numWeight";
-            this.numWeight.Size = new System.Drawing.Size(169, 25);
-            this.numWeight.TabIndex = 13;
+            this.numWs.Location = new System.Drawing.Point(328, 26);
+            this.numWs.Name = "numWs";
+            this.numWs.Size = new System.Drawing.Size(169, 25);
+            this.numWs.TabIndex = 13;
             // 
             // label64
             // 
@@ -2253,7 +2318,7 @@
             // 
             // numG
             // 
-            this.numG.Location = new System.Drawing.Point(328, 144);
+            this.numG.Location = new System.Drawing.Point(328, 88);
             this.numG.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -2266,44 +2331,11 @@
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(26, 146);
+            this.label56.Location = new System.Drawing.Point(26, 90);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(111, 17);
             this.label56.TabIndex = 10;
             this.label56.Text = "Shear modulus, G";
-            // 
-            // numFu
-            // 
-            this.numFu.Location = new System.Drawing.Point(328, 114);
-            this.numFu.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numFu.Name = "numFu";
-            this.numFu.Size = new System.Drawing.Size(169, 25);
-            this.numFu.TabIndex = 9;
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(26, 116);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(175, 17);
-            this.label57.TabIndex = 8;
-            this.label57.Text = "Minimum tensile strength, Fu";
-            // 
-            // numFy
-            // 
-            this.numFy.Location = new System.Drawing.Point(328, 85);
-            this.numFy.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numFy.Name = "numFy";
-            this.numFy.Size = new System.Drawing.Size(169, 25);
-            this.numFy.TabIndex = 7;
             // 
             // numEs
             // 
@@ -2317,15 +2349,6 @@
             this.numEs.Size = new System.Drawing.Size(169, 25);
             this.numEs.TabIndex = 6;
             // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(26, 87);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(164, 17);
-            this.label60.TabIndex = 1;
-            this.label60.Text = "Minimum yield strength, Fy";
-            // 
             // label61
             // 
             this.label61.AutoSize = true;
@@ -2337,7 +2360,7 @@
             // 
             // groupConcrete
             // 
-            this.groupConcrete.Controls.Add(this.numWeightC);
+            this.groupConcrete.Controls.Add(this.numWc);
             this.groupConcrete.Controls.Add(this.label65);
             this.groupConcrete.Controls.Add(this.checkBox1);
             this.groupConcrete.Controls.Add(this.numEc);
@@ -2345,19 +2368,19 @@
             this.groupConcrete.Controls.Add(this.label62);
             this.groupConcrete.Controls.Add(this.label63);
             this.groupConcrete.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupConcrete.Location = new System.Drawing.Point(3, 192);
+            this.groupConcrete.Location = new System.Drawing.Point(3, 242);
             this.groupConcrete.Name = "groupConcrete";
-            this.groupConcrete.Size = new System.Drawing.Size(593, 163);
+            this.groupConcrete.Size = new System.Drawing.Size(593, 151);
             this.groupConcrete.TabIndex = 9;
             this.groupConcrete.TabStop = false;
             this.groupConcrete.Text = "Property Data";
             // 
-            // numWeightC
+            // numWc
             // 
-            this.numWeightC.Location = new System.Drawing.Point(328, 29);
-            this.numWeightC.Name = "numWeightC";
-            this.numWeightC.Size = new System.Drawing.Size(169, 25);
-            this.numWeightC.TabIndex = 10;
+            this.numWc.Location = new System.Drawing.Point(328, 29);
+            this.numWc.Name = "numWc";
+            this.numWc.Size = new System.Drawing.Size(169, 25);
+            this.numWc.TabIndex = 10;
             // 
             // label65
             // 
@@ -2428,12 +2451,12 @@
             this.cbMattype.TabIndex = 7;
             this.cbMattype.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // textBox3
+            // txtMatname
             // 
-            this.textBox3.Location = new System.Drawing.Point(345, 27);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(169, 25);
-            this.textBox3.TabIndex = 6;
+            this.txtMatname.Location = new System.Drawing.Point(345, 27);
+            this.txtMatname.Name = "txtMatname";
+            this.txtMatname.Size = new System.Drawing.Size(169, 25);
+            this.txtMatname.TabIndex = 6;
             // 
             // label3
             // 
@@ -2452,76 +2475,6 @@
             this.label55.Size = new System.Drawing.Size(95, 17);
             this.label55.TabIndex = 4;
             this.label55.Text = "Material Name";
-            // 
-            // groupBox22
-            // 
-            this.groupBox22.BackColor = System.Drawing.Color.White;
-            this.groupBox22.Controls.Add(this.groupBox24);
-            this.groupBox22.Controls.Add(this.groupBox23);
-            this.groupBox22.Location = new System.Drawing.Point(687, 3);
-            this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(646, 207);
-            this.groupBox22.TabIndex = 2;
-            this.groupBox22.TabStop = false;
-            this.groupBox22.Text = "Define Materials";
-            // 
-            // groupBox24
-            // 
-            this.groupBox24.Controls.Add(this.button3);
-            this.groupBox24.Controls.Add(this.button2);
-            this.groupBox24.Controls.Add(this.button1);
-            this.groupBox24.Location = new System.Drawing.Point(30, 16);
-            this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(284, 172);
-            this.groupBox24.TabIndex = 2;
-            this.groupBox24.TabStop = false;
-            this.groupBox24.Text = "Click to";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(19, 114);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(220, 30);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Delete material";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(19, 69);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(220, 30);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Modify material ...";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(19, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(220, 30);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Add new material ...";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox23
-            // 
-            this.groupBox23.Controls.Add(this.listBox1);
-            this.groupBox23.Location = new System.Drawing.Point(339, 11);
-            this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(284, 172);
-            this.groupBox23.TabIndex = 0;
-            this.groupBox23.TabStop = false;
-            this.groupBox23.Text = "Material";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 17;
-            this.listBox1.Location = new System.Drawing.Point(15, 24);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(248, 140);
-            this.listBox1.TabIndex = 0;
             // 
             // pageSectional
             // 
@@ -2765,6 +2718,94 @@
             this.deleteTool.Text = "Delete";
             this.deleteTool.Click += new System.EventHandler(this.deleteTool_Click);
             // 
+            // groupSteel2
+            // 
+            this.groupSteel2.Controls.Add(this.numFu);
+            this.groupSteel2.Controls.Add(this.label67);
+            this.groupSteel2.Controls.Add(this.numFy);
+            this.groupSteel2.Controls.Add(this.label68);
+            this.groupSteel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupSteel2.Location = new System.Drawing.Point(3, 136);
+            this.groupSteel2.Name = "groupSteel2";
+            this.groupSteel2.Size = new System.Drawing.Size(593, 100);
+            this.groupSteel2.TabIndex = 10;
+            this.groupSteel2.TabStop = false;
+            this.groupSteel2.Text = "Property Data";
+            // 
+            // numFu
+            // 
+            this.numFu.Location = new System.Drawing.Point(328, 57);
+            this.numFu.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numFu.Name = "numFu";
+            this.numFu.Size = new System.Drawing.Size(169, 25);
+            this.numFu.TabIndex = 13;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(26, 59);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(175, 17);
+            this.label67.TabIndex = 12;
+            this.label67.Text = "Minimum tensile strength, Fu";
+            // 
+            // numFy
+            // 
+            this.numFy.Location = new System.Drawing.Point(328, 28);
+            this.numFy.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numFy.Name = "numFy";
+            this.numFy.Size = new System.Drawing.Size(169, 25);
+            this.numFy.TabIndex = 11;
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(26, 30);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(164, 17);
+            this.label68.TabIndex = 10;
+            this.label68.Text = "Minimum yield strength, Fy";
+            // 
+            // groupSteel3
+            // 
+            this.groupSteel3.Controls.Add(this.pictureMat);
+            this.groupSteel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupSteel3.Location = new System.Drawing.Point(3, 399);
+            this.groupSteel3.Name = "groupSteel3";
+            this.groupSteel3.Size = new System.Drawing.Size(593, 331);
+            this.groupSteel3.TabIndex = 11;
+            this.groupSteel3.TabStop = false;
+            this.groupSteel3.Text = "Property Data";
+            // 
+            // pictureMat
+            // 
+            this.pictureMat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureMat.Location = new System.Drawing.Point(3, 21);
+            this.pictureMat.Name = "pictureMat";
+            this.pictureMat.Size = new System.Drawing.Size(587, 297);
+            this.pictureMat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureMat.TabIndex = 0;
+            this.pictureMat.TabStop = false;
+            // 
+            // checkSteel
+            // 
+            this.checkSteel.AutoSize = true;
+            this.checkSteel.Location = new System.Drawing.Point(46, 91);
+            this.checkSteel.Name = "checkSteel";
+            this.checkSteel.Size = new System.Drawing.Size(137, 21);
+            this.checkSteel.TabIndex = 11;
+            this.checkSteel.Text = "Select from Library";
+            this.checkSteel.UseVisualStyleBackColor = true;
+            this.checkSteel.CheckedChanged += new System.EventHandler(this.checkSteel_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -2857,29 +2898,33 @@
             this.groupBox18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRibtop)).EndInit();
             this.pageMaterial.ResumeLayout(false);
-            this.groupBox25.ResumeLayout(false);
-            this.groupBox25.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.groupSteel.ResumeLayout(false);
-            this.groupSteel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numWeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEs)).EndInit();
-            this.groupConcrete.ResumeLayout(false);
-            this.groupConcrete.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numWeightC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFc)).EndInit();
             this.groupBox22.ResumeLayout(false);
             this.groupBox24.ResumeLayout(false);
             this.groupBox23.ResumeLayout(false);
+            this.groupBox25.ResumeLayout(false);
+            this.groupBox25.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.groupSteel1.ResumeLayout(false);
+            this.groupSteel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numWs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEs)).EndInit();
+            this.groupConcrete.ResumeLayout(false);
+            this.groupConcrete.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numWc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFc)).EndInit();
             this.pageSectional.ResumeLayout(false);
             this.pageSectional.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAB)).EndInit();
             this.panel2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.groupSteel2.ResumeLayout(false);
+            this.groupSteel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFy)).EndInit();
+            this.groupSteel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMat)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3049,14 +3094,10 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox25;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.GroupBox groupSteel;
+        private System.Windows.Forms.GroupBox groupSteel1;
         private System.Windows.Forms.NumericUpDown numG;
         private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.NumericUpDown numFu;
-        private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.NumericUpDown numFy;
         private System.Windows.Forms.NumericUpDown numEs;
-        private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.GroupBox groupConcrete;
         private System.Windows.Forms.CheckBox checkBox1;
@@ -3065,15 +3106,22 @@
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.ComboBox cbMattype;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtMatname;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.NumericUpDown numWeight;
+        private System.Windows.Forms.NumericUpDown numWs;
         private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.NumericUpDown numWeightC;
+        private System.Windows.Forms.NumericUpDown numWc;
         private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.ComboBox comboSteel;
+        private System.Windows.Forms.GroupBox groupSteel2;
+        private System.Windows.Forms.NumericUpDown numFu;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.NumericUpDown numFy;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.GroupBox groupSteel3;
+        private System.Windows.Forms.PictureBox pictureMat;
+        private System.Windows.Forms.CheckBox checkSteel;
     }
 }
 
