@@ -94,6 +94,13 @@ namespace Mainform
             numWc.Value = 25;
             numFc.Value = 35;
             pictureMat.Load(Const.Constring + @"\Picture\Mat.PNG");
+            
+            DataTable DTMat = Access.getDataTable("Select Name from Mat", con);
+            
+            for (int i = 0; i < DTMat.Rows.Count; i++)
+            {
+                listBox1.Items.Add(DTMat.Rows[i][0].ToString());
+            }
 
         }
 
@@ -1015,6 +1022,7 @@ namespace Mainform
                 checkSteel.Enabled = false;
                 comboSteel.Enabled = false;
                 groupConcrete.Visible = true;
+                checkSteel.Checked = false;
 
             }
 
@@ -1070,18 +1078,104 @@ namespace Mainform
                 
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Mat Mat1 = new Mat();
+            Mat1.Name = txtMatname.Text;
+            Mat1.Type = cbMattype.Text;
+            Mat1.Ws = Convert.ToDouble(numWs.Value);
+            Mat1.Es = Convert.ToDouble(numEs.Value);
+            Mat1.G = Convert.ToDouble(numG.Value);
+            Mat1.Fy = Convert.ToDouble(numFy.Value);
+            Mat1.Fu = Convert.ToDouble(numFu.Value);
+            Mat1.Wc = Convert.ToDouble(numWc.Value);
+            Mat1.fc = Convert.ToDouble(numFc.Value);
+            Mat1.Ec = Convert.ToDouble(numEc.Value);
+
+            try
+            {
+                Access.writemat(Mat1, "Mat", con);
+            }
+            catch
+            {
+                MessageBox.Show("Error: Duplicate Name");
+            }
+
+            DataTable DTMat = Access.getDataTable("Select Name from Mat", con);
+
+            listBox1.Items.Clear();
+            for (int i = 0; i< DTMat.Rows.Count; i++)
+            {
+                listBox1.Items.Add(DTMat.Rows[i][0].ToString());
+            }
 
 
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtMatname.Text = listBox1.SelectedItem.ToString();
+            DataTable DTMat = Access.getDataTable("Select * from Mat", con);
+            List<Mat> Listmat = new List<Mat>();
+            Listmat = (from DataRow dr in DTMat.Rows
+                       select new Mat()
+                       {
+                           Name = dr["Name"].ToString(),
+                           Type = dr["Type"].ToString(),
+                           Ws = Convert.ToDouble(dr["Ws"]),
+                           Es = Convert.ToDouble(dr["Es"]),
+                           G = Convert.ToDouble(dr["G"]),
+                           Fy = Convert.ToDouble(dr["Fy"]),
+                           Fu = Convert.ToDouble(dr["Fu"]),
+                           Wc = Convert.ToDouble(dr["Wc"]),
+                           fc = Convert.ToDouble(dr["fc"]),
+                           Ec = Convert.ToDouble(dr["Ec"])
+                       }).ToList();
+
+            string a = Listmat.Where(p => p.Name == listBox1.SelectedItem.ToString()).Select(p => p.Type).FirstOrDefault();
+            cbMattype.SelectedIndex = a == "Concrete" ? 0 : 1;
+            numWs.Value = Convert.ToDecimal(Listmat.Where(p => p.Name == listBox1.SelectedItem.ToString()).Select(p => p.Ws).FirstOrDefault());
+            numEs.Value = Convert.ToDecimal(Listmat.Where(p => p.Name == listBox1.SelectedItem.ToString()).Select(p => p.Es).FirstOrDefault());
+            numG.Value = Convert.ToDecimal(Listmat.Where(p => p.Name == listBox1.SelectedItem.ToString()).Select(p => p.G).FirstOrDefault());
+            numFy.Value = Convert.ToDecimal(Listmat.Where(p => p.Name == listBox1.SelectedItem.ToString()).Select(p => p.Fy).FirstOrDefault());
+            numFu.Value = Convert.ToDecimal(Listmat.Where(p => p.Name == listBox1.SelectedItem.ToString()).Select(p => p.Fu).FirstOrDefault());
+            numWc.Value = Convert.ToDecimal(Listmat.Where(p => p.Name == listBox1.SelectedItem.ToString()).Select(p => p.Wc).FirstOrDefault());
+            numFc.Value = Convert.ToDecimal(Listmat.Where(p => p.Name == listBox1.SelectedItem.ToString()).Select(p => p.fc).FirstOrDefault());
+            numEc.Value = Convert.ToDecimal(Listmat.Where(p => p.Name == listBox1.SelectedItem.ToString()).Select(p => p.Ec).FirstOrDefault());
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                Access.delmat(listBox1.SelectedItem.ToString(), con);
+                DataTable DTMat = Access.getDataTable("Select Name from Mat", con);
+                listBox1.Items.Clear();
+                for (int i = 0; i < DTMat.Rows.Count; i++)
+                {
+                    listBox1.Items.Add(DTMat.Rows[i][0].ToString());
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {            
+            Mat Mat1 = new Mat();
+            Mat1.Name = txtMatname.Text;
+            Mat1.Type = cbMattype.Text;
+            Mat1.Ws = Convert.ToDouble(numWs.Value);
+            Mat1.Es = Convert.ToDouble(numEs.Value);
+            Mat1.G = Convert.ToDouble(numG.Value);
+            Mat1.Fy = Convert.ToDouble(numFy.Value);
+            Mat1.Fu = Convert.ToDouble(numFu.Value);
+            Mat1.Wc = Convert.ToDouble(numWc.Value);
+            Mat1.fc = Convert.ToDouble(numFc.Value);
+            Mat1.Ec = Convert.ToDouble(numEc.Value);
+            Access.upadatemat(Mat1, con);
+        }
 
 
-
-
-
-
-
-
-
-        //OK
     }
 
 

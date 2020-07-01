@@ -5,6 +5,7 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Classes;
 
 namespace Provider
 {
@@ -31,6 +32,7 @@ namespace Provider
             cn.Close();
         }
 
+        
 
         public static void writeDataTable(DataTable dt, string[] field, string table, OleDbConnection cn)
         {
@@ -139,5 +141,40 @@ namespace Provider
 
             cn.Close();
         }
+
+        public static void writemat(Mat Mat1, string table_name, OleDbConnection cn)
+        {
+            cn.Close();
+            cn.Open();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = cn;
+            string cmd1 = "insert into " + table_name + " (Name, Type, Ws, Es, G, Fy, Fu, Wc, fc, Ec) Values ('" + Mat1.Name + "' , '" + Mat1.Type + "' , '" + Mat1.Ws + "' , '" + Mat1.Es
+                + "' , '" + Mat1.G + "' , '" + Mat1.Fy + "' , '" + Mat1.Fu + "' , '" + Mat1.Wc + "' , '" + Mat1.fc + "' , '" + Mat1.Ec + "' )";
+            cmd.CommandText = cmd1;
+            cmd.ExecuteNonQuery();
+        }
+
+        public static void delmat(string str, OleDbConnection cn)
+        {
+            cn.Close();
+            cn.Open();
+            OleDbCommand cmd = new OleDbCommand("delete * from Mat Where Name = '" + str + "'", cn);
+            cmd.ExecuteNonQuery();
+            cn.Close();
+        }
+
+        public static void upadatemat(Mat Mat1, OleDbConnection cn)
+        {
+            cn.Close();
+            cn.Open();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = cn;
+            string cmd1 = "UPDATE Mat SET Type = '" + Mat1.Type + "', Ws = '" + Mat1.Ws + "', Es = '" + Mat1.Es + "', G = '" + Mat1.G + "', Fy = '" + Mat1.Fy + "', Fu = '" + Mat1.Fu + "', Wc = '" + Mat1.Wc + "', fc = '" + Mat1.fc
+                + "', Ec = '" + Mat1.Ec + "' WHERE Name = '" + Mat1.Name + "'";
+            cmd.CommandText = cmd1;
+            cmd.ExecuteNonQuery();
+            cn.Close();
+        }
+
     }
 }
