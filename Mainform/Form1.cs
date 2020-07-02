@@ -102,6 +102,36 @@ namespace Mainform
                 listBox1.Items.Add(DTMat.Rows[i][0].ToString());
             }
 
+            List<string> Mitems = new List<string> { "Flange", "Web", "Diaphragm", "Longitudinal Rib", "Longitudinal Stiffener", "Transverse Stiffener", "Deck", "Bottom Concrete", "Rebar in Deck", "Rebar in Bottom concrete", "Cross Beam", "Stringer", "Splice", "Shear Connector" };
+            dgvMat.ColumnCount = 2;
+            dgvMat.Columns[0].HeaderText = "No.";
+            dgvMat.Columns[1].HeaderText = "Items";            
+            dgvMat.Columns[0].Width = 50;
+            dgvMat.Columns[0].ReadOnly = true;
+            dgvMat.Columns[1].ReadOnly = true;
+            dgvMat.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvMat.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+            for (int i = 0; i < Mitems.Count; i++)
+                dgvMat.Rows.Add((i+1).ToString(), Mitems[i]);
+
+            DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
+            combo.DataSource = listBox1.Items;
+            dgvMat.Columns.Add(combo);
+            
+
+            //foreach (string s in listBox1.Items)
+            //    combo.Items.Add(s);
+            //dgvMat.Columns.Add(combo);
+
+            combo.HeaderText = "Material";
+            combo.Name = "Material";
+            combo.Width = 100;
+            
+
+           
+               
+
         }
 
         private void Setgridview(DataGridView grid)
@@ -398,6 +428,7 @@ namespace Mainform
         int ngirder;
         List<Node> Node;
         List<Node> Node1;
+        
 
         private void btApply_Click(object sender, EventArgs e)
         {
@@ -581,6 +612,59 @@ namespace Mainform
                         Node = Matrix.Addd0(Node, Atranstif, "d0");
                         //Write to DB
                         Access.writeList(Node, "Node", con, "All");
+                    }
+                    break;
+
+                case "pageMaterial":
+                    {
+                        DataTable DTMat = Access.getDataTable("Select * from Mat", con);
+                        List<Mat> Listmat = new List<Mat>();
+                        Listmat = (from DataRow dr in DTMat.Rows
+                                   select new Mat()
+                                   {
+                                       Name = dr["Name"].ToString(),
+                                       Type = dr["Type"].ToString(),
+                                       Ws = Convert.ToDouble(dr["Ws"]),
+                                       Es = Convert.ToDouble(dr["Es"]),
+                                       G = Convert.ToDouble(dr["G"]),
+                                       Fy = Convert.ToDouble(dr["Fy"]),
+                                       Fu = Convert.ToDouble(dr["Fu"]),
+                                       Wc = Convert.ToDouble(dr["Wc"]),
+                                       fc = Convert.ToDouble(dr["fc"]),
+                                       Ec = Convert.ToDouble(dr["Ec"])
+                                   }).ToList();
+
+
+                        List<Mat> Items = new List<Mat>();
+                        Mat Flange = new Mat();
+                        Flange.Name = dgvMat.Rows[0].Cells[1].Value.ToString();
+                        Flange.Ws = Listmat.Where(p => p.Name == dgvMat.Rows[0].Cells[2].Value.ToString()).Select(p => p.Ws).FirstOrDefault();
+                        Flange.Es = Listmat.Where(p => p.Name == dgvMat.Rows[0].Cells[2].Value.ToString()).Select(p => p.Es).FirstOrDefault();
+                        Flange.G = Listmat.Where(p => p.Name == dgvMat.Rows[0].Cells[2].Value.ToString()).Select(p => p.G).FirstOrDefault();
+                        Flange.Fy = Listmat.Where(p => p.Name == dgvMat.Rows[0].Cells[2].Value.ToString()).Select(p => p.Fy).FirstOrDefault();
+                        Flange.Fu = Listmat.Where(p => p.Name == dgvMat.Rows[0].Cells[2].Value.ToString()).Select(p => p.Fu).FirstOrDefault();
+                        Items.Add(Flange);
+
+                        Mat Web = new Mat();
+                        Web.Name = dgvMat.Rows[1].Cells[1].Value.ToString();
+                        Web.Ws = Listmat.Where(p => p.Name == dgvMat.Rows[1].Cells[2].Value.ToString()).Select(p => p.Ws).FirstOrDefault();
+                        Web.Es = Listmat.Where(p => p.Name == dgvMat.Rows[1].Cells[2].Value.ToString()).Select(p => p.Es).FirstOrDefault();
+                        Web.G = Listmat.Where(p => p.Name == dgvMat.Rows[1].Cells[2].Value.ToString()).Select(p => p.G).FirstOrDefault();
+                        Web.Fy = Listmat.Where(p => p.Name == dgvMat.Rows[1].Cells[2].Value.ToString()).Select(p => p.Fy).FirstOrDefault();
+                        Web.Fu = Listmat.Where(p => p.Name == dgvMat.Rows[1].Cells[2].Value.ToString()).Select(p => p.Fu).FirstOrDefault();
+                        Items.Add(Web);
+
+                        Mat Diaphragm = new Mat();
+                        Diaphragm.Name = dgvMat.Rows[2].Cells[1].Value.ToString();
+                        Diaphragm.Ws = Listmat.Where(p => p.Name == dgvMat.Rows[2].Cells[2].Value.ToString()).Select(p => p.Ws).FirstOrDefault();
+                        Diaphragm.Es = Listmat.Where(p => p.Name == dgvMat.Rows[2].Cells[2].Value.ToString()).Select(p => p.Es).FirstOrDefault();
+                        Diaphragm.G = Listmat.Where(p => p.Name == dgvMat.Rows[2].Cells[2].Value.ToString()).Select(p => p.G).FirstOrDefault();
+                        Diaphragm.Fy = Listmat.Where(p => p.Name == dgvMat.Rows[2].Cells[2].Value.ToString()).Select(p => p.Fy).FirstOrDefault();
+                        Diaphragm.Fu = Listmat.Where(p => p.Name == dgvMat.Rows[2].Cells[2].Value.ToString()).Select(p => p.Fu).FirstOrDefault();
+                        Items.Add(Diaphragm);
+
+                        Access.writeList(Items, "Mat1", con, "All");
+
                     }
                     break;
 
@@ -1041,21 +1125,12 @@ namespace Mainform
         {
             if (checkBox1.Checked == true)
             {
-                if (fcktofcm.ContainsKey(Convert.ToDouble(numFc.Value)))
-                    numEc.Value = Convert.ToDecimal(0.077 * Math.Pow(2500, 1.5) * Math.Pow(fcktofcm[Convert.ToDouble(numFc.Value)], (1 / 3.0)));
-                else
-                {
-                    MessageBox.Show("Please input f'c again");
-                    checkBox1.Checked = false;
-                    numEc.Value = 0;
-                }                    
+                double fcm = Convert.ToDouble(numFc.Value <= 40 ? (numFc.Value + 4.00M) : (numFc.Value >= 60 ? (numFc.Value + 6.00M) : (numFc.Value * 1.1M)));
+                numEc.Value = Convert.ToDecimal(0.077 * Math.Pow(2500, 1.5) * Math.Pow(fcm, (1 / 3.0)));
+
             }
         }
-
-        private static Dictionary<double, double> fcktofcm = new Dictionary<double, double>()
-        {
-            { 18, 22 }, { 21, 25 }, { 24, 28 }, { 27, 31 }, { 30, 34 }, { 35, 39 }, { 40, 44 }, { 50, 56 }, { 60, 66 }, { 70, 76 }, { 80, 86 }, { 90, 96 }
-        };
+        
 
         private void checkSteel_CheckedChanged(object sender, EventArgs e)
         {
@@ -1109,6 +1184,8 @@ namespace Mainform
                 listBox1.Items.Add(DTMat.Rows[i][0].ToString());
             }
 
+            dgvMat.Invalidate();
+            dgvMat.Refresh();
 
         }
 
@@ -1157,6 +1234,16 @@ namespace Mainform
                     listBox1.Items.Add(DTMat.Rows[i][0].ToString());
                 }
             }
+            try
+            {
+                dgvMat.Invalidate();
+                dgvMat.Refresh();
+            }
+            catch
+            {
+
+            }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -1173,6 +1260,53 @@ namespace Mainform
             Mat1.fc = Convert.ToDouble(numFc.Value);
             Mat1.Ec = Convert.ToDouble(numEc.Value);
             Access.upadatemat(Mat1, con);
+        }
+
+        private void numFc_ValueChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                double fcm = Convert.ToDouble(numFc.Value <= 40 ? (numFc.Value + 4.00M) : (numFc.Value >= 60 ? (numFc.Value + 6.00M) : (numFc.Value * 1.1M)));
+                numEc.Value = Convert.ToDecimal(0.077 * Math.Pow(2500, 1.5) * Math.Pow(fcm, (1 / 3.0)));
+
+            }
+        }
+
+        private void dgvMat_MouseDown(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                this.dgvMat.MouseDown += this.HandleDataGridViewMouseDown;
+            }
+            catch
+            {
+
+            }
+            
+
+        }
+
+        private void HandleDataGridViewMouseDown(object sender, MouseEventArgs e)
+        {
+            // See where the click is occurring
+            DataGridView.HitTestInfo info = this.dgvMat.HitTest(e.X, e.Y);
+
+            if (info.Type == DataGridViewHitTestType.Cell)
+            {
+                switch (info.ColumnIndex)
+                {
+                    // Add and remove case statements as necessary depending on
+                    // which columns have ComboBoxes in them.
+
+                    case 1: // Column index 1
+                    case 2: // Column index 2
+                        this.dgvMat.CurrentCell =
+                            this.dgvMat.Rows[info.RowIndex].Cells[info.ColumnIndex];
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
 
