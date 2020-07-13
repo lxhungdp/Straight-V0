@@ -100,5 +100,43 @@ namespace Provider
 
             return b;
         }
+
+        public static double[,] GridtoArray_sec(DataGridView grid)
+        {
+            var array = new double[grid.RowCount, grid.ColumnCount];
+            foreach (DataGridViewRow i in grid.Rows)
+            {
+                if (i.IsNewRow) continue;
+                foreach (DataGridViewCell j in i.Cells)
+                {
+                    //if (double.TryParse(j.Value.ToString(), out _))
+                    //    array[j.RowIndex, j.ColumnIndex] = Convert.ToDouble(j.Value);
+                    //else
+                    //{
+                    //    if (j.Value.ToString().Contains("Barrier"))
+                    //        array[j.RowIndex, j.ColumnIndex] = 1;
+                    //    else if (j.Value.ToString().Contains("Liveload"))
+                    //        array[j.RowIndex, j.ColumnIndex] = 2;
+                    //    else if (j.Value.ToString().Contains("Pedestrian"))
+                    //        array[j.RowIndex, j.ColumnIndex] = 3;
+                        
+                    //}    
+                    if (j.RowIndex == 0)
+                        array[j.RowIndex, j.ColumnIndex] = Convert.ToDouble(j.Value);
+                    else
+                    {
+                        if (j.Value.ToString().Contains("Barrier"))
+                            array[j.RowIndex, j.ColumnIndex] = 1;
+                        else if (j.Value.ToString().Contains("Liveload"))
+                            array[j.RowIndex, j.ColumnIndex] = 2;
+                        else if (j.Value.ToString().Contains("Pedestrian"))
+                            array[j.RowIndex, j.ColumnIndex] = 3;
+                        
+                    }
+
+                }
+            }
+            return array;
+        }
     }
 }

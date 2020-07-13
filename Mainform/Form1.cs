@@ -21,7 +21,7 @@ namespace Mainform
 {
     public partial class Form1 : Form
     {
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -33,11 +33,8 @@ namespace Mainform
             Setinitialize();
 
 
-            //MessageBox.Show(a.GetLength(0).ToString());
 
-           
-           
-            //MessageBox.Show(b[1, 1].ToString());
+
         }
 
 
@@ -50,7 +47,7 @@ namespace Mainform
             btBridge.BackColor = Color.FromArgb(33, 115, 70);
             btGrid.BackColor = Color.FromArgb(44, 152, 93);
             btDim.BackColor = Color.FromArgb(44, 152, 93);
-            btStif.BackColor = Color.FromArgb(44, 152, 93);            
+            btStif.BackColor = Color.FromArgb(44, 152, 93);
             btBack.BackColor = Color.FromArgb(33, 115, 70);
             btApply.BackColor = Color.FromArgb(33, 115, 70);
             btNext.BackColor = Color.FromArgb(33, 115, 70);
@@ -94,9 +91,9 @@ namespace Mainform
             numWc.Value = 25;
             numFc.Value = 35;
             pictureMat.Load(Const.Constring + @"\Picture\Mat.PNG");
-            
+
             DataTable DTMat = Access.getDataTable("Select Name from Mat", con);
-            
+
             for (int i = 0; i < DTMat.Rows.Count; i++)
             {
                 listBox1.Items.Add(DTMat.Rows[i][0].ToString());
@@ -105,7 +102,7 @@ namespace Mainform
             List<string> Mitems = new List<string> { "Flange", "Web", "Diaphragm", "Longitudinal Rib", "Longitudinal Stiffener", "Transverse Stiffener", "Deck", "Bottom Concrete", "Rebar in Deck", "Rebar in Bottom concrete", "Cross Beam", "Stringer", "Splice", "Shear Connector" };
             dgvMat.ColumnCount = 2;
             dgvMat.Columns[0].HeaderText = "No.";
-            dgvMat.Columns[1].HeaderText = "Items";            
+            dgvMat.Columns[1].HeaderText = "Items";
             dgvMat.Columns[0].Width = 50;
             dgvMat.Columns[0].ReadOnly = true;
             dgvMat.Columns[1].ReadOnly = true;
@@ -113,12 +110,12 @@ namespace Mainform
             dgvMat.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             for (int i = 0; i < Mitems.Count; i++)
-                dgvMat.Rows.Add((i+1).ToString(), Mitems[i]);
+                dgvMat.Rows.Add((i + 1).ToString(), Mitems[i]);
 
             DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
             combo.DataSource = listBox1.Items;
             dgvMat.Columns.Add(combo);
-            
+
 
             //foreach (string s in listBox1.Items)
             //    combo.Items.Add(s);
@@ -127,10 +124,8 @@ namespace Mainform
             combo.HeaderText = "Material";
             combo.Name = "Material";
             combo.Width = 100;
-            
 
-           
-               
+
 
         }
 
@@ -172,7 +167,7 @@ namespace Mainform
             timer1.Start();
 
 
-            TabPage[] a = { pageCross, pageGirder, pageStiffeners};
+            TabPage[] a = { pageCross, pageGirder, pageStiffeners };
             showtabpage(a);
 
         }
@@ -301,6 +296,36 @@ namespace Mainform
             }
         }
 
+        //Fill the girdSection
+        private void fillAsection()
+        {
+            DGV.ArraytoGrid(gridSection, Asection);
+
+            for (int i = 0; i < Asection.GetLength(1); i++)
+            {
+                DataGridViewComboBoxCell cbx = new DataGridViewComboBoxCell();
+                cbx.Items.Add("Barrier");
+                cbx.Items.Add("Liveload");
+                cbx.Items.Add("Pedestrian");
+                gridSection.Rows[1].Cells[i].Value = null;
+                gridSection.Rows[1].Cells[i] = cbx;
+
+                //Set the default value for combobox
+                if (Asection[1,i] == 3)
+                    gridSection.Rows[1].Cells[i].Value = (cbx.Items[2]).ToString();
+                else if (Asection[1, i] == 2)
+                    gridSection.Rows[1].Cells[i].Value = (cbx.Items[1]).ToString();
+                else
+                    gridSection.Rows[1].Cells[i].Value = (cbx.Items[0]).ToString();
+            }
+
+            
+
+            //for (int i = 0; i < Asection.GetLength(1); i++)
+            //    gridSection.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+        }
+
         private void btNext_Click(object sender, EventArgs e)
         {
             switch (metroTabControl1.SelectedTab.Name)
@@ -310,7 +335,8 @@ namespace Mainform
                         TabPage[] a = { pageCross, pageGirder, pageStiffeners };
                         showtabpage(a);
                         metroTabControl1.SelectedTab = pageCross;
-                        
+
+                        fillAsection();
 
                     }
                     break;
@@ -318,7 +344,7 @@ namespace Mainform
 
                 case "pageCross":
                     {
-                        
+
                         metroTabControl1.SelectedTab = pageGirder;
                     }
                     break;
@@ -327,7 +353,7 @@ namespace Mainform
 
                 case "pageGirder":
                     {
-                        
+
                         metroTabControl1.SelectedTab = pageStiffeners;
 
 
@@ -368,13 +394,13 @@ namespace Mainform
                     break;
                 case "pageGirder":
                     {
-                        
+
                         metroTabControl1.SelectedTab = pageCross;
                     }
                     break;
                 case "pageStiffeners":
                     {
-                        
+
                         metroTabControl1.SelectedTab = pageGirder;
                     }
                     break;
@@ -419,8 +445,10 @@ namespace Mainform
         double[,] Across;
         double[,] Across_grid;
         double[] Across1;
-        
-        double[,] Atran;        
+
+        double[,] Atran;
+        double[,] Asection = new double[2, 3];
+        DataTable DTsection;
 
         double[] Aspan;
 
@@ -428,7 +456,7 @@ namespace Mainform
         int ngirder;
         List<Node> Node;
         List<Node> Node1;
-        
+        List<DataGridViewComboBoxCell> CSection;
 
         private void btApply_Click(object sender, EventArgs e)
         {
@@ -438,7 +466,7 @@ namespace Mainform
                     {
 
                         ngirder = Convert.ToInt32(numgirder.Value);
-                       
+
                         // Atran has 3 rows
                         // 1st row: length
                         //2nd row : order of sections - to set color
@@ -497,9 +525,10 @@ namespace Mainform
                         Astif[0, 0] = sumspan;
                         DGV.ArraytoGrid(gridStif, Astif);
 
-                        Atranstif = new double[1, 1];
-                        Atranstif[0, 0] = sumspan;
-                        DGV.ArraytoGrid(gridTranstif, Atranstif);
+
+
+
+
 
                         // Convert 1D array Across and Across_grid
                         //Description about Across_grid
@@ -520,49 +549,67 @@ namespace Mainform
                         Across_grid[0, 0] = 1.0;
 
                         gridCross.DataSource = null;
-                        DGV.ArraytoGrid(gridCross, Across);
-                        Deco(gridCross, Across_grid);
-                        
-                        
 
+                        DGV.ArraytoGrid(gridCross, Across);
+
+                        Deco(gridCross, Across_grid);
+
+                        Asection = new double[2, 3];
+                        // 1 = Barrier, 2 = Liveload; 3 = Pedestrian
+                        for (int i = 0; i < Asection.GetLength(1); i++)
+                        {
+                            if (i == 0 || i == Asection.GetLength(1) - 1)
+                                Asection[1, i] = 1;
+                            else
+                                Asection[1, i] = 2;
+                        }
+                   
                     }
                     break;
                 case "pageCross":
                     {
                         // Generate List of grid bridge
                         Node = Matrix.Gridarrtolist(Across_grid, Atran, ngirder);
-                        
-                        
+
+
                         //Write to Database
-                        
-                        //Access.writeList(Node, "Node",con, "All");
+
+                        Access.writeList(Node, "Node", con, "All");
 
                         // Plot to the chart
                         Chart.Bridgegrid(Node, gridchart);
 
                         //Fill the transverse stiffener grid
-                        Atranstif = Across;
-                        Atranstif_grid = Across_grid;
+                        // Problem is here ====>>>>>
+
+                        //Atranstif = Across; CAN NOT use = for 2 matrices
+                        Atranstif = (double[,])Across.Clone();
+
+                        Atranstif_grid = new double[Across_grid.GetLength(0), Across_grid.GetLength(1)];
+
                         Across1 = new double[Across.GetLength(1)];
-                        for (int i = 0; i < Atranstif_grid.GetLength(1); i++)
+                        for (int i = 0; i < Across_grid.GetLength(1); i++)
                         {
-                            Atranstif_grid[1, i] = i + 1;
                             Atranstif_grid[0, i] = 1;
+                            Atranstif_grid[1, i] = i + 1;
+                            Atranstif_grid[2, i] = Across_grid[2, i];
+
                             Across1[i] = Across[0, i];
                         }
-                            
-                       
-                        
+
+
+
                         DGV.ArraytoGrid(gridTranstif, Atranstif);
 
-
+                       
+                        DGV.ArraytoGrid(dataGridView1, Asection);
                     }
                     break;
-                
+
                 case "pageGirder":
                     {
                         //Select node without type 4 again
-                        
+
                         Node = Node.Where(p => p.Type != 4).ToList();
 
                         //Insert node
@@ -579,8 +626,8 @@ namespace Mainform
 
                         //Insert others to Node
 
-                        double [] S = new double[] { radioRa.Checked == Enabled ? Convert.ToDouble(numSr.Value) : Math.Tan(Convert.ToDouble(numSd.Value) * Math.PI / 180.0) };
-                        decimal[] ts = new decimal[] {numcbot.Value, numctop.Value, numts.Value, numth.Value, numbh.Value, numdrt.Value, numart.Value, numcrt.Value, numdrb.Value, numarb.Value, numcrb.Value };
+                        double[] S = new double[] { radioRa.Checked == Enabled ? Convert.ToDouble(numSr.Value) : Math.Tan(Convert.ToDouble(numSd.Value) * Math.PI / 180.0) };
+                        decimal[] ts = new decimal[] { numcbot.Value, numctop.Value, numts.Value, numth.Value, numbh.Value, numdrt.Value, numart.Value, numcrt.Value, numdrb.Value, numarb.Value, numcrb.Value };
                         double[] ts1 = Array.ConvertAll(ts, p => (double)p);
                         Node = Matrix.Add1prop(Node, ts1, "cbot,ctop,ts,th,bh,drt,art,crt,drb,arb,crb");
                         Node = Matrix.Add1prop(Node, S, "S");
@@ -588,15 +635,15 @@ namespace Mainform
                         //Write to DB
                         //Access.writeList(Node, "Node", con, "All");
 
-                       
+
 
                     }
                     break;
-                
+
                 case "pageStiffeners":
                     {
                         //Select node without type 5 again
-                        
+
                         Node = Node.Where(p => p.Type != 5).ToList();
 
                         //Insert node
@@ -741,10 +788,14 @@ namespace Mainform
                 else
                     deleteTool.Enabled = true;
 
-                if (Atran[2, index] == 0)                
-                    addTool.Enabled = false; 
+                if (Atran[2, index] == 0)
+                    addTool.Enabled = false;
                 else
                     addTool.Enabled = true;
+            }
+            else if (a == gridSection)
+            {
+
             }
 
             else
@@ -756,6 +807,7 @@ namespace Mainform
                 else
                     deleteTool.Enabled = true;
             }
+
             SelectedDGV = a;
         }
 
@@ -766,7 +818,7 @@ namespace Mainform
             ndiv = 2;
             if (SelectedDGV == gridTop)
             {
-                Atop = Matrix.Seperate(Atop, index,ndiv);
+                Atop = Matrix.Seperate(Atop, index, ndiv);
                 DGV.ArraytoGrid(gridTop, Atop);
             }
 
@@ -787,8 +839,9 @@ namespace Mainform
             }
             else if (SelectedDGV == gridCross)
             {
-                Across = Matrix.Seperate_cross(Across, index,ndiv);
-                Across_grid = Matrix.Seperate_cross(Across_grid, index,ndiv);
+
+                Across = Matrix.Seperate_cross(Across, index, ndiv);
+                Across_grid = Matrix.Seperate_cross(Across_grid, index, ndiv);
                 DGV.ArraytoGrid(gridCross, Across);
                 Deco(SelectedDGV, Across_grid);
             }
@@ -800,7 +853,7 @@ namespace Mainform
                 Deco(SelectedDGV, Atranstif_grid);
             }
             else if (SelectedDGV == gridTran)
-            {               
+            {
                 Atran = Matrix.Seperate_tran(Atran, index);
                 DGV.ArraytoGrid_tran(gridTran, Atran);
                 Deco(SelectedDGV, Atran);
@@ -822,6 +875,11 @@ namespace Mainform
                 DGV.ArraytoGrid(gridStif, Astif);
             }
 
+            else if (SelectedDGV == gridSection)
+            {
+                Asection = Matrix.Seperate(Asection, index, ndiv);
+                fillAsection();
+            }
 
             if (SelectedDGV.Columns.Count > 10)
                 foreach (DataGridViewColumn c in SelectedDGV.Columns)
@@ -889,7 +947,41 @@ namespace Mainform
             }
             else if (sender == gridTran)
             {
-                Atran = DGV.GridtoArray_tran(gridTran,Atran);
+                Atran = DGV.GridtoArray_tran(gridTran, Atran);
+
+                // Change component of section
+                double sr = 0; //Width of bridge
+                //Sum of width
+                for (int i = 0; i < Atran.GetLength(1); i++)
+                {
+                    sr += Atran[0, i];
+                }
+                ////Update to gridSection
+
+
+                if (sr <= 500)
+                    Asection[0, 0] = sr;
+                else if (sr <= 1000)
+                {
+                    Asection[0, 0] = 500;
+                    Asection[0, Asection.GetLength(1) - 1] = sr - 500;
+                }
+                else
+                {
+                    Asection[0, 0] = 500;
+                    Asection[0, Asection.GetLength(1) - 1] = 500;
+                    for (int i = 1; i < Asection.GetLength(1) - 1; i++)
+                        Asection[0, i] = (sr - 1000) / (Asection.GetLength(1) - 2);
+                }
+                fillAsection();
+
+            }
+
+            else if (sender == gridSection)
+            {
+                Asection = DGV.GridtoArray_sec(gridSection);
+                //fillAsection();
+               
             }
             else if (sender == gridRibtop)
             {
@@ -985,6 +1077,11 @@ namespace Mainform
 
 
             }
+            else if (SelectedDGV == gridSection)
+            {
+                Asection = Matrix.Combine(Asection, index);
+                fillAsection();
+            }
 
             if (SelectedDGV.Columns.Count <= 10)
                 foreach (DataGridViewColumn c in SelectedDGV.Columns)
@@ -1028,8 +1125,8 @@ namespace Mainform
                 }
                 else if (SelectedDGV == gridCross)
                 {
-                    Across = Matrix.Seperate_cross(Across, index,ndiv);
-                    Across_grid = Matrix.Seperate_cross(Across_grid, index,ndiv);
+                    Across = Matrix.Seperate_cross(Across, index, ndiv);
+                    Across_grid = Matrix.Seperate_cross(Across_grid, index, ndiv);
                     DGV.ArraytoGrid(gridCross, Across);
                     Deco(SelectedDGV, Across_grid);
                 }
@@ -1074,8 +1171,8 @@ namespace Mainform
                     }
                 SelectedDGV.ClearSelection();
 
-               
-               
+
+
             }
         }
 
@@ -1085,7 +1182,7 @@ namespace Mainform
             var asPixels = gridchart.Base.ConvertToPixels(chartPoint.AsPoint());
             fRestrain f = new fRestrain();
             f.Location = new Point(Cursor.Position.X - f.Size.Width / 2, Cursor.Position.Y - f.Size.Height);
-            if (f.ShowDialog() == DialogResult.OK )
+            if (f.ShowDialog() == DialogResult.OK)
             {
                 Scheck = f.Scheck;
                 if (Scheck != "" && Scheck != null)
@@ -1099,7 +1196,7 @@ namespace Mainform
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbMattype.SelectedIndex == 0)
-            {                
+            {
                 groupSteel1.Visible = false;
                 groupSteel2.Visible = false;
                 groupSteel3.Visible = false;
@@ -1111,13 +1208,13 @@ namespace Mainform
             }
 
             else
-            {                
+            {
                 groupSteel1.Visible = true;
                 groupSteel2.Visible = true;
                 groupSteel3.Visible = false;
                 groupConcrete.Visible = false;
-                checkSteel.Enabled = true;               
-                
+                checkSteel.Enabled = true;
+
             }
         }
 
@@ -1130,7 +1227,7 @@ namespace Mainform
 
             }
         }
-        
+
 
         private void checkSteel_CheckedChanged(object sender, EventArgs e)
         {
@@ -1142,7 +1239,7 @@ namespace Mainform
                 BindingSource bs = new BindingSource();
                 bs.DataSource = new List<string> { "SS235", "SS275", "SM275", "SM355", "SM420", "SM460", "HSB380", "HSB460", "HSB690" };
                 comboSteel.DataSource = bs;
-            }                
+            }
 
             else
             {
@@ -1150,7 +1247,7 @@ namespace Mainform
                 groupSteel2.Visible = true;
                 groupSteel3.Visible = false;
             }
-                
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -1179,7 +1276,7 @@ namespace Mainform
             DataTable DTMat = Access.getDataTable("Select Name from Mat", con);
 
             listBox1.Items.Clear();
-            for (int i = 0; i< DTMat.Rows.Count; i++)
+            for (int i = 0; i < DTMat.Rows.Count; i++)
             {
                 listBox1.Items.Add(DTMat.Rows[i][0].ToString());
             }
@@ -1243,11 +1340,11 @@ namespace Mainform
             {
 
             }
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {            
+        {
             Mat Mat1 = new Mat();
             Mat1.Name = txtMatname.Text;
             Mat1.Type = cbMattype.Text;
@@ -1272,41 +1369,71 @@ namespace Mainform
             }
         }
 
-        private void dgvMat_MouseDown(object sender, MouseEventArgs e)
+                
+
+        // One click to select combobox
+
+        private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
-            try
+            if (sender == gridSection)
+                this.gridSection.MouseDown += this.HandleDataGridViewMouseDown;
+            else if (sender == dgvMat)
             {
-                this.dgvMat.MouseDown += this.HandleDataGridViewMouseDown;
-            }
-            catch
-            {
+                try
+                {
+                    this.dgvMat.MouseDown += this.HandleDataGridViewMouseDown;
+                }
+                catch
+                {
 
+                }
             }
-            
-
         }
 
         private void HandleDataGridViewMouseDown(object sender, MouseEventArgs e)
         {
             // See where the click is occurring
-            DataGridView.HitTestInfo info = this.dgvMat.HitTest(e.X, e.Y);
-
-            if (info.Type == DataGridViewHitTestType.Cell)
+            if (sender == gridSection)
             {
-                switch (info.ColumnIndex)
-                {
-                    // Add and remove case statements as necessary depending on
-                    // which columns have ComboBoxes in them.
+                DataGridView.HitTestInfo info = this.gridSection.HitTest(e.X, e.Y);
 
-                    case 1: // Column index 1
-                    case 2: // Column index 2
-                        this.dgvMat.CurrentCell =
-                            this.dgvMat.Rows[info.RowIndex].Cells[info.ColumnIndex];
-                        break;
-                    default:
-                        break;
+                if (info.Type == DataGridViewHitTestType.Cell)
+                {
+                    switch (info.RowIndex)
+                    {
+                        case 1:
+                            this.gridSection.CurrentCell =
+                                this.gridSection.Rows[info.RowIndex].Cells[info.ColumnIndex];
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
+            else if (sender == dgvMat)
+            {
+                DataGridView.HitTestInfo info = this.dgvMat.HitTest(e.X, e.Y);
+
+                if (info.Type == DataGridViewHitTestType.Cell)
+                {
+                    switch (info.ColumnIndex)
+                    {
+                        // Add and remove case statements as necessary depending on
+                        // which columns have ComboBoxes in them.
+
+                        case 1: // Column index 1
+                        case 2: // Column index 2
+                            this.dgvMat.CurrentCell =
+                                this.dgvMat.Rows[info.RowIndex].Cells[info.ColumnIndex];
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+            }
+
+
         }
 
 

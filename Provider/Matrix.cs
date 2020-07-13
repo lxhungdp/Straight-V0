@@ -243,6 +243,31 @@ namespace Provider
 
             return b;
         }
+        public static double[,] Seperate_sec(double[,] a, int index, int ndiv)
+        {
+            double[,] b = new double[a.GetLength(0), a.GetLength(1) + ndiv - 1];
+            for (int i = 0; i < a.GetLength(0); i++)
+                for (int j = 0; j < a.GetLength(1); j++)
+                {
+                    if (j < index)
+                        b[i, j] = a[i, j];
+                    else if (j == index)
+                    {
+
+                        for (int k = j; k < j + ndiv; k++)
+                        {
+                            b[i, k] = a[i, j];
+                            b[0, k] = a[0, j] / ndiv;
+                        }
+
+                    }
+                    else
+                        b[i, j + ndiv - 1] = a[i, j];
+                }
+
+            return b;
+        }
+
         public static List<Node> Gridarrtolist(double[,] Across_grid, double[,] Atran, int ngirder)
         {
             double[] Longcu = new double[Across_grid.GetLength(1) + 1];
