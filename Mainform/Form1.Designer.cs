@@ -29,19 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle106 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle107 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle108 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle109 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle110 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle111 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle112 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle113 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle114 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle115 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle118 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle116 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle117 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle118 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle119 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle120 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle121 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -50,14 +40,27 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle124 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle125 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle126 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle127 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle128 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle129 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle130 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle131 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle132 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle133 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle134 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle135 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle136 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle137 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle138 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btGeneral = new System.Windows.Forms.Button();
+            this.btMaterial = new System.Windows.Forms.Button();
+            this.btLiveLoad = new System.Windows.Forms.Button();
             this.panelBP = new System.Windows.Forms.Panel();
             this.btBridge = new System.Windows.Forms.Button();
-            this.btGrid = new System.Windows.Forms.Button();
+            this.btGeneralD = new System.Windows.Forms.Button();
             this.btStif = new System.Windows.Forms.Button();
-            this.btDim = new System.Windows.Forms.Button();
-            this.btMaterial = new System.Windows.Forms.Button();
+            this.btGirderD = new System.Windows.Forms.Button();
             this.btAnalysis = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
@@ -80,7 +83,62 @@
             this.cbType = new System.Windows.Forms.ComboBox();
             this.numgirder = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.pageCross = new MetroFramework.Controls.MetroTabPage();
+            this.pageMaterial = new MetroFramework.Controls.MetroTabPage();
+            this.groupBox26 = new System.Windows.Forms.GroupBox();
+            this.dgvMat = new System.Windows.Forms.DataGridView();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.checkSteel = new System.Windows.Forms.CheckBox();
+            this.comboSteel = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupSteel1 = new System.Windows.Forms.GroupBox();
+            this.numWs = new System.Windows.Forms.NumericUpDown();
+            this.label64 = new System.Windows.Forms.Label();
+            this.numG = new System.Windows.Forms.NumericUpDown();
+            this.label56 = new System.Windows.Forms.Label();
+            this.numEs = new System.Windows.Forms.NumericUpDown();
+            this.label61 = new System.Windows.Forms.Label();
+            this.groupSteel2 = new System.Windows.Forms.GroupBox();
+            this.numFu = new System.Windows.Forms.NumericUpDown();
+            this.label67 = new System.Windows.Forms.Label();
+            this.numFy = new System.Windows.Forms.NumericUpDown();
+            this.label68 = new System.Windows.Forms.Label();
+            this.groupConcrete = new System.Windows.Forms.GroupBox();
+            this.numWc = new System.Windows.Forms.NumericUpDown();
+            this.label65 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.numEc = new System.Windows.Forms.NumericUpDown();
+            this.numFc = new System.Windows.Forms.NumericUpDown();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.groupSteel3 = new System.Windows.Forms.GroupBox();
+            this.pictureMat = new System.Windows.Forms.PictureBox();
+            this.cbMattype = new System.Windows.Forms.ComboBox();
+            this.txtMatname = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.pageLiveload = new MetroFramework.Controls.MetroTabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.gridAB = new System.Windows.Forms.DataGridView();
+            this.A1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.B1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.B2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.B3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.B4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.B5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pageGrid = new MetroFramework.Controls.MetroTabPage();
+            this.gridSection = new System.Windows.Forms.DataGridView();
+            this.groupBox27 = new System.Windows.Forms.GroupBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
@@ -93,7 +151,7 @@
             this.gridCross = new System.Windows.Forms.DataGridView();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.pageGirder = new MetroFramework.Controls.MetroTabPage();
+            this.pageDim = new MetroFramework.Controls.MetroTabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -181,56 +239,6 @@
             this.gridRibtop = new System.Windows.Forms.DataGridView();
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.pageMaterial = new MetroFramework.Controls.MetroTabPage();
-            this.groupBox26 = new System.Windows.Forms.GroupBox();
-            this.dgvMat = new System.Windows.Forms.DataGridView();
-            this.groupBox22 = new System.Windows.Forms.GroupBox();
-            this.groupBox24 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox23 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.groupBox25 = new System.Windows.Forms.GroupBox();
-            this.checkSteel = new System.Windows.Forms.CheckBox();
-            this.comboSteel = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.groupSteel1 = new System.Windows.Forms.GroupBox();
-            this.numWs = new System.Windows.Forms.NumericUpDown();
-            this.label64 = new System.Windows.Forms.Label();
-            this.numG = new System.Windows.Forms.NumericUpDown();
-            this.label56 = new System.Windows.Forms.Label();
-            this.numEs = new System.Windows.Forms.NumericUpDown();
-            this.label61 = new System.Windows.Forms.Label();
-            this.groupSteel2 = new System.Windows.Forms.GroupBox();
-            this.numFu = new System.Windows.Forms.NumericUpDown();
-            this.label67 = new System.Windows.Forms.Label();
-            this.numFy = new System.Windows.Forms.NumericUpDown();
-            this.label68 = new System.Windows.Forms.Label();
-            this.groupConcrete = new System.Windows.Forms.GroupBox();
-            this.numWc = new System.Windows.Forms.NumericUpDown();
-            this.label65 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.numEc = new System.Windows.Forms.NumericUpDown();
-            this.numFc = new System.Windows.Forms.NumericUpDown();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.groupSteel3 = new System.Windows.Forms.GroupBox();
-            this.pictureMat = new System.Windows.Forms.PictureBox();
-            this.cbMattype = new System.Windows.Forms.ComboBox();
-            this.txtMatname = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.pageSectional = new MetroFramework.Controls.MetroTabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.gridAB = new System.Windows.Forms.DataGridView();
-            this.A1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.B1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.B2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.B3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.B4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.B5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.A2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pageAnalysis = new MetroFramework.Controls.MetroTabPage();
             this.pageSupports = new MetroFramework.Controls.MetroTabPage();
             this.pageProp = new MetroFramework.Controls.MetroTabPage();
@@ -251,7 +259,32 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numgirder)).BeginInit();
-            this.pageCross.SuspendLayout();
+            this.pageMaterial.SuspendLayout();
+            this.groupBox26.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMat)).BeginInit();
+            this.groupBox22.SuspendLayout();
+            this.groupBox24.SuspendLayout();
+            this.groupBox23.SuspendLayout();
+            this.groupBox25.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.groupSteel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numWs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEs)).BeginInit();
+            this.groupSteel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFy)).BeginInit();
+            this.groupConcrete.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numWc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFc)).BeginInit();
+            this.groupSteel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMat)).BeginInit();
+            this.pageLiveload.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAB)).BeginInit();
+            this.pageGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSection)).BeginInit();
+            this.groupBox27.SuspendLayout();
             this.groupBox16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox15.SuspendLayout();
@@ -259,7 +292,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridTran)).BeginInit();
             this.groupBox13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCross)).BeginInit();
-            this.pageGirder.SuspendLayout();
+            this.pageDim.SuspendLayout();
             this.panel5.SuspendLayout();
             this.groupBox17.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -300,29 +333,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridRibbot)).BeginInit();
             this.groupBox18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRibtop)).BeginInit();
-            this.pageMaterial.SuspendLayout();
-            this.groupBox26.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMat)).BeginInit();
-            this.groupBox22.SuspendLayout();
-            this.groupBox24.SuspendLayout();
-            this.groupBox23.SuspendLayout();
-            this.groupBox25.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.groupSteel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numWs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEs)).BeginInit();
-            this.groupSteel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numFu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFy)).BeginInit();
-            this.groupConcrete.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numWc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFc)).BeginInit();
-            this.groupSteel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureMat)).BeginInit();
-            this.pageSectional.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridAB)).BeginInit();
             this.panel2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -331,8 +341,9 @@
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.flowLayoutPanel1.Controls.Add(this.btGeneral);
-            this.flowLayoutPanel1.Controls.Add(this.panelBP);
             this.flowLayoutPanel1.Controls.Add(this.btMaterial);
+            this.flowLayoutPanel1.Controls.Add(this.btLiveLoad);
+            this.flowLayoutPanel1.Controls.Add(this.panelBP);
             this.flowLayoutPanel1.Controls.Add(this.btAnalysis);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -352,18 +363,52 @@
             this.btGeneral.Name = "btGeneral";
             this.btGeneral.Size = new System.Drawing.Size(230, 78);
             this.btGeneral.TabIndex = 0;
-            this.btGeneral.Text = "        General Info";
+            this.btGeneral.Text = "        General Information";
             this.btGeneral.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btGeneral.UseVisualStyleBackColor = true;
             this.btGeneral.Click += new System.EventHandler(this.btGeneral_Click);
             // 
+            // btMaterial
+            // 
+            this.btMaterial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btMaterial.FlatAppearance.BorderSize = 0;
+            this.btMaterial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btMaterial.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btMaterial.ForeColor = System.Drawing.Color.White;
+            this.btMaterial.Location = new System.Drawing.Point(3, 90);
+            this.btMaterial.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btMaterial.Name = "btMaterial";
+            this.btMaterial.Size = new System.Drawing.Size(230, 78);
+            this.btMaterial.TabIndex = 6;
+            this.btMaterial.Text = "        Material";
+            this.btMaterial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btMaterial.UseVisualStyleBackColor = false;
+            this.btMaterial.Click += new System.EventHandler(this.btMaterial_Click);
+            // 
+            // btLiveLoad
+            // 
+            this.btLiveLoad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btLiveLoad.FlatAppearance.BorderSize = 0;
+            this.btLiveLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btLiveLoad.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLiveLoad.ForeColor = System.Drawing.Color.White;
+            this.btLiveLoad.Location = new System.Drawing.Point(3, 176);
+            this.btLiveLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btLiveLoad.Name = "btLiveLoad";
+            this.btLiveLoad.Size = new System.Drawing.Size(230, 78);
+            this.btLiveLoad.TabIndex = 8;
+            this.btLiveLoad.Text = "        LiveLoad";
+            this.btLiveLoad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btLiveLoad.UseVisualStyleBackColor = false;
+            this.btLiveLoad.Click += new System.EventHandler(this.btLiveLoad_Click);
+            // 
             // panelBP
             // 
             this.panelBP.Controls.Add(this.btBridge);
-            this.panelBP.Controls.Add(this.btGrid);
+            this.panelBP.Controls.Add(this.btGeneralD);
             this.panelBP.Controls.Add(this.btStif);
-            this.panelBP.Controls.Add(this.btDim);
-            this.panelBP.Location = new System.Drawing.Point(3, 89);
+            this.panelBP.Controls.Add(this.btGirderD);
+            this.panelBP.Location = new System.Drawing.Point(3, 261);
             this.panelBP.MaximumSize = new System.Drawing.Size(230, 208);
             this.panelBP.MinimumSize = new System.Drawing.Size(230, 78);
             this.panelBP.Name = "panelBP";
@@ -383,28 +428,28 @@
             this.btBridge.Name = "btBridge";
             this.btBridge.Size = new System.Drawing.Size(230, 78);
             this.btBridge.TabIndex = 1;
-            this.btBridge.Text = "        Girder Dimensions";
+            this.btBridge.Text = "        Bridge Dimensions";
             this.btBridge.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btBridge.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btBridge.UseVisualStyleBackColor = false;
             this.btBridge.Click += new System.EventHandler(this.btBridge_Click);
             // 
-            // btGrid
+            // btGeneralD
             // 
-            this.btGrid.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btGrid.FlatAppearance.BorderSize = 0;
-            this.btGrid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btGrid.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btGrid.ForeColor = System.Drawing.Color.White;
-            this.btGrid.Location = new System.Drawing.Point(0, 78);
-            this.btGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btGrid.Name = "btGrid";
-            this.btGrid.Size = new System.Drawing.Size(230, 43);
-            this.btGrid.TabIndex = 4;
-            this.btGrid.Text = "               Grid of Girder";
-            this.btGrid.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btGrid.UseVisualStyleBackColor = false;
-            this.btGrid.Click += new System.EventHandler(this.button3_Click);
+            this.btGeneralD.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btGeneralD.FlatAppearance.BorderSize = 0;
+            this.btGeneralD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btGeneralD.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btGeneralD.ForeColor = System.Drawing.Color.White;
+            this.btGeneralD.Location = new System.Drawing.Point(0, 78);
+            this.btGeneralD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btGeneralD.Name = "btGeneralD";
+            this.btGeneralD.Size = new System.Drawing.Size(230, 43);
+            this.btGeneralD.TabIndex = 4;
+            this.btGeneralD.Text = "               General Dimension";
+            this.btGeneralD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btGeneralD.UseVisualStyleBackColor = false;
+            this.btGeneralD.Click += new System.EventHandler(this.btGeneralD_Click);
             // 
             // btStif
             // 
@@ -421,50 +466,34 @@
             this.btStif.Text = "               Stiffeners";
             this.btStif.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btStif.UseVisualStyleBackColor = false;
-            this.btStif.Click += new System.EventHandler(this.button5_Click);
+            this.btStif.Click += new System.EventHandler(this.btStif_Click);
             // 
-            // btDim
+            // btGirderD
             // 
-            this.btDim.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btDim.FlatAppearance.BorderSize = 0;
-            this.btDim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btDim.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDim.ForeColor = System.Drawing.Color.White;
-            this.btDim.Location = new System.Drawing.Point(0, 121);
-            this.btDim.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btDim.Name = "btDim";
-            this.btDim.Size = new System.Drawing.Size(230, 43);
-            this.btDim.TabIndex = 4;
-            this.btDim.Text = "               Girder Dimension";
-            this.btDim.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btDim.UseVisualStyleBackColor = false;
-            this.btDim.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // btMaterial
-            // 
-            this.btMaterial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btMaterial.FlatAppearance.BorderSize = 0;
-            this.btMaterial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMaterial.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btMaterial.ForeColor = System.Drawing.Color.White;
-            this.btMaterial.Location = new System.Drawing.Point(3, 174);
-            this.btMaterial.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btMaterial.Name = "btMaterial";
-            this.btMaterial.Size = new System.Drawing.Size(230, 78);
-            this.btMaterial.TabIndex = 6;
-            this.btMaterial.Text = "        Material";
-            this.btMaterial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btMaterial.UseVisualStyleBackColor = false;
-            this.btMaterial.Click += new System.EventHandler(this.button1_Click);
+            this.btGirderD.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btGirderD.FlatAppearance.BorderSize = 0;
+            this.btGirderD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btGirderD.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btGirderD.ForeColor = System.Drawing.Color.White;
+            this.btGirderD.Location = new System.Drawing.Point(0, 121);
+            this.btGirderD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btGirderD.Name = "btGirderD";
+            this.btGirderD.Size = new System.Drawing.Size(230, 43);
+            this.btGirderD.TabIndex = 4;
+            this.btGirderD.Text = "               Girder Dimension";
+            this.btGirderD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btGirderD.UseVisualStyleBackColor = false;
+            this.btGirderD.Click += new System.EventHandler(this.btGirderD_Click);
             // 
             // btAnalysis
             // 
+            this.btAnalysis.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btAnalysis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btAnalysis.FlatAppearance.BorderSize = 0;
             this.btAnalysis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btAnalysis.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAnalysis.ForeColor = System.Drawing.Color.White;
-            this.btAnalysis.Location = new System.Drawing.Point(3, 260);
+            this.btAnalysis.Location = new System.Drawing.Point(3, 346);
             this.btAnalysis.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btAnalysis.Name = "btAnalysis";
             this.btAnalysis.Size = new System.Drawing.Size(230, 78);
@@ -487,18 +516,18 @@
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.pageGeneral);
-            this.metroTabControl1.Controls.Add(this.pageCross);
-            this.metroTabControl1.Controls.Add(this.pageGirder);
-            this.metroTabControl1.Controls.Add(this.pageStiffeners);
             this.metroTabControl1.Controls.Add(this.pageMaterial);
-            this.metroTabControl1.Controls.Add(this.pageSectional);
+            this.metroTabControl1.Controls.Add(this.pageLiveload);
+            this.metroTabControl1.Controls.Add(this.pageGrid);
+            this.metroTabControl1.Controls.Add(this.pageDim);
+            this.metroTabControl1.Controls.Add(this.pageStiffeners);
             this.metroTabControl1.Controls.Add(this.pageAnalysis);
             this.metroTabControl1.Controls.Add(this.pageSupports);
             this.metroTabControl1.Controls.Add(this.pageProp);
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(233, 24);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 4;
+            this.metroTabControl1.SelectedIndex = 3;
             this.metroTabControl1.Size = new System.Drawing.Size(1401, 708);
             this.metroTabControl1.TabIndex = 3;
             this.metroTabControl1.UseSelectable = true;
@@ -513,7 +542,7 @@
             this.pageGeneral.Name = "pageGeneral";
             this.pageGeneral.Size = new System.Drawing.Size(1393, 666);
             this.pageGeneral.TabIndex = 0;
-            this.pageGeneral.Text = "General Info";
+            this.pageGeneral.Text = "General Information";
             this.pageGeneral.VerticalScrollbarBarColor = true;
             this.pageGeneral.VerticalScrollbarHighlightOnWheel = false;
             this.pageGeneral.VerticalScrollbarSize = 3;
@@ -716,23 +745,645 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Type of Girder";
             // 
-            // pageCross
+            // pageMaterial
             // 
-            this.pageCross.Controls.Add(this.groupBox16);
-            this.pageCross.Controls.Add(this.groupBox15);
-            this.pageCross.Controls.Add(this.groupBox14);
-            this.pageCross.Controls.Add(this.groupBox13);
-            this.pageCross.HorizontalScrollbarBarColor = true;
-            this.pageCross.HorizontalScrollbarHighlightOnWheel = false;
-            this.pageCross.HorizontalScrollbarSize = 1;
-            this.pageCross.Location = new System.Drawing.Point(4, 38);
-            this.pageCross.Name = "pageCross";
-            this.pageCross.Size = new System.Drawing.Size(1393, 666);
-            this.pageCross.TabIndex = 4;
-            this.pageCross.Text = "Grid of Grider";
-            this.pageCross.VerticalScrollbarBarColor = true;
-            this.pageCross.VerticalScrollbarHighlightOnWheel = false;
-            this.pageCross.VerticalScrollbarSize = 3;
+            this.pageMaterial.Controls.Add(this.groupBox26);
+            this.pageMaterial.Controls.Add(this.groupBox22);
+            this.pageMaterial.Controls.Add(this.groupBox25);
+            this.pageMaterial.HorizontalScrollbarBarColor = true;
+            this.pageMaterial.HorizontalScrollbarHighlightOnWheel = false;
+            this.pageMaterial.HorizontalScrollbarSize = 1;
+            this.pageMaterial.Location = new System.Drawing.Point(4, 38);
+            this.pageMaterial.Name = "pageMaterial";
+            this.pageMaterial.Size = new System.Drawing.Size(1393, 666);
+            this.pageMaterial.TabIndex = 2;
+            this.pageMaterial.Text = "Material";
+            this.pageMaterial.VerticalScrollbarBarColor = true;
+            this.pageMaterial.VerticalScrollbarHighlightOnWheel = false;
+            this.pageMaterial.VerticalScrollbarSize = 3;
+            // 
+            // groupBox26
+            // 
+            this.groupBox26.BackColor = System.Drawing.Color.White;
+            this.groupBox26.Controls.Add(this.dgvMat);
+            this.groupBox26.Location = new System.Drawing.Point(687, 225);
+            this.groupBox26.Name = "groupBox26";
+            this.groupBox26.Size = new System.Drawing.Size(646, 390);
+            this.groupBox26.TabIndex = 4;
+            this.groupBox26.TabStop = false;
+            this.groupBox26.Text = "Assign Material";
+            // 
+            // dgvMat
+            // 
+            this.dgvMat.AllowUserToAddRows = false;
+            this.dgvMat.AllowUserToDeleteRows = false;
+            this.dgvMat.AllowUserToResizeColumns = false;
+            this.dgvMat.AllowUserToResizeRows = false;
+            this.dgvMat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMat.ColumnHeadersHeight = 25;
+            this.dgvMat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvMat.Location = new System.Drawing.Point(30, 33);
+            this.dgvMat.Name = "dgvMat";
+            this.dgvMat.RowHeadersVisible = false;
+            this.dgvMat.Size = new System.Drawing.Size(593, 336);
+            this.dgvMat.TabIndex = 0;
+            this.dgvMat.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
+            // 
+            // groupBox22
+            // 
+            this.groupBox22.BackColor = System.Drawing.Color.White;
+            this.groupBox22.Controls.Add(this.groupBox24);
+            this.groupBox22.Controls.Add(this.groupBox23);
+            this.groupBox22.Location = new System.Drawing.Point(687, 3);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(646, 207);
+            this.groupBox22.TabIndex = 2;
+            this.groupBox22.TabStop = false;
+            this.groupBox22.Text = "Define Materials";
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.button3);
+            this.groupBox24.Controls.Add(this.button2);
+            this.groupBox24.Controls.Add(this.button1);
+            this.groupBox24.Location = new System.Drawing.Point(30, 16);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(284, 172);
+            this.groupBox24.TabIndex = 2;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Click to";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(19, 114);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(220, 30);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Delete material";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(19, 69);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(220, 30);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Modify material ...";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(19, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(220, 30);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Add new material ...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // groupBox23
+            // 
+            this.groupBox23.Controls.Add(this.listBox1);
+            this.groupBox23.Location = new System.Drawing.Point(339, 11);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(284, 172);
+            this.groupBox23.TabIndex = 0;
+            this.groupBox23.TabStop = false;
+            this.groupBox23.Text = "Material";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 17;
+            this.listBox1.Location = new System.Drawing.Point(15, 24);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(248, 140);
+            this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // groupBox25
+            // 
+            this.groupBox25.BackColor = System.Drawing.Color.White;
+            this.groupBox25.Controls.Add(this.checkSteel);
+            this.groupBox25.Controls.Add(this.comboSteel);
+            this.groupBox25.Controls.Add(this.flowLayoutPanel2);
+            this.groupBox25.Controls.Add(this.cbMattype);
+            this.groupBox25.Controls.Add(this.txtMatname);
+            this.groupBox25.Controls.Add(this.label3);
+            this.groupBox25.Controls.Add(this.label55);
+            this.groupBox25.Location = new System.Drawing.Point(3, 3);
+            this.groupBox25.Name = "groupBox25";
+            this.groupBox25.Size = new System.Drawing.Size(638, 612);
+            this.groupBox25.TabIndex = 3;
+            this.groupBox25.TabStop = false;
+            this.groupBox25.Text = "Material Properties";
+            // 
+            // checkSteel
+            // 
+            this.checkSteel.AutoSize = true;
+            this.checkSteel.Location = new System.Drawing.Point(46, 91);
+            this.checkSteel.Name = "checkSteel";
+            this.checkSteel.Size = new System.Drawing.Size(137, 21);
+            this.checkSteel.TabIndex = 11;
+            this.checkSteel.Text = "Select from Library";
+            this.checkSteel.UseVisualStyleBackColor = true;
+            this.checkSteel.CheckedChanged += new System.EventHandler(this.checkSteel_CheckedChanged);
+            // 
+            // comboSteel
+            // 
+            this.comboSteel.FormattingEnabled = true;
+            this.comboSteel.Items.AddRange(new object[] {
+            "Concrete",
+            "Steel"});
+            this.comboSteel.Location = new System.Drawing.Point(345, 91);
+            this.comboSteel.Name = "comboSteel";
+            this.comboSteel.Size = new System.Drawing.Size(169, 25);
+            this.comboSteel.TabIndex = 10;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.Controls.Add(this.groupSteel1);
+            this.flowLayoutPanel2.Controls.Add(this.groupSteel2);
+            this.flowLayoutPanel2.Controls.Add(this.groupConcrete);
+            this.flowLayoutPanel2.Controls.Add(this.groupSteel3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(6, 129);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(626, 505);
+            this.flowLayoutPanel2.TabIndex = 8;
+            // 
+            // groupSteel1
+            // 
+            this.groupSteel1.Controls.Add(this.numWs);
+            this.groupSteel1.Controls.Add(this.label64);
+            this.groupSteel1.Controls.Add(this.numG);
+            this.groupSteel1.Controls.Add(this.label56);
+            this.groupSteel1.Controls.Add(this.numEs);
+            this.groupSteel1.Controls.Add(this.label61);
+            this.groupSteel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupSteel1.Location = new System.Drawing.Point(3, 3);
+            this.groupSteel1.Name = "groupSteel1";
+            this.groupSteel1.Size = new System.Drawing.Size(593, 127);
+            this.groupSteel1.TabIndex = 8;
+            this.groupSteel1.TabStop = false;
+            this.groupSteel1.Text = "Property Data";
+            // 
+            // numWs
+            // 
+            this.numWs.Location = new System.Drawing.Point(328, 26);
+            this.numWs.Name = "numWs";
+            this.numWs.Size = new System.Drawing.Size(169, 25);
+            this.numWs.TabIndex = 13;
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(26, 28);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(146, 17);
+            this.label64.TabIndex = 12;
+            this.label64.Text = "Weight per Unit Volume";
+            // 
+            // numG
+            // 
+            this.numG.Location = new System.Drawing.Point(328, 88);
+            this.numG.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numG.Name = "numG";
+            this.numG.Size = new System.Drawing.Size(169, 25);
+            this.numG.TabIndex = 11;
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(26, 90);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(111, 17);
+            this.label56.TabIndex = 10;
+            this.label56.Text = "Shear modulus, G";
+            // 
+            // numEs
+            // 
+            this.numEs.Location = new System.Drawing.Point(328, 56);
+            this.numEs.Maximum = new decimal(new int[] {
+            500000,
+            0,
+            0,
+            0});
+            this.numEs.Name = "numEs";
+            this.numEs.Size = new System.Drawing.Size(169, 25);
+            this.numEs.TabIndex = 6;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(26, 58);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(148, 17);
+            this.label61.TabIndex = 0;
+            this.label61.Text = "Modulus of Elasticity, Es";
+            // 
+            // groupSteel2
+            // 
+            this.groupSteel2.Controls.Add(this.numFu);
+            this.groupSteel2.Controls.Add(this.label67);
+            this.groupSteel2.Controls.Add(this.numFy);
+            this.groupSteel2.Controls.Add(this.label68);
+            this.groupSteel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupSteel2.Location = new System.Drawing.Point(3, 136);
+            this.groupSteel2.Name = "groupSteel2";
+            this.groupSteel2.Size = new System.Drawing.Size(593, 100);
+            this.groupSteel2.TabIndex = 10;
+            this.groupSteel2.TabStop = false;
+            this.groupSteel2.Text = "Property Data";
+            // 
+            // numFu
+            // 
+            this.numFu.Location = new System.Drawing.Point(328, 57);
+            this.numFu.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numFu.Name = "numFu";
+            this.numFu.Size = new System.Drawing.Size(169, 25);
+            this.numFu.TabIndex = 13;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(26, 59);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(175, 17);
+            this.label67.TabIndex = 12;
+            this.label67.Text = "Minimum tensile strength, Fu";
+            // 
+            // numFy
+            // 
+            this.numFy.Location = new System.Drawing.Point(328, 28);
+            this.numFy.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numFy.Name = "numFy";
+            this.numFy.Size = new System.Drawing.Size(169, 25);
+            this.numFy.TabIndex = 11;
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(26, 30);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(164, 17);
+            this.label68.TabIndex = 10;
+            this.label68.Text = "Minimum yield strength, Fy";
+            // 
+            // groupConcrete
+            // 
+            this.groupConcrete.Controls.Add(this.numWc);
+            this.groupConcrete.Controls.Add(this.label65);
+            this.groupConcrete.Controls.Add(this.checkBox1);
+            this.groupConcrete.Controls.Add(this.numEc);
+            this.groupConcrete.Controls.Add(this.numFc);
+            this.groupConcrete.Controls.Add(this.label62);
+            this.groupConcrete.Controls.Add(this.label63);
+            this.groupConcrete.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupConcrete.Location = new System.Drawing.Point(3, 242);
+            this.groupConcrete.Name = "groupConcrete";
+            this.groupConcrete.Size = new System.Drawing.Size(593, 151);
+            this.groupConcrete.TabIndex = 9;
+            this.groupConcrete.TabStop = false;
+            this.groupConcrete.Text = "Property Data";
+            // 
+            // numWc
+            // 
+            this.numWc.Location = new System.Drawing.Point(328, 29);
+            this.numWc.Name = "numWc";
+            this.numWc.Size = new System.Drawing.Size(169, 25);
+            this.numWc.TabIndex = 10;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(26, 31);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(146, 17);
+            this.label65.TabIndex = 9;
+            this.label65.Text = "Weight per Unit Volume";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(29, 120);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(334, 21);
+            this.checkBox1.TabIndex = 8;
+            this.checkBox1.Text = "Calculate Ec by Equation Ec = 0.077 mc^1.5 fcm^1/3";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // numEc
+            // 
+            this.numEc.Location = new System.Drawing.Point(328, 89);
+            this.numEc.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numEc.Name = "numEc";
+            this.numEc.Size = new System.Drawing.Size(169, 25);
+            this.numEc.TabIndex = 7;
+            // 
+            // numFc
+            // 
+            this.numFc.Location = new System.Drawing.Point(328, 60);
+            this.numFc.Name = "numFc";
+            this.numFc.Size = new System.Drawing.Size(169, 25);
+            this.numFc.TabIndex = 6;
+            this.numFc.ValueChanged += new System.EventHandler(this.numFc_ValueChanged);
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(26, 89);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(148, 17);
+            this.label62.TabIndex = 1;
+            this.label62.Text = "Modulus of Elasticity, Ec";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(26, 60);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(211, 17);
+            this.label63.TabIndex = 0;
+            this.label63.Text = "Concrete Compressive strength, f\'c";
+            // 
+            // groupSteel3
+            // 
+            this.groupSteel3.Controls.Add(this.pictureMat);
+            this.groupSteel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupSteel3.Location = new System.Drawing.Point(3, 399);
+            this.groupSteel3.Name = "groupSteel3";
+            this.groupSteel3.Size = new System.Drawing.Size(593, 331);
+            this.groupSteel3.TabIndex = 11;
+            this.groupSteel3.TabStop = false;
+            this.groupSteel3.Text = "Property Data";
+            // 
+            // pictureMat
+            // 
+            this.pictureMat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureMat.Location = new System.Drawing.Point(3, 21);
+            this.pictureMat.Name = "pictureMat";
+            this.pictureMat.Size = new System.Drawing.Size(587, 297);
+            this.pictureMat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureMat.TabIndex = 0;
+            this.pictureMat.TabStop = false;
+            // 
+            // cbMattype
+            // 
+            this.cbMattype.FormattingEnabled = true;
+            this.cbMattype.Items.AddRange(new object[] {
+            "Concrete",
+            "Steel"});
+            this.cbMattype.Location = new System.Drawing.Point(345, 59);
+            this.cbMattype.Name = "cbMattype";
+            this.cbMattype.Size = new System.Drawing.Size(169, 25);
+            this.cbMattype.TabIndex = 7;
+            this.cbMattype.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // txtMatname
+            // 
+            this.txtMatname.Location = new System.Drawing.Point(345, 27);
+            this.txtMatname.Name = "txtMatname";
+            this.txtMatname.Size = new System.Drawing.Size(169, 25);
+            this.txtMatname.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(43, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Material Type";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(43, 30);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(95, 17);
+            this.label55.TabIndex = 4;
+            this.label55.Text = "Material Name";
+            // 
+            // pageLiveload
+            // 
+            this.pageLiveload.Controls.Add(this.label8);
+            this.pageLiveload.Controls.Add(this.gridAB);
+            this.pageLiveload.HorizontalScrollbarBarColor = true;
+            this.pageLiveload.HorizontalScrollbarHighlightOnWheel = false;
+            this.pageLiveload.HorizontalScrollbarSize = 1;
+            this.pageLiveload.Location = new System.Drawing.Point(4, 38);
+            this.pageLiveload.Name = "pageLiveload";
+            this.pageLiveload.Size = new System.Drawing.Size(1393, 666);
+            this.pageLiveload.TabIndex = 5;
+            this.pageLiveload.Text = "Liveload";
+            this.pageLiveload.VerticalScrollbarBarColor = true;
+            this.pageLiveload.VerticalScrollbarHighlightOnWheel = false;
+            this.pageLiveload.VerticalScrollbarSize = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label8.Location = new System.Drawing.Point(78, 272);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(137, 25);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Girder Spacing";
+            // 
+            // gridAB
+            // 
+            this.gridAB.AllowUserToAddRows = false;
+            this.gridAB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridAB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle118.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle118.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle118.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle118.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle118.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle118.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle118.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridAB.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle118;
+            this.gridAB.ColumnHeadersHeight = 30;
+            this.gridAB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.A1,
+            this.B1,
+            this.B2,
+            this.B3,
+            this.B4,
+            this.B5,
+            this.A2});
+            this.gridAB.Location = new System.Drawing.Point(75, 303);
+            this.gridAB.Margin = new System.Windows.Forms.Padding(0);
+            this.gridAB.Name = "gridAB";
+            this.gridAB.RowHeadersVisible = false;
+            this.gridAB.Size = new System.Drawing.Size(607, 60);
+            this.gridAB.TabIndex = 12;
+            this.gridAB.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gridAB_EditingControlShowing_1);
+            // 
+            // A1
+            // 
+            this.A1.HeaderText = "A1";
+            this.A1.MaxInputLength = 7;
+            this.A1.MinimumWidth = 80;
+            this.A1.Name = "A1";
+            // 
+            // B1
+            // 
+            this.B1.HeaderText = "B1";
+            this.B1.MaxInputLength = 7;
+            this.B1.MinimumWidth = 80;
+            this.B1.Name = "B1";
+            // 
+            // B2
+            // 
+            this.B2.HeaderText = "B2";
+            this.B2.MaxInputLength = 7;
+            this.B2.MinimumWidth = 80;
+            this.B2.Name = "B2";
+            // 
+            // B3
+            // 
+            this.B3.HeaderText = "B3";
+            this.B3.MaxInputLength = 7;
+            this.B3.MinimumWidth = 80;
+            this.B3.Name = "B3";
+            // 
+            // B4
+            // 
+            this.B4.HeaderText = "B4";
+            this.B4.MaxInputLength = 7;
+            this.B4.MinimumWidth = 80;
+            this.B4.Name = "B4";
+            // 
+            // B5
+            // 
+            this.B5.HeaderText = "B5";
+            this.B5.MaxInputLength = 7;
+            this.B5.MinimumWidth = 80;
+            this.B5.Name = "B5";
+            // 
+            // A2
+            // 
+            this.A2.HeaderText = "A2";
+            this.A2.MaxInputLength = 7;
+            this.A2.MinimumWidth = 80;
+            this.A2.Name = "A2";
+            // 
+            // pageGrid
+            // 
+            this.pageGrid.Controls.Add(this.gridSection);
+            this.pageGrid.Controls.Add(this.groupBox27);
+            this.pageGrid.Controls.Add(this.groupBox16);
+            this.pageGrid.Controls.Add(this.groupBox15);
+            this.pageGrid.Controls.Add(this.groupBox14);
+            this.pageGrid.Controls.Add(this.groupBox13);
+            this.pageGrid.HorizontalScrollbarBarColor = true;
+            this.pageGrid.HorizontalScrollbarHighlightOnWheel = false;
+            this.pageGrid.HorizontalScrollbarSize = 1;
+            this.pageGrid.Location = new System.Drawing.Point(4, 38);
+            this.pageGrid.Name = "pageGrid";
+            this.pageGrid.Size = new System.Drawing.Size(1393, 666);
+            this.pageGrid.TabIndex = 4;
+            this.pageGrid.Text = "General Dimension";
+            this.pageGrid.VerticalScrollbarBarColor = true;
+            this.pageGrid.VerticalScrollbarHighlightOnWheel = false;
+            this.pageGrid.VerticalScrollbarSize = 3;
+            // 
+            // gridSection
+            // 
+            this.gridSection.AllowUserToAddRows = false;
+            this.gridSection.AllowUserToDeleteRows = false;
+            this.gridSection.AllowUserToResizeColumns = false;
+            this.gridSection.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle116.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle116.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle116.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle116.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle116.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle116.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle116.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSection.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle116;
+            this.gridSection.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle117.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle117.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle117.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle117.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle117.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle117.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle117.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridSection.DefaultCellStyle = dataGridViewCellStyle117;
+            this.gridSection.Location = new System.Drawing.Point(113, 302);
+            this.gridSection.Name = "gridSection";
+            this.gridSection.RowHeadersVisible = false;
+            this.gridSection.Size = new System.Drawing.Size(805, 72);
+            this.gridSection.TabIndex = 29;
+            this.gridSection.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseUp);
+            this.gridSection.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellValueChanged);
+            this.gridSection.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
+            // 
+            // groupBox27
+            // 
+            this.groupBox27.BackColor = System.Drawing.Color.White;
+            this.groupBox27.Controls.Add(this.label66);
+            this.groupBox27.Controls.Add(this.label57);
+            this.groupBox27.Controls.Add(this.label60);
+            this.groupBox27.Location = new System.Drawing.Point(0, 268);
+            this.groupBox27.Name = "groupBox27";
+            this.groupBox27.Size = new System.Drawing.Size(931, 156);
+            this.groupBox27.TabIndex = 26;
+            this.groupBox27.TabStop = false;
+            this.groupBox27.Text = "Define the function for components of cross section ";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.BackColor = System.Drawing.Color.White;
+            this.label66.Location = new System.Drawing.Point(8, 85);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(56, 17);
+            this.label66.TabIndex = 18;
+            this.label66.Text = "Function";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.BackColor = System.Drawing.Color.White;
+            this.label57.Location = new System.Drawing.Point(5, 34);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(75, 17);
+            this.label57.TabIndex = 16;
+            this.label57.Text = "Section No.";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.BackColor = System.Drawing.Color.White;
+            this.label60.Location = new System.Drawing.Point(5, 59);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(54, 17);
+            this.label60.TabIndex = 17;
+            this.label60.Text = "Spacing";
             // 
             // groupBox16
             // 
@@ -740,14 +1391,14 @@
             this.groupBox16.Controls.Add(this.pictureBox2);
             this.groupBox16.Location = new System.Drawing.Point(940, 27);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(450, 189);
+            this.groupBox16.Size = new System.Drawing.Size(450, 263);
             this.groupBox16.TabIndex = 25;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Illustration of cross section";
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(17, 25);
+            this.pictureBox2.Location = new System.Drawing.Point(22, 96);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(422, 143);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -758,9 +1409,9 @@
             // 
             this.groupBox15.BackColor = System.Drawing.Color.White;
             this.groupBox15.Controls.Add(this.gridchart);
-            this.groupBox15.Location = new System.Drawing.Point(3, 352);
+            this.groupBox15.Location = new System.Drawing.Point(2, 450);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(928, 278);
+            this.groupBox15.Size = new System.Drawing.Size(928, 213);
             this.groupBox15.TabIndex = 24;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Plan of cross beams and girders";
@@ -770,7 +1421,7 @@
             this.gridchart.BackColor = System.Drawing.Color.White;
             this.gridchart.Location = new System.Drawing.Point(6, 37);
             this.gridchart.Name = "gridchart";
-            this.gridchart.Size = new System.Drawing.Size(910, 215);
+            this.gridchart.Size = new System.Drawing.Size(910, 170);
             this.gridchart.TabIndex = 23;
             this.gridchart.Text = "cartesianChart1";
             this.gridchart.DataClick += new LiveCharts.Events.DataClickHandler(this.gridchart_DataClick);
@@ -781,9 +1432,9 @@
             this.groupBox14.Controls.Add(this.gridTran);
             this.groupBox14.Controls.Add(this.label33);
             this.groupBox14.Controls.Add(this.label36);
-            this.groupBox14.Location = new System.Drawing.Point(3, 191);
+            this.groupBox14.Location = new System.Drawing.Point(3, 144);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(931, 107);
+            this.groupBox14.Size = new System.Drawing.Size(931, 111);
             this.groupBox14.TabIndex = 22;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Adding Stringer and Distances between girders";
@@ -794,24 +1445,24 @@
             this.gridTran.AllowUserToResizeRows = false;
             this.gridTran.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridTran.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle106.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle106.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle106.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle106.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle106.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle106.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle106.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridTran.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle106;
+            dataGridViewCellStyle119.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle119.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle119.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle119.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle119.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle119.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle119.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridTran.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle119;
             this.gridTran.ColumnHeadersHeight = 30;
             this.gridTran.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle107.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle107.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle107.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle107.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle107.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle107.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle107.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridTran.DefaultCellStyle = dataGridViewCellStyle107;
+            dataGridViewCellStyle120.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle120.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle120.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle120.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle120.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle120.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle120.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridTran.DefaultCellStyle = dataGridViewCellStyle120;
             this.gridTran.Location = new System.Drawing.Point(110, 28);
             this.gridTran.Margin = new System.Windows.Forms.Padding(0);
             this.gridTran.Name = "gridTran";
@@ -850,7 +1501,7 @@
             this.groupBox13.Controls.Add(this.label38);
             this.groupBox13.Location = new System.Drawing.Point(3, 27);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(931, 104);
+            this.groupBox13.Size = new System.Drawing.Size(931, 111);
             this.groupBox13.TabIndex = 21;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Adding Cross Beam";
@@ -861,24 +1512,24 @@
             this.gridCross.AllowUserToResizeRows = false;
             this.gridCross.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridCross.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle108.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle108.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle108.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle108.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle108.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle108.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle108.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridCross.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle108;
+            dataGridViewCellStyle121.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle121.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle121.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle121.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle121.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle121.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle121.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridCross.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle121;
             this.gridCross.ColumnHeadersHeight = 30;
             this.gridCross.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle109.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle109.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle109.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle109.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle109.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle109.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle109.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridCross.DefaultCellStyle = dataGridViewCellStyle109;
+            dataGridViewCellStyle122.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle122.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle122.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle122.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle122.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle122.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle122.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridCross.DefaultCellStyle = dataGridViewCellStyle122;
             this.gridCross.Location = new System.Drawing.Point(110, 28);
             this.gridCross.Margin = new System.Windows.Forms.Padding(0);
             this.gridCross.Name = "gridCross";
@@ -909,22 +1560,22 @@
             this.label38.TabIndex = 17;
             this.label38.Text = "Length";
             // 
-            // pageGirder
+            // pageDim
             // 
-            this.pageGirder.Controls.Add(this.panel5);
-            this.pageGirder.Controls.Add(this.groupBox7);
-            this.pageGirder.Controls.Add(this.panel4);
-            this.pageGirder.HorizontalScrollbarBarColor = true;
-            this.pageGirder.HorizontalScrollbarHighlightOnWheel = false;
-            this.pageGirder.HorizontalScrollbarSize = 1;
-            this.pageGirder.Location = new System.Drawing.Point(4, 38);
-            this.pageGirder.Name = "pageGirder";
-            this.pageGirder.Size = new System.Drawing.Size(1393, 666);
-            this.pageGirder.TabIndex = 1;
-            this.pageGirder.Text = "Girder Dimension";
-            this.pageGirder.VerticalScrollbarBarColor = true;
-            this.pageGirder.VerticalScrollbarHighlightOnWheel = false;
-            this.pageGirder.VerticalScrollbarSize = 3;
+            this.pageDim.Controls.Add(this.panel5);
+            this.pageDim.Controls.Add(this.groupBox7);
+            this.pageDim.Controls.Add(this.panel4);
+            this.pageDim.HorizontalScrollbarBarColor = true;
+            this.pageDim.HorizontalScrollbarHighlightOnWheel = false;
+            this.pageDim.HorizontalScrollbarSize = 1;
+            this.pageDim.Location = new System.Drawing.Point(4, 38);
+            this.pageDim.Name = "pageDim";
+            this.pageDim.Size = new System.Drawing.Size(1393, 666);
+            this.pageDim.TabIndex = 1;
+            this.pageDim.Text = "Girder Dimension";
+            this.pageDim.VerticalScrollbarBarColor = true;
+            this.pageDim.VerticalScrollbarHighlightOnWheel = false;
+            this.pageDim.VerticalScrollbarSize = 3;
             // 
             // panel5
             // 
@@ -1463,24 +2114,24 @@
             this.gridCon.AllowUserToResizeRows = false;
             this.gridCon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridCon.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle110.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle110.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle110.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle110.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle110.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle110.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle110.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridCon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle110;
+            dataGridViewCellStyle123.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle123.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle123.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle123.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle123.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle123.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle123.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridCon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle123;
             this.gridCon.ColumnHeadersHeight = 30;
             this.gridCon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle111.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle111.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle111.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle111.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle111.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle111.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle111.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridCon.DefaultCellStyle = dataGridViewCellStyle111;
+            dataGridViewCellStyle124.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle124.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle124.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle124.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle124.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle124.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle124.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridCon.DefaultCellStyle = dataGridViewCellStyle124;
             this.gridCon.Location = new System.Drawing.Point(110, 28);
             this.gridCon.Margin = new System.Windows.Forms.Padding(0);
             this.gridCon.Name = "gridCon";
@@ -1552,24 +2203,24 @@
             this.gridWeb.AllowUserToResizeRows = false;
             this.gridWeb.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridWeb.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle112.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle112.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle112.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle112.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle112.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle112.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle112.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridWeb.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle112;
+            dataGridViewCellStyle125.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle125.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle125.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle125.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle125.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle125.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle125.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridWeb.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle125;
             this.gridWeb.ColumnHeadersHeight = 30;
             this.gridWeb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle113.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle113.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle113.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle113.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle113.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle113.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle113.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridWeb.DefaultCellStyle = dataGridViewCellStyle113;
+            dataGridViewCellStyle126.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle126.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle126.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle126.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle126.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle126.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle126.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridWeb.DefaultCellStyle = dataGridViewCellStyle126;
             this.gridWeb.Location = new System.Drawing.Point(110, 28);
             this.gridWeb.Margin = new System.Windows.Forms.Padding(0);
             this.gridWeb.Name = "gridWeb";
@@ -1641,24 +2292,24 @@
             this.gridBot.AllowUserToResizeRows = false;
             this.gridBot.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridBot.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle114.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle114.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle114.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle114.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle114.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle114.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle114.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridBot.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle114;
+            dataGridViewCellStyle127.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle127.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle127.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle127.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle127.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle127.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle127.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridBot.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle127;
             this.gridBot.ColumnHeadersHeight = 30;
             this.gridBot.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle115.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle115.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle115.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle115.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle115.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle115.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle115.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridBot.DefaultCellStyle = dataGridViewCellStyle115;
+            dataGridViewCellStyle128.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle128.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle128.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle128.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle128.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle128.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle128.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridBot.DefaultCellStyle = dataGridViewCellStyle128;
             this.gridBot.Location = new System.Drawing.Point(110, 28);
             this.gridBot.Margin = new System.Windows.Forms.Padding(0);
             this.gridBot.Name = "gridBot";
@@ -1730,24 +2381,24 @@
             this.gridTop.AllowUserToResizeRows = false;
             this.gridTop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridTop.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle116.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle116.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle116.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle116.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle116.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle116.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle116.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridTop.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle116;
+            dataGridViewCellStyle129.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle129.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle129.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle129.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle129.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle129.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle129.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridTop.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle129;
             this.gridTop.ColumnHeadersHeight = 30;
             this.gridTop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle117.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle117.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle117.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle117.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle117.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle117.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle117.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridTop.DefaultCellStyle = dataGridViewCellStyle117;
+            dataGridViewCellStyle130.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle130.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle130.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle130.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle130.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle130.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle130.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridTop.DefaultCellStyle = dataGridViewCellStyle130;
             this.gridTop.Location = new System.Drawing.Point(110, 28);
             this.gridTop.Margin = new System.Windows.Forms.Padding(0);
             this.gridTop.Name = "gridTop";
@@ -1815,24 +2466,24 @@
             this.gridTranstif.AllowUserToResizeRows = false;
             this.gridTranstif.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridTranstif.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle118.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle118.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle118.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle118.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle118.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle118.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle118.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridTranstif.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle118;
+            dataGridViewCellStyle131.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle131.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle131.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle131.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle131.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle131.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle131.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridTranstif.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle131;
             this.gridTranstif.ColumnHeadersHeight = 30;
             this.gridTranstif.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle119.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle119.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle119.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle119.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle119.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle119.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle119.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridTranstif.DefaultCellStyle = dataGridViewCellStyle119;
+            dataGridViewCellStyle132.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle132.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle132.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle132.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle132.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle132.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle132.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridTranstif.DefaultCellStyle = dataGridViewCellStyle132;
             this.gridTranstif.Location = new System.Drawing.Point(110, 28);
             this.gridTranstif.Margin = new System.Windows.Forms.Padding(0);
             this.gridTranstif.Name = "gridTranstif";
@@ -1915,24 +2566,24 @@
             this.gridStif.AllowUserToResizeRows = false;
             this.gridStif.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridStif.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle120.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle120.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle120.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle120.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle120.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle120.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle120.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridStif.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle120;
+            dataGridViewCellStyle133.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle133.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle133.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle133.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle133.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle133.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle133.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridStif.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle133;
             this.gridStif.ColumnHeadersHeight = 30;
             this.gridStif.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle121.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle121.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle121.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle121.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle121.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle121.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle121.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridStif.DefaultCellStyle = dataGridViewCellStyle121;
+            dataGridViewCellStyle134.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle134.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle134.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle134.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle134.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle134.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle134.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridStif.DefaultCellStyle = dataGridViewCellStyle134;
             this.gridStif.Location = new System.Drawing.Point(110, 28);
             this.gridStif.Margin = new System.Windows.Forms.Padding(0);
             this.gridStif.Name = "gridStif";
@@ -2015,24 +2666,24 @@
             this.gridRibbot.AllowUserToResizeRows = false;
             this.gridRibbot.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridRibbot.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle122.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle122.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle122.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle122.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle122.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle122.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle122.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridRibbot.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle122;
+            dataGridViewCellStyle135.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle135.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle135.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle135.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle135.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle135.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle135.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridRibbot.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle135;
             this.gridRibbot.ColumnHeadersHeight = 30;
             this.gridRibbot.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle123.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle123.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle123.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle123.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle123.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle123.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle123.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridRibbot.DefaultCellStyle = dataGridViewCellStyle123;
+            dataGridViewCellStyle136.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle136.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle136.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle136.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle136.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle136.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle136.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridRibbot.DefaultCellStyle = dataGridViewCellStyle136;
             this.gridRibbot.Location = new System.Drawing.Point(110, 28);
             this.gridRibbot.Margin = new System.Windows.Forms.Padding(0);
             this.gridRibbot.Name = "gridRibbot";
@@ -2115,24 +2766,24 @@
             this.gridRibtop.AllowUserToResizeRows = false;
             this.gridRibtop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridRibtop.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle124.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle124.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle124.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle124.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle124.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle124.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle124.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridRibtop.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle124;
+            dataGridViewCellStyle137.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle137.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle137.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle137.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle137.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle137.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle137.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridRibtop.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle137;
             this.gridRibtop.ColumnHeadersHeight = 30;
             this.gridRibtop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle125.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle125.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle125.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle125.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle125.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle125.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle125.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridRibtop.DefaultCellStyle = dataGridViewCellStyle125;
+            dataGridViewCellStyle138.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle138.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle138.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle138.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle138.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle138.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle138.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridRibtop.DefaultCellStyle = dataGridViewCellStyle138;
             this.gridRibtop.Location = new System.Drawing.Point(110, 28);
             this.gridRibtop.Margin = new System.Windows.Forms.Padding(0);
             this.gridRibtop.Name = "gridRibtop";
@@ -2162,551 +2813,6 @@
             this.label43.Size = new System.Drawing.Size(47, 17);
             this.label43.TabIndex = 17;
             this.label43.Text = "Length";
-            // 
-            // pageMaterial
-            // 
-            this.pageMaterial.Controls.Add(this.groupBox26);
-            this.pageMaterial.Controls.Add(this.groupBox22);
-            this.pageMaterial.Controls.Add(this.groupBox25);
-            this.pageMaterial.HorizontalScrollbarBarColor = true;
-            this.pageMaterial.HorizontalScrollbarHighlightOnWheel = false;
-            this.pageMaterial.HorizontalScrollbarSize = 1;
-            this.pageMaterial.Location = new System.Drawing.Point(4, 38);
-            this.pageMaterial.Name = "pageMaterial";
-            this.pageMaterial.Size = new System.Drawing.Size(1393, 666);
-            this.pageMaterial.TabIndex = 2;
-            this.pageMaterial.Text = "Material";
-            this.pageMaterial.VerticalScrollbarBarColor = true;
-            this.pageMaterial.VerticalScrollbarHighlightOnWheel = false;
-            this.pageMaterial.VerticalScrollbarSize = 3;
-            // 
-            // groupBox26
-            // 
-            this.groupBox26.BackColor = System.Drawing.Color.White;
-            this.groupBox26.Controls.Add(this.dgvMat);
-            this.groupBox26.Location = new System.Drawing.Point(687, 225);
-            this.groupBox26.Name = "groupBox26";
-            this.groupBox26.Size = new System.Drawing.Size(646, 390);
-            this.groupBox26.TabIndex = 4;
-            this.groupBox26.TabStop = false;
-            this.groupBox26.Text = "Assign Material";
-            // 
-            // dgvMat
-            // 
-            this.dgvMat.AllowUserToAddRows = false;
-            this.dgvMat.AllowUserToDeleteRows = false;
-            this.dgvMat.AllowUserToResizeColumns = false;
-            this.dgvMat.AllowUserToResizeRows = false;
-            this.dgvMat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMat.ColumnHeadersHeight = 25;
-            this.dgvMat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvMat.Location = new System.Drawing.Point(30, 33);
-            this.dgvMat.Name = "dgvMat";
-            this.dgvMat.RowHeadersVisible = false;
-            this.dgvMat.Size = new System.Drawing.Size(593, 336);
-            this.dgvMat.TabIndex = 0;
-            this.dgvMat.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvMat_MouseDown);
-            // 
-            // groupBox22
-            // 
-            this.groupBox22.BackColor = System.Drawing.Color.White;
-            this.groupBox22.Controls.Add(this.groupBox24);
-            this.groupBox22.Controls.Add(this.groupBox23);
-            this.groupBox22.Location = new System.Drawing.Point(687, 3);
-            this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(646, 207);
-            this.groupBox22.TabIndex = 2;
-            this.groupBox22.TabStop = false;
-            this.groupBox22.Text = "Define Materials";
-            // 
-            // groupBox24
-            // 
-            this.groupBox24.Controls.Add(this.button3);
-            this.groupBox24.Controls.Add(this.button2);
-            this.groupBox24.Controls.Add(this.button1);
-            this.groupBox24.Location = new System.Drawing.Point(30, 16);
-            this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(284, 172);
-            this.groupBox24.TabIndex = 2;
-            this.groupBox24.TabStop = false;
-            this.groupBox24.Text = "Click to";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(19, 114);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(220, 30);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Delete material";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(19, 69);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(220, 30);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Modify material ...";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(19, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(220, 30);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Add new material ...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // groupBox23
-            // 
-            this.groupBox23.Controls.Add(this.listBox1);
-            this.groupBox23.Location = new System.Drawing.Point(339, 11);
-            this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(284, 172);
-            this.groupBox23.TabIndex = 0;
-            this.groupBox23.TabStop = false;
-            this.groupBox23.Text = "Material";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 17;
-            this.listBox1.Location = new System.Drawing.Point(15, 24);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(248, 140);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
-            // groupBox25
-            // 
-            this.groupBox25.BackColor = System.Drawing.Color.White;
-            this.groupBox25.Controls.Add(this.checkSteel);
-            this.groupBox25.Controls.Add(this.comboSteel);
-            this.groupBox25.Controls.Add(this.flowLayoutPanel2);
-            this.groupBox25.Controls.Add(this.cbMattype);
-            this.groupBox25.Controls.Add(this.txtMatname);
-            this.groupBox25.Controls.Add(this.label3);
-            this.groupBox25.Controls.Add(this.label55);
-            this.groupBox25.Location = new System.Drawing.Point(3, 3);
-            this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(638, 612);
-            this.groupBox25.TabIndex = 3;
-            this.groupBox25.TabStop = false;
-            this.groupBox25.Text = "Material Properties";
-            // 
-            // checkSteel
-            // 
-            this.checkSteel.AutoSize = true;
-            this.checkSteel.Location = new System.Drawing.Point(46, 91);
-            this.checkSteel.Name = "checkSteel";
-            this.checkSteel.Size = new System.Drawing.Size(137, 21);
-            this.checkSteel.TabIndex = 11;
-            this.checkSteel.Text = "Select from Library";
-            this.checkSteel.UseVisualStyleBackColor = true;
-            this.checkSteel.CheckedChanged += new System.EventHandler(this.checkSteel_CheckedChanged);
-            // 
-            // comboSteel
-            // 
-            this.comboSteel.FormattingEnabled = true;
-            this.comboSteel.Items.AddRange(new object[] {
-            "Concrete",
-            "Steel"});
-            this.comboSteel.Location = new System.Drawing.Point(345, 91);
-            this.comboSteel.Name = "comboSteel";
-            this.comboSteel.Size = new System.Drawing.Size(169, 25);
-            this.comboSteel.TabIndex = 10;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoScroll = true;
-            this.flowLayoutPanel2.Controls.Add(this.groupSteel1);
-            this.flowLayoutPanel2.Controls.Add(this.groupSteel2);
-            this.flowLayoutPanel2.Controls.Add(this.groupConcrete);
-            this.flowLayoutPanel2.Controls.Add(this.groupSteel3);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(6, 129);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(626, 505);
-            this.flowLayoutPanel2.TabIndex = 8;
-            // 
-            // groupSteel1
-            // 
-            this.groupSteel1.Controls.Add(this.numWs);
-            this.groupSteel1.Controls.Add(this.label64);
-            this.groupSteel1.Controls.Add(this.numG);
-            this.groupSteel1.Controls.Add(this.label56);
-            this.groupSteel1.Controls.Add(this.numEs);
-            this.groupSteel1.Controls.Add(this.label61);
-            this.groupSteel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupSteel1.Location = new System.Drawing.Point(3, 3);
-            this.groupSteel1.Name = "groupSteel1";
-            this.groupSteel1.Size = new System.Drawing.Size(593, 127);
-            this.groupSteel1.TabIndex = 8;
-            this.groupSteel1.TabStop = false;
-            this.groupSteel1.Text = "Property Data";
-            // 
-            // numWs
-            // 
-            this.numWs.Location = new System.Drawing.Point(328, 26);
-            this.numWs.Name = "numWs";
-            this.numWs.Size = new System.Drawing.Size(169, 25);
-            this.numWs.TabIndex = 13;
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Location = new System.Drawing.Point(26, 28);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(146, 17);
-            this.label64.TabIndex = 12;
-            this.label64.Text = "Weight per Unit Volume";
-            // 
-            // numG
-            // 
-            this.numG.Location = new System.Drawing.Point(328, 88);
-            this.numG.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numG.Name = "numG";
-            this.numG.Size = new System.Drawing.Size(169, 25);
-            this.numG.TabIndex = 11;
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(26, 90);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(111, 17);
-            this.label56.TabIndex = 10;
-            this.label56.Text = "Shear modulus, G";
-            // 
-            // numEs
-            // 
-            this.numEs.Location = new System.Drawing.Point(328, 56);
-            this.numEs.Maximum = new decimal(new int[] {
-            500000,
-            0,
-            0,
-            0});
-            this.numEs.Name = "numEs";
-            this.numEs.Size = new System.Drawing.Size(169, 25);
-            this.numEs.TabIndex = 6;
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(26, 58);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(148, 17);
-            this.label61.TabIndex = 0;
-            this.label61.Text = "Modulus of Elasticity, Es";
-            // 
-            // groupSteel2
-            // 
-            this.groupSteel2.Controls.Add(this.numFu);
-            this.groupSteel2.Controls.Add(this.label67);
-            this.groupSteel2.Controls.Add(this.numFy);
-            this.groupSteel2.Controls.Add(this.label68);
-            this.groupSteel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupSteel2.Location = new System.Drawing.Point(3, 136);
-            this.groupSteel2.Name = "groupSteel2";
-            this.groupSteel2.Size = new System.Drawing.Size(593, 100);
-            this.groupSteel2.TabIndex = 10;
-            this.groupSteel2.TabStop = false;
-            this.groupSteel2.Text = "Property Data";
-            // 
-            // numFu
-            // 
-            this.numFu.Location = new System.Drawing.Point(328, 57);
-            this.numFu.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numFu.Name = "numFu";
-            this.numFu.Size = new System.Drawing.Size(169, 25);
-            this.numFu.TabIndex = 13;
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(26, 59);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(175, 17);
-            this.label67.TabIndex = 12;
-            this.label67.Text = "Minimum tensile strength, Fu";
-            // 
-            // numFy
-            // 
-            this.numFy.Location = new System.Drawing.Point(328, 28);
-            this.numFy.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numFy.Name = "numFy";
-            this.numFy.Size = new System.Drawing.Size(169, 25);
-            this.numFy.TabIndex = 11;
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(26, 30);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(164, 17);
-            this.label68.TabIndex = 10;
-            this.label68.Text = "Minimum yield strength, Fy";
-            // 
-            // groupConcrete
-            // 
-            this.groupConcrete.Controls.Add(this.numWc);
-            this.groupConcrete.Controls.Add(this.label65);
-            this.groupConcrete.Controls.Add(this.checkBox1);
-            this.groupConcrete.Controls.Add(this.numEc);
-            this.groupConcrete.Controls.Add(this.numFc);
-            this.groupConcrete.Controls.Add(this.label62);
-            this.groupConcrete.Controls.Add(this.label63);
-            this.groupConcrete.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupConcrete.Location = new System.Drawing.Point(3, 242);
-            this.groupConcrete.Name = "groupConcrete";
-            this.groupConcrete.Size = new System.Drawing.Size(593, 151);
-            this.groupConcrete.TabIndex = 9;
-            this.groupConcrete.TabStop = false;
-            this.groupConcrete.Text = "Property Data";
-            // 
-            // numWc
-            // 
-            this.numWc.Location = new System.Drawing.Point(328, 29);
-            this.numWc.Name = "numWc";
-            this.numWc.Size = new System.Drawing.Size(169, 25);
-            this.numWc.TabIndex = 10;
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.Location = new System.Drawing.Point(26, 31);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(146, 17);
-            this.label65.TabIndex = 9;
-            this.label65.Text = "Weight per Unit Volume";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(29, 120);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(334, 21);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Calculate Ec by Equation Ec = 0.077 mc^1.5 fcm^1/3";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // numEc
-            // 
-            this.numEc.Location = new System.Drawing.Point(328, 89);
-            this.numEc.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numEc.Name = "numEc";
-            this.numEc.Size = new System.Drawing.Size(169, 25);
-            this.numEc.TabIndex = 7;
-            // 
-            // numFc
-            // 
-            this.numFc.Location = new System.Drawing.Point(328, 60);
-            this.numFc.Name = "numFc";
-            this.numFc.Size = new System.Drawing.Size(169, 25);
-            this.numFc.TabIndex = 6;
-            this.numFc.ValueChanged += new System.EventHandler(this.numFc_ValueChanged);
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(26, 89);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(148, 17);
-            this.label62.TabIndex = 1;
-            this.label62.Text = "Modulus of Elasticity, Ec";
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(26, 60);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(211, 17);
-            this.label63.TabIndex = 0;
-            this.label63.Text = "Concrete Compressive strength, f\'c";
-            // 
-            // groupSteel3
-            // 
-            this.groupSteel3.Controls.Add(this.pictureMat);
-            this.groupSteel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupSteel3.Location = new System.Drawing.Point(3, 399);
-            this.groupSteel3.Name = "groupSteel3";
-            this.groupSteel3.Size = new System.Drawing.Size(593, 331);
-            this.groupSteel3.TabIndex = 11;
-            this.groupSteel3.TabStop = false;
-            this.groupSteel3.Text = "Property Data";
-            // 
-            // pictureMat
-            // 
-            this.pictureMat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureMat.Location = new System.Drawing.Point(3, 21);
-            this.pictureMat.Name = "pictureMat";
-            this.pictureMat.Size = new System.Drawing.Size(587, 297);
-            this.pictureMat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureMat.TabIndex = 0;
-            this.pictureMat.TabStop = false;
-            // 
-            // cbMattype
-            // 
-            this.cbMattype.FormattingEnabled = true;
-            this.cbMattype.Items.AddRange(new object[] {
-            "Concrete",
-            "Steel"});
-            this.cbMattype.Location = new System.Drawing.Point(345, 59);
-            this.cbMattype.Name = "cbMattype";
-            this.cbMattype.Size = new System.Drawing.Size(169, 25);
-            this.cbMattype.TabIndex = 7;
-            this.cbMattype.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // txtMatname
-            // 
-            this.txtMatname.Location = new System.Drawing.Point(345, 27);
-            this.txtMatname.Name = "txtMatname";
-            this.txtMatname.Size = new System.Drawing.Size(169, 25);
-            this.txtMatname.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(43, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 17);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Material Type";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(43, 30);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(95, 17);
-            this.label55.TabIndex = 4;
-            this.label55.Text = "Material Name";
-            // 
-            // pageSectional
-            // 
-            this.pageSectional.Controls.Add(this.label8);
-            this.pageSectional.Controls.Add(this.gridAB);
-            this.pageSectional.HorizontalScrollbarBarColor = true;
-            this.pageSectional.HorizontalScrollbarHighlightOnWheel = false;
-            this.pageSectional.HorizontalScrollbarSize = 1;
-            this.pageSectional.Location = new System.Drawing.Point(4, 38);
-            this.pageSectional.Name = "pageSectional";
-            this.pageSectional.Size = new System.Drawing.Size(1393, 666);
-            this.pageSectional.TabIndex = 5;
-            this.pageSectional.Text = "Sectional Parameters";
-            this.pageSectional.VerticalScrollbarBarColor = true;
-            this.pageSectional.VerticalScrollbarHighlightOnWheel = false;
-            this.pageSectional.VerticalScrollbarSize = 3;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label8.Location = new System.Drawing.Point(78, 272);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(137, 25);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Girder Spacing";
-            // 
-            // gridAB
-            // 
-            this.gridAB.AllowUserToAddRows = false;
-            this.gridAB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridAB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle126.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle126.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle126.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle126.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle126.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle126.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle126.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridAB.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle126;
-            this.gridAB.ColumnHeadersHeight = 30;
-            this.gridAB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.A1,
-            this.B1,
-            this.B2,
-            this.B3,
-            this.B4,
-            this.B5,
-            this.A2});
-            this.gridAB.Location = new System.Drawing.Point(75, 303);
-            this.gridAB.Margin = new System.Windows.Forms.Padding(0);
-            this.gridAB.Name = "gridAB";
-            this.gridAB.RowHeadersVisible = false;
-            this.gridAB.Size = new System.Drawing.Size(607, 60);
-            this.gridAB.TabIndex = 12;
-            this.gridAB.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gridAB_EditingControlShowing_1);
-            // 
-            // A1
-            // 
-            this.A1.HeaderText = "A1";
-            this.A1.MaxInputLength = 7;
-            this.A1.MinimumWidth = 80;
-            this.A1.Name = "A1";
-            // 
-            // B1
-            // 
-            this.B1.HeaderText = "B1";
-            this.B1.MaxInputLength = 7;
-            this.B1.MinimumWidth = 80;
-            this.B1.Name = "B1";
-            // 
-            // B2
-            // 
-            this.B2.HeaderText = "B2";
-            this.B2.MaxInputLength = 7;
-            this.B2.MinimumWidth = 80;
-            this.B2.Name = "B2";
-            // 
-            // B3
-            // 
-            this.B3.HeaderText = "B3";
-            this.B3.MaxInputLength = 7;
-            this.B3.MinimumWidth = 80;
-            this.B3.Name = "B3";
-            // 
-            // B4
-            // 
-            this.B4.HeaderText = "B4";
-            this.B4.MaxInputLength = 7;
-            this.B4.MinimumWidth = 80;
-            this.B4.Name = "B4";
-            // 
-            // B5
-            // 
-            this.B5.HeaderText = "B5";
-            this.B5.MaxInputLength = 7;
-            this.B5.MinimumWidth = 80;
-            this.B5.Name = "B5";
-            // 
-            // A2
-            // 
-            this.A2.HeaderText = "A2";
-            this.A2.MaxInputLength = 7;
-            this.A2.MinimumWidth = 80;
-            this.A2.Name = "A2";
             // 
             // pageAnalysis
             // 
@@ -2870,7 +2976,38 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numgirder)).EndInit();
-            this.pageCross.ResumeLayout(false);
+            this.pageMaterial.ResumeLayout(false);
+            this.groupBox26.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMat)).EndInit();
+            this.groupBox22.ResumeLayout(false);
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox23.ResumeLayout(false);
+            this.groupBox25.ResumeLayout(false);
+            this.groupBox25.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.groupSteel1.ResumeLayout(false);
+            this.groupSteel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numWs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEs)).EndInit();
+            this.groupSteel2.ResumeLayout(false);
+            this.groupSteel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFy)).EndInit();
+            this.groupConcrete.ResumeLayout(false);
+            this.groupConcrete.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numWc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFc)).EndInit();
+            this.groupSteel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMat)).EndInit();
+            this.pageLiveload.ResumeLayout(false);
+            this.pageLiveload.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAB)).EndInit();
+            this.pageGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridSection)).EndInit();
+            this.groupBox27.ResumeLayout(false);
+            this.groupBox27.PerformLayout();
             this.groupBox16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox15.ResumeLayout(false);
@@ -2880,7 +3017,7 @@
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCross)).EndInit();
-            this.pageGirder.ResumeLayout(false);
+            this.pageDim.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
@@ -2935,34 +3072,6 @@
             this.groupBox18.ResumeLayout(false);
             this.groupBox18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRibtop)).EndInit();
-            this.pageMaterial.ResumeLayout(false);
-            this.groupBox26.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMat)).EndInit();
-            this.groupBox22.ResumeLayout(false);
-            this.groupBox24.ResumeLayout(false);
-            this.groupBox23.ResumeLayout(false);
-            this.groupBox25.ResumeLayout(false);
-            this.groupBox25.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.groupSteel1.ResumeLayout(false);
-            this.groupSteel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numWs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEs)).EndInit();
-            this.groupSteel2.ResumeLayout(false);
-            this.groupSteel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numFu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFy)).EndInit();
-            this.groupConcrete.ResumeLayout(false);
-            this.groupConcrete.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numWc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFc)).EndInit();
-            this.groupSteel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureMat)).EndInit();
-            this.pageSectional.ResumeLayout(false);
-            this.pageSectional.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridAB)).EndInit();
             this.panel2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -2977,17 +3086,17 @@
         private System.Windows.Forms.Panel panel1;
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
         private MetroFramework.Controls.MetroTabPage pageGeneral;
-        private MetroFramework.Controls.MetroTabPage pageGirder;
+        private MetroFramework.Controls.MetroTabPage pageDim;
         private MetroFramework.Controls.MetroTabPage pageMaterial;
         private MetroFramework.Controls.MetroTabPage pageStiffeners;
-        private MetroFramework.Controls.MetroTabPage pageCross;
+        private MetroFramework.Controls.MetroTabPage pageGrid;
         private System.Windows.Forms.Panel panelBP;
-        private System.Windows.Forms.Button btGrid;
+        private System.Windows.Forms.Button btGeneralD;
         private System.Windows.Forms.Button btStif;
-        private System.Windows.Forms.Button btDim;
+        private System.Windows.Forms.Button btGirderD;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btMaterial;
-        private MetroFramework.Controls.MetroTabPage pageSectional;
+        private MetroFramework.Controls.MetroTabPage pageLiveload;
         private MetroFramework.Controls.MetroTabPage pageSupports;
         private MetroFramework.Controls.MetroTabPage pageProp;
         private MetroFramework.Controls.MetroTabPage pageAnalysis;
@@ -3164,6 +3273,12 @@
         private System.Windows.Forms.CheckBox checkSteel;
         private System.Windows.Forms.GroupBox groupBox26;
         private System.Windows.Forms.DataGridView dgvMat;
+        private System.Windows.Forms.GroupBox groupBox27;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.DataGridView gridSection;
+        private System.Windows.Forms.Button btLiveLoad;
     }
 }
 

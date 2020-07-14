@@ -45,14 +45,15 @@ namespace Mainform
             panel1.BackColor = Color.FromArgb(33, 115, 70);
             btGeneral.BackColor = Color.FromArgb(33, 115, 70);
             btBridge.BackColor = Color.FromArgb(33, 115, 70);
-            btGrid.BackColor = Color.FromArgb(44, 152, 93);
-            btDim.BackColor = Color.FromArgb(44, 152, 93);
+            btGeneralD.BackColor = Color.FromArgb(44, 152, 93);
+            btGirderD.BackColor = Color.FromArgb(44, 152, 93);
             btStif.BackColor = Color.FromArgb(44, 152, 93);
             btBack.BackColor = Color.FromArgb(33, 115, 70);
             btApply.BackColor = Color.FromArgb(33, 115, 70);
             btNext.BackColor = Color.FromArgb(33, 115, 70);
             btMaterial.BackColor = Color.FromArgb(33, 115, 70);
             btAnalysis.BackColor = Color.FromArgb(33, 115, 70);
+            btLiveLoad.BackColor = Color.FromArgb(33, 115, 70); 
 
             gridAB.RowCount = 1;
             gridAB.Rows[0].Height = 30;
@@ -65,8 +66,7 @@ namespace Mainform
             labelCode3.Text = "(3) AASHTO LRFD, (2017)";
 
 
-            TabPage[] a = { pageGeneral };
-            showtabpage(a);
+            ShowpageGeneral();
 
             Setgridview(gridTop);
             Setgridview(gridBot);
@@ -166,94 +166,101 @@ namespace Mainform
         {
             timer1.Start();
 
-
-            TabPage[] a = { pageCross, pageGirder, pageStiffeners };
-            showtabpage(a);
+            ShowpageGrid();
 
         }
+
+        
 
         private void btGeneral_Click(object sender, EventArgs e)
         {
-
-            TabPage[] a = { pageGeneral };
-            showtabpage(a);
-
-
+            ShowpageGeneral();
+            
+            
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            TabPage[] a = { pageMaterial };
-            showtabpage(a);
-
-
-
-        }
+       
 
         private void btAnalysis_Click(object sender, EventArgs e)
         {
-            TabPage[] a = { pageAnalysis };
-            showtabpage(a);
+            ShowpageAnalysis();
+        }
+        private void btMaterial_Click(object sender, EventArgs e)
+        {
+            ShowpageMaterial();
         }
 
-        void showtabpage(TabPage[] a)
+        private void btLiveLoad_Click(object sender, EventArgs e)
+        {
+            ShowpageLiveload();
+        }
+
+        private void btGeneralD_Click(object sender, EventArgs e)
+        {
+            ShowpageGrid();
+        }
+
+        private void btGirderD_Click(object sender, EventArgs e)
+        {
+            ShowpageDim();
+        }
+
+        private void btStif_Click(object sender, EventArgs e)
+        {
+            ShowpageStiff();
+        }
+
+        //Control tab page
+        void showtabpage(List<TabPage> a)
         {
             metroTabControl1.TabPages.Clear();
             foreach (TabPage page in metroTabControl1.TabPages)
                 metroTabControl1.TabPages.Remove(page);
             foreach (TabPage a1 in a)
-                metroTabControl1.TabPages.Add(a1);
+                metroTabControl1.TabPages.Add(a1);           
         }
 
-        private void button3_Click(object sender, EventArgs e)
+
+        void ShowpageGeneral()
         {
-            TabPage[] a = { pageCross, pageGirder, pageStiffeners };
+            List<TabPage> a = new List<TabPage> { pageGeneral };
             showtabpage(a);
-            metroTabControl1.SelectedTab = pageCross;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        void ShowpageMaterial()
         {
-            TabPage[] a = { pageCross, pageGirder, pageStiffeners };
+            List<TabPage> a = new List<TabPage> { pageMaterial };
             showtabpage(a);
-            metroTabControl1.SelectedTab = pageGirder;
         }
-
-        private void button5_Click(object sender, EventArgs e)
+        void ShowpageLiveload()
         {
-            TabPage[] a = { pageCross, pageGirder, pageStiffeners };
+            List<TabPage> a = new List<TabPage> { pageLiveload };
+            showtabpage(a);
+        }
+        void ShowpageGrid()
+        {
+            List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners };
+            showtabpage(a);
+            metroTabControl1.SelectedTab = pageGrid;
+        }
+        void ShowpageDim()
+        {
+            List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners };
+            showtabpage(a);
+            metroTabControl1.SelectedTab = pageDim;
+        }
+        void ShowpageStiff()
+        {
+            List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners };
             showtabpage(a);
             metroTabControl1.SelectedTab = pageStiffeners;
         }
-
-        private void button6_Click(object sender, EventArgs e)
+        void ShowpageAnalysis()
         {
-            TabPage[] a = { pageGirder, pageMaterial, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
+            List<TabPage> a = new List<TabPage> { pageAnalysis };
             showtabpage(a);
-            metroTabControl1.SelectedTab = pageCross;
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            TabPage[] a = { pageGirder, pageMaterial, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
-            showtabpage(a);
-            metroTabControl1.SelectedTab = pageSectional;
-        }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            TabPage[] a = { pageGirder, pageMaterial, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
-            showtabpage(a);
-            metroTabControl1.SelectedTab = pageSupports;
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            TabPage[] a = { pageGirder, pageMaterial, pageStiffeners, pageCross, pageSectional, pageSupports, pageProp };
-            showtabpage(a);
-            metroTabControl1.SelectedTab = pageProp;
-        }
 
 
         // Limit the input value in datagridview is only numec
@@ -299,7 +306,7 @@ namespace Mainform
         //Fill the girdSection
         private void fillAsection()
         {
-            DGV.ArraytoGrid(gridSection, Asection);
+            DGV.ArraytoGrid(gridSection, Asectiong);
 
             for (int i = 0; i < Asection.GetLength(1); i++)
             {
@@ -311,19 +318,13 @@ namespace Mainform
                 gridSection.Rows[1].Cells[i] = cbx;
 
                 //Set the default value for combobox
-                if (Asection[1,i] == 3)
+                if (Asection[1, i] == 3)
                     gridSection.Rows[1].Cells[i].Value = (cbx.Items[2]).ToString();
                 else if (Asection[1, i] == 2)
                     gridSection.Rows[1].Cells[i].Value = (cbx.Items[1]).ToString();
                 else
                     gridSection.Rows[1].Cells[i].Value = (cbx.Items[0]).ToString();
             }
-
-            
-
-            //for (int i = 0; i < Asection.GetLength(1); i++)
-            //    gridSection.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-
         }
 
         private void btNext_Click(object sender, EventArgs e)
@@ -332,47 +333,46 @@ namespace Mainform
             {
                 case "pageGeneral":
                     {
-                        TabPage[] a = { pageCross, pageGirder, pageStiffeners };
-                        showtabpage(a);
-                        metroTabControl1.SelectedTab = pageCross;
-
-                        fillAsection();
-
+                        ShowpageMaterial();
                     }
                     break;
 
 
-                case "pageCross":
+                case "pageGrid":
                     {
 
-                        metroTabControl1.SelectedTab = pageGirder;
+                        ShowpageDim();
                     }
                     break;
 
 
 
-                case "pageGirder":
+                case "pageDim":
                     {
 
-                        metroTabControl1.SelectedTab = pageStiffeners;
-
+                        ShowpageStiff();
 
                     }
                     break;
 
                 case "pageStiffeners":
                     {
-                        TabPage[] a = { pageMaterial };
-                        showtabpage(a);
-
-
+                        ShowpageAnalysis();
                     }
                     break;
 
                 case "pageMaterial":
                     {
-                        TabPage[] a = { pageAnalysis };
-                        showtabpage(a);
+                        ShowpageLiveload();
+
+                    }
+                    break;
+
+                case "pageLiveload":
+                    {
+                        ShowpageGrid();
+
+                        fillAsection();
 
 
                     }
@@ -386,37 +386,41 @@ namespace Mainform
         {
             switch (metroTabControl1.SelectedTab.Name)
             {
-                case "pageCross":
+                case "pageGrid":
                     {
-                        TabPage[] a = { pageGeneral };
-                        showtabpage(a);
+                        ShowpageLiveload();
                     }
                     break;
-                case "pageGirder":
+                case "pageDim":
                     {
 
-                        metroTabControl1.SelectedTab = pageCross;
+                        ShowpageGrid();
                     }
                     break;
                 case "pageStiffeners":
                     {
 
-                        metroTabControl1.SelectedTab = pageGirder;
+                        ShowpageDim();
+
                     }
                     break;
                 case "pageMaterial":
                     {
-                        TabPage[] a = { pageCross, pageGirder, pageStiffeners };
-                        showtabpage(a);
-                        metroTabControl1.SelectedTab = pageStiffeners;
+                        ShowpageGeneral();
+                    }
+                    break;
+                case "pageLiveload":
+                    {
+                        ShowpageMaterial();
                     }
                     break;
                 case "pageAnalysis":
                     {
-                        TabPage[] a = { pageMaterial };
-                        showtabpage(a);
+                        ShowpageStiff();
                     }
                     break;
+
+
 
             }
 
@@ -448,11 +452,12 @@ namespace Mainform
 
         double[,] Atran;
         double[,] Asection = new double[2, 3];
+        double[,] Asectiong = new double[2, 3];
         DataTable DTsection;
 
         double[] Aspan;
 
-        double sumspan;
+        double sumspan, sumsec;
         int ngirder;
         List<Node> Node;
         List<Node> Node1;
@@ -563,6 +568,8 @@ namespace Mainform
                             else
                                 Asection[1, i] = 2;
                         }
+
+                        
                    
                     }
                     break;
@@ -600,9 +607,9 @@ namespace Mainform
 
 
                         DGV.ArraytoGrid(gridTranstif, Atranstif);
-
-                       
-                        DGV.ArraytoGrid(dataGridView1, Asection);
+                        for (int i = 0; i < Asection.GetLength(1); i++)
+                            Asection[1, i] = Asectiong[1, i];
+                        
                     }
                     break;
 
@@ -795,7 +802,11 @@ namespace Mainform
             }
             else if (a == gridSection)
             {
-
+                divideTool.Enabled = false;
+                if (index == a.ColumnCount - 1)
+                    deleteTool.Enabled = false;
+                else
+                    deleteTool.Enabled = true;
             }
 
             else
@@ -878,6 +889,7 @@ namespace Mainform
             else if (SelectedDGV == gridSection)
             {
                 Asection = Matrix.Seperate(Asection, index, ndiv);
+                Asectiong = (double[,])Asection.Clone();
                 fillAsection();
             }
 
@@ -950,36 +962,61 @@ namespace Mainform
                 Atran = DGV.GridtoArray_tran(gridTran, Atran);
 
                 // Change component of section
-                double sr = 0; //Width of bridge
+                sumsec = 0; //Width of bridge
                 //Sum of width
                 for (int i = 0; i < Atran.GetLength(1); i++)
                 {
-                    sr += Atran[0, i];
+                    sumsec += Atran[0, i];
                 }
                 ////Update to gridSection
 
 
-                if (sr <= 500)
-                    Asection[0, 0] = sr;
-                else if (sr <= 1000)
+                if (sumsec <= 500)
+                    Asection[0, 0] = sumsec;
+                else if (sumsec <= 1000)
                 {
                     Asection[0, 0] = 500;
-                    Asection[0, Asection.GetLength(1) - 1] = sr - 500;
+                    Asection[0, Asection.GetLength(1) - 1] = sumsec - 500;
                 }
                 else
                 {
                     Asection[0, 0] = 500;
                     Asection[0, Asection.GetLength(1) - 1] = 500;
                     for (int i = 1; i < Asection.GetLength(1) - 1; i++)
-                        Asection[0, i] = (sr - 1000) / (Asection.GetLength(1) - 2);
+                        Asection[0, i] = (sumsec - 1000) / (Asection.GetLength(1) - 2);
                 }
-                fillAsection();
 
+                for (int i = 0; i < Asection.GetLength(1); i++)
+                    Asectiong[0, i] = Asection[0, i];
+
+                fillAsection();
             }
 
             else if (sender == gridSection)
             {
-                Asection = DGV.GridtoArray_sec(gridSection);
+                if (e.RowIndex == 0)
+                {
+                    Asectiong = DGV.GridtoArray_sec(gridSection);
+                    Asectiong = Matrix.Update(Asectiong, sumsec);
+                    for (int i = 0; i < Asectiong.GetLength(1); i++)
+                        Asection[0, i] = Asectiong[0, i];
+                    fillAsection();
+                }
+                else
+                {
+                    for (int i = 0; i < Asection.GetLength(1); i++)
+                    {
+                        if (gridSection.Rows[1].Cells[i].Value.ToString().Contains("Barrier"))
+                            Asectiong[1, i] = 1;
+                        else if (gridSection.Rows[1].Cells[i].Value.ToString().Contains("Liveload"))
+                            Asectiong[1, i] = 2;
+                        else
+                            Asectiong[1, i] = 3;
+
+                    }
+                }
+                
+               
                 //fillAsection();
                
             }
@@ -1080,6 +1117,7 @@ namespace Mainform
             else if (SelectedDGV == gridSection)
             {
                 Asection = Matrix.Combine(Asection, index);
+                Asectiong = (double[,])Asection.Clone();
                 fillAsection();
             }
 
@@ -1389,6 +1427,8 @@ namespace Mainform
                 }
             }
         }
+
+        
 
         private void HandleDataGridViewMouseDown(object sender, MouseEventArgs e)
         {

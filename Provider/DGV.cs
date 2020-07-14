@@ -33,8 +33,7 @@ namespace Provider
                 dt.Columns.Add((i + 1).ToString());
             }
 
-            for (int i = 0; i < value.GetLength(0); ++i)
-            {
+            for (int i = 0; i < value.GetLength(0); ++i)    {
                 DataRow row = dt.NewRow();
                 for (int j = 0; j < value.GetLength(1); ++j)
                 {
@@ -108,32 +107,9 @@ namespace Provider
             {
                 if (i.IsNewRow) continue;
                 foreach (DataGridViewCell j in i.Cells)
-                {
-                    //if (double.TryParse(j.Value.ToString(), out _))
-                    //    array[j.RowIndex, j.ColumnIndex] = Convert.ToDouble(j.Value);
-                    //else
-                    //{
-                    //    if (j.Value.ToString().Contains("Barrier"))
-                    //        array[j.RowIndex, j.ColumnIndex] = 1;
-                    //    else if (j.Value.ToString().Contains("Liveload"))
-                    //        array[j.RowIndex, j.ColumnIndex] = 2;
-                    //    else if (j.Value.ToString().Contains("Pedestrian"))
-                    //        array[j.RowIndex, j.ColumnIndex] = 3;
-                        
-                    //}    
+                {                    
                     if (j.RowIndex == 0)
-                        array[j.RowIndex, j.ColumnIndex] = Convert.ToDouble(j.Value);
-                    else
-                    {
-                        if (j.Value.ToString().Contains("Barrier"))
-                            array[j.RowIndex, j.ColumnIndex] = 1;
-                        else if (j.Value.ToString().Contains("Liveload"))
-                            array[j.RowIndex, j.ColumnIndex] = 2;
-                        else if (j.Value.ToString().Contains("Pedestrian"))
-                            array[j.RowIndex, j.ColumnIndex] = 3;
-                        
-                    }
-
+                        array[j.RowIndex, j.ColumnIndex] = Convert.ToDouble(j.Value); 
                 }
             }
             return array;
