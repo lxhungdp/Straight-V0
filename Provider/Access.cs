@@ -34,13 +34,16 @@ namespace Provider
 
         
 
-        public static void writeDataTable(DataTable dt, string[] field, string table, OleDbConnection cn)
+        public static void writeDataTable(DataTable dt, string field1, string table, OleDbConnection cn)
         {
             cn.Close();
             cn.Open();
-            OleDbCommand cmd = new OleDbCommand();
+            OleDbCommand cmd = new OleDbCommand("delete from " + table, cn);
+            cmd.ExecuteNonQuery();
+            cmd = new OleDbCommand();
             cmd.Connection = cn;
 
+            string[] field = field1.Split(',');
             for (int k = 0; k < dt.Rows.Count; k++)
             {
 
@@ -153,6 +156,31 @@ namespace Provider
             cmd.CommandText = cmd1;
             cmd.ExecuteNonQuery();
         }
+
+        public static void writetruck(List<List<double>> truck1, string table_name, OleDbConnection cn)
+        {
+            cn.Close();
+            cn.Open();           
+
+            OleDbCommand cmd = new OleDbCommand("delete from " + table_name, cn);
+            cmd.ExecuteNonQuery();
+            
+            cmd = new OleDbCommand();
+            cmd.Connection = cn;
+
+            string cmd1;
+            for (int i = 0; i < truck1.Count; i ++)
+            {
+                cmd1 = "insert into " + table_name + " (Coor, ALoad) Values ('" + truck1[i][0] + "' , '" + truck1[i][1]  + "' )";
+                cmd.CommandText = cmd1;
+                cmd.ExecuteNonQuery();
+            }
+            
+            
+        }
+               
+
+
 
         public static void delmat(string str, OleDbConnection cn)
         {

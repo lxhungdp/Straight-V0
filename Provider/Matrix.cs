@@ -116,6 +116,55 @@ namespace Provider
             return b;
         }
 
+        public static double[,] Seperate_transtif(double[,] a, int index, int ndiv)
+        {
+            double[,] b = new double[a.GetLength(0), a.GetLength(1) + ndiv - 1];
+            if (a.GetLength(0) > 1)
+            {
+                for (int i = 0; i < a.GetLength(0); i++)
+                    for (int j = 0; j < a.GetLength(1); j++)
+                    {
+                        if (j < index)
+                            b[i, j] = a[i, j];
+                        else if (j == index)
+                        {
+                            for (int k = j; k < j + ndiv; k++)
+                            {
+                                b[2, k] = a[2, j] / ndiv;
+                                b[1, k] = a[1, j];
+                                b[0, k] = 6.0;
+                                b[0, index] = a[0, j];
+                            }
+
+                        }
+                        else
+                            b[i, j + ndiv - 1] = a[i, j];
+                    }
+            }
+            else
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                {
+                    if (j < index)
+                        b[0, j] = a[0, j];
+                    else if (j == index)
+                    {
+                        for (int k = j; k < j + ndiv; k++)
+                        {
+                            b[0, k] = a[0, j] / ndiv;
+                        }
+                    }
+                    else
+                        b[0, j + ndiv - 1] = a[0, j];
+                }
+            }
+
+
+
+
+            return b;
+        }
+
         public static double[,] Combine_cross(double[,] a, int index)
         {
             double[,] b = new double[a.GetLength(0), a.GetLength(1) - 1];
@@ -194,6 +243,47 @@ namespace Provider
             return b;
 
         }
+
+        public static double[,] Update_transtif(double[,] a, double[] span)
+        {
+
+            double[,] b = new double[a.GetLength(0), a.GetLength(1)];
+            int[] id = new int[span.GetLength(0) + 1];
+            int j = 0;
+
+            for (int i = 0; i < a.GetLength(1); i++)
+            {
+                if (a[0, i] == 1 || a[0, i] == 2 || a[0, i] == 3)
+                {
+                    id[j] = i;
+                    j = j + 1;
+                }
+            }
+
+            id[j] = a.GetLength(1);
+
+            double[,] s = new double[1, a.GetLength(1)];
+
+
+            for (int i = 0; i < id.GetLength(0) - 1; i++)
+            {
+                for (int k = id[i]; k < id[i + 1]; k++)
+                    s[0, i] = s[0, i] + a[2, k];
+            }
+
+            b = a;
+
+            for (int i = 0; i < span.GetLength(0); i++)
+            {
+
+                b[2, id[i]] = span[i] - s[0, i] + a[2, id[i]];
+
+            }
+
+            return b;
+
+        }
+
         public static double[,] Seperate_tran(double[,] a, int index)
         {
             double[,] b = new double[a.GetLength(0), a.GetLength(1) + 1];

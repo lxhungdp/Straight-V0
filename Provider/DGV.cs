@@ -114,5 +114,17 @@ namespace Provider
             }
             return array;
         }
+
+        public static void DTtoGrid(DataGridView grid, DataTable dt, string header )
+        {
+            grid.RowCount = dt.Rows.Count;
+            string[] name = header.Split(',');
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                grid.Rows[i].HeaderCell.Value = name[i];
+                for (int j = 0; j < dt.Columns.Count; j++)
+                    grid.Rows[i].Cells[j].Value = dt.Rows[i][j].ToString();
+            }
+        }
     }
 }

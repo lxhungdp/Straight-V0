@@ -29,34 +29,18 @@ namespace Mainform
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Change color
-            Setinitialize();
-
-
-
+            
+            IniGeneral();
+            Inimaterial();
+            IniBridge();
+            IniLoadings();
+            IniOther();
 
         }
 
 
-        //Change background color
-        private void Setinitialize()
+        private void IniGeneral()
         {
-            flowLayoutPanel1.BackColor = Color.FromArgb(33, 115, 70);
-            panel1.BackColor = Color.FromArgb(33, 115, 70);
-            btGeneral.BackColor = Color.FromArgb(33, 115, 70);
-            btBridge.BackColor = Color.FromArgb(33, 115, 70);
-            btGeneralD.BackColor = Color.FromArgb(44, 152, 93);
-            btGirderD.BackColor = Color.FromArgb(44, 152, 93);
-            btStif.BackColor = Color.FromArgb(44, 152, 93);
-            btBack.BackColor = Color.FromArgb(33, 115, 70);
-            btApply.BackColor = Color.FromArgb(33, 115, 70);
-            btNext.BackColor = Color.FromArgb(33, 115, 70);
-            btMaterial.BackColor = Color.FromArgb(33, 115, 70);
-            btAnalysis.BackColor = Color.FromArgb(33, 115, 70);
-            btLiveLoad.BackColor = Color.FromArgb(33, 115, 70); 
-
-            gridAB.RowCount = 1;
-            gridAB.Rows[0].Height = 30;
             cbType.SelectedIndex = 0;
             labelEx.Text = "Ex. For a bridges with 3 spans, the lengths are 30m, 40m, 30m, and distance from end-beam to";
             labelEx2.Text = "support point is 0.5m, input string should be: 0.5+30+40+30+0.5";
@@ -68,18 +52,10 @@ namespace Mainform
 
             ShowpageGeneral();
 
-            Setgridview(gridTop);
-            Setgridview(gridBot);
-            Setgridview(gridWeb);
-            Setgridview(gridCon);
-            Setgridview(gridRibtop);
-            Setgridview(gridRibbot);
-            Setgridview(gridStif);
-            Setgridview(gridTranstif);
+        }
 
-            pictureBox1.Load(Const.Constring + @"\Picture\Section.PNG");
-            pictureBox2.Load(Const.Constring + @"\Picture\Section all.PNG");
-
+        private void Inimaterial()
+        {
             //Tag material
             txtMatname.Text = "Mat1";
             cbMattype.SelectedIndex = 0;
@@ -125,9 +101,104 @@ namespace Mainform
             combo.Name = "Material";
             combo.Width = 100;
 
+        }
+        private void IniBridge()
+        {
+            flowLayoutPanel1.BackColor = Color.FromArgb(33, 115, 70);
+            panel1.BackColor = Color.FromArgb(33, 115, 70);
+            btGeneral.BackColor = Color.FromArgb(33, 115, 70);
+            btBridge.BackColor = Color.FromArgb(33, 115, 70);
+            btGeneralD.BackColor = Color.FromArgb(44, 152, 93);
+            btGirderD.BackColor = Color.FromArgb(44, 152, 93);
+            btStif.BackColor = Color.FromArgb(44, 152, 93);
+            btOther.BackColor = Color.FromArgb(44, 152, 93);
+            btBack.BackColor = Color.FromArgb(33, 115, 70);
+            btApply.BackColor = Color.FromArgb(33, 115, 70);
+            btNext.BackColor = Color.FromArgb(33, 115, 70);
+            btMaterial.BackColor = Color.FromArgb(33, 115, 70);
+            btAnalysis.BackColor = Color.FromArgb(33, 115, 70);
+            btLiveLoad.BackColor = Color.FromArgb(33, 115, 70);
+
+            Setgridview(gridTop);
+            Setgridview(gridBot);
+            Setgridview(gridWeb);
+            Setgridview(gridCon);
+            Setgridview(gridRibtop);
+            Setgridview(gridRibbot);
+            Setgridview(gridStif);
+            Setgridview(gridTranstif);
+
+            pictureBox1.Load(Const.Constring + @"\Picture\Section.PNG");
+            pictureBox2.Load(Const.Constring + @"\Picture\Section all1.PNG");
+            picHaunch.Load(Const.Constring + @"\Picture\haunch.PNG");
+
+
 
 
         }
+        
+        private void IniLoadings()
+        {
+            List<string> LLiveload = new List<string> { "KL510", "DB24", "HL93" };
+            foreach (string L in LLiveload)
+                cbLLiveload.Items.Add(L);
+            checkBox2.Checked = false;
+            cbLLiveload.Enabled = false;            
+
+
+            dgvLane.ColumnCount = 2;
+            dgvLane.RowCount = 5;
+            dgvLane.Columns[0].HeaderText = "Number of lane";
+            dgvLane.Columns[1].HeaderText = "Multi-lane factor";
+
+            DataTable DTtruck = Access.getDataTable("Select * from Truck", con);
+            dgvTruck.DataSource = DTtruck;
+
+
+
+            //Loading database to page
+            DataTable DTloading = Access.getDataTable("Select * from Loadings", con);
+            dgvLane.Rows[0].Cells[1].Value = DTloading.Rows[0]["Lane1"].ToString();
+            dgvLane.Rows[1].Cells[1].Value = DTloading.Rows[0]["Lane2"].ToString();
+            dgvLane.Rows[2].Cells[1].Value = DTloading.Rows[0]["Lane3"].ToString();
+            dgvLane.Rows[3].Cells[1].Value = DTloading.Rows[0]["Lane4"].ToString();
+            dgvLane.Rows[4].Cells[1].Value = DTloading.Rows[0]["Lane5"].ToString();
+
+            dgvLane.Rows[0].Cells[0].Value = "1";
+            dgvLane.Rows[1].Cells[0].Value = "2";
+            dgvLane.Rows[2].Cells[0].Value = "3";
+            dgvLane.Rows[3].Cells[0].Value = "4";
+            dgvLane.Rows[4].Cells[0].Value = "> 5";
+            dgvLane.Columns[0].ReadOnly = true;
+
+            numLane.Value = Convert.ToDecimal(DTloading.Rows[0]["Laneload"]);
+            numPe.Value = Convert.ToDecimal(DTloading.Rows[0]["Pedestrian"]);
+            numOverload.Value = Convert.ToDecimal(DTloading.Rows[0]["Overload"]);
+            numCons.Value = Convert.ToDecimal(DTloading.Rows[0]["Consload"]);
+            numPara.Value = Convert.ToDecimal(DTloading.Rows[0]["Paraload"]);
+
+        }
+
+
+        private void IniOther()
+        {
+            DataTable DTcross = new DataTable();
+            DTcross = Access.getDataTable("Select * from Crossbeam", con);
+            //dgvCross.DataSource = DTcross;            
+
+            string Crossheader = "Exterior-Support Crossbeam,Interior-Support Crossbeam,General Crossbeam,Stringer";
+            DGV.DTtoGrid(dgvCross, DTcross, Crossheader);
+
+            picBar.Load(Const.Constring + @"\Picture\Bar.PNG");
+            DataTable DTbar = new DataTable();
+            DTbar = Access.getDataTable("Select * from Barrier", con);
+            string Barheader = "Left-side barrier,Right-side barrier,Jersey barrier";
+            DGV.DTtoGrid(dgvBar, DTbar, Barheader);
+
+
+        }
+
+
 
         private void Setgridview(DataGridView grid)
         {
@@ -166,7 +237,7 @@ namespace Mainform
         {
             timer1.Start();
 
-            ShowpageGrid();
+            ShowpageGrid("all");
 
         }
 
@@ -191,22 +262,26 @@ namespace Mainform
 
         private void btLiveLoad_Click(object sender, EventArgs e)
         {
-            ShowpageLiveload();
+            ShowpageLoading();
         }
 
         private void btGeneralD_Click(object sender, EventArgs e)
         {
-            ShowpageGrid();
+            ShowpageGrid("all");
         }
 
         private void btGirderD_Click(object sender, EventArgs e)
         {
-            ShowpageDim();
+            ShowpageDim("all");
         }
 
         private void btStif_Click(object sender, EventArgs e)
         {
-            ShowpageStiff();
+            ShowpageStiff("all");
+        }
+        private void btOther_Click(object sender, EventArgs e)
+        {
+            ShowpageOther("all");
         }
 
         //Control tab page
@@ -231,29 +306,52 @@ namespace Mainform
             List<TabPage> a = new List<TabPage> { pageMaterial };
             showtabpage(a);
         }
-        void ShowpageLiveload()
+        void ShowpageLoading()
         {
-            List<TabPage> a = new List<TabPage> { pageLiveload };
+            List<TabPage> a = new List<TabPage> { pageLoadings };
             showtabpage(a);
         }
-        void ShowpageGrid()
+        void ShowpageGrid(string a1)
         {
-            List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners };
-            showtabpage(a);
+            if (a1 == "all")
+            {
+                List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
+                showtabpage(a);
+
+            }            
             metroTabControl1.SelectedTab = pageGrid;
         }
-        void ShowpageDim()
+        void ShowpageDim(string a1)
         {
-            List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners };
-            showtabpage(a);
+            if (a1 == "all")
+            {
+                List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
+                showtabpage(a);
+            }
             metroTabControl1.SelectedTab = pageDim;
         }
-        void ShowpageStiff()
+        void ShowpageStiff(string a1)
         {
-            List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners };
-            showtabpage(a);
+            if (a1 == "all")
+            {
+                List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
+                showtabpage(a);
+            }
+
             metroTabControl1.SelectedTab = pageStiffeners;
         }
+
+        void ShowpageOther(string a1)
+        {
+            if (a1 == "all")
+            {
+                List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
+                showtabpage(a);
+            }
+
+            metroTabControl1.SelectedTab = pageOther;
+        }
+
         void ShowpageAnalysis()
         {
             List<TabPage> a = new List<TabPage> { pageAnalysis };
@@ -279,19 +377,7 @@ namespace Mainform
             }
         }
 
-        private void gridAB_EditingControlShowing_1(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
-            if (gridAB.CurrentCell.ColumnIndex == 0 || gridAB.CurrentCell.ColumnIndex == 1 || gridAB.CurrentCell.ColumnIndex == 2 || gridAB.CurrentCell.ColumnIndex == 3 || gridAB.CurrentCell.ColumnIndex == 4 || gridAB.CurrentCell.ColumnIndex == 5 || gridAB.CurrentCell.ColumnIndex == 6) //Desired Column
-            {
-
-                TextBox tb = e.Control as TextBox;
-                if (tb != null)
-                {
-                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
-                }
-            }
-        }
+        
 
 
         //Allow only input number and "+"
@@ -337,11 +423,27 @@ namespace Mainform
                     }
                     break;
 
+                case "pageMaterial":
+                    {
+                        ShowpageLoading();
+
+                    }
+                    break;
+
+                case "pageLoadings":
+                    {
+                        ShowpageGrid("all");
+
+                        fillAsection();
+
+                    }
+                    break;
+
 
                 case "pageGrid":
                     {
 
-                        ShowpageDim();
+                        ShowpageDim("");
                     }
                     break;
 
@@ -350,33 +452,23 @@ namespace Mainform
                 case "pageDim":
                     {
 
-                        ShowpageStiff();
+                        ShowpageStiff("");
 
                     }
                     break;
 
                 case "pageStiffeners":
                     {
+                        ShowpageOther("");
+                    }
+                    break;
+                case "pageOther":
+                    {
                         ShowpageAnalysis();
                     }
                     break;
 
-                case "pageMaterial":
-                    {
-                        ShowpageLiveload();
-
-                    }
-                    break;
-
-                case "pageLiveload":
-                    {
-                        ShowpageGrid();
-
-                        fillAsection();
-
-
-                    }
-                    break;
+               
             }
 
 
@@ -386,39 +478,50 @@ namespace Mainform
         {
             switch (metroTabControl1.SelectedTab.Name)
             {
-                case "pageGrid":
+                case "pageAnalysis":
                     {
-                        ShowpageLiveload();
+                        ShowpageOther("all");
+                    }
+                    break;
+                case "pageOther":
+                    {
+                        ShowpageStiff("");
+                    }
+                    break;
+                
+                case "pageStiffeners":
+                    {
+
+                        ShowpageDim("");
+
                     }
                     break;
                 case "pageDim":
                     {
 
-                        ShowpageGrid();
+                        ShowpageGrid("");
                     }
                     break;
-                case "pageStiffeners":
+
+                case "pageGrid":
                     {
-
-                        ShowpageDim();
-
+                        ShowpageLoading();
                     }
                     break;
+
+                case "pageLoadings":
+                    {
+                        ShowpageMaterial();
+                    }
+                    break;
+
                 case "pageMaterial":
                     {
                         ShowpageGeneral();
                     }
                     break;
-                case "pageLiveload":
-                    {
-                        ShowpageMaterial();
-                    }
-                    break;
-                case "pageAnalysis":
-                    {
-                        ShowpageStiff();
-                    }
-                    break;
+               
+                
 
 
 
@@ -445,6 +548,8 @@ namespace Mainform
         double[,] Astif = new double[4, 1];
         double[,] Atranstif;
         double[,] Atranstif_grid;
+        double[,] Akframe;
+        double[,] Akframe_grid;
 
         double[,] Across;
         double[,] Across_grid;
@@ -573,7 +678,8 @@ namespace Mainform
                    
                     }
                     break;
-                case "pageCross":
+                
+                case "pageGrid":
                     {
                         // Generate List of grid bridge
                         Node = Matrix.Gridarrtolist(Across_grid, Atran, ngirder);
@@ -597,7 +703,7 @@ namespace Mainform
                         Across1 = new double[Across.GetLength(1)];
                         for (int i = 0; i < Across_grid.GetLength(1); i++)
                         {
-                            Atranstif_grid[0, i] = 1;
+                            Atranstif_grid[0, i] = Across_grid[0, i];
                             Atranstif_grid[1, i] = i + 1;
                             Atranstif_grid[2, i] = Across_grid[2, i];
 
@@ -607,13 +713,14 @@ namespace Mainform
 
 
                         DGV.ArraytoGrid(gridTranstif, Atranstif);
+                        
                         for (int i = 0; i < Asection.GetLength(1); i++)
                             Asection[1, i] = Asectiong[1, i];
                         
                     }
                     break;
 
-                case "pageGirder":
+                case "pageDim":
                     {
                         //Select node without type 4 again
 
@@ -647,6 +754,7 @@ namespace Mainform
                     }
                     break;
 
+                
                 case "pageStiffeners":
                     {
                         //Select node without type 5 again
@@ -666,12 +774,37 @@ namespace Mainform
                         Node = Matrix.Addd0(Node, Atranstif, "d0");
                         //Write to DB
                         Access.writeList(Node, "Node", con, "All");
+
+                        //Fill to dgvKframe
+                        Akframe = new double[1, Atranstif.GetLength(1) + 1];
+                        Akframe_grid = new double[2, Atranstif.GetLength(1) + 1];
+
+                        Akframe[0, 0] = 0;
+                        for (int i = 1; i < Akframe.GetLength(1); i++)
+                        {
+                            Akframe[0, i] = Akframe[0, i - 1] + Atranstif[0, i-1];                            
+                            Akframe_grid[1, i] = Akframe_grid[1, i - 1] + Atranstif_grid[2, i-1];
+                        }
+                        for (int i = 0; i < Akframe.GetLength(1)-1; i++)
+                        {                            
+                            Akframe_grid[0, i] = Atranstif_grid[0, i];
+                        }
+                        Akframe_grid[0, Akframe.GetLength(1)-1] = 1;
+
+
+
+                       
+
+
+
                     }
                     break;
 
                 case "pageMaterial":
                     {
                         DataTable DTMat = Access.getDataTable("Select * from Mat", con);
+                        
+                        //Save all material from Mat to Listmat
                         List<Mat> Listmat = new List<Mat>();
                         Listmat = (from DataRow dr in DTMat.Rows
                                    select new Mat()
@@ -689,35 +822,71 @@ namespace Mainform
                                    }).ToList();
 
 
+                        //Add assigned material to Mat1 database
                         List<Mat> Items = new List<Mat>();
-                        Mat Flange = new Mat();
-                        Flange.Name = dgvMat.Rows[0].Cells[1].Value.ToString();
-                        Flange.Ws = Listmat.Where(p => p.Name == dgvMat.Rows[0].Cells[2].Value.ToString()).Select(p => p.Ws).FirstOrDefault();
-                        Flange.Es = Listmat.Where(p => p.Name == dgvMat.Rows[0].Cells[2].Value.ToString()).Select(p => p.Es).FirstOrDefault();
-                        Flange.G = Listmat.Where(p => p.Name == dgvMat.Rows[0].Cells[2].Value.ToString()).Select(p => p.G).FirstOrDefault();
-                        Flange.Fy = Listmat.Where(p => p.Name == dgvMat.Rows[0].Cells[2].Value.ToString()).Select(p => p.Fy).FirstOrDefault();
-                        Flange.Fu = Listmat.Where(p => p.Name == dgvMat.Rows[0].Cells[2].Value.ToString()).Select(p => p.Fu).FirstOrDefault();
-                        Items.Add(Flange);
+                        Mat Mat1 = new Mat();
+                        for (int i = 0; i < dgvMat.RowCount; i++)
+                        {
+                            if (dgvMat.Rows[i].Cells[2].Value != null)
+                            {
+                                Mat1 = new Mat();
+                                Mat1.Name = dgvMat.Rows[i].Cells[1].Value.ToString();
+                                Mat1.Type = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Type).FirstOrDefault();
+                                Mat1.Ws = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Ws).FirstOrDefault();
+                                Mat1.Es = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Es).FirstOrDefault();
+                                Mat1.G = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.G).FirstOrDefault();
+                                Mat1.Fy = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Fy).FirstOrDefault();
+                                Mat1.Fu = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Fu).FirstOrDefault();
+                                Mat1.Wc = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Wc).FirstOrDefault();
+                                Mat1.fc = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.fc).FirstOrDefault();
+                                Mat1.Ec = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Ec).FirstOrDefault();
+                                Items.Add(Mat1);
+                            }
+                        }
 
-                        Mat Web = new Mat();
-                        Web.Name = dgvMat.Rows[1].Cells[1].Value.ToString();
-                        Web.Ws = Listmat.Where(p => p.Name == dgvMat.Rows[1].Cells[2].Value.ToString()).Select(p => p.Ws).FirstOrDefault();
-                        Web.Es = Listmat.Where(p => p.Name == dgvMat.Rows[1].Cells[2].Value.ToString()).Select(p => p.Es).FirstOrDefault();
-                        Web.G = Listmat.Where(p => p.Name == dgvMat.Rows[1].Cells[2].Value.ToString()).Select(p => p.G).FirstOrDefault();
-                        Web.Fy = Listmat.Where(p => p.Name == dgvMat.Rows[1].Cells[2].Value.ToString()).Select(p => p.Fy).FirstOrDefault();
-                        Web.Fu = Listmat.Where(p => p.Name == dgvMat.Rows[1].Cells[2].Value.ToString()).Select(p => p.Fu).FirstOrDefault();
-                        Items.Add(Web);
+                        Access.delTable("Mat1", con);
+                        if (Items.Count > 0)
+                        {                            
+                            Access.writeList(Items, "Mat1", con, "All");
+                        }
+                        
 
-                        Mat Diaphragm = new Mat();
-                        Diaphragm.Name = dgvMat.Rows[2].Cells[1].Value.ToString();
-                        Diaphragm.Ws = Listmat.Where(p => p.Name == dgvMat.Rows[2].Cells[2].Value.ToString()).Select(p => p.Ws).FirstOrDefault();
-                        Diaphragm.Es = Listmat.Where(p => p.Name == dgvMat.Rows[2].Cells[2].Value.ToString()).Select(p => p.Es).FirstOrDefault();
-                        Diaphragm.G = Listmat.Where(p => p.Name == dgvMat.Rows[2].Cells[2].Value.ToString()).Select(p => p.G).FirstOrDefault();
-                        Diaphragm.Fy = Listmat.Where(p => p.Name == dgvMat.Rows[2].Cells[2].Value.ToString()).Select(p => p.Fy).FirstOrDefault();
-                        Diaphragm.Fu = Listmat.Where(p => p.Name == dgvMat.Rows[2].Cells[2].Value.ToString()).Select(p => p.Fu).FirstOrDefault();
-                        Items.Add(Diaphragm);
+                    }
+                    break;
 
-                        Access.writeList(Items, "Mat1", con, "All");
+                case "pageLoadings":
+                    {
+
+                        List<List<double>> truck = new List<List<double>>();
+                        List<double> truck1 = new List<double>();
+
+                        for (int i = 0; i < dgvTruck.Rows.Count - 1; i++)
+                        {
+                            truck1 = new List<double>();
+                            truck1.Add(Convert.ToDouble(dgvTruck.Rows[i].Cells[0].Value.ToString()));
+                            truck1.Add(Convert.ToDouble(dgvTruck.Rows[i].Cells[1].Value.ToString()));
+                            truck.Add(truck1);
+                        }
+
+                        Access.writetruck(truck, "Truck", con);
+
+                        DataTable Loadings = new DataTable();
+                        Loadings.Columns.Add("Laneload");
+                        Loadings.Columns.Add("Pedestrian");
+                        Loadings.Columns.Add("Overload");
+                        Loadings.Columns.Add("Consload");
+                        Loadings.Columns.Add("Paraload");
+                        Loadings.Columns.Add("Lane1");
+                        Loadings.Columns.Add("Lane2");
+                        Loadings.Columns.Add("Lane3");
+                        Loadings.Columns.Add("Lane4");
+                        Loadings.Columns.Add("Lane5");
+
+
+                        Loadings.Rows.Add(numLane.Value, numPe.Value,numOverload.Value,numCons.Value,numPara.Value, dgvLane.Rows[0].Cells[1].Value,
+                            dgvLane.Rows[1].Cells[1].Value, dgvLane.Rows[2].Cells[1].Value, dgvLane.Rows[3].Cells[1].Value, dgvLane.Rows[4].Cells[1].Value);
+                        
+                        Access.writeDataTable(Loadings, "Laneload,Pedestrian,Overload,Consload,Paraload,Lane1,Lane2,Lane3,Lane4,Lane5", "Loadings", con);
 
                     }
                     break;
@@ -781,7 +950,7 @@ namespace Mainform
             {
                 divideTool.Enabled = true;
                 addTool.Enabled = true;
-                if (Atranstif_grid[0, index] == 1)
+                if (Atranstif_grid[0, index] == 1 || Atranstif_grid[0, index] == 3)
                     deleteTool.Enabled = false;
                 else
                     deleteTool.Enabled = true;
@@ -858,8 +1027,8 @@ namespace Mainform
             }
             else if (SelectedDGV == gridTranstif)
             {
-                Atranstif = Matrix.Seperate_cross(Atranstif, index, ndiv);
-                Atranstif_grid = Matrix.Seperate_cross(Atranstif_grid, index, ndiv);
+                Atranstif = Matrix.Seperate_transtif(Atranstif, index, ndiv);
+                Atranstif_grid = Matrix.Seperate_transtif(Atranstif_grid, index, ndiv);
                 DGV.ArraytoGrid(gridTranstif, Atranstif);
                 Deco(SelectedDGV, Atranstif_grid);
             }
@@ -951,7 +1120,8 @@ namespace Mainform
                 Atranstif = DGV.GridtoArray(gridTranstif);
                 for (int i = 0; i < Atranstif.GetLength(1); i++)
                     Atranstif_grid[2, i] = Atranstif[0, i];
-                Atranstif_grid = Matrix.Update_cross(Atranstif_grid, Across1); //??
+                
+                Atranstif_grid = Matrix.Update_transtif(Atranstif_grid, Across1); //??ok
                 for (int i = 0; i < Atranstif.GetLength(1); i++)
                     Atranstif[0, i] = Atranstif_grid[2, i];
                 DGV.ArraytoGrid(gridTranstif, Atranstif);
@@ -1170,8 +1340,8 @@ namespace Mainform
                 }
                 else if (SelectedDGV == gridTranstif)
                 {
-                    Atranstif = Matrix.Seperate_cross(Atranstif, index, ndiv);
-                    Atranstif_grid = Matrix.Seperate_cross(Atranstif_grid, index, ndiv);
+                    Atranstif = Matrix.Seperate_transtif(Atranstif, index, ndiv);
+                    Atranstif_grid = Matrix.Seperate_transtif(Atranstif_grid, index, ndiv);
                     DGV.ArraytoGrid(gridTranstif, Atranstif);
                     Deco(SelectedDGV, Atranstif_grid);
                 }
@@ -1245,7 +1415,7 @@ namespace Mainform
 
             }
 
-            else
+            else if (cbMattype.SelectedIndex == 1)
             {
                 groupSteel1.Visible = true;
                 groupSteel2.Visible = true;
@@ -1254,6 +1424,17 @@ namespace Mainform
                 checkSteel.Enabled = true;
 
             }
+            else
+            {
+                groupSteel1.Visible = false;
+                groupSteel2.Visible = false;
+                groupSteel3.Visible = false;
+                checkSteel.Enabled = false;
+                comboSteel.Enabled = false;
+                groupConcrete.Visible = false;
+                checkSteel.Checked = false;
+            }
+
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -1272,6 +1453,7 @@ namespace Mainform
             if (checkSteel.Checked == true)
             {
                 comboSteel.Enabled = true;
+                
                 groupSteel2.Visible = false;
                 groupSteel3.Visible = true;
                 BindingSource bs = new BindingSource();
@@ -1282,6 +1464,7 @@ namespace Mainform
             else
             {
                 comboSteel.Enabled = false;
+
                 groupSteel2.Visible = true;
                 groupSteel3.Visible = false;
             }
@@ -1425,6 +1608,34 @@ namespace Mainform
                 {
 
                 }
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked == false)
+                cbLLiveload.Enabled = false;
+            else
+                cbLLiveload.Enabled = true;
+        }
+
+        private void cbLLiveload_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbLLiveload.SelectedIndex == 0)
+            {
+                //Define KL510;
+                DataTable DTTruck = new DataTable();
+                DTTruck.Columns.Add("Coor");
+                DTTruck.Columns.Add("Aload");
+                DTTruck.Rows.Add(0, 48);
+                DTTruck.Rows.Add(3.6, 135);
+                DTTruck.Rows.Add(4.8, 135);
+                DTTruck.Rows.Add(12, 192);
+
+                dgvTruck.DataSource = DTTruck;
+
+                numLane.Value = 12.7M;
+
             }
         }
 
