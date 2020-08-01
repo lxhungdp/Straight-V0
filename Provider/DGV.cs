@@ -126,5 +126,27 @@ namespace Provider
                     grid.Rows[i].Cells[j].Value = dt.Rows[i][j].ToString();
             }
         }
+
+        public static DataTable GridtoDT(DataGridView grid)
+        {
+            var dt = new DataTable();
+            foreach (DataGridViewColumn dataGridViewColumn in grid.Columns)
+            {
+                if (dataGridViewColumn.Visible)
+                {
+                    dt.Columns.Add();
+                }
+            }
+            var cell = new object[grid.Columns.Count];
+            foreach (DataGridViewRow dataGridViewRow in grid.Rows)
+            {
+                for (int i = 0; i < dataGridViewRow.Cells.Count; i++)
+                {
+                    cell[i] = dataGridViewRow.Cells[i].Value;
+                }
+                dt.Rows.Add(cell);
+            }
+            return dt;
+        }
     }
 }

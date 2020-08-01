@@ -29,7 +29,7 @@ namespace Mainform
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
             IniGeneral();
             Inimaterial();
             IniBridge();
@@ -110,6 +110,7 @@ namespace Mainform
             btBridge.BackColor = Color.FromArgb(33, 115, 70);
             btGeneralD.BackColor = Color.FromArgb(44, 152, 93);
             btGirderD.BackColor = Color.FromArgb(44, 152, 93);
+            btHaunch.BackColor = Color.FromArgb(44, 152, 93);
             btStif.BackColor = Color.FromArgb(44, 152, 93);
             btOther.BackColor = Color.FromArgb(44, 152, 93);
             btBack.BackColor = Color.FromArgb(33, 115, 70);
@@ -136,14 +137,14 @@ namespace Mainform
 
 
         }
-        
+
         private void IniLoadings()
         {
             List<string> LLiveload = new List<string> { "KL510", "DB24", "HL93" };
             foreach (string L in LLiveload)
                 cbLLiveload.Items.Add(L);
             checkBox2.Checked = false;
-            cbLLiveload.Enabled = false;            
+            cbLLiveload.Enabled = false;
 
 
             dgvLane.ColumnCount = 2;
@@ -237,19 +238,19 @@ namespace Mainform
         {
             timer1.Start();
 
-            ShowpageGrid("all");
+            ShowpageGrid("all", Aspan);
 
         }
 
-        
+
 
         private void btGeneral_Click(object sender, EventArgs e)
         {
             ShowpageGeneral();
-            
-            
+
+
         }
-       
+
 
         private void btAnalysis_Click(object sender, EventArgs e)
         {
@@ -267,21 +268,24 @@ namespace Mainform
 
         private void btGeneralD_Click(object sender, EventArgs e)
         {
-            ShowpageGrid("all");
+            ShowpageGrid("", Aspan);
         }
 
         private void btGirderD_Click(object sender, EventArgs e)
         {
-            ShowpageDim("all");
+            ShowpageDim("", Aspan);
         }
-
+        private void btHaunch_Click(object sender, EventArgs e)
+        {
+            ShowpageHaunch("");
+        }
         private void btStif_Click(object sender, EventArgs e)
         {
-            ShowpageStiff("all");
+            ShowpageStiff("", Aspan);
         }
         private void btOther_Click(object sender, EventArgs e)
         {
-            ShowpageOther("all");
+            ShowpageOther("",Aspan);
         }
 
         //Control tab page
@@ -291,7 +295,7 @@ namespace Mainform
             foreach (TabPage page in metroTabControl1.TabPages)
                 metroTabControl1.TabPages.Remove(page);
             foreach (TabPage a1 in a)
-                metroTabControl1.TabPages.Add(a1);           
+                metroTabControl1.TabPages.Add(a1);
         }
 
 
@@ -311,41 +315,77 @@ namespace Mainform
             List<TabPage> a = new List<TabPage> { pageLoadings };
             showtabpage(a);
         }
-        void ShowpageGrid(string a1)
+        void ShowpageGrid(string a1, double[] a2)
         {
             if (a1 == "all")
             {
-                List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
+                List<TabPage> a = new List<TabPage>();
+                if (a2.GetLength(0) > 1)
+                    a = new List<TabPage> { pageGrid, pageHaunch, pageDim, pageStiffeners, pageOther };
+                else
+                    a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
+
                 showtabpage(a);
 
-            }            
+            }
+
+
+
             metroTabControl1.SelectedTab = pageGrid;
         }
-        void ShowpageDim(string a1)
+
+        void ShowpageHaunch(string a1)
+        {
+
+            if (a1 == "all")
+            {
+                List<TabPage> a = new List<TabPage> { pageGrid, pageHaunch, pageDim, pageStiffeners, pageOther };
+                showtabpage(a);
+
+            }
+            metroTabControl1.SelectedTab = pageHaunch;
+
+
+
+        }
+
+        void ShowpageDim(string a1, double [] a2)
         {
             if (a1 == "all")
             {
-                List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
+                List<TabPage> a = new List<TabPage>();
+                if (a2.GetLength(0) > 1)
+                    a = new List<TabPage> { pageGrid, pageHaunch, pageDim, pageStiffeners, pageOther };
+                else
+                    a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
                 showtabpage(a);
             }
             metroTabControl1.SelectedTab = pageDim;
         }
-        void ShowpageStiff(string a1)
+        void ShowpageStiff(string a1, double [] a2)
         {
             if (a1 == "all")
             {
-                List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
+                List<TabPage> a = new List<TabPage>();
+                if (a2.GetLength(0) > 1)
+                    a = new List<TabPage> { pageGrid, pageHaunch, pageDim, pageStiffeners, pageOther };
+                else
+                    a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
                 showtabpage(a);
             }
 
             metroTabControl1.SelectedTab = pageStiffeners;
         }
 
-        void ShowpageOther(string a1)
+        void ShowpageOther(string a1, double [] a2)
         {
             if (a1 == "all")
             {
-                List<TabPage> a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
+                List<TabPage> a = new List<TabPage>();
+                if (a2.GetLength(0) > 1)
+                    a = new List<TabPage> { pageGrid, pageHaunch, pageDim, pageStiffeners, pageOther };
+                else
+                    a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
                 showtabpage(a);
             }
 
@@ -377,7 +417,7 @@ namespace Mainform
             }
         }
 
-        
+
 
 
         //Allow only input number and "+"
@@ -432,7 +472,7 @@ namespace Mainform
 
                 case "pageLoadings":
                     {
-                        ShowpageGrid("all");
+                        ShowpageGrid("all", Aspan);
 
                         fillAsection();
 
@@ -442,8 +482,17 @@ namespace Mainform
 
                 case "pageGrid":
                     {
+                        if (Aspan.GetLength(0) > 1)
+                            ShowpageHaunch("");
+                        else
+                            ShowpageDim("", Aspan);
+                    }
+                    break;
 
-                        ShowpageDim("");
+                case "pageHaunch":
+                    {
+
+                        ShowpageDim("", Aspan);
                     }
                     break;
 
@@ -452,14 +501,14 @@ namespace Mainform
                 case "pageDim":
                     {
 
-                        ShowpageStiff("");
+                        ShowpageStiff("", Aspan);
 
                     }
                     break;
 
                 case "pageStiffeners":
                     {
-                        ShowpageOther("");
+                        ShowpageOther("", Aspan);
                     }
                     break;
                 case "pageOther":
@@ -468,7 +517,7 @@ namespace Mainform
                     }
                     break;
 
-               
+
             }
 
 
@@ -480,26 +529,35 @@ namespace Mainform
             {
                 case "pageAnalysis":
                     {
-                        ShowpageOther("all");
+                        ShowpageOther("all", Aspan);
                     }
                     break;
                 case "pageOther":
                     {
-                        ShowpageStiff("");
+                        ShowpageStiff("", Aspan);
                     }
                     break;
-                
+
                 case "pageStiffeners":
                     {
 
-                        ShowpageDim("");
+                        ShowpageDim("", Aspan);
 
                     }
                     break;
                 case "pageDim":
                     {
+                        if (Aspan.GetLength(0) > 1)
+                            ShowpageHaunch("");
+                        else
+                            ShowpageGrid("", Aspan);
+                    }
+                    break;
 
-                        ShowpageGrid("");
+                case "pageHaunch":
+                    {
+
+                        ShowpageGrid("", Aspan);
                     }
                     break;
 
@@ -520,8 +578,8 @@ namespace Mainform
                         ShowpageGeneral();
                     }
                     break;
-               
-                
+
+
 
 
 
@@ -561,6 +619,9 @@ namespace Mainform
         DataTable DTsection;
 
         double[] Aspan;
+
+        DataTable DThaunch;
+        int numinsup;
 
         double sumspan, sumsec;
         int ngirder;
@@ -635,7 +696,27 @@ namespace Mainform
                         Astif[0, 0] = sumspan;
                         DGV.ArraytoGrid(gridStif, Astif);
 
+                        //Default value of haunch
+                        numinsup = Aspan.GetLength(0) - 1;
 
+                        DThaunch = new DataTable();
+                        DThaunch.Columns.Add("L1");
+                        DThaunch.Columns.Add("L2");
+                        DThaunch.Columns.Add("L3");
+                        DThaunch.Columns.Add("H1");
+                        DThaunch.Columns.Add("H2");
+                        DThaunch.Columns.Add("H3");
+                        string Hauheader = "Support #1";
+
+                        for (int i = 0; i < numinsup; i++)
+                        {
+                            if (i > 0)
+                                Hauheader = Hauheader + ",Support #" + (i + 1).ToString();
+                            DThaunch.Rows.Add(15000, 5000, 15000, 2000, 2500, 2000);
+
+                        }
+                        DGV.DTtoGrid(dgvHaunch, DThaunch, Hauheader);
+                        //dgvHaunch.DataSource = DThaunch;
 
 
 
@@ -674,11 +755,22 @@ namespace Mainform
                                 Asection[1, i] = 2;
                         }
 
-                        
-                   
+
+                        //Hide and show btHaunch
+                        if (Aspan.GetLength(0) > 1)
+                        {
+                            btHaunch.Visible = true;
+                            panelBP.MaximumSize = new Size(panelBP.Width, 294);
+                        }
+                        else
+                        {
+                            btHaunch.Visible = false;
+                            panelBP.MaximumSize = new Size(panelBP.Width, 294 - 43);
+                        }
+
                     }
                     break;
-                
+
                 case "pageGrid":
                     {
                         // Generate List of grid bridge
@@ -713,10 +805,38 @@ namespace Mainform
 
 
                         DGV.ArraytoGrid(gridTranstif, Atranstif);
-                        
+
                         for (int i = 0; i < Asection.GetLength(1); i++)
                             Asection[1, i] = Asectiong[1, i];
+
                         
+                                                
+
+                    }
+                    break;
+
+                case "pageHaunch":
+                    {
+                        //Save to DThaunch again             
+                        DThaunch = DGV.GridtoDT(dgvHaunch);
+
+                        List<double> Lx = new List<double>();
+                        for (int i = 0; i <= 100; i++)
+                            Lx.Add(i * sumspan / 100);
+
+                        List<double> D = new List<double>();
+                        D = Haunch.Dw(Aspan, DThaunch, Lx);
+
+                        Chart.Haunch(D, Lx, chartHaunch);
+
+
+
+
+                        var bs = new BindingSource();
+                        bs.DataSource = D.Select(p => new { Value = p }).ToList();
+                        dataGridView1.DataSource = bs;
+
+
                     }
                     break;
 
@@ -754,7 +874,7 @@ namespace Mainform
                     }
                     break;
 
-                
+
                 case "pageStiffeners":
                     {
                         //Select node without type 5 again
@@ -782,18 +902,18 @@ namespace Mainform
                         Akframe[0, 0] = 0;
                         for (int i = 1; i < Akframe.GetLength(1); i++)
                         {
-                            Akframe[0, i] = Akframe[0, i - 1] + Atranstif[0, i-1];                            
-                            Akframe_grid[1, i] = Akframe_grid[1, i - 1] + Atranstif_grid[2, i-1];
+                            Akframe[0, i] = Akframe[0, i - 1] + Atranstif[0, i - 1];
+                            Akframe_grid[1, i] = Akframe_grid[1, i - 1] + Atranstif_grid[2, i - 1];
                         }
-                        for (int i = 0; i < Akframe.GetLength(1)-1; i++)
-                        {                            
+                        for (int i = 0; i < Akframe.GetLength(1) - 1; i++)
+                        {
                             Akframe_grid[0, i] = Atranstif_grid[0, i];
                         }
-                        Akframe_grid[0, Akframe.GetLength(1)-1] = 1;
+                        Akframe_grid[0, Akframe.GetLength(1) - 1] = 1;
 
 
 
-                       
+
 
 
 
@@ -803,7 +923,7 @@ namespace Mainform
                 case "pageMaterial":
                     {
                         DataTable DTMat = Access.getDataTable("Select * from Mat", con);
-                        
+
                         //Save all material from Mat to Listmat
                         List<Mat> Listmat = new List<Mat>();
                         Listmat = (from DataRow dr in DTMat.Rows
@@ -846,10 +966,10 @@ namespace Mainform
 
                         Access.delTable("Mat1", con);
                         if (Items.Count > 0)
-                        {                            
+                        {
                             Access.writeList(Items, "Mat1", con, "All");
                         }
-                        
+
 
                     }
                     break;
@@ -883,9 +1003,9 @@ namespace Mainform
                         Loadings.Columns.Add("Lane5");
 
 
-                        Loadings.Rows.Add(numLane.Value, numPe.Value,numOverload.Value,numCons.Value,numPara.Value, dgvLane.Rows[0].Cells[1].Value,
+                        Loadings.Rows.Add(numLane.Value, numPe.Value, numOverload.Value, numCons.Value, numPara.Value, dgvLane.Rows[0].Cells[1].Value,
                             dgvLane.Rows[1].Cells[1].Value, dgvLane.Rows[2].Cells[1].Value, dgvLane.Rows[3].Cells[1].Value, dgvLane.Rows[4].Cells[1].Value);
-                        
+
                         Access.writeDataTable(Loadings, "Laneload,Pedestrian,Overload,Consload,Paraload,Lane1,Lane2,Lane3,Lane4,Lane5", "Loadings", con);
 
                     }
@@ -1120,7 +1240,7 @@ namespace Mainform
                 Atranstif = DGV.GridtoArray(gridTranstif);
                 for (int i = 0; i < Atranstif.GetLength(1); i++)
                     Atranstif_grid[2, i] = Atranstif[0, i];
-                
+
                 Atranstif_grid = Matrix.Update_transtif(Atranstif_grid, Across1); //??ok
                 for (int i = 0; i < Atranstif.GetLength(1); i++)
                     Atranstif[0, i] = Atranstif_grid[2, i];
@@ -1185,10 +1305,10 @@ namespace Mainform
 
                     }
                 }
-                
-               
+
+
                 //fillAsection();
-               
+
             }
             else if (sender == gridRibtop)
             {
@@ -1453,7 +1573,7 @@ namespace Mainform
             if (checkSteel.Checked == true)
             {
                 comboSteel.Enabled = true;
-                
+
                 groupSteel2.Visible = false;
                 groupSteel3.Visible = true;
                 BindingSource bs = new BindingSource();
@@ -1590,7 +1710,7 @@ namespace Mainform
             }
         }
 
-                
+
 
         // One click to select combobox
 
@@ -1639,7 +1759,13 @@ namespace Mainform
             }
         }
 
-        
+        private void dgvHaunch_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            for (int i = 1; i < numinsup; i++)
+                dgvHaunch.Rows[i].Cells[3].Value = dgvHaunch.Rows[i - 1].Cells[5].Value;
+        }
+
+
 
         private void HandleDataGridViewMouseDown(object sender, MouseEventArgs e)
         {

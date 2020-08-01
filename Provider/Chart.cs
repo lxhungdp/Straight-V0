@@ -310,6 +310,70 @@ namespace Provider
             });
         }
 
-        
+        public static void Haunch(List<double> Dw, List<double> Lx, LiveCharts.WinForms.CartesianChart gridchart)
+        {
+            Lx.Add(Lx.Max());
+            Dw.Add(0);
+
+            Lx.Add(0);
+            Dw.Add(0);
+
+            Lx.Add(0);
+            Dw.Add(Dw[0]);
+            
+            ChartValues<ObservablePoint> List1Points = new ChartValues<ObservablePoint>();
+            
+            for (int i = 0; i < Dw.Count; i++)
+            {
+                List1Points.Add(new ObservablePoint
+                {
+                    X = Lx[i],
+                    Y = -Dw[i]
+                }) ;
+            }
+            
+
+            gridchart.Series = new SeriesCollection
+            {
+                new LineSeries
+                    {
+                        Title = "Haunch",
+                        Values = List1Points,
+                        LineSmoothness = 0,                        
+                        //Fill = System.Windows.Media.Brushes.Transparent,
+                        PointGeometry = null
+                    },              
+
+            };
+
+
+
+
+
+
+
+
+            //ChartCons1.AxisY.Add(new Axis
+            //{
+            //    MinValue = 0,
+            //    Title = "Stress (MPa)",
+            //    Separator = new Separator
+            //    {
+            //        Step = 50,
+            //        IsEnabled = true
+            //    }
+            //});
+            //ChartCons1.AxisX.Add(new Axis
+            //{
+            //    Title = "Length (m)",
+            //    Separator = new Separator
+            //    {
+            //        Step = 10,
+            //        IsEnabled = true
+            //    }
+            //});
+            //ChartCons1.LegendLocation = LegendLocation.Right;
+            //ChartCons1.DefaultLegend.Visibility = Visibility.Visible;
+        }
     }
 }
