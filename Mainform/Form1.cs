@@ -620,7 +620,7 @@ namespace Mainform
 
         double[] Aspan;
 
-        DataTable DThaunch;
+        DataTable DThaunch, DTCBox, DTBCon;
         int numinsup;
 
         double sumspan, sumsec;
@@ -697,26 +697,73 @@ namespace Mainform
                         DGV.ArraytoGrid(gridStif, Astif);
 
                         //Default value of haunch
-                        numinsup = Aspan.GetLength(0) - 1;
-
-                        DThaunch = new DataTable();
-                        DThaunch.Columns.Add("L1");
-                        DThaunch.Columns.Add("L2");
-                        DThaunch.Columns.Add("L3");
-                        DThaunch.Columns.Add("H1");
-                        DThaunch.Columns.Add("H2");
-                        DThaunch.Columns.Add("H3");
-                        string Hauheader = "Support #1";
-
-                        for (int i = 0; i < numinsup; i++)
+                        if (Aspan.GetLength(0) > 1)
                         {
-                            if (i > 0)
-                                Hauheader = Hauheader + ",Support #" + (i + 1).ToString();
-                            DThaunch.Rows.Add(15000, 5000, 15000, 2000, 2500, 2000);
+                            numinsup = Aspan.GetLength(0) - 1;
+
+                            //Haunch
+                            DThaunch = new DataTable();
+                            DThaunch.Columns.Add("L1");
+                            DThaunch.Columns.Add("L2");
+                            DThaunch.Columns.Add("L3");
+                            DThaunch.Columns.Add("H1");
+                            DThaunch.Columns.Add("H2");
+                            DThaunch.Columns.Add("H3");
+                            string Hauheader = "Support #1";
+
+                            for (int i = 0; i < numinsup; i++)
+                            {
+                                if (i > 0)
+                                    Hauheader = Hauheader + ",Support #" + (i + 1).ToString();
+                                DThaunch.Rows.Add(15000, 5000, 15000, 2000, 2500, 2000);
+
+                            }
+                            DGV.DTtoGrid(dgvHaunch, DThaunch, Hauheader);
+                            //dgvHaunch.DataSource = DThaunch;
+                            Chart.Haunch(Aspan, DThaunch, chartHaunch);
+
+                            //Closed box section
+                            DTCBox = new DataTable();
+                            DTCBox.Columns.Add("L1");
+                            DTCBox.Columns.Add("L2");                            
+                            
+
+                            for (int i = 0; i < numinsup; i++)
+                            {
+                                if (i > 0)
+                                    Hauheader = Hauheader + ",Support #" + (i + 1).ToString();
+                                DTCBox.Rows.Add(5000, 5000);
+
+                            }
+                            DGV.DTtoGrid(dgvCBox, DTCBox, Hauheader);
+
+                            //Bottom Concrete
+                            DTBCon = new DataTable();
+                            DTBCon.Columns.Add("L1");
+                            DTBCon.Columns.Add("L2");
+
+                            Hauheader = "Length (mm),Support #1";
+
+                            for (int i = 0; i < numinsup + 1; i++)
+                            {
+
+                                if (i > 1)
+                                    Hauheader = Hauheader + ",Support #" + (i).ToString();
+                                if (i == 0)
+                                    DTBCon.Rows.Add(5000, 5000);
+                                else
+                                    DTBCon.Rows.Add(500, 500);
+
+                            }
+                            DGV.DTtoGrid(dgvBCon, DTBCon, Hauheader);
+
+
+
+
 
                         }
-                        DGV.DTtoGrid(dgvHaunch, DThaunch, Hauheader);
-                        //dgvHaunch.DataSource = DThaunch;
+
+
 
 
 
@@ -819,23 +866,7 @@ namespace Mainform
                     {
                         //Save to DThaunch again             
                         DThaunch = DGV.GridtoDT(dgvHaunch);
-
-                        List<double> Lx = new List<double>();
-                        for (int i = 0; i <= 100; i++)
-                            Lx.Add(i * sumspan / 100);
-
-                        List<double> D = new List<double>();
-                        D = Haunch.Dw(Aspan, DThaunch, Lx);
-
-                        Chart.Haunch(D, Lx, chartHaunch);
-
-
-
-
-                        var bs = new BindingSource();
-                        bs.DataSource = D.Select(p => new { Value = p }).ToList();
-                        dataGridView1.DataSource = bs;
-
+                        Chart.Haunch(Aspan, DThaunch, chartHaunch);
 
                     }
                     break;

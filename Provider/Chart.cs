@@ -4,6 +4,7 @@ using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -310,16 +311,8 @@ namespace Provider
             });
         }
 
-        public static void Haunch(List<double> Dw, List<double> Lx, LiveCharts.WinForms.CartesianChart gridchart)
+        public static void byList(List<double> Dw, List<double> Lx, LiveCharts.WinForms.CartesianChart gridchart)
         {
-            Lx.Add(Lx.Max());
-            Dw.Add(0);
-
-            Lx.Add(0);
-            Dw.Add(0);
-
-            Lx.Add(0);
-            Dw.Add(Dw[0]);
             
             ChartValues<ObservablePoint> List1Points = new ChartValues<ObservablePoint>();
             
@@ -337,43 +330,133 @@ namespace Provider
             {
                 new LineSeries
                     {
-                        Title = "Haunch",
+                        Title = "",
                         Values = List1Points,
                         LineSmoothness = 0,                        
                         //Fill = System.Windows.Media.Brushes.Transparent,
-                        PointGeometry = null
+                        PointGeometry = null,
+                         LabelPoint = p => "",
                     },              
 
             };
 
+            gridchart.AxisY = new AxesCollection();
+            gridchart.AxisY.Add(new Axis
+            {
+               
+                Separator = new Separator
+                {
+                    IsEnabled = false
+                },
+                ShowLabels = false
 
+            });
 
-
-
-
-
-
-            //ChartCons1.AxisY.Add(new Axis
-            //{
-            //    MinValue = 0,
-            //    Title = "Stress (MPa)",
-            //    Separator = new Separator
-            //    {
-            //        Step = 50,
-            //        IsEnabled = true
-            //    }
-            //});
-            //ChartCons1.AxisX.Add(new Axis
-            //{
-            //    Title = "Length (m)",
-            //    Separator = new Separator
-            //    {
-            //        Step = 10,
-            //        IsEnabled = true
-            //    }
-            //});
-            //ChartCons1.LegendLocation = LegendLocation.Right;
-            //ChartCons1.DefaultLegend.Visibility = Visibility.Visible;
+            gridchart.AxisX = new AxesCollection();
+            gridchart.AxisX.Add(new Axis
+            {
+                
+                Separator = new Separator
+                {
+                    IsEnabled = false
+                },
+                ShowLabels = false
+            });
         }
+
+        public static void Haunch(double[] Aspan, DataTable DThaunch, LiveCharts.WinForms.CartesianChart gridchart)
+        {
+            Haunch Haunch = new Haunch(Aspan, DThaunch);
+            Haunch.Sta = Haunch.Point;
+
+            List<double> Lx = Haunch.Point;
+            for (int i = 0; i < Haunch.Point.Count - 2; i++)
+            {
+                if (Haunch.Dw[i + 1] != Haunch.Dw[i])
+                    for (int j = 1; j < 20; j++)
+                        Lx.Add(Haunch.Point[i] + (Haunch.Point[i + 1] - Haunch.Point[i]) / 20 * j);
+            }
+
+            Lx.Sort();
+            Haunch.Sta = Lx;
+
+            List<double> Ly = Haunch.Dw;
+            Lx.Add(Lx.Max());
+            Ly.Add(0);
+
+            Lx.Add(0);
+            Ly.Add(0);
+
+            Lx.Add(0);
+            Ly.Add(Ly[0]);
+
+            //Plot the girder
+            Chart.byList(Ly, Lx, gridchart);
+
+            //Determine list of station for support
+            double[] b = new double[Aspan.GetLength(0) + 1];
+
+            b[0] = 0;
+            for (int i = 1; i < Aspan.GetLength(0) + 1; i++)
+            {
+                b[i] = 0;
+                for (int j = 0; j < i; j++)
+                    b[i] = Aspan[j] + b[i];
+            }
+            List<double> SSup = new List<double>(b);
+            Haunch.Sta = SSup;
+
+            ChartValues<ObservablePoint> List2Points = new ChartValues<ObservablePoint>();
+
+            for (int i = 0; i < Haunch.Dw.Count; i++)
+            {
+                List2Points.Add(new ObservablePoint
+                {
+                    X = SSup[i],
+                    Y = -Haunch.Dw[i] - Haunch.Dw.Max() / 7
+                });
+            }
+
+            gridchart.Series.Add(new ScatterSeries
+            {
+                Title = "Support",
+                Values = List2Points,
+                PointGeometry = DefaultGeometries.Circle,
+                StrokeThickness = 3,
+                Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(198, 89, 17)),
+
+                Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 255, 255)),
+                MinPointShapeDiameter = 15,
+                LabelPoint = p => "",
+            });
+
+
+
+            gridchart.AxisY = new AxesCollection();
+            gridchart.AxisY.Add(new Axis
+            {
+
+                Separator = new Separator
+                {
+                    IsEnabled = false
+                },
+                ShowLabels = false
+
+            });
+
+            gridchart.AxisX = new AxesCollection();
+            gridchart.AxisX.Add(new Axis
+            {
+
+                Separator = new Separator
+                {
+                    IsEnabled = false
+                },
+                ShowLabels = false
+            });
+        }
+
+
+        
     }
 }
