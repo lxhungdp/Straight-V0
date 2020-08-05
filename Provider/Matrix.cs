@@ -364,7 +364,7 @@ namespace Provider
         public static double[,] Seperate_top(double[,] a, int index, int ndiv)
         {
             double[,] b = new double[a.GetLength(0), a.GetLength(1) + ndiv - 1];
-            if (a.GetLength(0) > 3)
+            if (a.GetLength(0) > 4)
             {
                 for (int i = 0; i < a.GetLength(0); i++)
                     for (int j = 0; j < a.GetLength(1); j++)
@@ -375,12 +375,11 @@ namespace Provider
                         {
                             for (int k = j; k < j + ndiv; k++)
                             {
+                                b[i, k] = a[i, j];
                                 b[0, k] = 4.0;
-                                b[0, index] = a[0, j];
-                                b[1, k] = a[1, j];
+                                b[0, index] = a[0, j];                               
                                 b[2, k] = a[2, j] / ndiv;
-                                b[3, k] = a[3, j];
-                                b[4, k] = a[4, j];
+                                
                             }
                         }
                         else
@@ -389,32 +388,29 @@ namespace Provider
             }
             else
             {
-                for (int j = 0; j < a.GetLength(1); j++)
+                for (int i =0; i <a.GetLength(0); i++)
                 {
-                    if (j < index)
+                    for (int j = 0; j < a.GetLength(1); j++)
                     {
-                        b[0, j] = a[0, j];
-                        b[1, j] = a[1, j];
-                        b[2, j] = a[2, j];
-                    }
-                        
-                    else if (j == index)
-                    {
-                        for (int k = j; k < j + ndiv; k++)
+                        if (j < index)
                         {
-                            b[0, k] = a[0, j] / ndiv;
-                            b[1, k] = a[1, j];
-                            b[2, k] = a[2, j];
+                            b[i, j] = a[i, j];                            
+                        }
+
+                        else if (j == index)
+                        {
+                            for (int k = j; k < j + ndiv; k++)
+                            {
+                                b[i, k] = a[i, j];
+                                b[0, k] = a[0, j] / ndiv;                                
+                            }
+                        }
+                        else
+                        {                           
+                            b[i, j + ndiv - 1] = a[i, j];                            
                         }
                     }
-                    else
-                    {
-                        b[0, j + ndiv - 1] = a[0, j];
-                        b[1, j + ndiv - 1] = a[1, j];
-                        b[2, j + ndiv - 1] = a[2, j];
-                    }
-                        
-                }
+                } 
             }
 
 
@@ -425,7 +421,7 @@ namespace Provider
         public static double[,] Combine_top(double[,] a, int index)
         {
             double[,] b = new double[a.GetLength(0), a.GetLength(1) - 1];
-            int n = b.GetLength(0) > 3 ? 2 : 0;
+            int n = b.GetLength(0) > 4 ? 2 : 0;
             for (int i = 0; i < b.GetLength(0); i++)
                 for (int j = 0; j < b.GetLength(1); j++)
                 {
@@ -443,10 +439,10 @@ namespace Provider
             return b;
         }
 
-        public static double[,] Atop_CBox (DataTable DThaunch, double[] Aspan)
+        public static double[,] Atop_CBox (DataTable DThaunch, double[] Aspan, int n)
         {
             int numinsup = DThaunch.Rows.Count;
-            double[,] Atop2 = new double[3, 2 * numinsup + 1];
+            double[,] Atop2 = new double[n, 2 * numinsup + 1];
             Atop2[0, 0] = Aspan[0] - Convert.ToDouble(DThaunch.Rows[0][0]);
             Atop2[0, 2 * numinsup] = Aspan[numinsup] - Convert.ToDouble(DThaunch.Rows[numinsup - 1][1]);
             for (int i = 0; i < numinsup; i++)
