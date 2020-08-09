@@ -12,6 +12,64 @@ namespace Provider
 {
     public class Matrix
     {
+
+        public static double[,] Seperate_con(double[,] a, int index)
+        {
+            double[,] b = new double[a.GetLength(0), a.GetLength(1) + 1];
+
+            if (a[a.GetLength(0) - 1, index] == 1 || a[a.GetLength(0) - 1, index] == 11)
+            {
+                b[0, 0] = 5000;
+                for (int i = 1; i < a.GetLength(0) - 1; i++)
+                    b[i, 0] = 500;
+                b[a.GetLength(0) - 1, 0] = 11;
+                for (int i = 0; i < a.GetLength(0); i++)
+                    for (int j = 0; j < a.GetLength(1); j++)
+                        b[i, j + 1] = a[i, j];
+            }
+            else
+            {
+                b[0, a.GetLength(1)] = 5000;
+                for (int i = 1; i < a.GetLength(0) - 1; i++)
+                    b[i, a.GetLength(1)] = 500;
+                b[a.GetLength(0) - 1, a.GetLength(1)] = 12;
+                for (int i = 0; i < a.GetLength(0); i++)
+                    for (int j = 0; j < a.GetLength(1); j++)
+                        b[i, j] = a[i, j];
+
+            }
+             
+            return b;
+        }
+
+        public static double[,] Combine_con(double[,] a, int index)
+        {
+            double[,] b = new double[a.GetLength(0), a.GetLength(1) -1];
+            for (int i = 0; i < a.GetLength(0); i++)
+                for (int j = 0; j < a.GetLength(1) - 1; j++)
+                {
+                    if (j < index)
+                        b[i, j] = a[i, j];
+                    else
+                        b[i, j] = a[i, j + 1];
+                }           
+
+            return b;
+        }
+        public static double[,] Update_con(double[,] a, double[,] c)
+        {
+            double[,] b = new double[a.GetLength(0), a.GetLength(1)]; 
+
+            for (int j = 0; j < a.GetLength(1); j++)
+            {
+                b[a.GetLength(0) - 1, j] = a[a.GetLength(0) - 1, j];
+                for (int i = 0; i < a.GetLength(0) - 1; i++)
+                    b[i, j] = c[i, j];
+            }
+
+            return b;
+        }
+
         public static double[,] Seperate(double[,] a, int index, int ndiv)
         {
             double[,] b = new double[a.GetLength(0), a.GetLength(1) + ndiv - 1];
@@ -484,6 +542,7 @@ namespace Provider
                     Node a = new Node();
                     a.Type = j == Longcu.GetLength(0) - 1 ? 1 : Across_grid[0, j];
                     a.BeamID = i == Trancu.GetLength(0) - 1 ? ngirder : Atran[2, i + 1];
+                    a.Haunch = 0;
                     a.X = Longcu[j];
                     a.Y = Trancu[i];
                     a.Z = 0;
@@ -588,6 +647,76 @@ namespace Provider
             return Node;
         }
 
+        // This function is to add to Existing List Node, by the matrix: 1st-row: spacing, 2nd ... property of node, Pro: corrresponding property)
+        public static List<Node> Addnode(List<Node> Node, double[,] Atop, string pro, int Type, string expro)
+        {
+            //Cumulate the Atop
+            //var Node = Nodein;
+            var b = Arrcumulate(Atop);
+            var nlong = Node.Where(p => p.BeamID == 1).ToList().Count;
+            var n = Node.Count / nlong;
+            string[] exprostr = expro.Split(',');
+            int index;
+
+            //Insert the point if X is the new X
+            for (int i = 0; i < b.GetLength(1); i++)
+            {
+                if (Node.Select(p => p.X).ToList().IndexOf(b[0, i]) == -1)
+                {
+                    for (int j = 0; j < n; j++) //Do for all girder
+                    {
+                        Node a = new Node();
+                        a.X = b[0, i];
+                        a.Z = 0;
+                        a.Y = Node[j * nlong].Y;
+                        a.BeamID = Node[j * nlong].BeamID;
+                        a.Type = Type;
+                        index = Node.FindLastIndex(p => p.X <= b[0, i]);
+                        for (int k = 0; k < exprostr.GetLength(0); k++)
+                        {
+                            PropertyInfo newpro = a.GetType().GetProperty(exprostr[k]);
+                            PropertyInfo oldpro = Node[index].GetType().GetProperty(exprostr[k]);
+
+                            newpro.SetValue(a, oldpro.GetValue(Node[index],null));
+                        }
+
+                        Node.Add(a);
+                    }
+
+                }
+            }
+
+            //Reorder by X and Y
+            Node = Node.OrderBy(p => p.Y).ThenBy(p => p.X).ToList();
+
+            //Rename the label
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < Node.Count / n; j++)
+                {
+                    Node[i * Node.Count / n + j].Label = (i + 1) * 100 + j + 1;
+                }
+
+            //Add pro
+            string[] prostring = pro.Split(',');            
+            double provalue = 0;
+
+            for (int i = 0; i < prostring.GetLength(0); i++)
+            {
+                for (int j = 0; j < Node.Count; j++)
+                {
+                    for (int k = 0; k < b.GetLength(1); k++)
+                    {
+                        if (b[0, k] == Node[j].X)
+                            provalue = b[i + 1, k];
+                    }
+                    PropertyInfo propertyInfo = Node[j].GetType().GetProperty(prostring[i]);
+                    propertyInfo.SetValue(Node[j], provalue);
+                }
+            }
+
+
+            return Node;
+        }
 
         //Add Stiffener
         public static List<Node> Addpoinstiff(List<Node> Node, double[,] Atop)

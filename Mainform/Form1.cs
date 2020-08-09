@@ -27,7 +27,7 @@ namespace Mainform
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
 
             IniGeneral();
@@ -123,7 +123,7 @@ namespace Mainform
             Setgridview(gridTop);
             Setgridview(gridBot);
             Setgridview(gridWeb);
-            
+
             Setgridview(gridTrib);
             Setgridview(gridBrib);
             Setgridview(gridStif);
@@ -285,7 +285,7 @@ namespace Mainform
         }
         private void btOther_Click(object sender, EventArgs e)
         {
-            ShowpageOther("",Aspan);
+            ShowpageOther("", Aspan);
         }
 
         //Control tab page
@@ -349,7 +349,7 @@ namespace Mainform
 
         }
 
-        void ShowpageDim(string a1, double [] a2)
+        void ShowpageDim(string a1, double[] a2)
         {
             if (a1 == "all")
             {
@@ -362,7 +362,7 @@ namespace Mainform
             }
             metroTabControl1.SelectedTab = pageDim;
         }
-        void ShowpageStiff(string a1, double [] a2)
+        void ShowpageStiff(string a1, double[] a2)
         {
             if (a1 == "all")
             {
@@ -377,7 +377,7 @@ namespace Mainform
             metroTabControl1.SelectedTab = pageStiffeners;
         }
 
-        void ShowpageOther(string a1, double [] a2)
+        void ShowpageOther(string a1, double[] a2)
         {
             if (a1 == "all")
             {
@@ -491,7 +491,7 @@ namespace Mainform
 
                 case "pageHaunch":
                     {
-                        
+
                         ShowpageDim("", Aspan);
                     }
                     break;
@@ -602,7 +602,7 @@ namespace Mainform
         double[,] Atop = new double[3, 1];
         double[,] Abot = new double[3, 1];
         double[,] Aweb = new double[3, 1];
-        double[,] Acon = new double[2, 1];
+
         double[,] Aribtop = new double[4, 1];
         double[,] Aribbot = new double[4, 1];
         double[,] Astif = new double[4, 1];
@@ -637,6 +637,10 @@ namespace Mainform
 
         double[,] Atrib; //Atrip consider the closed box, has 4 row: 1st length (including closed box section) 2nd: number, 3: depth, 4: thickness
         double[,] Atrib_grid; //Has 6 row: 1st: ID = 1, add ID = 4; 2nd: order to mark color and lock closed box section, 3-6: same Atrib
+
+        double[,] Acon; //Bottom concrete: number of interior pier + 2 rows: 1st rows: length, next rows: depth of concrete, last row: 1 : left, 2 right
+        double[,] Acon_grid;
+        double[,] Acon1;
 
         private void btApply_Click(object sender, EventArgs e)
         {
@@ -677,9 +681,6 @@ namespace Mainform
                             Aspan[i] = Aspan[i] * 1000;
                         sumspan = Aspan.Sum();
 
-                        Atop = new double[3, 1] { { 0 }, { 0 }, { 0 } };
-                        Atop[0, 0] = sumspan;
-                        DGV.ArraytoGrid(gridTop, Atop);
 
                         Abot = new double[3, 1] { { 0 }, { 0 }, { 0 } };
                         Abot[0, 0] = sumspan;
@@ -689,7 +690,7 @@ namespace Mainform
                         Aweb[0, 0] = sumspan;
                         DGV.ArraytoGrid(gridWeb, Aweb);
 
-                        
+
 
                         Aribtop = new double[4, 1];
                         Aribtop[0, 0] = sumspan;
@@ -732,8 +733,8 @@ namespace Mainform
                             //Closed box section
                             DTCBox = new DataTable();
                             DTCBox.Columns.Add("L1");
-                            DTCBox.Columns.Add("L2");                            
-                            
+                            DTCBox.Columns.Add("L2");
+
 
                             for (int i = 0; i < numinsup; i++)
                             {
@@ -745,29 +746,29 @@ namespace Mainform
                             DGV.DTtoGrid(dgvCBox, DTCBox, Hauheader);
 
                             //Bottom Concrete
-                            DTBCon = new DataTable();
-                            DTBCon.Columns.Add("L1");
-                            DTBCon.Columns.Add("L2");
-
-                            Hauheader = "Length (mm),Support #1";
-
-                            for (int i = 0; i < numinsup + 1; i++)
+                            //Create Acon
+                            Acon = new double[numinsup + 2, 2];
+                            Acon[0, 0] = 5000;
+                            Acon[0, 1] = 5000;
+                            for (int i = 0; i < numinsup; i++)
                             {
-
-                                if (i > 1)
-                                    Hauheader = Hauheader + ",Support #" + (i).ToString();
-                                if (i == 0)
-                                    DTBCon.Rows.Add(5000, 5000);
-                                else
-                                    DTBCon.Rows.Add(500, 500);
-
+                                Acon[i + 1, 0] = 500;
+                                Acon[i + 1, 1] = 500;
                             }
-                            DGV.DTtoGrid(dgvBCon, DTBCon, Hauheader);
+                            Acon[numinsup + 1, 0] = 1;
+                            Acon[numinsup + 1, 1] = 2;
+
+                            gridBCon.DataSource = null;
+                            DGV.Acontogrid(gridBCon, Acon);
+
+
+
+
 
                             //Transfer DTCBox to Array
                             DThaunch = DGV.GridtoDT(dgvCBox);
                             Atop2 = Matrix.Atop_CBox(DThaunch, Aspan, 3);
-                            DGV.ArraytoGrid(dataGridView1, Atop2);
+
 
                         }
 
@@ -869,20 +870,28 @@ namespace Mainform
                         for (int i = 0; i < Asection.GetLength(1); i++)
                             Asection[1, i] = Asectiong[1, i];
 
-                        
-                                                
+
+
 
                     }
                     break;
 
                 case "pageHaunch":
                     {
+                        Node = Node.Where(p => p.Type != 4).ToList();
                         //Save to DThaunch again             
                         DThaunch = DGV.GridtoDT(dgvHaunch);
                         Chart.Haunch(Aspan, DThaunch, chartHaunch);
 
-                        DThaunch = DGV.GridtoDT(dgvCBox);
-                        
+                        //Add haunch to database Node
+                        Haunch Haunch = new Haunch(Aspan, DThaunch);
+                        Node = Matrix.Addnode(Node, Haunch.Harray, "Haunch", 4, "btop");
+
+                        //Save to DTCbox again
+                        DTCBox = DGV.GridtoDT(dgvCBox);
+                        Node = Matrix.Addnode(Node, Haunch.Closedbox(Aspan, DTCBox), "ntop", 4, "Haunch");
+                        Access.writeList(Node, "Node", con, "All");
+
                         //Atop2 has 3 rows
                         //1st is length, seperate by closed box section at pier
                         //2nd is with of flange
@@ -913,21 +922,24 @@ namespace Mainform
                         DGV.ArraytoGrid(gridTrib, Atrib);
 
                         //Create Atrib_grid with 6 row
-                        Atrib_grid = new double[6, Atrib.GetLength(1)];                       
+                        Atrib_grid = new double[6, Atrib.GetLength(1)];
                         for (int i = 0; i < Atrib.GetLength(1); i++)
                         {
                             Atrib_grid[0, i] = 1; //Set all ID = 1
                             Atrib_grid[1, i] = i + 1; //Set order 1-2-3
                             Atrib_grid[2, i] = Atrib[0, i]; //Set length
-                            
+
                         }
                         Deco(gridTrib, Atrib_grid);
 
 
-
-                        DGV.ArraytoGrid(dataGridView1, Atop2);
-
-
+                        //Bottom concrete
+                        Acon_grid = DGV.GridtoArray(gridBCon);
+                        Acon = Matrix.Update_con(Acon, Acon_grid);
+                        Acon1 = Haunch.Bottomcon(Aspan, Acon);
+                        
+                        
+                        DGV.ArraytoGrid(dataGridView1, Acon1);
 
 
                     }
@@ -939,17 +951,17 @@ namespace Mainform
                         Node = Node.Where(p => p.Type != 4).ToList();
 
                         //Insert node: Insert node if changed section with ID = 4
-              
+
                         Node = Matrix.Addpoint(Node, Atop);
                         Node = Matrix.Addpoint(Node, Abot);
                         Node = Matrix.Addpoint(Node, Aweb);
-                        
+
 
                         //Insert top, bottom flange, web, bottom concrete
                         Node = Matrix.Addprop(Node, Atop, "btop,ttop");
                         Node = Matrix.Addprop(Node, Abot, "bbot,tbot");
                         Node = Matrix.Addprop(Node, Aweb, "D,tw");
-                       
+
 
                         //Insert others to Node
 
@@ -1140,7 +1152,7 @@ namespace Mainform
             if (dgv == gridTop)
             {
                 for (int i = 0; i < dgv.Columns.Count; i++)
-                {                    
+                {
                     if (arr[1, i] % 2 == 0)
                     {
                         dgv.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(217, 217, 217);
@@ -1168,15 +1180,15 @@ namespace Mainform
             }
 
             else if (dgv == gridTrib)
-            {               
-                
+            {
+
                 for (int i = 0; i < dgv.Columns.Count; i++)
                 {
                     dgv.Columns[i].ReadOnly = false;
                     dgv.Columns[i].DefaultCellStyle.ForeColor = DefaultForeColor;
 
                     if (arr[1, i] % 2 == 0)
-                    {                         
+                    {
                         dgv.Columns[i].DefaultCellStyle.BackColor = Color.White;
                         dgv.EnableHeadersVisualStyles = false;
                         dgv.Columns[i].HeaderCell.Style.BackColor = Color.White;
@@ -1187,7 +1199,7 @@ namespace Mainform
                             dgv.Rows[0].Cells[i].Style = new DataGridViewCellStyle { ForeColor = Color.Red };
 
                         }
-                            
+
 
                     }
 
@@ -1212,13 +1224,24 @@ namespace Mainform
         private void grid_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
 
-            if ((e.Button != MouseButtons.Right) || !(sender is DataGridView a))
+            if ((e.Button != MouseButtons.Right) || !(sender is DataGridView a) || e.ColumnIndex == -1)
                 return;
 
-            contextMenuStrip1.Show(Cursor.Position);
-            index = e.ColumnIndex;
+            contextMenuStrip1.Show(Cursor.Position);            
+                index = e.ColumnIndex;
 
-            if (a == gridCross)
+            if (a == gridBCon)
+            {
+                divideTool.Enabled = false;
+                addTool.Enabled = true;
+
+                if (Acon[Acon.GetLength(0) - 1, index] == 1 || Acon[Acon.GetLength(0) - 1, index] == 2)
+                    deleteTool.Enabled = false;
+                else
+                    deleteTool.Enabled = true;
+
+            }
+            else if (a == gridCross)
             {
                 divideTool.Enabled = true;
                 addTool.Enabled = true;
@@ -1275,7 +1298,7 @@ namespace Mainform
                 addTool.Enabled = true;
                 divideTool.Enabled = true;
 
-                if (Atrib_grid[1, index] % 2 ==1)
+                if (Atrib_grid[1, index] % 2 == 1)
                 {
                     deleteTool.Enabled = false;
                     addTool.Enabled = false;
@@ -1313,7 +1336,14 @@ namespace Mainform
         private void addTool_Click(object sender, EventArgs e)
         {
             ndiv = 2;
-            if (SelectedDGV == gridTop)
+            if (SelectedDGV == gridBCon)
+            {
+                Acon = Matrix.Seperate_con(Acon, index);
+                DGV.Acontogrid(gridBCon, Acon);
+            }
+            
+            
+            else if (SelectedDGV == gridTop)
             {
                 Atop2 = Matrix.Seperate_top(Atop2, index, ndiv);
                 Atop2_grid = Matrix.Seperate_top(Atop2_grid, index, ndiv);
@@ -1331,7 +1361,7 @@ namespace Mainform
                 Aweb = Matrix.Seperate(Aweb, index, ndiv);
                 DGV.ArraytoGrid(gridWeb, Aweb);
             }
-            
+
             else if (SelectedDGV == gridCross)
             {
 
@@ -1395,8 +1425,15 @@ namespace Mainform
         {
             int row = e.RowIndex;
             int col = e.ColumnIndex;
-            
-            if (sender == gridBot)
+
+            if (sender == gridBCon)
+            {
+                //Acon_grid = DGV.GridtoArray(gridBCon);
+                //Acon = Matrix.Update_con(Acon, Acon_grid);
+                //DGV.Acontogrid(gridBCon, Acon);
+            }
+
+            else if (sender == gridBot)
             {
                 Abot = DGV.GridtoArray(gridBot);
                 Abot = Matrix.Update(Abot, sumspan);
@@ -1410,7 +1447,7 @@ namespace Mainform
                 DGV.ArraytoGrid(gridWeb, Aweb);
                 gridWeb.MultiSelect = false;
             }
-            
+
             else if (sender == gridCross)
             {
                 Across = DGV.GridtoArray(gridCross);
@@ -1427,7 +1464,7 @@ namespace Mainform
                 Atop2 = DGV.GridtoArray(gridTop);
                 for (int i = 0; i < Atop2.GetLength(1); i++)
                     for (int j = 0; j < Atop2.GetLength(0); j++)
-                    Atop2_grid[j+2, i] = Atop2[j, i];
+                        Atop2_grid[j + 2, i] = Atop2[j, i];
 
                 Atop2_grid = Matrix.Update_transtif(Atop2_grid, Atop1); //??ok
                 for (int i = 0; i < Atop2.GetLength(1); i++)
@@ -1547,13 +1584,18 @@ namespace Mainform
         private void deleteTool_Click(object sender, EventArgs e)
         {
 
-            if (SelectedDGV == gridTop)
+            if (SelectedDGV == gridBCon)
+            {
+                Acon = Matrix.Combine_con(Acon, index);
+                DGV.Acontogrid(gridBCon, Acon);
+            }
+            
+            else if (SelectedDGV == gridTop)
             {
                 Atop2 = Matrix.Combine_top(Atop2, index);
                 Atop2_grid = Matrix.Combine_top(Atop2_grid, index);
                 DGV.ArraytoGrid(gridTop, Atop2);
                 Deco(SelectedDGV, Atop2_grid);
-
 
             }
             else if (SelectedDGV == gridBot)
@@ -1568,7 +1610,7 @@ namespace Mainform
                 DGV.ArraytoGrid(gridWeb, Aweb);
 
             }
-            
+
             else if (SelectedDGV == gridCross)
             {
                 Across = Matrix.Combine_cross(Across, index);
@@ -1657,7 +1699,7 @@ namespace Mainform
                     Aweb = Matrix.Seperate(Aweb, index, ndiv);
                     DGV.ArraytoGrid(gridWeb, Aweb);
                 }
-                
+
                 else if (SelectedDGV == gridCross)
                 {
                     Across = Matrix.Seperate_cross(Across, index, ndiv);

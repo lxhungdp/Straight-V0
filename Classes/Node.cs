@@ -8,23 +8,30 @@ namespace Classes
 {
     public class Node
     {
-        public double Label
+        
+        public double Label   //101 102 103 201 202 203. Maximum 100 node
         { get; set; }
-        public double Type
+        
+        public double Type    //1 - Abu, 2 - Pier, 3 - Cross, 4 Section changed
+        { get; set; }    
+        public double BeamID // 1, 2, 3 girder 123, 11 21 31 Stringer
         { get; set; }
-        public double BeamID
+        public double Haunch // 0 - constant web depth, 1 - variable web depth
         { get; set; }
+
         public double X
         { get; set; }
         public double Y
         { get; set; }
         public double Z
         { get; set; }
-        public string Restrain
+        public string Restrain //Fixed, LongFixed, TranFixed, Free
         { get; set; }
 
         //Top flange
-        
+
+        public double ntop
+        { get; set; }
         public double btop
         { get; set; }
         public double ttop

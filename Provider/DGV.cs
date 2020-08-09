@@ -33,7 +33,7 @@ namespace Provider
                 dt.Columns.Add((i + 1).ToString());
             }
 
-            for (int i = 0; i < value.GetLength(0); ++i)    
+            for (int i = 0; i < value.GetLength(0); ++i)
             {
                 DataRow row = dt.NewRow();
                 for (int j = 0; j < value.GetLength(1); ++j)
@@ -108,16 +108,18 @@ namespace Provider
             {
                 if (i.IsNewRow) continue;
                 foreach (DataGridViewCell j in i.Cells)
-                {                    
+                {
                     if (j.RowIndex == 0)
-                        array[j.RowIndex, j.ColumnIndex] = Convert.ToDouble(j.Value); 
+                        array[j.RowIndex, j.ColumnIndex] = Convert.ToDouble(j.Value);
                 }
             }
             return array;
         }
 
-        public static void DTtoGrid(DataGridView grid, DataTable dt, string header )
+        public static void DTtoGrid(DataGridView grid, DataTable dt, string header)
         {
+
+
             grid.RowCount = dt.Rows.Count;
             string[] name = header.Split(',');
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -126,6 +128,56 @@ namespace Provider
                 for (int j = 0; j < dt.Columns.Count; j++)
                     grid.Rows[i].Cells[j].Value = dt.Rows[i][j].ToString();
             }
+        }
+
+        public static void Acontogrid(DataGridView grid, double[,] Acon)
+        {
+            grid.DataSource = null;
+            grid.ColumnCount = Acon.GetLength(1);
+            grid.RowCount = Acon.GetLength(0) - 1;
+
+            int left = 0;
+            int right = 0;
+            string[] cheader = new string[Acon.GetLength(1)];
+
+            for (int i = 0; i < Acon.GetLength(1); i++)
+            {
+                if (Acon[Acon.GetLength(0) - 1, i] == 1 || Acon[Acon.GetLength(0) - 1, i] == 11)
+                {
+                    left = left + 1;
+                }
+            }
+
+            for (int i = 0; i < Acon.GetLength(1); i++)
+            {
+
+                if (Acon[Acon.GetLength(0) - 1, i] == 1 || Acon[Acon.GetLength(0) - 1, i] == 11)
+                {
+                    cheader[i] = "Left #" + (left  - i).ToString();
+                }
+                else
+                {
+                    right = right + 1;
+                    cheader[i] = "Right #" + right.ToString();
+                }
+
+                grid.Columns[i].HeaderText = cheader[i];
+            }
+
+            string[] rheader = new string[Acon.GetLength(0) - 1];
+            rheader[0] = "Length (mm)";
+            for (int i = 1; i < Acon.GetLength(0) - 1; i++)
+            {
+                rheader[i] = "Support #" + i.ToString();
+            }
+
+            for (int i = 0; i < Acon.GetLength(0) - 1; i++)
+            {
+                grid.Rows[i].HeaderCell.Value = rheader[i];
+                for (int j = 0; j < Acon.GetLength(1); j++)
+                    grid.Rows[i].Cells[j].Value = Acon[i, j];
+            }
+
         }
 
         public static DataTable GridtoDT(DataGridView grid)
