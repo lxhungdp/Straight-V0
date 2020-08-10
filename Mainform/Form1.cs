@@ -129,9 +129,11 @@ namespace Mainform
             Setgridview(gridStif);
             Setgridview(gridTranstif);
 
-            pictureBox1.Load(Const.Constring + @"\Picture\Section.PNG");
-            pictureBox2.Load(Const.Constring + @"\Picture\Section all1.PNG");
-            picHaunch.Load(Const.Constring + @"\Picture\haunch.PNG");
+            picSection.Load(Const.Constring + @"\Picture\Section.PNG");
+            picCross.Load(Const.Constring + @"\Picture\Cross.PNG");
+            picH1.Load(Const.Constring + @"\Picture\H1.PNG");
+            picH2.Load(Const.Constring + @"\Picture\H2.PNG");
+            picH3.Load(Const.Constring + @"\Picture\H3.PNG");
 
 
 
@@ -890,6 +892,13 @@ namespace Mainform
                         //Save to DTCbox again
                         DTCBox = DGV.GridtoDT(dgvCBox);
                         Node = Matrix.Addnode(Node, Haunch.Closedbox(Aspan, DTCBox), "ntop", 4, "Haunch");
+                        
+
+                        //Bottom concrete
+                        Acon_grid = DGV.GridtoArray(gridBCon);
+                        Acon = Matrix.Update_con(Acon, Acon_grid);
+                        Acon1 = Haunch.Bottomcon(Aspan, Acon);
+                        Node = Matrix.Addnode(Node, Acon1, "Hc", 4, "Haunch,ntop");
                         Access.writeList(Node, "Node", con, "All");
 
                         //Atop2 has 3 rows
@@ -933,15 +942,6 @@ namespace Mainform
                         Deco(gridTrib, Atrib_grid);
 
 
-                        //Bottom concrete
-                        Acon_grid = DGV.GridtoArray(gridBCon);
-                        Acon = Matrix.Update_con(Acon, Acon_grid);
-                        Acon1 = Haunch.Bottomcon(Aspan, Acon);
-                        
-                        
-                        DGV.ArraytoGrid(dataGridView1, Acon1);
-
-
                     }
                     break;
 
@@ -975,7 +975,7 @@ namespace Mainform
                         Access.writeList(Node, "Node", con, "All");
 
 
-                        DGV.ArraytoGrid(dataGridView3, Atop2_grid);
+                       
 
                     }
                     break;
