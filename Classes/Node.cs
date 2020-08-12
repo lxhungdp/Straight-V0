@@ -64,6 +64,8 @@ namespace Classes
         { get; set; }
         public double bh
         { get; set; }
+        public double w
+        { get; set; }
 
         //Rebar
         public double drt

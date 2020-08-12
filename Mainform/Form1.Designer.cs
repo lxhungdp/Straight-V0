@@ -36,20 +36,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btGeneral = new System.Windows.Forms.Button();
             this.btMaterial = new System.Windows.Forms.Button();
@@ -172,6 +170,8 @@
             this.label38 = new System.Windows.Forms.Label();
             this.gridSection = new System.Windows.Forms.DataGridView();
             this.pageHaunch = new MetroFramework.Controls.MetroTabPage();
+            this.picH3 = new System.Windows.Forms.PictureBox();
+            this.picH2 = new System.Windows.Forms.PictureBox();
             this.label90 = new System.Windows.Forms.Label();
             this.label89 = new System.Windows.Forms.Label();
             this.gridBCon = new System.Windows.Forms.DataGridView();
@@ -190,15 +190,19 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pageDim = new MetroFramework.Controls.MetroTabPage();
+            this.label91 = new System.Windows.Forms.Label();
+            this.picSection = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.label39 = new System.Windows.Forms.Label();
+            this.numD = new System.Windows.Forms.NumericUpDown();
+            this.label94 = new System.Windows.Forms.Label();
+            this.label93 = new System.Windows.Forms.Label();
+            this.numw = new System.Windows.Forms.NumericUpDown();
             this.radioDe = new System.Windows.Forms.RadioButton();
             this.radioRa = new System.Windows.Forms.RadioButton();
             this.numSd = new System.Windows.Forms.NumericUpDown();
             this.numSr = new System.Windows.Forms.NumericUpDown();
+            this.label92 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.numcbot = new System.Windows.Forms.NumericUpDown();
             this.label34 = new System.Windows.Forms.Label();
@@ -225,44 +229,33 @@
             this.label25 = new System.Windows.Forms.Label();
             this.numts = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
-            this.picSection = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.gridWeb = new System.Windows.Forms.DataGridView();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.gridBot = new System.Windows.Forms.DataGridView();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.panel17 = new System.Windows.Forms.Panel();
             this.gridTop = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.gridBot = new System.Windows.Forms.DataGridView();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.gridWeb = new System.Windows.Forms.DataGridView();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.pageStiffeners = new MetroFramework.Controls.MetroTabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.groupBox21 = new System.Windows.Forms.GroupBox();
-            this.gridTranstif = new System.Windows.Forms.DataGridView();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.groupBox20 = new System.Windows.Forms.GroupBox();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.gridStif = new System.Windows.Forms.DataGridView();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.groupBox19 = new System.Windows.Forms.GroupBox();
             this.label45 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.gridBrib = new System.Windows.Forms.DataGridView();
             this.label48 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.label44 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
@@ -305,15 +298,15 @@
             this.addTool = new System.Windows.Forms.ToolStripMenuItem();
             this.divideTool = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.picH2 = new System.Windows.Forms.PictureBox();
-            this.picH3 = new System.Windows.Forms.PictureBox();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label91 = new System.Windows.Forms.Label();
+            this.gridTranstif = new System.Windows.Forms.DataGridView();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.label39 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.panelBP.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
@@ -355,14 +348,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridCross)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSection)).BeginInit();
             this.pageHaunch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picH3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picH2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridBCon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picH1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHaunch)).BeginInit();
             this.pageDim.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSection)).BeginInit();
             this.panel5.SuspendLayout();
-            this.groupBox17.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numw)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSr)).BeginInit();
             this.groupBox11.SuspendLayout();
@@ -380,20 +377,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.numth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numbh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSection)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridWeb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridBot)).BeginInit();
+            this.panel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTop)).BeginInit();
+            this.panel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridBot)).BeginInit();
+            this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridWeb)).BeginInit();
             this.pageStiffeners.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.groupBox21.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridTranstif)).BeginInit();
-            this.groupBox20.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridStif)).BeginInit();
-            this.groupBox19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridBrib)).BeginInit();
-            this.groupBox18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTrib)).BeginInit();
             this.pageOther.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKframe)).BeginInit();
@@ -402,11 +394,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCross)).BeginInit();
             this.panel2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picH2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picH3)).BeginInit();
-            this.panel15.SuspendLayout();
-            this.panel16.SuspendLayout();
-            this.panel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridTranstif)).BeginInit();
+            this.panel18.SuspendLayout();
+            this.panel19.SuspendLayout();
+            this.panel20.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -641,7 +632,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(233, 24);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 5;
+            this.metroTabControl1.SelectedIndex = 6;
             this.metroTabControl1.Size = new System.Drawing.Size(1401, 708);
             this.metroTabControl1.TabIndex = 3;
             this.metroTabControl1.UseSelectable = true;
@@ -1912,6 +1903,24 @@
             this.pageHaunch.VerticalScrollbarHighlightOnWheel = false;
             this.pageHaunch.VerticalScrollbarSize = 3;
             // 
+            // picH3
+            // 
+            this.picH3.Location = new System.Drawing.Point(869, 455);
+            this.picH3.Name = "picH3";
+            this.picH3.Size = new System.Drawing.Size(435, 215);
+            this.picH3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picH3.TabIndex = 57;
+            this.picH3.TabStop = false;
+            // 
+            // picH2
+            // 
+            this.picH2.Location = new System.Drawing.Point(869, 234);
+            this.picH2.Name = "picH2";
+            this.picH2.Size = new System.Drawing.Size(435, 215);
+            this.picH2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picH2.TabIndex = 56;
+            this.picH2.TabStop = false;
+            // 
             // label90
             // 
             this.label90.AutoSize = true;
@@ -2098,88 +2107,145 @@
             this.pageDim.VerticalScrollbarHighlightOnWheel = false;
             this.pageDim.VerticalScrollbarSize = 3;
             // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label91.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label91.Location = new System.Drawing.Point(958, 15);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(91, 23);
+            this.label91.TabIndex = 48;
+            this.label91.Text = "Illustration";
+            // 
+            // picSection
+            // 
+            this.picSection.BackColor = System.Drawing.Color.White;
+            this.picSection.Location = new System.Drawing.Point(962, 40);
+            this.picSection.Name = "picSection";
+            this.picSection.Size = new System.Drawing.Size(401, 280);
+            this.picSection.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picSection.TabIndex = 22;
+            this.picSection.TabStop = false;
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.groupBox17);
             this.panel5.Controls.Add(this.groupBox12);
             this.panel5.Controls.Add(this.groupBox11);
             this.panel5.Controls.Add(this.groupBox10);
             this.panel5.Controls.Add(this.groupBox9);
             this.panel5.Controls.Add(this.groupBox8);
-            this.panel5.Location = new System.Drawing.Point(950, 320);
+            this.panel5.Location = new System.Drawing.Point(943, 323);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(440, 343);
+            this.panel5.Size = new System.Drawing.Size(454, 343);
             this.panel5.TabIndex = 24;
-            // 
-            // groupBox17
-            // 
-            this.groupBox17.Controls.Add(this.textBox2);
-            this.groupBox17.Location = new System.Drawing.Point(0, 236);
-            this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(435, 89);
-            this.groupBox17.TabIndex = 5;
-            this.groupBox17.TabStop = false;
-            this.groupBox17.Text = "Note";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(6, 24);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(420, 59);
-            this.textBox2.TabIndex = 0;
-            this.textBox2.Text = "Cover of top/bottom rebar is measured from center of rebar to top / bottom surfac" +
-    "e of deck slab";
             // 
             // groupBox12
             // 
-            this.groupBox12.Controls.Add(this.label39);
+            this.groupBox12.Controls.Add(this.numD);
+            this.groupBox12.Controls.Add(this.label94);
+            this.groupBox12.Controls.Add(this.label93);
+            this.groupBox12.Controls.Add(this.numw);
             this.groupBox12.Controls.Add(this.radioDe);
             this.groupBox12.Controls.Add(this.radioRa);
             this.groupBox12.Controls.Add(this.numSd);
             this.groupBox12.Controls.Add(this.numSr);
-            this.groupBox12.Location = new System.Drawing.Point(254, 135);
+            this.groupBox12.Controls.Add(this.label92);
+            this.groupBox12.Location = new System.Drawing.Point(3, 125);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(181, 89);
+            this.groupBox12.Size = new System.Drawing.Size(442, 116);
             this.groupBox12.TabIndex = 4;
             this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Slope of Web (S)";
+            this.groupBox12.Text = "Web";
             // 
-            // label39
+            // numD
             // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(129, 58);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(43, 17);
-            this.label39.TabIndex = 6;
-            this.label39.Text = "dgree";
+            this.numD.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numD.Location = new System.Drawing.Point(361, 58);
+            this.numD.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numD.Name = "numD";
+            this.numD.Size = new System.Drawing.Size(72, 25);
+            this.numD.TabIndex = 8;
+            this.numD.Value = new decimal(new int[] {
+            2400,
+            0,
+            0,
+            0});
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.Location = new System.Drawing.Point(147, 60);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(59, 17);
+            this.label94.TabIndex = 7;
+            this.label94.Text = "(Degree)";
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Location = new System.Drawing.Point(212, 60);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(110, 17);
+            this.label93.TabIndex = 7;
+            this.label93.Text = "Depth of Web (D)";
+            // 
+            // numw
+            // 
+            this.numw.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numw.Location = new System.Drawing.Point(362, 26);
+            this.numw.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numw.Name = "numw";
+            this.numw.Size = new System.Drawing.Size(71, 25);
+            this.numw.TabIndex = 6;
+            this.numw.Value = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
             // 
             // radioDe
             // 
             this.radioDe.AutoSize = true;
-            this.radioDe.Location = new System.Drawing.Point(22, 56);
+            this.radioDe.Location = new System.Drawing.Point(6, 58);
             this.radioDe.Name = "radioDe";
-            this.radioDe.Size = new System.Drawing.Size(35, 21);
+            this.radioDe.Size = new System.Drawing.Size(80, 21);
             this.radioDe.TabIndex = 5;
-            this.radioDe.Text = "Φ";
+            this.radioDe.Text = "Slope (Φ)";
             this.radioDe.UseVisualStyleBackColor = true;
             // 
             // radioRa
             // 
             this.radioRa.AutoSize = true;
             this.radioRa.Checked = true;
-            this.radioRa.Location = new System.Drawing.Point(22, 26);
+            this.radioRa.Location = new System.Drawing.Point(6, 26);
             this.radioRa.Name = "radioRa";
-            this.radioRa.Size = new System.Drawing.Size(33, 21);
+            this.radioRa.Size = new System.Drawing.Size(78, 21);
             this.radioRa.TabIndex = 4;
             this.radioRa.TabStop = true;
-            this.radioRa.Text = "S";
+            this.radioRa.Text = "Slope (S)";
             this.radioRa.UseVisualStyleBackColor = true;
             // 
             // numSd
             // 
-            this.numSd.Location = new System.Drawing.Point(61, 56);
+            this.numSd.Location = new System.Drawing.Point(93, 56);
             this.numSd.Maximum = new decimal(new int[] {
             40,
             0,
@@ -2196,7 +2262,7 @@
             0,
             0,
             131072});
-            this.numSr.Location = new System.Drawing.Point(61, 26);
+            this.numSr.Location = new System.Drawing.Point(93, 25);
             this.numSr.Maximum = new decimal(new int[] {
             5,
             0,
@@ -2206,13 +2272,22 @@
             this.numSr.Size = new System.Drawing.Size(52, 25);
             this.numSr.TabIndex = 1;
             // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Location = new System.Drawing.Point(212, 28);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(143, 17);
+            this.label92.TabIndex = 5;
+            this.label92.Text = "Distance of 2 webs  (w)";
+            // 
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.numcbot);
             this.groupBox11.Controls.Add(this.label34);
             this.groupBox11.Controls.Add(this.numctop);
             this.groupBox11.Controls.Add(this.label35);
-            this.groupBox11.Location = new System.Drawing.Point(3, 135);
+            this.groupBox11.Location = new System.Drawing.Point(4, 247);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(244, 89);
             this.groupBox11.TabIndex = 3;
@@ -2284,7 +2359,7 @@
             this.groupBox10.Controls.Add(this.label31);
             this.groupBox10.Controls.Add(this.numdrb);
             this.groupBox10.Controls.Add(this.label32);
-            this.groupBox10.Location = new System.Drawing.Point(297, 3);
+            this.groupBox10.Location = new System.Drawing.Point(307, 3);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(138, 119);
             this.groupBox10.TabIndex = 2;
@@ -2382,7 +2457,7 @@
             this.groupBox9.Controls.Add(this.label28);
             this.groupBox9.Controls.Add(this.numdrt);
             this.groupBox9.Controls.Add(this.label29);
-            this.groupBox9.Location = new System.Drawing.Point(170, 3);
+            this.groupBox9.Location = new System.Drawing.Point(171, 3);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(121, 119);
             this.groupBox9.TabIndex = 1;
@@ -2571,16 +2646,6 @@
             this.label22.TabIndex = 0;
             this.label22.Text = "Thickness (ts)";
             // 
-            // picSection
-            // 
-            this.picSection.BackColor = System.Drawing.Color.White;
-            this.picSection.Location = new System.Drawing.Point(975, 40);
-            this.picSection.Name = "picSection";
-            this.picSection.Size = new System.Drawing.Size(401, 280);
-            this.picSection.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picSection.TabIndex = 22;
-            this.picSection.TabStop = false;
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
@@ -2593,176 +2658,53 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(944, 666);
+            this.panel4.Size = new System.Drawing.Size(937, 666);
             this.panel4.TabIndex = 21;
             // 
-            // label17
+            // label24
             // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(2, 70);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(64, 17);
-            this.label17.TabIndex = 18;
-            this.label17.Text = "Depth (D)";
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label24.Location = new System.Drawing.Point(-1, 419);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(44, 23);
+            this.label24.TabIndex = 49;
+            this.label24.Text = "Web";
             // 
-            // label18
+            // label23
             // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(2, 95);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(88, 17);
-            this.label18.TabIndex = 19;
-            this.label18.Text = "Thickness (tw)";
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label23.Location = new System.Drawing.Point(5, 212);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(122, 23);
+            this.label23.TabIndex = 48;
+            this.label23.Text = "Bottom Flange";
             // 
-            // gridWeb
+            // label21
             // 
-            this.gridWeb.AllowUserToAddRows = false;
-            this.gridWeb.AllowUserToResizeRows = false;
-            this.gridWeb.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridWeb.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridWeb.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.gridWeb.ColumnHeadersHeight = 30;
-            this.gridWeb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridWeb.DefaultCellStyle = dataGridViewCellStyle12;
-            this.gridWeb.Location = new System.Drawing.Point(107, 11);
-            this.gridWeb.Margin = new System.Windows.Forms.Padding(0);
-            this.gridWeb.Name = "gridWeb";
-            this.gridWeb.RowHeadersVisible = false;
-            this.gridWeb.RowHeadersWidth = 100;
-            this.gridWeb.Size = new System.Drawing.Size(809, 101);
-            this.gridWeb.TabIndex = 15;
-            this.gridWeb.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseUp);
-            this.gridWeb.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellValueChanged);
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label21.Location = new System.Drawing.Point(5, 15);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(92, 23);
+            this.label21.TabIndex = 47;
+            this.label21.Text = "Top Flange";
             // 
-            // label19
+            // panel17
             // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(2, 20);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(75, 17);
-            this.label19.TabIndex = 16;
-            this.label19.Text = "Section No.";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(2, 45);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(47, 17);
-            this.label20.TabIndex = 17;
-            this.label20.Text = "Length";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(8, 72);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(82, 17);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Width (bbot)";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(8, 97);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(99, 17);
-            this.label14.TabIndex = 19;
-            this.label14.Text = "Thickness (tbot)";
-            // 
-            // gridBot
-            // 
-            this.gridBot.AllowUserToAddRows = false;
-            this.gridBot.AllowUserToResizeRows = false;
-            this.gridBot.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridBot.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridBot.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.gridBot.ColumnHeadersHeight = 30;
-            this.gridBot.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridBot.DefaultCellStyle = dataGridViewCellStyle10;
-            this.gridBot.Location = new System.Drawing.Point(113, 12);
-            this.gridBot.Margin = new System.Windows.Forms.Padding(0);
-            this.gridBot.Name = "gridBot";
-            this.gridBot.RowHeadersVisible = false;
-            this.gridBot.RowHeadersWidth = 100;
-            this.gridBot.Size = new System.Drawing.Size(809, 101);
-            this.gridBot.TabIndex = 15;
-            this.gridBot.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseUp);
-            this.gridBot.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellValueChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(8, 22);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(75, 17);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "Section No.";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(8, 47);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(47, 17);
-            this.label16.TabIndex = 17;
-            this.label16.Text = "Length";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(3, 67);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 17);
-            this.label12.TabIndex = 18;
-            this.label12.Text = "Width (btop)";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(3, 92);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(99, 17);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "Thickness (ttop)";
+            this.panel17.Controls.Add(this.gridTop);
+            this.panel17.Controls.Add(this.label12);
+            this.panel17.Controls.Add(this.label11);
+            this.panel17.Controls.Add(this.label2);
+            this.panel17.Controls.Add(this.label13);
+            this.panel17.Location = new System.Drawing.Point(3, 41);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(931, 132);
+            this.panel17.TabIndex = 24;
             // 
             // gridTop
             // 
@@ -2793,20 +2735,20 @@
             this.gridTop.Name = "gridTop";
             this.gridTop.RowHeadersVisible = false;
             this.gridTop.RowHeadersWidth = 100;
-            this.gridTop.Size = new System.Drawing.Size(809, 101);
+            this.gridTop.Size = new System.Drawing.Size(813, 101);
             this.gridTop.TabIndex = 15;
             this.gridTop.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseUp);
             this.gridTop.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellValueChanged);
             // 
-            // label2
+            // label12
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(3, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 17);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Section No.";
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(3, 67);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(82, 17);
+            this.label12.TabIndex = 18;
+            this.label12.Text = "Width (btop)";
             // 
             // label11
             // 
@@ -2818,13 +2760,185 @@
             this.label11.TabIndex = 17;
             this.label11.Text = "Length";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(3, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 17);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Section No.";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(3, 92);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(99, 17);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "Thickness (ttop)";
+            // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.gridBot);
+            this.panel16.Controls.Add(this.label16);
+            this.panel16.Controls.Add(this.label15);
+            this.panel16.Controls.Add(this.label14);
+            this.panel16.Location = new System.Drawing.Point(4, 238);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(930, 132);
+            this.panel16.TabIndex = 23;
+            // 
+            // gridBot
+            // 
+            this.gridBot.AllowUserToAddRows = false;
+            this.gridBot.AllowUserToResizeRows = false;
+            this.gridBot.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridBot.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridBot.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.gridBot.ColumnHeadersHeight = 30;
+            this.gridBot.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridBot.DefaultCellStyle = dataGridViewCellStyle10;
+            this.gridBot.Location = new System.Drawing.Point(113, 12);
+            this.gridBot.Margin = new System.Windows.Forms.Padding(0);
+            this.gridBot.Name = "gridBot";
+            this.gridBot.RowHeadersVisible = false;
+            this.gridBot.RowHeadersWidth = 100;
+            this.gridBot.Size = new System.Drawing.Size(807, 101);
+            this.gridBot.TabIndex = 15;
+            this.gridBot.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseUp);
+            this.gridBot.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellValueChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(8, 47);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(47, 17);
+            this.label16.TabIndex = 17;
+            this.label16.Text = "Length";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(8, 22);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(75, 17);
+            this.label15.TabIndex = 16;
+            this.label15.Text = "Section No.";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(8, 77);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(99, 17);
+            this.label14.TabIndex = 19;
+            this.label14.Text = "Thickness (tbot)";
+            // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.gridWeb);
+            this.panel15.Controls.Add(this.label20);
+            this.panel15.Controls.Add(this.label18);
+            this.panel15.Controls.Add(this.label19);
+            this.panel15.Location = new System.Drawing.Point(4, 449);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(930, 134);
+            this.panel15.TabIndex = 22;
+            // 
+            // gridWeb
+            // 
+            this.gridWeb.AllowUserToAddRows = false;
+            this.gridWeb.AllowUserToResizeRows = false;
+            this.gridWeb.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridWeb.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridWeb.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.gridWeb.ColumnHeadersHeight = 30;
+            this.gridWeb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridWeb.DefaultCellStyle = dataGridViewCellStyle12;
+            this.gridWeb.Location = new System.Drawing.Point(107, 11);
+            this.gridWeb.Margin = new System.Windows.Forms.Padding(0);
+            this.gridWeb.Name = "gridWeb";
+            this.gridWeb.RowHeadersVisible = false;
+            this.gridWeb.RowHeadersWidth = 100;
+            this.gridWeb.Size = new System.Drawing.Size(823, 101);
+            this.gridWeb.TabIndex = 15;
+            this.gridWeb.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseUp);
+            this.gridWeb.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellValueChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(2, 45);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(47, 17);
+            this.label20.TabIndex = 17;
+            this.label20.Text = "Length";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(2, 74);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(88, 17);
+            this.label18.TabIndex = 19;
+            this.label18.Text = "Thickness (tw)";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(2, 20);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(75, 17);
+            this.label19.TabIndex = 16;
+            this.label19.Text = "Section No.";
+            // 
             // pageStiffeners
             // 
-            this.pageStiffeners.Controls.Add(this.dataGridView2);
-            this.pageStiffeners.Controls.Add(this.groupBox21);
-            this.pageStiffeners.Controls.Add(this.groupBox20);
-            this.pageStiffeners.Controls.Add(this.groupBox19);
-            this.pageStiffeners.Controls.Add(this.groupBox18);
+            this.pageStiffeners.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pageStiffeners.Controls.Add(this.label39);
+            this.pageStiffeners.Controls.Add(this.panel20);
+            this.pageStiffeners.Controls.Add(this.label17);
+            this.pageStiffeners.Controls.Add(this.panel19);
+            this.pageStiffeners.Controls.Add(this.panel18);
+            this.pageStiffeners.Controls.Add(this.label10);
             this.pageStiffeners.HorizontalScrollbarBarColor = true;
             this.pageStiffeners.HorizontalScrollbarHighlightOnWheel = false;
             this.pageStiffeners.HorizontalScrollbarSize = 1;
@@ -2837,202 +2951,11 @@
             this.pageStiffeners.VerticalScrollbarHighlightOnWheel = false;
             this.pageStiffeners.VerticalScrollbarSize = 3;
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(1002, 458);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(342, 181);
-            this.dataGridView2.TabIndex = 25;
-            // 
-            // groupBox21
-            // 
-            this.groupBox21.BackColor = System.Drawing.Color.White;
-            this.groupBox21.Controls.Add(this.gridTranstif);
-            this.groupBox21.Controls.Add(this.label58);
-            this.groupBox21.Controls.Add(this.label59);
-            this.groupBox21.Location = new System.Drawing.Point(3, 550);
-            this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(931, 120);
-            this.groupBox21.TabIndex = 24;
-            this.groupBox21.TabStop = false;
-            this.groupBox21.Text = "Transverse Stiffener Location";
-            // 
-            // gridTranstif
-            // 
-            this.gridTranstif.AllowUserToAddRows = false;
-            this.gridTranstif.AllowUserToResizeRows = false;
-            this.gridTranstif.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridTranstif.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridTranstif.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.gridTranstif.ColumnHeadersHeight = 30;
-            this.gridTranstif.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridTranstif.DefaultCellStyle = dataGridViewCellStyle14;
-            this.gridTranstif.Location = new System.Drawing.Point(110, 28);
-            this.gridTranstif.Margin = new System.Windows.Forms.Padding(0);
-            this.gridTranstif.Name = "gridTranstif";
-            this.gridTranstif.RowHeadersVisible = false;
-            this.gridTranstif.RowHeadersWidth = 100;
-            this.gridTranstif.Size = new System.Drawing.Size(809, 51);
-            this.gridTranstif.TabIndex = 15;
-            this.gridTranstif.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseUp);
-            this.gridTranstif.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellValueChanged);
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.BackColor = System.Drawing.Color.White;
-            this.label58.Location = new System.Drawing.Point(5, 34);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(75, 17);
-            this.label58.TabIndex = 16;
-            this.label58.Text = "Section No.";
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.BackColor = System.Drawing.Color.White;
-            this.label59.Location = new System.Drawing.Point(5, 59);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(47, 17);
-            this.label59.TabIndex = 17;
-            this.label59.Text = "Length";
-            // 
-            // groupBox20
-            // 
-            this.groupBox20.BackColor = System.Drawing.Color.White;
-            this.groupBox20.Controls.Add(this.label50);
-            this.groupBox20.Controls.Add(this.label51);
-            this.groupBox20.Controls.Add(this.label52);
-            this.groupBox20.Controls.Add(this.gridStif);
-            this.groupBox20.Controls.Add(this.label53);
-            this.groupBox20.Controls.Add(this.label54);
-            this.groupBox20.Location = new System.Drawing.Point(2, 362);
-            this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(931, 182);
-            this.groupBox20.TabIndex = 23;
-            this.groupBox20.TabStop = false;
-            this.groupBox20.Text = "Longitudinal Stiffener";
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.BackColor = System.Drawing.Color.White;
-            this.label50.Location = new System.Drawing.Point(6, 131);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(90, 17);
-            this.label50.TabIndex = 20;
-            this.label50.Text = "Distance (ds2)";
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.BackColor = System.Drawing.Color.White;
-            this.label51.Location = new System.Drawing.Point(5, 84);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(78, 17);
-            this.label51.TabIndex = 18;
-            this.label51.Text = "Amount (ns)";
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.BackColor = System.Drawing.Color.White;
-            this.label52.Location = new System.Drawing.Point(5, 109);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(90, 17);
-            this.label52.TabIndex = 19;
-            this.label52.Text = "Distance (ds1)";
-            // 
-            // gridStif
-            // 
-            this.gridStif.AllowUserToAddRows = false;
-            this.gridStif.AllowUserToResizeRows = false;
-            this.gridStif.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridStif.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridStif.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            this.gridStif.ColumnHeadersHeight = 30;
-            this.gridStif.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridStif.DefaultCellStyle = dataGridViewCellStyle16;
-            this.gridStif.Location = new System.Drawing.Point(110, 28);
-            this.gridStif.Margin = new System.Windows.Forms.Padding(0);
-            this.gridStif.Name = "gridStif";
-            this.gridStif.RowHeadersVisible = false;
-            this.gridStif.RowHeadersWidth = 100;
-            this.gridStif.Size = new System.Drawing.Size(809, 120);
-            this.gridStif.TabIndex = 15;
-            this.gridStif.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseUp);
-            this.gridStif.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellValueChanged);
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.BackColor = System.Drawing.Color.White;
-            this.label53.Location = new System.Drawing.Point(5, 34);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(75, 17);
-            this.label53.TabIndex = 16;
-            this.label53.Text = "Section No.";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.BackColor = System.Drawing.Color.White;
-            this.label54.Location = new System.Drawing.Point(5, 59);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(47, 17);
-            this.label54.TabIndex = 17;
-            this.label54.Text = "Length";
-            // 
-            // groupBox19
-            // 
-            this.groupBox19.BackColor = System.Drawing.Color.White;
-            this.groupBox19.Controls.Add(this.label45);
-            this.groupBox19.Controls.Add(this.label46);
-            this.groupBox19.Controls.Add(this.label47);
-            this.groupBox19.Controls.Add(this.gridBrib);
-            this.groupBox19.Controls.Add(this.label48);
-            this.groupBox19.Controls.Add(this.label49);
-            this.groupBox19.Location = new System.Drawing.Point(3, 182);
-            this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(931, 178);
-            this.groupBox19.TabIndex = 22;
-            this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "Bottom Longitudinal Rib";
-            // 
             // label45
             // 
             this.label45.AutoSize = true;
             this.label45.BackColor = System.Drawing.Color.White;
-            this.label45.Location = new System.Drawing.Point(6, 131);
+            this.label45.Location = new System.Drawing.Point(17, 103);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(93, 17);
             this.label45.TabIndex = 20;
@@ -3042,7 +2965,7 @@
             // 
             this.label46.AutoSize = true;
             this.label46.BackColor = System.Drawing.Color.White;
-            this.label46.Location = new System.Drawing.Point(5, 83);
+            this.label46.Location = new System.Drawing.Point(16, 55);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(86, 17);
             this.label46.TabIndex = 18;
@@ -3052,7 +2975,7 @@
             // 
             this.label47.AutoSize = true;
             this.label47.BackColor = System.Drawing.Color.White;
-            this.label47.Location = new System.Drawing.Point(5, 107);
+            this.label47.Location = new System.Drawing.Point(16, 79);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(78, 17);
             this.label47.TabIndex = 19;
@@ -3064,25 +2987,25 @@
             this.gridBrib.AllowUserToResizeRows = false;
             this.gridBrib.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridBrib.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridBrib.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridBrib.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.gridBrib.ColumnHeadersHeight = 30;
             this.gridBrib.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridBrib.DefaultCellStyle = dataGridViewCellStyle18;
-            this.gridBrib.Location = new System.Drawing.Point(110, 28);
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridBrib.DefaultCellStyle = dataGridViewCellStyle16;
+            this.gridBrib.Location = new System.Drawing.Point(121, 0);
             this.gridBrib.Margin = new System.Windows.Forms.Padding(0);
             this.gridBrib.Name = "gridBrib";
             this.gridBrib.RowHeadersVisible = false;
@@ -3096,7 +3019,7 @@
             // 
             this.label48.AutoSize = true;
             this.label48.BackColor = System.Drawing.Color.White;
-            this.label48.Location = new System.Drawing.Point(5, 34);
+            this.label48.Location = new System.Drawing.Point(16, 6);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(75, 17);
             this.label48.TabIndex = 16;
@@ -3106,33 +3029,17 @@
             // 
             this.label49.AutoSize = true;
             this.label49.BackColor = System.Drawing.Color.White;
-            this.label49.Location = new System.Drawing.Point(5, 59);
+            this.label49.Location = new System.Drawing.Point(16, 31);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(47, 17);
             this.label49.TabIndex = 17;
             this.label49.Text = "Length";
             // 
-            // groupBox18
-            // 
-            this.groupBox18.BackColor = System.Drawing.Color.White;
-            this.groupBox18.Controls.Add(this.label44);
-            this.groupBox18.Controls.Add(this.label40);
-            this.groupBox18.Controls.Add(this.label41);
-            this.groupBox18.Controls.Add(this.gridTrib);
-            this.groupBox18.Controls.Add(this.label42);
-            this.groupBox18.Controls.Add(this.label43);
-            this.groupBox18.Location = new System.Drawing.Point(3, 2);
-            this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(931, 178);
-            this.groupBox18.TabIndex = 21;
-            this.groupBox18.TabStop = false;
-            this.groupBox18.Text = "Top Longitudinal Rib";
-            // 
             // label44
             // 
             this.label44.AutoSize = true;
             this.label44.BackColor = System.Drawing.Color.White;
-            this.label44.Location = new System.Drawing.Point(6, 131);
+            this.label44.Location = new System.Drawing.Point(20, 103);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(89, 17);
             this.label44.TabIndex = 20;
@@ -3142,7 +3049,7 @@
             // 
             this.label40.AutoSize = true;
             this.label40.BackColor = System.Drawing.Color.White;
-            this.label40.Location = new System.Drawing.Point(5, 83);
+            this.label40.Location = new System.Drawing.Point(19, 55);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(82, 17);
             this.label40.TabIndex = 18;
@@ -3152,7 +3059,7 @@
             // 
             this.label41.AutoSize = true;
             this.label41.BackColor = System.Drawing.Color.White;
-            this.label41.Location = new System.Drawing.Point(5, 107);
+            this.label41.Location = new System.Drawing.Point(19, 79);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(74, 17);
             this.label41.TabIndex = 19;
@@ -3164,25 +3071,25 @@
             this.gridTrib.AllowUserToResizeRows = false;
             this.gridTrib.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridTrib.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridTrib.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridTrib.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.gridTrib.ColumnHeadersHeight = 30;
             this.gridTrib.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridTrib.DefaultCellStyle = dataGridViewCellStyle20;
-            this.gridTrib.Location = new System.Drawing.Point(110, 28);
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridTrib.DefaultCellStyle = dataGridViewCellStyle14;
+            this.gridTrib.Location = new System.Drawing.Point(124, 0);
             this.gridTrib.Margin = new System.Windows.Forms.Padding(0);
             this.gridTrib.Name = "gridTrib";
             this.gridTrib.RowHeadersVisible = false;
@@ -3196,7 +3103,7 @@
             // 
             this.label42.AutoSize = true;
             this.label42.BackColor = System.Drawing.Color.White;
-            this.label42.Location = new System.Drawing.Point(5, 34);
+            this.label42.Location = new System.Drawing.Point(19, 6);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(75, 17);
             this.label42.TabIndex = 16;
@@ -3206,7 +3113,7 @@
             // 
             this.label43.AutoSize = true;
             this.label43.BackColor = System.Drawing.Color.White;
-            this.label43.Location = new System.Drawing.Point(5, 59);
+            this.label43.Location = new System.Drawing.Point(19, 31);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(47, 17);
             this.label43.TabIndex = 17;
@@ -3570,103 +3477,128 @@
             this.deleteTool.Text = "Delete";
             this.deleteTool.Click += new System.EventHandler(this.deleteTool_Click);
             // 
-            // picH2
+            // gridTranstif
             // 
-            this.picH2.Location = new System.Drawing.Point(869, 234);
-            this.picH2.Name = "picH2";
-            this.picH2.Size = new System.Drawing.Size(435, 215);
-            this.picH2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picH2.TabIndex = 56;
-            this.picH2.TabStop = false;
+            this.gridTranstif.AllowUserToAddRows = false;
+            this.gridTranstif.AllowUserToResizeRows = false;
+            this.gridTranstif.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridTranstif.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridTranstif.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.gridTranstif.ColumnHeadersHeight = 30;
+            this.gridTranstif.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridTranstif.DefaultCellStyle = dataGridViewCellStyle18;
+            this.gridTranstif.Location = new System.Drawing.Point(106, 10);
+            this.gridTranstif.Margin = new System.Windows.Forms.Padding(0);
+            this.gridTranstif.Name = "gridTranstif";
+            this.gridTranstif.RowHeadersVisible = false;
+            this.gridTranstif.RowHeadersWidth = 100;
+            this.gridTranstif.Size = new System.Drawing.Size(809, 51);
+            this.gridTranstif.TabIndex = 15;
+            this.gridTranstif.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseUp);
+            this.gridTranstif.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellValueChanged);
             // 
-            // picH3
+            // label58
             // 
-            this.picH3.Location = new System.Drawing.Point(869, 455);
-            this.picH3.Name = "picH3";
-            this.picH3.Size = new System.Drawing.Size(435, 215);
-            this.picH3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picH3.TabIndex = 57;
-            this.picH3.TabStop = false;
+            this.label58.AutoSize = true;
+            this.label58.BackColor = System.Drawing.Color.White;
+            this.label58.Location = new System.Drawing.Point(1, 16);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(75, 17);
+            this.label58.TabIndex = 16;
+            this.label58.Text = "Section No.";
             // 
-            // panel15
+            // label59
             // 
-            this.panel15.Controls.Add(this.gridWeb);
-            this.panel15.Controls.Add(this.label17);
-            this.panel15.Controls.Add(this.label20);
-            this.panel15.Controls.Add(this.label18);
-            this.panel15.Controls.Add(this.label19);
-            this.panel15.Location = new System.Drawing.Point(4, 449);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(934, 134);
-            this.panel15.TabIndex = 22;
+            this.label59.AutoSize = true;
+            this.label59.BackColor = System.Drawing.Color.White;
+            this.label59.Location = new System.Drawing.Point(1, 41);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(47, 17);
+            this.label59.TabIndex = 17;
+            this.label59.Text = "Length";
             // 
-            // panel16
+            // label10
             // 
-            this.panel16.Controls.Add(this.gridBot);
-            this.panel16.Controls.Add(this.label10);
-            this.panel16.Controls.Add(this.label16);
-            this.panel16.Controls.Add(this.label15);
-            this.panel16.Controls.Add(this.label14);
-            this.panel16.Location = new System.Drawing.Point(4, 238);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(933, 132);
-            this.panel16.TabIndex = 23;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label10.Location = new System.Drawing.Point(24, 20);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(226, 23);
+            this.label10.TabIndex = 48;
+            this.label10.Text = "Transverse Stiffener Location";
             // 
-            // panel17
+            // panel18
             // 
-            this.panel17.Controls.Add(this.gridTop);
-            this.panel17.Controls.Add(this.label12);
-            this.panel17.Controls.Add(this.label11);
-            this.panel17.Controls.Add(this.label2);
-            this.panel17.Controls.Add(this.label13);
-            this.panel17.Location = new System.Drawing.Point(3, 41);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(931, 132);
-            this.panel17.TabIndex = 24;
+            this.panel18.Controls.Add(this.gridTranstif);
+            this.panel18.Controls.Add(this.label58);
+            this.panel18.Controls.Add(this.label59);
+            this.panel18.Location = new System.Drawing.Point(12, 46);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(944, 105);
+            this.panel18.TabIndex = 49;
             // 
-            // label21
+            // panel19
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label21.Location = new System.Drawing.Point(5, 15);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(92, 23);
-            this.label21.TabIndex = 47;
-            this.label21.Text = "Top Flange";
+            this.panel19.Controls.Add(this.label45);
+            this.panel19.Controls.Add(this.gridBrib);
+            this.panel19.Controls.Add(this.label46);
+            this.panel19.Controls.Add(this.label49);
+            this.panel19.Controls.Add(this.label47);
+            this.panel19.Controls.Add(this.label48);
+            this.panel19.Location = new System.Drawing.Point(14, 449);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(942, 139);
+            this.panel19.TabIndex = 50;
             // 
-            // label23
+            // label17
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label23.Location = new System.Drawing.Point(5, 212);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(122, 23);
-            this.label23.TabIndex = 48;
-            this.label23.Text = "Bottom Flange";
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label17.Location = new System.Drawing.Point(10, 414);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(196, 23);
+            this.label17.TabIndex = 51;
+            this.label17.Text = "Bottom Longitudinal Rib";
             // 
-            // label24
+            // panel20
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label24.Location = new System.Drawing.Point(-1, 419);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(44, 23);
-            this.label24.TabIndex = 49;
-            this.label24.Text = "Web";
+            this.panel20.Controls.Add(this.label44);
+            this.panel20.Controls.Add(this.gridTrib);
+            this.panel20.Controls.Add(this.label40);
+            this.panel20.Controls.Add(this.label43);
+            this.panel20.Controls.Add(this.label41);
+            this.panel20.Controls.Add(this.label42);
+            this.panel20.Location = new System.Drawing.Point(12, 215);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(944, 148);
+            this.panel20.TabIndex = 52;
             // 
-            // label91
+            // label39
             // 
-            this.label91.AutoSize = true;
-            this.label91.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label91.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label91.Location = new System.Drawing.Point(958, 15);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(91, 23);
-            this.label91.TabIndex = 48;
-            this.label91.Text = "Illustration";
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label39.Location = new System.Drawing.Point(8, 180);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(166, 23);
+            this.label39.TabIndex = 53;
+            this.label39.Text = "Top Longitudinal Rib";
             // 
             // Form1
             // 
@@ -3735,17 +3667,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridSection)).EndInit();
             this.pageHaunch.ResumeLayout(false);
             this.pageHaunch.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picH3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picH2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridBCon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picH1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHaunch)).EndInit();
             this.pageDim.ResumeLayout(false);
             this.pageDim.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSection)).EndInit();
             this.panel5.ResumeLayout(false);
-            this.groupBox17.ResumeLayout(false);
-            this.groupBox17.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numw)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSr)).EndInit();
             this.groupBox11.ResumeLayout(false);
@@ -3767,25 +3702,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.numth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numbh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSection)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridWeb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridBot)).EndInit();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTop)).EndInit();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridBot)).EndInit();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridWeb)).EndInit();
             this.pageStiffeners.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.groupBox21.ResumeLayout(false);
-            this.groupBox21.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridTranstif)).EndInit();
-            this.groupBox20.ResumeLayout(false);
-            this.groupBox20.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridStif)).EndInit();
-            this.groupBox19.ResumeLayout(false);
-            this.groupBox19.PerformLayout();
+            this.pageStiffeners.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridBrib)).EndInit();
-            this.groupBox18.ResumeLayout(false);
-            this.groupBox18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTrib)).EndInit();
             this.pageOther.ResumeLayout(false);
             this.pageOther.PerformLayout();
@@ -3795,14 +3725,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCross)).EndInit();
             this.panel2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picH2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picH3)).EndInit();
-            this.panel15.ResumeLayout(false);
-            this.panel15.PerformLayout();
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
-            this.panel17.ResumeLayout(false);
-            this.panel17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridTranstif)).EndInit();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3857,12 +3786,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DataGridView gridWeb;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView gridBot;
         private System.Windows.Forms.Label label15;
@@ -3909,35 +3836,19 @@
         private LiveCharts.WinForms.CartesianChart gridchart;
         private System.Windows.Forms.PictureBox picCross;
         private System.Windows.Forms.ToolStripMenuItem divideTool;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.GroupBox groupBox17;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btAnalysis;
-        private System.Windows.Forms.GroupBox groupBox20;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.DataGridView gridStif;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.GroupBox groupBox19;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.DataGridView gridBrib;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.DataGridView gridTrib;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.GroupBox groupBox21;
-        private System.Windows.Forms.DataGridView gridTranstif;
-        private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Label label50;
         private System.Windows.Forms.GroupBox groupBox24;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -4063,7 +3974,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.Label label90;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.PictureBox picH3;
         private System.Windows.Forms.PictureBox picH2;
         private System.Windows.Forms.Label label91;
@@ -4073,6 +3983,20 @@
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.NumericUpDown numD;
+        private System.Windows.Forms.Label label94;
+        private System.Windows.Forms.Label label93;
+        private System.Windows.Forms.NumericUpDown numw;
+        private System.Windows.Forms.Label label92;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.DataGridView gridTranstif;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label10;
     }
 }
 

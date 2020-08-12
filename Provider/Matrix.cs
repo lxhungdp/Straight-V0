@@ -657,7 +657,7 @@ namespace Provider
             var n = Node.Count / nlong;
             string[] exprostr = expro.Split(',');
             int index;
-
+            Node = Node.OrderBy(p => p.Y).ThenBy(p => p.X).ToList();
             //Insert the point if X is the new X
             for (int i = 0; i < b.GetLength(1); i++)
             {
