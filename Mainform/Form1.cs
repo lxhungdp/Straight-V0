@@ -134,6 +134,7 @@ namespace Mainform
             picH1.Load(Const.Constring + @"\Picture\H1.PNG");
             picH2.Load(Const.Constring + @"\Picture\H2.PNG");
             picH3.Load(Const.Constring + @"\Picture\H3.PNG");
+            picds.Load(Const.Constring + @"\Picture\ds.PNG");
 
 
 
@@ -185,12 +186,7 @@ namespace Mainform
 
         private void IniOther()
         {
-            DataTable DTcross = new DataTable();
-            DTcross = Access.getDataTable("Select * from Crossbeam", con);
-            //dgvCross.DataSource = DTcross;            
-
-            string Crossheader = "Exterior-Support Crossbeam,Interior-Support Crossbeam,General Crossbeam,Stringer";
-            DGV.DTtoGrid(dgvCross, DTcross, Crossheader);
+            
 
             picBar.Load(Const.Constring + @"\Picture\Bar.PNG");
             DataTable DTbar = new DataTable();
@@ -605,8 +601,7 @@ namespace Mainform
         
         
 
-        double[,] Aribtop = new double[4, 1];
-        double[,] Aribbot = new double[4, 1];
+       
         double[,] Astif = new double[4, 1];
         double[,] Atranstif;
         double[,] Atranstif_grid;
@@ -632,7 +627,8 @@ namespace Mainform
         List<Node> Node;
         List<Node> Node1;
         List<DataGridViewComboBoxCell> CSection;
-
+        
+        string prop; //prop name to be added
         double[,] Atop; //Atop consider the closed box, has 3 row: 1st length (including closed box section) 2nd: with, 3 rd: thickness        
         double[,] Atop_grid; //Has 5 row: 1st: ID = 1, add ID = 4; 2nd: order to mark color and lock closed box section, 3-5: same Atop2
         double[] Atop1; //Length same 1st row of Atop2, this is help to maintain the sum of length when modify
@@ -645,9 +641,10 @@ namespace Mainform
         double[,] Acon1;
 
         double[,] Abot; //Length and thickness of bottom flange
-        double[,] Aweb; //Length and thickness of web
+        double[,] Aweb; //Length and thickness of web        
 
-        double[,] Asec; //1st row: sum of span, others are cbot, tbot, S, ....
+        double[,] Aribtop; //Has 4 rows: length, nst, Hst, tst
+        double[,] Aribbot;
 
 
         private void btApply_Click(object sender, EventArgs e)
@@ -695,8 +692,6 @@ namespace Mainform
 
                         Aweb = new double[2, 1] { { sumspan }, { 12 }};                        
                         DGV.ArraytoGrid(gridWeb, Aweb);
-
-
 
                         Aribtop = new double[4, 1];
                         Aribtop[0, 0] = sumspan;
@@ -872,7 +867,41 @@ namespace Mainform
                         for (int i = 0; i < Asection.GetLength(1); i++)
                             Asection[1, i] = Asectiong[1, i];
 
+                        //Add to gridCrossbeam
+                        string Crossheader = "Exterior-Support Crossbeam";
+                        List<double> type = Node.Select(p => p.Type).ToList();
+                        int ncross = 1;
 
+                        if (type.IndexOf(2) != -1)
+                        {
+                            Crossheader = Crossheader + ",Interior - Support Crossbeam";
+                            ncross = ncross + 1;
+                        }
+                            
+                        if (type.IndexOf(3) != -1)
+                        {
+                            Crossheader = Crossheader + ",General Crossbeam";
+                            ncross = ncross + 1;
+                        }
+                            
+                        
+                        if (Node.Max(p => p.BeamID) > 10)
+                        {
+                            Crossheader = Crossheader + ",Stringer";
+                            ncross = ncross + 1;
+                        }
+
+                        //Generate the initial value of dimension
+                         List<Crossbeam> Crossbeam = new List<Crossbeam>();
+                        for (int i = 0; i < ncross; i++)
+                            Crossbeam.Add(new Crossbeam(10, 300, 10, 300, 1200, 12, 1));
+                        Access.writeList(Crossbeam, "Crossbeam", con, "All");
+
+                        DataTable DTcross = new DataTable();
+                        DTcross = Access.getDataTable("Select * from Crossbeam", con);
+                        //dgvCross.DataSource = DTcross;
+                       
+                        DGV.DTtoGrid(gridCrossbeam, DTcross, Crossheader);
 
 
                     }
@@ -890,6 +919,7 @@ namespace Mainform
                         Node = Matrix.Addnode(Node, Haunch.Harray, "Haunch", 4, "btop");
 
                         //Save to DTCbox again
+                        
                         DTCBox = DGV.GridtoDT(dgvCBox);
                         Node = Matrix.Addnode(Node, Haunch.Closedbox(Aspan, DTCBox), "ntop", 4, "Haunch");
                         
@@ -959,23 +989,23 @@ namespace Mainform
                         Aweb = DGV.GridtoArray(gridWeb);
                         Node = Matrix.Addnode(Node, Aweb, "tw", 5, "Haunch,ntop,Hc,btop,ttop,tbot");
 
-                        Asec = new double[15, 1];
-                        Asec[0, 0] = sumspan;
-                        Asec[1, 0] = (double)numts.Value;
-                        Asec[2, 0] = (double)numbh.Value;
-                        Asec[3, 0] = (double)numth.Value;
-                        Asec[4, 0] = (double)numdrt.Value;
-                        Asec[5, 0] = (double)numart.Value;
-                        Asec[6, 0] = (double)numcrt.Value;
-                        Asec[7, 0] = (double)numdrb.Value;
-                        Asec[8, 0] = (double)numarb.Value;
-                        Asec[9, 0] = (double)numcrb.Value;
-                        Asec[10, 0] = radioRa.Checked == Enabled ? Convert.ToDouble(numSr.Value) : Math.Tan(Convert.ToDouble(numSd.Value) * Math.PI / 180.0);
-                        Asec[11, 0] = (double)numw.Value;
-                        Asec[12, 0] = (double)numD.Value;
-                        Asec[13, 0] = (double)numcbot.Value;
-                        Asec[14, 0] = (double)numctop.Value;
-                        Node = Matrix.Addnode(Node, Asec, "ts,th,bh,drt,art,crt,drb,arb,crb,S,w,D,cbot,ctop", 5, "Haunch,ntop,Hc,btop,ttop,tbot,tw");
+                        double [] Asec = new double[14];
+                       
+                        Asec[0] = (double)numts.Value;
+                        Asec[1] = (double)numbh.Value;
+                        Asec[2] = (double)numth.Value;
+                        Asec[3] = (double)numdrt.Value;
+                        Asec[4] = (double)numart.Value;
+                        Asec[5] = (double)numcrt.Value;
+                        Asec[6] = (double)numdrb.Value;
+                        Asec[7] = (double)numarb.Value;
+                        Asec[8] = (double)numcrb.Value;
+                        Asec[9] = radioRa.Checked == Enabled ? Convert.ToDouble(numSr.Value) : Math.Tan(Convert.ToDouble(numSd.Value) * Math.PI / 180.0);
+                        Asec[10] = (double)numw.Value;
+                        Asec[11] = (double)numD.Value;
+                        Asec[12] = (double)numcbot.Value;
+                        Asec[13] = (double)numctop.Value;
+                        Node = Matrix.Add1prop(Node, Asec, "ts,th,bh,drt,art,crt,drb,arb,crb,S,w,D,cbot,ctop");
 
                         Access.writeList(Node, "Node", con, "All");
 
@@ -987,23 +1017,27 @@ namespace Mainform
                     {
                         //Select node without type 5 again
 
-                        Node = Node.Where(p => p.Type != 5).ToList();
+                        Node = Node.Where(p => p.Type != 6).ToList();
 
-                        //Insert node
-                        Node = Matrix.Addpoinstiff(Node, Aribtop);
-                        Node = Matrix.Addpoinstiff(Node, Aribbot);
-                        Node = Matrix.Addpoinstiff(Node, Astif);
+                        Aribtop = DGV.GridtoArray(gridTrib);
+                        Node = Matrix.Addnode(Node, Aribtop, "nst,Hst,tst", 6, "Haunch,ntop,Hc,btop,ttop,tbot,ts,th,bh,drt,art,crt,drb,arb,crb,S,w,D,cbot,ctop");
 
-                        Node = Matrix.Addprop(Node, Aribtop, "nst,Hst,tst");
-                        Node = Matrix.Addprop(Node, Aribbot, "nsb,Hsb,tsb");
-                        Node = Matrix.Addprop(Node, Astif, "ns,ds1,ds2");
+                        Aribbot = DGV.GridtoArray(gridBrib);
+                        Node = Matrix.Addnode(Node, Aribbot, "nsb,Hsb,tsb", 6, "Haunch,ntop,Hc,btop,ttop,tbot,ts,th,bh,drt,art,crt,drb,arb,crb,S,w,D,cbot,ctop,nst,Hst,tst");
 
-                        Node = Matrix.Addd0(Node, Across, "Lp");
+                        Atranstif = DGV.GridtoArray(gridTranstif);
                         Node = Matrix.Addd0(Node, Atranstif, "d0");
+
+                        double[] Ans = new double[1] { (double)numns.Value };
+                        Node = Matrix.Add1prop(Node, Ans, "ns");
+
                         //Write to DB
                         Access.writeList(Node, "Node", con, "All");
 
                         //Fill to dgvKframe
+                        Akframe = Matrix.Arrcumulate(Atranstif);
+                        DGV.ArraytoGrid(gridKframe,Akframe);
+                        
                         Akframe = new double[1, Atranstif.GetLength(1) + 1];
                         Akframe_grid = new double[2, Atranstif.GetLength(1) + 1];
 
@@ -1020,9 +1054,6 @@ namespace Mainform
                         Akframe_grid[0, Akframe.GetLength(1) - 1] = 1;
 
 
-
-
-                       
 
 
                     }
@@ -1119,6 +1150,20 @@ namespace Mainform
                     }
                     break;
 
+                case "pageOther":
+                    {
+                        //Write crossbeam to DB
+                        List<Crossbeam> Crossbeam = new List<Crossbeam>();
+                        for (int i = 0; i < gridCrossbeam.RowCount; i++)
+                            Crossbeam.Add(new Crossbeam(Convert.ToDouble(gridCrossbeam.Rows[i].Cells[0].Value), Convert.ToDouble(gridCrossbeam.Rows[i].Cells[1].Value), Convert.ToDouble(gridCrossbeam.Rows[i].Cells[2].Value),
+                                Convert.ToDouble(gridCrossbeam.Rows[i].Cells[3].Value), Convert.ToDouble(gridCrossbeam.Rows[i].Cells[4].Value), Convert.ToDouble(gridCrossbeam.Rows[i].Cells[5].Value),
+                                Convert.ToDouble(gridCrossbeam.Rows[i].Cells[6].Value)));
+                        Access.writeList(Crossbeam, "Crossbeam", con, "All");
+
+                       
+
+                    }
+                    break;
 
 
             }

@@ -831,8 +831,7 @@ namespace Provider
             for (int j = 0; j < Node.Count; j++)
             {
                 for (int k = 0; k < c.GetLength(1)-1; k++)
-                {
-                    
+                {                    
                     if (c[0, k] <= Node[j].X)
                         b = Atop[0, k];
                 }

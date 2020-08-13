@@ -100,10 +100,7 @@ namespace Classes
         { get; set; }
         public double ns
         { get; set; }
-        public double ds1
-        { get; set; }
-        public double ds2
-        { get; set; }
+       
 
         //
         public double Lp
