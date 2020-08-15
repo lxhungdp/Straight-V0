@@ -596,17 +596,9 @@ namespace Mainform
         static string DBstring = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Const.Constring + @"\PUS1.accdb";
         OleDbConnection con = new OleDbConnection(DBstring);
 
-
-        
-        
-        
-
-       
-        double[,] Astif = new double[4, 1];
         double[,] Atranstif;
         double[,] Atranstif_grid;
-        double[,] Akframe;
-        double[,] Akframe_grid;
+        double[,] Akframe;        
 
         double[,] Across;
         double[,] Across_grid;
@@ -615,20 +607,19 @@ namespace Mainform
         double[,] Atran;
         double[,] Asection = new double[2, 3];
         double[,] Asectiong = new double[2, 3];
-        DataTable DTsection;
+        
 
         double[] Aspan;
 
-        DataTable DThaunch, DTCBox, DTBCon;
+        DataTable DThaunch, DTCBox;
         int numinsup;
 
         double sumspan, sumsec;
         int ngirder;
         List<Node> Node;
-        List<Node> Node1;
-        List<DataGridViewComboBoxCell> CSection;
+        List<KFrame> KFrame = new List<KFrame>();
         
-        string prop; //prop name to be added
+
         double[,] Atop; //Atop consider the closed box, has 3 row: 1st length (including closed box section) 2nd: with, 3 rd: thickness        
         double[,] Atop_grid; //Has 5 row: 1st: ID = 1, add ID = 4; 2nd: order to mark color and lock closed box section, 3-5: same Atop2
         double[] Atop1; //Length same 1st row of Atop2, this is help to maintain the sum of length when modify
@@ -824,241 +815,6 @@ namespace Mainform
                     }
                     break;
 
-                case "pageGrid":
-                    {
-                        // Generate List of grid bridge
-                        Node = Matrix.Gridarrtolist(Across_grid, Atran, ngirder);
-
-
-                        //Write to Database
-
-                        Access.writeList(Node, "Node", con, "All");
-
-                        // Plot to the chart
-                        Chart.Bridgegrid(Node, gridchart);
-
-                        //Fill the transverse stiffener grid
-                        //CAN NOT use = for 2 matrices
-
-                        //Atranstif has one row: length
-                        //Atranstif_grid has 3 rows: 
-                        //1st: type: (1 - abu, 2 - pier, 3 - crossbearm, 4 section changed, 5 long stiff, 6 transtiff)
-                        //2nd: order : 1 2 3
-                        //3rd: Length
-
-                        Atranstif = (double[,])Across.Clone();
-
-                        Atranstif_grid = new double[Across_grid.GetLength(0), Across_grid.GetLength(1)];
-
-                        Across1 = new double[Across.GetLength(1)];
-                        for (int i = 0; i < Across_grid.GetLength(1); i++)
-                        {
-                            Atranstif_grid[0, i] = Across_grid[0, i];
-                            Atranstif_grid[1, i] = i + 1;
-                            Atranstif_grid[2, i] = Across_grid[2, i];
-
-                            Across1[i] = Across[0, i]; //Help to maintain the sum length of one section
-                        }
-
-
-
-                        DGV.ArraytoGrid(gridTranstif, Atranstif);
-
-                        for (int i = 0; i < Asection.GetLength(1); i++)
-                            Asection[1, i] = Asectiong[1, i];
-
-                        //Add to gridCrossbeam
-                        string Crossheader = "Exterior-Support Crossbeam";
-                        List<double> type = Node.Select(p => p.Type).ToList();
-                        int ncross = 1;
-
-                        if (type.IndexOf(2) != -1)
-                        {
-                            Crossheader = Crossheader + ",Interior - Support Crossbeam";
-                            ncross = ncross + 1;
-                        }
-                            
-                        if (type.IndexOf(3) != -1)
-                        {
-                            Crossheader = Crossheader + ",General Crossbeam";
-                            ncross = ncross + 1;
-                        }
-                            
-                        
-                        if (Node.Max(p => p.BeamID) > 10)
-                        {
-                            Crossheader = Crossheader + ",Stringer";
-                            ncross = ncross + 1;
-                        }
-
-                        //Generate the initial value of dimension
-                         List<Crossbeam> Crossbeam = new List<Crossbeam>();
-                        for (int i = 0; i < ncross; i++)
-                            Crossbeam.Add(new Crossbeam(10, 300, 10, 300, 1200, 12, 1));
-                        Access.writeList(Crossbeam, "Crossbeam", con, "All");
-
-                        DataTable DTcross = new DataTable();
-                        DTcross = Access.getDataTable("Select * from Crossbeam", con);
-                        //dgvCross.DataSource = DTcross;
-                       
-                        DGV.DTtoGrid(gridCrossbeam, DTcross, Crossheader);
-
-
-                    }
-                    break;
-
-                case "pageHaunch":
-                    {
-                        Node = Node.Where(p => p.Type != 4).ToList();
-                        //Save to DThaunch again             
-                        DThaunch = DGV.GridtoDT(dgvHaunch);
-                        Chart.Haunch(Aspan, DThaunch, chartHaunch);
-
-                        //Add haunch to database Node
-                        Haunch Haunch = new Haunch(Aspan, DThaunch);
-                        Node = Matrix.Addnode(Node, Haunch.Harray, "Haunch", 4, "btop");
-
-                        //Save to DTCbox again
-                        
-                        DTCBox = DGV.GridtoDT(dgvCBox);
-                        Node = Matrix.Addnode(Node, Haunch.Closedbox(Aspan, DTCBox), "ntop", 4, "Haunch");
-                        
-
-                        //Bottom concrete
-                        Acon_grid = DGV.GridtoArray(gridBCon);
-                        Acon = Matrix.Update_con(Acon, Acon_grid);
-                        Acon1 = Haunch.Bottomcon(Aspan, Acon);
-                        Node = Matrix.Addnode(Node, Acon1, "Hc", 4, "Haunch,ntop");
-                        Access.writeList(Node, "Node", con, "All");
-
-                        //Atop has 3 rows
-                        //1st is length, seperate by closed box section at pier
-                        //2nd is with of flange
-                        //3rd is thickness of top flange
-                        Atop = Matrix.Atop_CBox(DThaunch, Aspan, 3);
-
-                        //Fill to gridTop DGV
-                        DGV.ArraytoGrid(gridTop, Atop);
-
-                        //Create Atop_grid with 5 row
-                        //1st: type: All number, if add more => number 4 => this help when modify length
-                        //2nd: order : 1 2 3 => this help mark by color and lock the closed - box section
-                        Atop_grid = new double[5, Atop.GetLength(1)];
-                        Atop1 = new double[Atop.GetLength(1)];
-                        for (int i = 0; i < Atop.GetLength(1); i++)
-                        {
-                            Atop_grid[0, i] = 1; //Set all ID = 1
-                            Atop_grid[1, i] = i + 1; //Set order 1-2-3
-                            Atop_grid[2, i] = Atop[0, i]; //Set length
-                            Atop1[i] = Atop[0, i];
-                        }
-                        Deco(gridTop, Atop_grid);
-
-                        //Create Atrib and Atrib_grid
-                        Atrib = Matrix.Atop_CBox(DThaunch, Aspan, 4);
-
-                        //Fill to gridTrib dgv
-                        DGV.ArraytoGrid(gridTrib, Atrib);
-
-                        //Create Atrib_grid with 6 row
-                        Atrib_grid = new double[6, Atrib.GetLength(1)];
-                        for (int i = 0; i < Atrib.GetLength(1); i++)
-                        {
-                            Atrib_grid[0, i] = 1; //Set all ID = 1
-                            Atrib_grid[1, i] = i + 1; //Set order 1-2-3
-                            Atrib_grid[2, i] = Atrib[0, i]; //Set length
-
-                        }
-                        Deco(gridTrib, Atrib_grid);
-
-
-                    }
-                    break;
-
-                case "pageDim":
-                    {
-                        //Select node without type 5 again, this is need to reset the Type 4 - section when hit Apply again
-                        Node = Node.Where(p => p.Type != 5).ToList();
-
-                        Atop = DGV.GridtoArray(gridTop);
-                        Node = Matrix.Addnode(Node, Atop, "btop,ttop", 5, "Haunch,ntop,Hc");
-
-                        Abot = DGV.GridtoArray(gridBot);
-                        Node = Matrix.Addnode(Node, Abot, "tbot", 5, "Haunch,ntop,Hc,btop,ttop");
-
-                        Aweb = DGV.GridtoArray(gridWeb);
-                        Node = Matrix.Addnode(Node, Aweb, "tw", 5, "Haunch,ntop,Hc,btop,ttop,tbot");
-
-                        double [] Asec = new double[14];
-                       
-                        Asec[0] = (double)numts.Value;
-                        Asec[1] = (double)numbh.Value;
-                        Asec[2] = (double)numth.Value;
-                        Asec[3] = (double)numdrt.Value;
-                        Asec[4] = (double)numart.Value;
-                        Asec[5] = (double)numcrt.Value;
-                        Asec[6] = (double)numdrb.Value;
-                        Asec[7] = (double)numarb.Value;
-                        Asec[8] = (double)numcrb.Value;
-                        Asec[9] = radioRa.Checked == Enabled ? Convert.ToDouble(numSr.Value) : Math.Tan(Convert.ToDouble(numSd.Value) * Math.PI / 180.0);
-                        Asec[10] = (double)numw.Value;
-                        Asec[11] = (double)numD.Value;
-                        Asec[12] = (double)numcbot.Value;
-                        Asec[13] = (double)numctop.Value;
-                        Node = Matrix.Add1prop(Node, Asec, "ts,th,bh,drt,art,crt,drb,arb,crb,S,w,D,cbot,ctop");
-
-                        Access.writeList(Node, "Node", con, "All");
-
-                    }
-                    break;
-
-
-                case "pageStiffeners":
-                    {
-                        //Select node without type 5 again
-
-                        Node = Node.Where(p => p.Type != 6).ToList();
-
-                        Aribtop = DGV.GridtoArray(gridTrib);
-                        Node = Matrix.Addnode(Node, Aribtop, "nst,Hst,tst", 6, "Haunch,ntop,Hc,btop,ttop,tbot,ts,th,bh,drt,art,crt,drb,arb,crb,S,w,D,cbot,ctop");
-
-                        Aribbot = DGV.GridtoArray(gridBrib);
-                        Node = Matrix.Addnode(Node, Aribbot, "nsb,Hsb,tsb", 6, "Haunch,ntop,Hc,btop,ttop,tbot,ts,th,bh,drt,art,crt,drb,arb,crb,S,w,D,cbot,ctop,nst,Hst,tst");
-
-                        Atranstif = DGV.GridtoArray(gridTranstif);
-                        Node = Matrix.Addd0(Node, Atranstif, "d0");
-
-                        double[] Ans = new double[1] { (double)numns.Value };
-                        Node = Matrix.Add1prop(Node, Ans, "ns");
-
-                        //Write to DB
-                        Access.writeList(Node, "Node", con, "All");
-
-                        //Fill to dgvKframe
-                        Akframe = Matrix.Arrcumulate(Atranstif);
-                        DGV.ArraytoGrid(gridKframe,Akframe);
-                        
-                        Akframe = new double[1, Atranstif.GetLength(1) + 1];
-                        Akframe_grid = new double[2, Atranstif.GetLength(1) + 1];
-
-                        Akframe[0, 0] = 0;
-                        for (int i = 1; i < Akframe.GetLength(1); i++)
-                        {
-                            Akframe[0, i] = Akframe[0, i - 1] + Atranstif[0, i - 1];
-                            Akframe_grid[1, i] = Akframe_grid[1, i - 1] + Atranstif_grid[2, i - 1];
-                        }
-                        for (int i = 0; i < Akframe.GetLength(1) - 1; i++)
-                        {
-                            Akframe_grid[0, i] = Atranstif_grid[0, i];
-                        }
-                        Akframe_grid[0, Akframe.GetLength(1) - 1] = 1;
-
-
-
-
-                    }
-                    break;
-
                 case "pageMaterial":
                     {
                         DataTable DTMat = Access.getDataTable("Select * from Mat", con);
@@ -1150,6 +906,246 @@ namespace Mainform
                     }
                     break;
 
+                case "pageGrid":
+                    {
+                        // Generate List of grid bridge
+                        Node = Matrix.GenerateNode(Across_grid, Atran, ngirder);
+
+
+                        //Write to Database
+
+                        Access.writeList(Node, "Node", con, "All");
+
+                        // Plot to the chart
+                        Chart.Bridgegrid(Node, gridchart);
+
+                        //Fill the transverse stiffener grid
+                        //CAN NOT use = for 2 matrices
+
+                        //Atranstif has one row: length
+                        //Atranstif_grid has 3 rows: 
+                        //1st: type: (1 - abu, 2 - pier, 3 - crossbearm, 4 section changed, 5 long stiff, 6 transtiff)
+                        //2nd: order : 1 2 3
+                        //3rd: Length
+
+                        Atranstif = (double[,])Across.Clone();
+
+                        Atranstif_grid = new double[Across_grid.GetLength(0), Across_grid.GetLength(1)];
+
+                        Across1 = new double[Across.GetLength(1)];
+                        for (int i = 0; i < Across_grid.GetLength(1); i++)
+                        {
+                            Atranstif_grid[0, i] = Across_grid[0, i];
+                            Atranstif_grid[1, i] = i + 1;
+                            Atranstif_grid[2, i] = Across_grid[2, i];
+
+                            Across1[i] = Across[0, i]; //Help to maintain the sum length of one section
+                        }
+
+
+
+                        DGV.ArraytoGrid(gridTranstif, Atranstif);
+
+                        for (int i = 0; i < Asection.GetLength(1); i++)
+                            Asection[1, i] = Asectiong[1, i];
+
+                        //Add to gridCrossbeam
+                        string Crossheader = "Exterior-Support Crossbeam";
+                        List<double> type = Node.Select(p => p.Type).ToList();
+                        int ncross = 1;
+
+                        if (type.IndexOf(2) != -1)
+                        {
+                            Crossheader = Crossheader + ",Interior - Support Crossbeam";
+                            ncross = ncross + 1;
+                        }
+                            
+                        if (type.IndexOf(3) != -1)
+                        {
+                            Crossheader = Crossheader + ",General Crossbeam";
+                            ncross = ncross + 1;
+                        }
+                            
+                        
+                        if (Node.Max(p => p.BeamID) > 10)
+                        {
+                            Crossheader = Crossheader + ",Stringer";
+                            ncross = ncross + 1;
+                        }
+
+                        //Generate the initial value of dimension
+                         List<Crossbeam> Crossbeam = new List<Crossbeam>();
+                        for (int i = 0; i < ncross; i++)
+                            Crossbeam.Add(new Crossbeam(10, 300, 10, 300, 1200, 12, 1));
+                        Access.writeList(Crossbeam, "Crossbeam", con, "All");
+
+                        DataTable DTcross = new DataTable();
+                        DTcross = Access.getDataTable("Select * from Crossbeam", con);
+                        //dgvCross.DataSource = DTcross;
+                       
+                        DGV.DTtoGrid(gridCrossbeam, DTcross, Crossheader);
+
+
+                    }
+                    break;
+
+                case "pageHaunch":
+                    {
+                        Node = Node.Where(p => p.Type < 4).ToList();
+                        //Save to DThaunch again             
+                        DThaunch = DGV.GridtoDT(dgvHaunch);
+                        Chart.Haunch(Aspan, DThaunch, chartHaunch);
+
+                        //Add haunch to database Node
+                        Haunch Haunch = new Haunch(Aspan, DThaunch);
+                        Node = Matrix.Addnode(Node, Haunch.Harray, "Haunch", 4, "btop");
+
+                        //Save to DTCbox again
+                        
+                        DTCBox = DGV.GridtoDT(dgvCBox);
+                        Node = Matrix.Addnode(Node, Haunch.Closedbox(Aspan, DTCBox), "ntop", 4, "Haunch");
+                        
+
+                        //Bottom concrete
+                        Acon_grid = DGV.GridtoArray(gridBCon);
+                        Acon = Matrix.Update_con(Acon, Acon_grid);
+                        Acon1 = Haunch.Bottomcon(Aspan, Acon);
+                        Node = Matrix.Addnode(Node, Acon1, "Hc", 4, "Haunch,ntop");
+                        Access.writeList(Node, "Node", con, "All");
+
+                        //Atop has 3 rows
+                        //1st is length, seperate by closed box section at pier
+                        //2nd is with of flange
+                        //3rd is thickness of top flange
+                        Atop = Matrix.Atop_CBox(DTCBox, Aspan, 3);
+
+                        //Fill to gridTop DGV
+                        DGV.ArraytoGrid(gridTop, Atop);
+
+                        //Create Atop_grid with 5 row
+                        //1st: type: All number, if add more => number 4 => this help when modify length
+                        //2nd: order : 1 2 3 => this help mark by color and lock the closed - box section
+                        Atop_grid = new double[5, Atop.GetLength(1)];
+                        Atop1 = new double[Atop.GetLength(1)];
+                        for (int i = 0; i < Atop.GetLength(1); i++)
+                        {
+                            Atop_grid[0, i] = 1; //Set all ID = 1
+                            Atop_grid[1, i] = i + 1; //Set order 1-2-3
+                            Atop_grid[2, i] = Atop[0, i]; //Set length
+                            Atop1[i] = Atop[0, i];
+                        }
+                        Deco(gridTop, Atop_grid);
+
+                        //Create Atrib and Atrib_grid
+                        Atrib = Matrix.Atop_CBox(DTCBox, Aspan, 4);
+
+                        //Fill to gridTrib dgv
+                        DGV.ArraytoGrid(gridTrib, Atrib);
+
+                        //Create Atrib_grid with 6 row
+                        Atrib_grid = new double[6, Atrib.GetLength(1)];
+                        for (int i = 0; i < Atrib.GetLength(1); i++)
+                        {
+                            Atrib_grid[0, i] = 1; //Set all ID = 1
+                            Atrib_grid[1, i] = i + 1; //Set order 1-2-3
+                            Atrib_grid[2, i] = Atrib[0, i]; //Set length
+
+                        }
+                        Deco(gridTrib, Atrib_grid);
+
+
+                    }
+                    break;
+
+                case "pageDim":
+                    {
+                        //Select node without type 5 again, this is need to reset the Type 4 - section when hit Apply again
+                        Node = Node.Where(p => p.Type <5 ).ToList();
+
+                        Atop = DGV.GridtoArray(gridTop);
+                        Node = Matrix.Addnode(Node, Atop, "btop,ttop", 5, "Haunch,ntop,Hc");
+
+                        Abot = DGV.GridtoArray(gridBot);
+                        Node = Matrix.Addnode(Node, Abot, "tbot", 5, "Haunch,ntop,Hc,btop,ttop");
+
+                        Aweb = DGV.GridtoArray(gridWeb);
+                        Node = Matrix.Addnode(Node, Aweb, "tw", 5, "Haunch,ntop,Hc,btop,ttop,tbot");
+
+                        double [] Asec = new double[14];
+                       
+                        Asec[0] = (double)numts.Value;
+                        Asec[1] = (double)numbh.Value;
+                        Asec[2] = (double)numth.Value;
+                        Asec[3] = (double)numdrt.Value;
+                        Asec[4] = (double)numart.Value;
+                        Asec[5] = (double)numcrt.Value;
+                        Asec[6] = (double)numdrb.Value;
+                        Asec[7] = (double)numarb.Value;
+                        Asec[8] = (double)numcrb.Value;
+                        Asec[9] = radioRa.Checked == Enabled ? Convert.ToDouble(numSr.Value) : Math.Tan(Convert.ToDouble(numSd.Value) * Math.PI / 180.0);
+                        Asec[10] = (double)numw.Value;
+                        Asec[11] = (double)numD.Value;
+                        Asec[12] = (double)numcbot.Value;
+                        Asec[13] = (double)numctop.Value;
+                        Node = Matrix.Add1prop(Node, Asec, "ts,th,bh,drt,art,crt,drb,arb,crb,S,w,D,cbot,ctop");
+
+                        Access.writeList(Node, "Node", con, "All");
+
+                    }
+                    break;
+
+
+                case "pageStiffeners":
+                    {
+                        //Select node without type 5 again
+
+                        Node = Node.Where(p => p.Type < 6).ToList();
+
+                        Aribtop = DGV.GridtoArray(gridTrib);
+                        Node = Matrix.Addnode(Node, Aribtop, "nst,Hst,tst", 6, "Haunch,ntop,Hc,btop,ttop,tbot,ts,th,bh,drt,art,crt,drb,arb,crb,S,w,D,cbot,ctop");
+
+                        Aribbot = DGV.GridtoArray(gridBrib);
+                        Node = Matrix.Addnode(Node, Aribbot, "nsb,Hsb,tsb", 6, "Haunch,ntop,Hc,btop,ttop,tbot,ts,th,bh,drt,art,crt,drb,arb,crb,S,w,D,cbot,ctop,nst,Hst,tst");
+
+                        Atranstif = DGV.GridtoArray(gridTranstif);
+                        Node = Matrix.Addd0(Node, Atranstif, "d0");
+
+                        double[] Ans = new double[1] { (double)numns.Value };
+                        Node = Matrix.Add1prop(Node, Ans, "ns");
+
+                        //Write to DB
+                        Access.writeList(Node, "Node", con, "All");
+
+                        //Fill to dgvKframe
+                        Akframe = Matrix.Arrcumulate(Atranstif);
+
+                        
+                        List<Node> Node123 = Node.Where(p => (p.Type == 1 || p.Type == 2 || p.Type == 3) && p.BeamID == 1).ToList();
+                        for (int i = 0; i < Node123.Count; i++)
+                            KFrame.Add(new KFrame(Node123[i].X / 1000, false, Node123[i].Label));
+                        for (int i = 0; i < Akframe.GetLength(1); i++)
+                            if (Node123.Select(p => p.X).ToList().IndexOf(Akframe[0, i]) == -1)
+                                KFrame.Add(new KFrame(Akframe[0, i] / 1000, false, ""));
+                        KFrame = KFrame.OrderBy(p => p.Station).ToList();
+                        gridKframe.DataSource = KFrame;
+
+                        //Deco the gridKframe
+                        for (int i = 0; i < KFrame.Count; i++)
+                        {
+                            if (KFrame[i].Description == "Exterior Support" || KFrame[i].Description == "Interior Support")
+                            {
+                                gridKframe.Rows[i].DefaultCellStyle.BackColor = Color.Beige;
+                                gridKframe.Rows[i].Cells["Location"].ReadOnly = false;
+                            }                        
+                                
+                        }
+
+                        
+                    }
+                    break;
+
+               
+
                 case "pageOther":
                     {
                         //Write crossbeam to DB
@@ -1160,8 +1156,28 @@ namespace Mainform
                                 Convert.ToDouble(gridCrossbeam.Rows[i].Cells[6].Value)));
                         Access.writeList(Crossbeam, "Crossbeam", con, "All");
 
-                       
 
+                        //Deco the gridKframe
+                        for (int i = 0; i < KFrame.Count; i++)
+                        {
+                            if (Convert.ToBoolean(gridKframe.Rows[i].Cells[1].Value) && KFrame[i].Description == "")                            
+                                KFrame[i].Location = true; 
+                            else                            
+                                KFrame[i].Location = false;
+                               
+                                                          
+                        }
+
+                        Node = Node.Where(p => p.Type < 7).ToList();
+                        Node = Matrix.AddKframe(Node, KFrame);
+                        Access.writeList(Node, "Node", con, "All");
+
+                        var K = KFrame.Where(p => p.Location == true).ToList();
+                        dataGridView1.DataSource = null;
+                        dataGridView1.DataSource = K;
+                        //MessageBox.Show(K.Count.ToString());
+
+                        
                     }
                     break;
 
@@ -2035,6 +2051,8 @@ namespace Mainform
 
             }
         }
+
+       
 
         private void dgvHaunch_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {

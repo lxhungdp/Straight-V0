@@ -38,13 +38,13 @@ namespace Provider
                         b[i, j] = a[i, j];
 
             }
-             
+
             return b;
         }
 
         public static double[,] Combine_con(double[,] a, int index)
         {
-            double[,] b = new double[a.GetLength(0), a.GetLength(1) -1];
+            double[,] b = new double[a.GetLength(0), a.GetLength(1) - 1];
             for (int i = 0; i < a.GetLength(0); i++)
                 for (int j = 0; j < a.GetLength(1) - 1; j++)
                 {
@@ -52,13 +52,13 @@ namespace Provider
                         b[i, j] = a[i, j];
                     else
                         b[i, j] = a[i, j + 1];
-                }           
+                }
 
             return b;
         }
         public static double[,] Update_con(double[,] a, double[,] c)
         {
-            double[,] b = new double[a.GetLength(0), a.GetLength(1)]; 
+            double[,] b = new double[a.GetLength(0), a.GetLength(1)];
 
             for (int j = 0; j < a.GetLength(1); j++)
             {
@@ -343,7 +343,7 @@ namespace Provider
             return b;
 
         }
-        
+
 
         public static double[,] Seperate_tran(double[,] a, int index)
         {
@@ -435,9 +435,9 @@ namespace Provider
                             {
                                 b[i, k] = a[i, j];
                                 b[0, k] = 4.0;
-                                b[0, index] = a[0, j];                               
+                                b[0, index] = a[0, j];
                                 b[2, k] = a[2, j] / ndiv;
-                                
+
                             }
                         }
                         else
@@ -446,13 +446,13 @@ namespace Provider
             }
             else
             {
-                for (int i =0; i <a.GetLength(0); i++)
+                for (int i = 0; i < a.GetLength(0); i++)
                 {
                     for (int j = 0; j < a.GetLength(1); j++)
                     {
                         if (j < index)
                         {
-                            b[i, j] = a[i, j];                            
+                            b[i, j] = a[i, j];
                         }
 
                         else if (j == index)
@@ -460,15 +460,15 @@ namespace Provider
                             for (int k = j; k < j + ndiv; k++)
                             {
                                 b[i, k] = a[i, j];
-                                b[0, k] = a[0, j] / ndiv;                                
+                                b[0, k] = a[0, j] / ndiv;
                             }
                         }
                         else
-                        {                           
-                            b[i, j + ndiv - 1] = a[i, j];                            
+                        {
+                            b[i, j + ndiv - 1] = a[i, j];
                         }
                     }
-                } 
+                }
             }
 
 
@@ -497,7 +497,7 @@ namespace Provider
             return b;
         }
 
-        public static double[,] Atop_CBox (DataTable DThaunch, double[] Aspan, int n)
+        public static double[,] Atop_CBox(DataTable DThaunch, double[] Aspan, int n)
         {
             int numinsup = DThaunch.Rows.Count;
             double[,] Atop2 = new double[n, 2 * numinsup + 1];
@@ -512,7 +512,7 @@ namespace Provider
         }
 
 
-        public static List<Node> Gridarrtolist(double[,] Across_grid, double[,] Atran, int ngirder)
+        public static List<Node> GenerateNode(double[,] Across_grid, double[,] Atran, int ngirder)
         {
             double[] Longcu = new double[Across_grid.GetLength(1) + 1];
             Longcu[0] = 0;
@@ -546,7 +546,8 @@ namespace Provider
                     a.X = Longcu[j];
                     a.Y = Trancu[i];
                     a.Z = 0;
-                    a.Label = a.BeamID < 10 ? a.BeamID * 100 + j + 1 : (ngirder + k) * 100 + j + 1;
+                    a.Joint = a.BeamID < 10 ? a.BeamID * 100 + j + 1 : (ngirder + k) * 100 + j + 1;
+                    a.Label = a.Type == 1 ? "Exterior Support" : (a.Type == 2 ? "Interior Support" : "Cross Beam");
 
                     //Determine default restrain
                     // Not work if adding crossbeam or stringer
@@ -577,7 +578,8 @@ namespace Provider
                 }
                 k = Atran[2, i + 1] > 10 ? k + 1 : k;
             }
-            Node = Node.OrderBy(n => n.Label).ToList();
+            Node = Node.OrderBy(n => n.BeamID).ThenBy(p=>p.X).ToList();
+            
             return Node;
         }
 
@@ -607,42 +609,67 @@ namespace Provider
 
 
         //Add the node which is changed section to Node;
-        public static List<Node> Addpoint(List<Node> Node, double[,] Atop)
+        public static List<Node> AddKframe(List<Node> Node, List<KFrame> KK)
         {
-            //Cumulate the Atop
-            //var Node = Nodein;
-            var b = Arrcumulate(Atop);
-            var nlong = Node.Where(p => p.BeamID == 1).ToList().Count;
+            var Node1 = Node.Where(p => p.BeamID == 1).ToList();
+            var nlong = Node1.Count;
             var n = Node.Count / nlong;
 
-            //Insert the point that change that section
-            for (int i = 0; i < b.GetLength(1); i++)
+            var K = KK.Where(p => p.Location == true).ToList();
+
+            for (int i = 0; i < K.Count; i++)
             {
-                if (Node.Select(p => p.X).ToList().IndexOf(b[0, i]) == -1)
+                int index = Node1.Select(p => p.X).ToList().IndexOf(K[i].Station * 1000);
+                if (index == -1)
                 {
+                    int id = Node1.FindLastIndex(p => p.X <= K[i].Station * 1000);
                     for (int j = 0; j < n; j++)
                     {
-                        Node a = new Node();
-                        a.X = b[0, i];
-                        a.Z = 0;
-                        a.Y = Node[j * nlong].Y;
-                        a.BeamID = Node[j * nlong].BeamID;
-                        a.Type = 4;
+                        Node a = Node[j * nlong + id].ShallowCopy();                        
+                        a.X = K[i].Station * 1000;                        
+                        a.Type = 7;
+                        a.Label = "K - Frame";
+                        a.Restrain = "";
                         Node.Add(a);
                     }
 
                 }
+                else
+                {
+                    for (int j = 0; j < n; j++)
+                    {
+                        Node[j * nlong + index].Type = 7;
+                        Node[j * nlong + index].Label = "K - Frame";
+                    }
+                }
             }
 
+
             //Reorder by X and Y
-            Node = Node.OrderBy(p => p.Y).ThenBy(p => p.X).ToList();
+            Node = Node.OrderBy(p => p.BeamID).ThenBy(p => p.X).ToList();
 
             //Rename the label
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < Node.Count / n; j++)
                 {
-                    Node[i * Node.Count / n + j].Label = (i + 1) * 100 + j + 1;
+                    Node[i * Node.Count / n + j].Joint = (i + 1) * 100 + j + 1;
                 }
+
+            // Set Lb
+            Node1 = Node.Where(p => p.BeamID == 1).ToList();
+            var Lb = Node.Where(p => (p.Type == 1 || p.Type == 2 || p.Type == 3 || p.Type == 7) && p.BeamID == 1).Select(p => p.X).ToList();
+            nlong = Node1.Count;
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < nlong - 1; j++)
+                {
+                    int Lbindex = Lb.FindLastIndex(p => p <= Node1[j].X);
+                    Node[i * nlong + j].Lb = Lb[Lbindex + 1] - Lb[Lbindex];
+                }
+                Node[i * nlong + nlong - 1].Lb = Lb[Lb.Count-1] - Lb[Lb.Count - 2];
+            }
+            
 
             return Node;
         }
@@ -671,13 +698,15 @@ namespace Provider
                         a.Y = Node[j * nlong].Y;
                         a.BeamID = Node[j * nlong].BeamID;
                         a.Type = Type;
+                        a.Label = "Section Changed";
+
                         index = Node.FindLastIndex(p => p.X <= b[0, i]);
                         for (int k = 0; k < exprostr.GetLength(0); k++)
                         {
                             PropertyInfo newpro = a.GetType().GetProperty(exprostr[k]);
                             PropertyInfo oldpro = Node[index].GetType().GetProperty(exprostr[k]);
 
-                            newpro.SetValue(a, oldpro.GetValue(Node[index],null));
+                            newpro.SetValue(a, oldpro.GetValue(Node[index], null));
                         }
 
                         Node.Add(a);
@@ -687,17 +716,17 @@ namespace Provider
             }
 
             //Reorder by X and Y
-            Node = Node.OrderBy(p => p.Y).ThenBy(p => p.X).ToList();
+            Node = Node.OrderBy(p => p.BeamID).ThenBy(p => p.X).ToList();
 
             //Rename the label
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < Node.Count / n; j++)
                 {
-                    Node[i * Node.Count / n + j].Label = (i + 1) * 100 + j + 1;
+                    Node[i * Node.Count / n + j].Joint = (i + 1) * 100 + j + 1;
                 }
 
             //Add pro
-            string[] prostring = pro.Split(',');            
+            string[] prostring = pro.Split(',');
             double provalue = 0;
 
             for (int i = 0; i < prostring.GetLength(0); i++)
@@ -718,92 +747,6 @@ namespace Provider
             return Node;
         }
 
-        //Add Stiffener
-        public static List<Node> Addpoinstiff(List<Node> Node, double[,] Atop)
-        {
-            //Cumulate the Atop
-            //var Node = Nodein;
-            var b = Arrcumulate(Atop);
-            var nlong = Node.Where(p => p.BeamID == 1).ToList().Count;
-            var n = Node.Count / nlong;
-
-            //Insert the point that change that section
-            for (int i = 0; i < b.GetLength(1); i++)
-            {
-                if (Node.Select(p => p.X).ToList().IndexOf(b[0, i]) == -1)
-                {
-                    for (int j = 0; j < n; j++)
-                    {
-                        Node a = new Node();
-                        a.X = b[0, i];
-                        a.Z = 0;
-                        a.Y = Node[j * nlong].Y;
-                        a.BeamID = Node[j * nlong].BeamID;
-                        a.Type = 5;
-                        a.btop = Node[j * nlong].btop;
-                        a.ttop = Node[j * nlong].ttop;
-                        a.ctop = Node[j * nlong].ctop;
-                        a.bbot = Node[j * nlong].bbot;
-                        a.tbot = Node[j * nlong].tbot;
-                        a.cbot = Node[j * nlong].cbot;
-                        a.D = Node[j * nlong].D;
-                        a.tw = Node[j * nlong].tw;
-                        a.Hc = Node[j * nlong].Hc;
-                        a.ts = Node[j * nlong].ts;
-                        a.th = Node[j * nlong].th;
-                        a.bh = Node[j * nlong].bh;
-                        a.drt = Node[j * nlong].drt;
-                        a.art = Node[j * nlong].art;
-                        a.crt = Node[j * nlong].crt;
-                        a.drb = Node[j * nlong].drb;
-                        a.arb = Node[j * nlong].arb;
-                        a.crb = Node[j * nlong].crb;
-                        a.S = Node[j * nlong].S;
-
-                        Node.Add(a);
-                    }
-
-                }
-            }
-
-            //Reorder by X and Y
-            Node = Node.OrderBy(p => p.Y).ThenBy(p => p.X).ToList();
-
-            //Rename the label
-            for (int i = 0; i < n; i++)
-                for (int j = 0; j < Node.Count / n; j++)
-                {
-                    Node[i * Node.Count / n + j].Label = (i + 1) * 100 + j + 1;
-                }
-
-            return Node;
-        }
-
-
-
-        //Add node properties to Node;
-        public static List<Node> Addprop(List<Node> Node, double[,] Atop, string a)
-        {
-            string[] pro = a.Split(',');
-            var c = Arrcumulate(Atop);
-            double b = 0;
-
-            for (int i = 0; i < pro.GetLength(0); i++)
-            {
-                for (int j = 0; j < Node.Count; j++)
-                {
-                    for (int k = 0; k < c.GetLength(1); k++)
-                    {
-                        if (c[0, k] == Node[j].X)
-                            b = c[i + 1, k];
-                    }
-                    PropertyInfo propertyInfo = Node[j].GetType().GetProperty(pro[i]);
-                    propertyInfo.SetValue(Node[j], b);
-                }
-            }
-
-            return Node;
-        }
 
         //Add node properties to Node;
         public static List<Node> Add1prop(List<Node> Node, double[] b, string a)
@@ -830,8 +773,8 @@ namespace Provider
 
             for (int j = 0; j < Node.Count; j++)
             {
-                for (int k = 0; k < c.GetLength(1)-1; k++)
-                {                    
+                for (int k = 0; k < c.GetLength(1) - 1; k++)
+                {
                     if (c[0, k] <= Node[j].X)
                         b = Atop[0, k];
                 }

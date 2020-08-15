@@ -8,12 +8,19 @@ namespace Classes
 {
     public class Node
     {
+        public Node ShallowCopy()
+        {
+            return (Node)this.MemberwiseClone();
+        }
         
-        public double Label   //101 102 103 201 202 203. Maximum 100 node
+        public double Joint   //101 102 103 201 202 203. Maximum 100 node
         { get; set; }
         
         public double Type    //1 - Abu, 2 - Pier, 3 - Cross, 4 Section changed
         { get; set; }    
+
+        public string Label
+        { get; set; }
         public double BeamID // 1, 2, 3 girder 123, 11 21 31 Stringer
         { get; set; }
         public double Haunch // 0 - constant web depth, 1 - variable web depth
@@ -103,7 +110,7 @@ namespace Classes
        
 
         //
-        public double Lp
+        public double Lb
         { get; set; }
         public double d0
         { get; set; }
