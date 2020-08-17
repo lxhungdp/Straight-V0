@@ -35,6 +35,7 @@ namespace Mainform
             IniBridge();
             IniLoadings();
             IniOther();
+            IniAnalysis();
 
         }
 
@@ -42,8 +43,8 @@ namespace Mainform
         private void IniGeneral()
         {
             cbType.SelectedIndex = 0;
-            labelEx.Text = "Ex. For a bridges with 3 spans, the lengths are 30m, 40m, 30m, and distance from end-beam to";
-            labelEx2.Text = "support point is 0.5m, input string should be: 0.5+30+40+30+0.5";
+            labelEx.Text = "Ex. For a bridges with 3 spans, the lengths are 30m, 40m, 30m, input should be 30+40+30";
+           
 
             labelCode1.Text = "(1) 도로교 설계기준 (한계상태설계법) 해설, (2015) - (사)한국교량및구조공화회∙교량설계핵심기술연구단";
             labelCode2.Text = "(2) 강구조설계기준 및 해설 (하중저항계수법), (2018) - (사)한국강구조학회";
@@ -197,6 +198,12 @@ namespace Mainform
 
         }
 
+        private void IniAnalysis()
+        {
+            richAnalysis.Text = "To analyze the bridge structure, the frame elements must be divided into segments. The more elements are divided, the more accurate the results will be, but the program execution time will be long." +
+                " For this case, the divided segment length of 2m to 5m is recommended. To do that, the main girder elements are divided by the rules as follows";
+
+        }
 
 
         private void Setgridview(DataGridView grid)
@@ -301,17 +308,20 @@ namespace Mainform
         {
             List<TabPage> a = new List<TabPage> { pageGeneral };
             showtabpage(a);
+            btApply.Text = "Apply";
         }
 
         void ShowpageMaterial()
         {
             List<TabPage> a = new List<TabPage> { pageMaterial };
             showtabpage(a);
+            btApply.Text = "Apply";
         }
         void ShowpageLoading()
         {
             List<TabPage> a = new List<TabPage> { pageLoadings };
             showtabpage(a);
+            btApply.Text = "Apply";
         }
         void ShowpageGrid(string a1, double[] a2)
         {
@@ -328,7 +338,7 @@ namespace Mainform
             }
 
 
-
+            btApply.Text = "Apply";
             metroTabControl1.SelectedTab = pageGrid;
         }
 
@@ -342,7 +352,7 @@ namespace Mainform
 
             }
             metroTabControl1.SelectedTab = pageHaunch;
-
+            btApply.Text = "Apply";
 
 
         }
@@ -359,6 +369,7 @@ namespace Mainform
                 showtabpage(a);
             }
             metroTabControl1.SelectedTab = pageDim;
+            btApply.Text = "Apply";
         }
         void ShowpageStiff(string a1, double[] a2)
         {
@@ -373,6 +384,7 @@ namespace Mainform
             }
 
             metroTabControl1.SelectedTab = pageStiffeners;
+            btApply.Text = "Apply";
         }
 
         void ShowpageOther(string a1, double[] a2)
@@ -388,12 +400,14 @@ namespace Mainform
             }
 
             metroTabControl1.SelectedTab = pageOther;
+            btApply.Text = "Apply";
         }
 
         void ShowpageAnalysis()
         {
             List<TabPage> a = new List<TabPage> { pageAnalysis };
             showtabpage(a);
+            btApply.Text = "Run";
         }
 
 
@@ -612,7 +626,7 @@ namespace Mainform
         double[] Aspan;
 
         DataTable DThaunch, DTCBox;
-        int numinsup;
+        int pier; //Number of interior pier;
 
         double sumspan, sumsec;
         int ngirder;
@@ -654,6 +668,7 @@ namespace Mainform
                         Atran = new double[3, ngirder + 1];
                         for (int i = 0; i < Atran.GetLength(1); i++)
                         {
+                            Atran[0, i] = 2000;
                             if (i == 0 || i == Atran.GetLength(1) - 1)
                             {
                                 Atran[1, i] = 0;
@@ -684,21 +699,17 @@ namespace Mainform
                         Aweb = new double[2, 1] { { sumspan }, { 12 }};                        
                         DGV.ArraytoGrid(gridWeb, Aweb);
 
-                        Aribtop = new double[4, 1];
-                        Aribtop[0, 0] = sumspan;
+                        Aribtop = new double[4, 1] { { sumspan }, { 0 }, { 0 }, { 0 } };                        
                         DGV.ArraytoGrid(gridTrib, Aribtop);
 
-                        Aribbot = new double[4, 1];
-                        Aribbot[0, 0] = sumspan;
-                        DGV.ArraytoGrid(gridBrib, Aribbot);
-
-                       
+                        Aribbot = new double[4, 1] { { sumspan }, { 2 }, { 160 }, { 16 } };                        
+                        DGV.ArraytoGrid(gridBrib, Aribbot);                       
 
 
                         //Default value of haunch
                         if (Aspan.GetLength(0) > 1)
                         {
-                            numinsup = Aspan.GetLength(0) - 1;
+                            pier = Aspan.GetLength(0) - 1;
 
                             //Haunch
                             DThaunch = new DataTable();
@@ -710,11 +721,16 @@ namespace Mainform
                             DThaunch.Columns.Add("H3");
                             string Hauheader = "Support #1";
 
-                            for (int i = 0; i < numinsup; i++)
+                            for (int i = 0; i < pier; i++)
                             {
                                 if (i > 0)
                                     Hauheader = Hauheader + ",Support #" + (i + 1).ToString();
-                                DThaunch.Rows.Add(15000, 5000, 15000, 2000, 2500, 2000);
+
+                                //Default value
+                                if (Aspan[i] > 17500 && Aspan[i+1] > 17500)
+                                    DThaunch.Rows.Add(15000, 5000, 15000, 2000, 2500, 2000);
+                                else
+                                    DThaunch.Rows.Add(0, 0, 0, 2000, 2000, 2000);
 
                             }
                             DGV.DTtoGrid(dgvHaunch, DThaunch, Hauheader);
@@ -727,41 +743,77 @@ namespace Mainform
                             DTCBox.Columns.Add("L2");
 
 
-                            for (int i = 0; i < numinsup; i++)
+                            for (int i = 0; i < pier; i++)
                             {
                                 if (i > 0)
                                     Hauheader = Hauheader + ",Support #" + (i + 1).ToString();
-                                DTCBox.Rows.Add(5000, 5000);
+                                if (Aspan[i] > 17500 && Aspan[i + 1] > 5000)
+                                    DTCBox.Rows.Add(5000, 5000);
+                                else
+                                    DTCBox.Rows.Add(0, 0);
 
                             }
                             DGV.DTtoGrid(dgvCBox, DTCBox, Hauheader);
 
                             //Bottom Concrete
                             //Create Acon
-                            Acon = new double[numinsup + 2, 2];
+                            Acon = new double[pier + 2, 2];
                             Acon[0, 0] = 5000;
                             Acon[0, 1] = 5000;
-                            for (int i = 0; i < numinsup; i++)
+                            for (int i = 0; i < pier; i++)
                             {
                                 Acon[i + 1, 0] = 500;
                                 Acon[i + 1, 1] = 500;
                             }
-                            Acon[numinsup + 1, 0] = 1;
-                            Acon[numinsup + 1, 1] = 2;
+                            Acon[pier + 1, 0] = 1;
+                            Acon[pier + 1, 1] = 2;
 
                             gridBCon.DataSource = null;
                             DGV.Acontogrid(gridBCon, Acon);
 
-
-
-
-
                             //Transfer DTCBox to Array
                             DThaunch = DGV.GridtoDT(dgvCBox);
                             Atop = Matrix.Atop_CBox(DThaunch, Aspan, 3);
+                            panelToprib.Visible = true;
+                            panelD.Visible = false;
+                        }    
+                        else
+                        {
+                            Atop = new double[3, 1] { { sumspan }, { 600 }, { 16 } } ;
+                            DGV.ArraytoGrid(gridTop, Atop);
 
+                            Atop_grid = new double[5, 1];
+                            Atop1 = new double[1];
+                            for (int i = 0; i < 1; i++)
+                            {
+                                Atop_grid[0, i] = 1; //Set all ID = 1
+                                Atop_grid[1, i] = i + 1; //Set order 1-2-3
+                                Atop_grid[2, i] = Atop[0, i]; //Set length
+                                Atop1[i] = Atop[0, i];
+                            }
+                            Deco(gridTop, Atop_grid);
 
-                        }                                             
+                            //Create Atrib and Atrib_grid
+                            
+                            Atrib = new double[4, 1] { { sumspan }, { 0 }, { 0 }, { 0 } };
+
+                            //Fill to gridTrib dgv
+                            DGV.ArraytoGrid(gridTrib, Atrib);
+
+                            //Create Atrib_grid with 6 row
+                            Atrib_grid = new double[6, Atrib.GetLength(1)];
+                            for (int i = 0; i < Atrib.GetLength(1); i++)
+                            {
+                                Atrib_grid[0, i] = 1; //Set all ID = 1
+                                Atrib_grid[1, i] = i + 1; //Set order 1-2-3
+                                Atrib_grid[2, i] = Atrib[0, i]; //Set length
+
+                            }
+                            Deco(gridTrib, Atrib_grid);
+                            panelToprib.Visible = false;
+                            panelD.Visible = true;
+
+                        }
 
 
 
@@ -811,6 +863,13 @@ namespace Mainform
                             btHaunch.Visible = false;
                             panelBP.MaximumSize = new Size(panelBP.Width, 294 - 43);
                         }
+
+                        
+                        // Generate List of grid bridge
+                        Node = Matrix.GenerateNode(Across_grid, Atran, ngirder);
+
+                        // Plot to the chart
+                        Chart.Bridgegrid(Node, gridchart);
 
                     }
                     break;
@@ -951,7 +1010,7 @@ namespace Mainform
 
                         //Add to gridCrossbeam
                         string Crossheader = "Exterior-Support Crossbeam";
-                        List<double> type = Node.Select(p => p.Type).ToList();
+                        List<int> type = Node.Select(p => p.Type).ToList();
                         int ncross = 1;
 
                         if (type.IndexOf(2) != -1)
@@ -1172,12 +1231,52 @@ namespace Mainform
                         Node = Matrix.AddKframe(Node, KFrame);
                         Access.writeList(Node, "Node", con, "All");
 
-                        var K = KFrame.Where(p => p.Location == true).ToList();
-                        dataGridView1.DataSource = null;
-                        dataGridView1.DataSource = K;
+                       
                         //MessageBox.Show(K.Count.ToString());
 
                         
+                    }
+                    break;
+
+
+                case "pageAnalysis":
+                    {
+                        //Do for Node
+                        List<int> kindex = new List<int>();
+                        
+                        if (checkSChanged.Checked == false)
+                        {
+                            if (kindex.IndexOf(5) == -1 && kindex.IndexOf(6) == -1)
+                                kindex.AddRange(new List<int> { 5, 6 });
+                        }
+                        else
+                        {
+                            if (kindex.IndexOf(5) != -1 && kindex.IndexOf(6) != -1)
+                            {
+                                kindex.Remove(5);
+                                kindex.Remove(6);
+                            }                               
+                        }
+
+                        if (checkKframe.Checked == false)
+                        {
+                            if (kindex.IndexOf(7) == -1)
+                                kindex.Add(7);
+                        }
+                        else
+                        {
+                            if (kindex.IndexOf(7) != -1)                            
+                                kindex.Remove(7); 
+                        }
+
+
+                        List<Node> Node1 = new List<Node>();
+                        for (int i = 0; i < kindex.Count; i++)
+                            Node1 = Node.Where(p => p.Type != kindex[i]).ToList();
+
+                        Access.writeList(Node1, "Node1", con, "All");
+                        Access.writeList(Node, "Node", con, "All");
+
                     }
                     break;
 
@@ -2056,7 +2155,7 @@ namespace Mainform
 
         private void dgvHaunch_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            for (int i = 1; i < numinsup; i++)
+            for (int i = 1; i < pier; i++)
                 dgvHaunch.Rows[i].Cells[3].Value = dgvHaunch.Rows[i - 1].Cells[5].Value;
         }
 

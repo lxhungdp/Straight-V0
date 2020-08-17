@@ -16,7 +16,7 @@ namespace Classes
         public double Joint   //101 102 103 201 202 203. Maximum 100 node
         { get; set; }
         
-        public double Type    //1 - Abu, 2 - Pier, 3 - Cross, 4 Section changed
+        public int Type    //1 - Abu, 2 - Pier, 3 - Cross, 4 Section changed
         { get; set; }    
 
         public string Label

@@ -540,7 +540,7 @@ namespace Provider
                 for (int j = 0; j < Longcu.GetLength(0); j++)
                 {
                     Node a = new Node();
-                    a.Type = j == Longcu.GetLength(0) - 1 ? 1 : Across_grid[0, j];
+                    a.Type = j == Longcu.GetLength(0) - 1 ? 1 : (int)Across_grid[0, j];
                     a.BeamID = i == Trancu.GetLength(0) - 1 ? ngirder : Atran[2, i + 1];
                     a.Haunch = 0;
                     a.X = Longcu[j];
