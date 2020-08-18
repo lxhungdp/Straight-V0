@@ -67,7 +67,6 @@
             this.labelCode3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.labelCode2 = new System.Windows.Forms.Label();
-            this.labelEx2 = new System.Windows.Forms.Label();
             this.labelCode1 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -194,9 +193,10 @@
             this.picSection = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.panelD = new System.Windows.Forms.Panel();
+            this.label93 = new System.Windows.Forms.Label();
             this.numD = new System.Windows.Forms.NumericUpDown();
             this.label94 = new System.Windows.Forms.Label();
-            this.label93 = new System.Windows.Forms.Label();
             this.numw = new System.Windows.Forms.NumericUpDown();
             this.radioDe = new System.Windows.Forms.RadioButton();
             this.radioRa = new System.Windows.Forms.RadioButton();
@@ -254,14 +254,14 @@
             this.numns = new System.Windows.Forms.NumericUpDown();
             this.label51 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.panel20 = new System.Windows.Forms.Panel();
+            this.panelToprib = new System.Windows.Forms.Panel();
             this.label44 = new System.Windows.Forms.Label();
             this.gridTrib = new System.Windows.Forms.DataGridView();
             this.label40 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
             this.label45 = new System.Windows.Forms.Label();
@@ -302,6 +302,18 @@
             this.nw = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label71 = new System.Windows.Forms.Label();
             this.pageAnalysis = new MetroFramework.Controls.MetroTabPage();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label96 = new System.Windows.Forms.Label();
+            this.numseg2 = new System.Windows.Forms.NumericUpDown();
+            this.label95 = new System.Windows.Forms.Label();
+            this.numseg1 = new System.Windows.Forms.NumericUpDown();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.checkSChanged = new System.Windows.Forms.CheckBox();
+            this.checkKframe = new System.Windows.Forms.CheckBox();
+            this.richAnalysis = new System.Windows.Forms.RichTextBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btApply = new System.Windows.Forms.Button();
             this.btNext = new System.Windows.Forms.Button();
@@ -311,6 +323,7 @@
             this.addTool = new System.Windows.Forms.ToolStripMenuItem();
             this.divideTool = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.panelBP.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
@@ -362,6 +375,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picSection)).BeginInit();
             this.panel5.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.panelD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numw)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSd)).BeginInit();
@@ -391,7 +405,7 @@
             this.pageStiffeners.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numns)).BeginInit();
-            this.panel20.SuspendLayout();
+            this.panelToprib.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTrib)).BeginInit();
             this.panel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridBrib)).BeginInit();
@@ -402,6 +416,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridCrossbeam)).BeginInit();
+            this.pageAnalysis.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numseg2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numseg1)).BeginInit();
             this.panel2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -638,7 +656,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(233, 24);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 7;
+            this.metroTabControl1.SelectedIndex = 8;
             this.metroTabControl1.Size = new System.Drawing.Size(1401, 708);
             this.metroTabControl1.TabIndex = 3;
             this.metroTabControl1.UseSelectable = true;
@@ -650,7 +668,6 @@
             this.pageGeneral.Controls.Add(this.labelCode3);
             this.pageGeneral.Controls.Add(this.label9);
             this.pageGeneral.Controls.Add(this.labelCode2);
-            this.pageGeneral.Controls.Add(this.labelEx2);
             this.pageGeneral.Controls.Add(this.labelCode1);
             this.pageGeneral.Controls.Add(this.panel11);
             this.pageGeneral.Controls.Add(this.label7);
@@ -712,16 +729,6 @@
             this.labelCode2.TabIndex = 3;
             this.labelCode2.Text = "Code1";
             // 
-            // labelEx2
-            // 
-            this.labelEx2.AutoSize = true;
-            this.labelEx2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEx2.Location = new System.Drawing.Point(37, 289);
-            this.labelEx2.Name = "labelEx2";
-            this.labelEx2.Size = new System.Drawing.Size(31, 17);
-            this.labelEx2.TabIndex = 11;
-            this.labelEx2.Text = "(Ex.)";
-            // 
             // labelCode1
             // 
             this.labelCode1.AutoSize = true;
@@ -775,7 +782,7 @@
             this.txtSpan.Name = "txtSpan";
             this.txtSpan.Size = new System.Drawing.Size(184, 25);
             this.txtSpan.TabIndex = 9;
-            this.txtSpan.Text = "1";
+            this.txtSpan.Text = "50";
             this.txtSpan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSpan_KeyPress);
             // 
             // label1
@@ -2149,9 +2156,8 @@
             // 
             // groupBox12
             // 
-            this.groupBox12.Controls.Add(this.numD);
+            this.groupBox12.Controls.Add(this.panelD);
             this.groupBox12.Controls.Add(this.label94);
-            this.groupBox12.Controls.Add(this.label93);
             this.groupBox12.Controls.Add(this.numw);
             this.groupBox12.Controls.Add(this.radioDe);
             this.groupBox12.Controls.Add(this.radioRa);
@@ -2165,6 +2171,24 @@
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Web";
             // 
+            // panelD
+            // 
+            this.panelD.Controls.Add(this.label93);
+            this.panelD.Controls.Add(this.numD);
+            this.panelD.Location = new System.Drawing.Point(205, 60);
+            this.panelD.Name = "panelD";
+            this.panelD.Size = new System.Drawing.Size(234, 37);
+            this.panelD.TabIndex = 9;
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Location = new System.Drawing.Point(7, 5);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(110, 17);
+            this.label93.TabIndex = 7;
+            this.label93.Text = "Depth of Web (D)";
+            // 
             // numD
             // 
             this.numD.Increment = new decimal(new int[] {
@@ -2172,7 +2196,7 @@
             0,
             0,
             0});
-            this.numD.Location = new System.Drawing.Point(361, 58);
+            this.numD.Location = new System.Drawing.Point(156, 3);
             this.numD.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -2195,15 +2219,6 @@
             this.label94.Size = new System.Drawing.Size(59, 17);
             this.label94.TabIndex = 7;
             this.label94.Text = "(Degree)";
-            // 
-            // label93
-            // 
-            this.label93.AutoSize = true;
-            this.label93.Location = new System.Drawing.Point(212, 60);
-            this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(110, 17);
-            this.label93.TabIndex = 7;
-            this.label93.Text = "Depth of Web (D)";
             // 
             // numw
             // 
@@ -2943,8 +2958,7 @@
             this.pageStiffeners.Controls.Add(this.numns);
             this.pageStiffeners.Controls.Add(this.label51);
             this.pageStiffeners.Controls.Add(this.label50);
-            this.pageStiffeners.Controls.Add(this.label39);
-            this.pageStiffeners.Controls.Add(this.panel20);
+            this.pageStiffeners.Controls.Add(this.panelToprib);
             this.pageStiffeners.Controls.Add(this.label17);
             this.pageStiffeners.Controls.Add(this.panel19);
             this.pageStiffeners.Controls.Add(this.panel18);
@@ -3008,35 +3022,25 @@
             this.label50.TabIndex = 54;
             this.label50.Text = "Longitudinal Stiffener";
             // 
-            // label39
+            // panelToprib
             // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label39.Location = new System.Drawing.Point(8, 180);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(166, 23);
-            this.label39.TabIndex = 53;
-            this.label39.Text = "Top Longitudinal Rib";
-            // 
-            // panel20
-            // 
-            this.panel20.Controls.Add(this.label44);
-            this.panel20.Controls.Add(this.gridTrib);
-            this.panel20.Controls.Add(this.label40);
-            this.panel20.Controls.Add(this.label43);
-            this.panel20.Controls.Add(this.label41);
-            this.panel20.Controls.Add(this.label42);
-            this.panel20.Location = new System.Drawing.Point(12, 215);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(944, 148);
-            this.panel20.TabIndex = 52;
+            this.panelToprib.Controls.Add(this.label44);
+            this.panelToprib.Controls.Add(this.gridTrib);
+            this.panelToprib.Controls.Add(this.label40);
+            this.panelToprib.Controls.Add(this.label43);
+            this.panelToprib.Controls.Add(this.label41);
+            this.panelToprib.Controls.Add(this.label42);
+            this.panelToprib.Controls.Add(this.label39);
+            this.panelToprib.Location = new System.Drawing.Point(12, 429);
+            this.panelToprib.Name = "panelToprib";
+            this.panelToprib.Size = new System.Drawing.Size(944, 208);
+            this.panelToprib.TabIndex = 52;
             // 
             // label44
             // 
             this.label44.AutoSize = true;
             this.label44.BackColor = System.Drawing.Color.White;
-            this.label44.Location = new System.Drawing.Point(20, 103);
+            this.label44.Location = new System.Drawing.Point(17, 157);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(89, 17);
             this.label44.TabIndex = 20;
@@ -3066,7 +3070,7 @@
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gridTrib.DefaultCellStyle = dataGridViewCellStyle14;
-            this.gridTrib.Location = new System.Drawing.Point(124, 0);
+            this.gridTrib.Location = new System.Drawing.Point(121, 54);
             this.gridTrib.Margin = new System.Windows.Forms.Padding(0);
             this.gridTrib.Name = "gridTrib";
             this.gridTrib.RowHeadersVisible = false;
@@ -3080,7 +3084,7 @@
             // 
             this.label40.AutoSize = true;
             this.label40.BackColor = System.Drawing.Color.White;
-            this.label40.Location = new System.Drawing.Point(19, 55);
+            this.label40.Location = new System.Drawing.Point(16, 109);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(82, 17);
             this.label40.TabIndex = 18;
@@ -3090,7 +3094,7 @@
             // 
             this.label43.AutoSize = true;
             this.label43.BackColor = System.Drawing.Color.White;
-            this.label43.Location = new System.Drawing.Point(19, 31);
+            this.label43.Location = new System.Drawing.Point(16, 85);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(47, 17);
             this.label43.TabIndex = 17;
@@ -3100,7 +3104,7 @@
             // 
             this.label41.AutoSize = true;
             this.label41.BackColor = System.Drawing.Color.White;
-            this.label41.Location = new System.Drawing.Point(19, 79);
+            this.label41.Location = new System.Drawing.Point(16, 133);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(74, 17);
             this.label41.TabIndex = 19;
@@ -3110,18 +3114,29 @@
             // 
             this.label42.AutoSize = true;
             this.label42.BackColor = System.Drawing.Color.White;
-            this.label42.Location = new System.Drawing.Point(19, 6);
+            this.label42.Location = new System.Drawing.Point(16, 60);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(75, 17);
             this.label42.TabIndex = 16;
             this.label42.Text = "Section No.";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label39.Location = new System.Drawing.Point(15, 17);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(166, 23);
+            this.label39.TabIndex = 53;
+            this.label39.Text = "Top Longitudinal Rib";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label17.Location = new System.Drawing.Point(10, 414);
+            this.label17.Location = new System.Drawing.Point(8, 188);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(196, 23);
             this.label17.TabIndex = 51;
@@ -3135,7 +3150,7 @@
             this.panel19.Controls.Add(this.label49);
             this.panel19.Controls.Add(this.label47);
             this.panel19.Controls.Add(this.label48);
-            this.panel19.Location = new System.Drawing.Point(14, 449);
+            this.panel19.Location = new System.Drawing.Point(12, 223);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(942, 139);
             this.panel19.TabIndex = 50;
@@ -3385,7 +3400,7 @@
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7});
-            this.dgvBar.Location = new System.Drawing.Point(46, 277);
+            this.dgvBar.Location = new System.Drawing.Point(46, 270);
             this.dgvBar.Name = "dgvBar";
             this.dgvBar.RowHeadersWidth = 150;
             this.dgvBar.Size = new System.Drawing.Size(574, 93);
@@ -3442,9 +3457,9 @@
             // 
             // picBar
             // 
-            this.picBar.Location = new System.Drawing.Point(46, 404);
+            this.picBar.Location = new System.Drawing.Point(46, 390);
             this.picBar.Name = "picBar";
-            this.picBar.Size = new System.Drawing.Size(574, 259);
+            this.picBar.Size = new System.Drawing.Size(625, 280);
             this.picBar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picBar.TabIndex = 29;
             this.picBar.TabStop = false;
@@ -3549,6 +3564,7 @@
             // 
             // pageAnalysis
             // 
+            this.pageAnalysis.Controls.Add(this.panel8);
             this.pageAnalysis.HorizontalScrollbarBarColor = true;
             this.pageAnalysis.HorizontalScrollbarHighlightOnWheel = false;
             this.pageAnalysis.HorizontalScrollbarSize = 1;
@@ -3560,6 +3576,164 @@
             this.pageAnalysis.VerticalScrollbarBarColor = true;
             this.pageAnalysis.VerticalScrollbarHighlightOnWheel = false;
             this.pageAnalysis.VerticalScrollbarSize = 3;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel8.Controls.Add(this.checkBox4);
+            this.panel8.Controls.Add(this.label96);
+            this.panel8.Controls.Add(this.numseg2);
+            this.panel8.Controls.Add(this.label95);
+            this.panel8.Controls.Add(this.numseg1);
+            this.panel8.Controls.Add(this.label54);
+            this.panel8.Controls.Add(this.label53);
+            this.panel8.Controls.Add(this.checkSChanged);
+            this.panel8.Controls.Add(this.checkKframe);
+            this.panel8.Controls.Add(this.richAnalysis);
+            this.panel8.Controls.Add(this.label52);
+            this.panel8.Controls.Add(this.checkBox3);
+            this.panel8.Location = new System.Drawing.Point(14, 27);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(697, 396);
+            this.panel8.TabIndex = 13;
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Location = new System.Drawing.Point(151, 313);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(209, 17);
+            this.label96.TabIndex = 23;
+            this.label96.Text = "( m) for the varying depth sections";
+            // 
+            // numseg2
+            // 
+            this.numseg2.DecimalPlaces = 1;
+            this.numseg2.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numseg2.Location = new System.Drawing.Point(53, 311);
+            this.numseg2.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numseg2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numseg2.Name = "numseg2";
+            this.numseg2.Size = new System.Drawing.Size(92, 25);
+            this.numseg2.TabIndex = 22;
+            this.numseg2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Location = new System.Drawing.Point(151, 282);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(216, 17);
+            this.label95.TabIndex = 21;
+            this.label95.Text = "( m) for the constant depth sections";
+            // 
+            // numseg1
+            // 
+            this.numseg1.DecimalPlaces = 1;
+            this.numseg1.Location = new System.Drawing.Point(53, 280);
+            this.numseg1.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numseg1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numseg1.Name = "numseg1";
+            this.numseg1.Size = new System.Drawing.Size(92, 25);
+            this.numseg1.TabIndex = 20;
+            this.numseg1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(19, 260);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(294, 17);
+            this.label54.TabIndex = 19;
+            this.label54.Text = "2. The divided segment lengths is not larger than";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(19, 119);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(278, 17);
+            this.label53.TabIndex = 18;
+            this.label53.Text = "1. The elements are divided at the locations of";
+            // 
+            // checkSChanged
+            // 
+            this.checkSChanged.AutoSize = true;
+            this.checkSChanged.Location = new System.Drawing.Point(53, 196);
+            this.checkSChanged.Name = "checkSChanged";
+            this.checkSChanged.Size = new System.Drawing.Size(123, 21);
+            this.checkSChanged.TabIndex = 17;
+            this.checkSChanged.Text = "Section changed";
+            this.checkSChanged.UseVisualStyleBackColor = true;
+            // 
+            // checkKframe
+            // 
+            this.checkKframe.AutoSize = true;
+            this.checkKframe.Location = new System.Drawing.Point(53, 170);
+            this.checkKframe.Name = "checkKframe";
+            this.checkKframe.Size = new System.Drawing.Size(84, 21);
+            this.checkKframe.TabIndex = 15;
+            this.checkKframe.Text = "K - Frame";
+            this.checkKframe.UseVisualStyleBackColor = true;
+            // 
+            // richAnalysis
+            // 
+            this.richAnalysis.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richAnalysis.Location = new System.Drawing.Point(22, 43);
+            this.richAnalysis.Name = "richAnalysis";
+            this.richAnalysis.Size = new System.Drawing.Size(672, 68);
+            this.richAnalysis.TabIndex = 14;
+            this.richAnalysis.Text = "To analyze";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label52.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label52.Location = new System.Drawing.Point(18, 17);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(178, 23);
+            this.label52.TabIndex = 12;
+            this.label52.Text = "Element dividing rules";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(53, 144);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(97, 21);
+            this.checkBox3.TabIndex = 0;
+            this.checkBox3.Text = "Cross beam";
+            this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // timer1
             // 
@@ -3655,6 +3829,16 @@
             this.deleteTool.Text = "Delete";
             this.deleteTool.Click += new System.EventHandler(this.deleteTool_Click);
             // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(53, 222);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(70, 21);
+            this.checkBox4.TabIndex = 24;
+            this.checkBox4.Text = "Haunch";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -3734,6 +3918,8 @@
             this.panel5.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            this.panelD.ResumeLayout(false);
+            this.panelD.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numw)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSd)).EndInit();
@@ -3772,8 +3958,8 @@
             this.pageStiffeners.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picds)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numns)).EndInit();
-            this.panel20.ResumeLayout(false);
-            this.panel20.PerformLayout();
+            this.panelToprib.ResumeLayout(false);
+            this.panelToprib.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTrib)).EndInit();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
@@ -3787,6 +3973,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridCrossbeam)).EndInit();
+            this.pageAnalysis.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numseg2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numseg1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -3829,7 +4020,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelEx;
-        private System.Windows.Forms.Label labelEx2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label labelCode3;
         private System.Windows.Forms.Label labelCode2;
@@ -4043,7 +4233,7 @@
         private System.Windows.Forms.NumericUpDown numw;
         private System.Windows.Forms.Label label92;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Panel panelToprib;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Panel panel18;
@@ -4058,6 +4248,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Station;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Location;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.Panel panelD;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.RichTextBox richAnalysis;
+        private System.Windows.Forms.CheckBox checkSChanged;
+        private System.Windows.Forms.CheckBox checkKframe;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label95;
+        private System.Windows.Forms.NumericUpDown numseg1;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label96;
+        private System.Windows.Forms.NumericUpDown numseg2;
+        private System.Windows.Forms.CheckBox checkBox4;
     }
 }
 

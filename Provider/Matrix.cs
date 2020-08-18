@@ -784,5 +784,52 @@ namespace Provider
 
             return Node;
         }
+
+        public static List<Node> Selection(List<Node> Node, double x1, double x2)
+        {
+            List<Node> b = new List<Node>();
+
+            List<Node> Node1 = Node.Where(p => p.BeamID == 1).ToList();
+            int nlong = Node1.Count;
+            int ntran = Node.Count / nlong;
+            
+            List<Node> Nodeadd = new List<Node>();
+
+            for (int k = 0; k < ntran; k++)
+            {
+                for (int i = 0; i < nlong - 1; i++)
+                {
+                    double x = Node1[i].Haunch == 0 ? x1 * 1000 : x2 * 1000;
+                    
+                    if (Node1[i + 1].X - Node1[i].X > x)
+                    {
+                        int n = (int)Math.Ceiling((Node1[i + 1].X - Node1[i].X) / x) - 1;
+                        for (int j = 0; j < n; j++)
+                        {
+                            Node a = Node[k * nlong + i].ShallowCopy();
+                            a.X = Node1[i].X + (Node1[i + 1].X - Node1[i].X) / (n + 1) * (j + 1);
+                            a.Type = 8;
+                            a.Label = "";
+                            a.Restrain = "";
+                            Nodeadd.Add(a);
+                        }
+
+                    }
+                }
+            }
+            b.AddRange(Node);
+            b.AddRange(Nodeadd);
+            b = b.OrderBy(n => n.BeamID).ThenBy(p => p.X).ToList();
+            //Rename the Joint
+
+            //Rename the label
+            for (int i = 0; i < ntran; i++)
+                for (int j = 0; j < b.Count / ntran; j++)
+                {
+                    b[i * b.Count / ntran + j].Joint = (i + 1) * 100 + j + 1;
+                }
+
+            return b;
+        }
     }
 }

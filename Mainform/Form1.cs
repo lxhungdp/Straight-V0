@@ -1269,13 +1269,16 @@ namespace Mainform
                                 kindex.Remove(7); 
                         }
 
+                        Node = Node.Where(p => p.Type < 8).ToList();
+                        Access.writeList(Node, "Node", con, "All");
 
                         List<Node> Node1 = new List<Node>();
+                        Node1 = Node;
                         for (int i = 0; i < kindex.Count; i++)
-                            Node1 = Node.Where(p => p.Type != kindex[i]).ToList();
-
-                        Access.writeList(Node1, "Node1", con, "All");
-                        Access.writeList(Node, "Node", con, "All");
+                            Node1 = Node1.Where(p => p.Type != kindex[i]).ToList();
+                        List<Node> Node2 = new List<Node>();
+                        Node2 = Matrix.Selection(Node1, (double)numseg1.Value, (double)numseg2.Value);
+                        Access.writeList(Node2, "Node2", con, "All");
 
                     }
                     break;
