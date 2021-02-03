@@ -25,11 +25,8 @@ namespace Mainform
         private void btApply_Click(object sender, EventArgs e)
         {
 
-            ndiv = Convert.ToInt32(nndiv.Value); 
-            
-
-
-           
+            ndiv = Convert.ToInt32(nndiv.Value);
+            divideall = checkApply.Checked;           
         }
 
         private void fAddmore_Load(object sender, EventArgs e)
@@ -38,5 +35,6 @@ namespace Mainform
         }
 
         public int ndiv;
+        public bool divideall;
     }
 }

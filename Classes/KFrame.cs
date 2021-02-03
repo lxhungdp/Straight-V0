@@ -8,6 +8,8 @@ namespace Classes
 {
     public class KFrame
     {
+       
+            
         public KFrame(double Station, bool Location , string Description)
         {
             this.Location = Location;

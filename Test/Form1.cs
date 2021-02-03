@@ -13,14 +13,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Classes;
 using Dapper;
+using System.Diagnostics;
+using Provider;
+using System.Threading;
 
 namespace Test
 {
     public partial class Form1 : Form
     {
-        
-        
-        
+
+
+
 
         public Form1()
         {
@@ -29,30 +32,58 @@ namespace Test
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Node N = new Node();
+            N.A1 = 1;
+            N.A2 = 3.0;
+            N.A3 = " ggg";
 
-            List<double> a = new List<double> { 1, 2, 3, 4, 5 };
+            List<Node> LN = new List<Node>();
+            LN.Add(N);
 
-            List<double> b = new List<double> { 1.5, 3.2, 2,1};
+            int n = LN[0].GetType().GetProperties().Length;
+            var prop = LN[0].GetType().GetProperties();
 
-            //List<int> index = new List<int>();
-            //foreach (double b1 in b)
-            //    index.Add(a.FindLastIndex(p => p<=b1));
+            MessageBox.Show(prop[0].PropertyType.Name);
 
-            int c = a.FindLastIndex(p => p <= 0);
-            MessageBox.Show(c.ToString());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if ((Application.OpenForms["Form2"] as Form2) == null)
+            {
+                Form2 f = new Form2() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+                this.panel1.Controls.Add(f);
+
+                f.Show();
+            }         
 
 
 
         }
+    } 
+    
+    public class Node
+    {
+        public Node()
+        {
 
-        
+        }
 
-      
+        public int A1
+        { get; set; }
+
+        public double A2
+        { get; set; }
+
+        public string A3
+        { get; set; }
     }
-
-
-   
 
     
 }
+   
+
+    
+
 

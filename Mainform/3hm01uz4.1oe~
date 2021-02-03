@@ -1,0 +1,151 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using Classes;
+using Provider;
+
+namespace Mainform
+{
+    public class Analysis
+    {
+        
+        public Analysis()
+        {
+
+        }
+
+        public Input Input
+        { get; set; }
+
+        //public List<Node> Node()
+        //{
+
+        //    //Add Haunch, Closed box section and bottom concrete
+        //    if (Aspan().GetLength(0) > 1 && DThaunch.Rows.Count == Aspan().GetLength(0) - 1 && Haunch != null)
+        //    {
+        //        double[,] AddHaunch = Cumatrix(Haunch.Harray, 0);
+        //        Nodet = Addnode(Nodet, AddHaunch, "Haunch", 4, "btop");
+        //    }
+
+        //}
+
+        public Haunch Haunch ()
+        {
+            return new Haunch(Input.Aspan(), Input.Ahaunch);
+        }
+
+        public List<Node> Addnode(List<Node> LNode, double[,] b, string pro, int Type, string expro)
+        {
+            var nlong = LNode.Where(p => p.BeamID == 1).ToList().Count;
+            var n = LNode.Count / nlong;
+            string[] exprostr = expro.Split(',');
+            int index;
+            LNode = LNode.OrderBy(p => p.BeamID).ThenBy(p => p.Y).ThenBy(p => p.X).ToList();
+            //Insert the point if X is the new X
+            for (int i = 0; i < b.GetLength(1); i++)
+            {
+                if (LNode.Select(p => p.X).ToList().IndexOf(b[0, i]) == -1)
+                {
+                    for (int j = 0; j < n; j++) //Do for all girder
+                    {
+                        Node a = new Node();
+                        a.X = b[0, i];
+                        a.Z = 0;
+                        a.Y = LNode[j * nlong].Y;
+                        a.BeamID = LNode[j * nlong].BeamID;
+                        a.Type = Type;
+                        a.Label = "Section Changed";
+
+                        index = LNode.FindLastIndex(p => p.X <= b[0, i]);
+                        for (int k = 0; k < exprostr.GetLength(0); k++)
+                        {
+                            PropertyInfo newpro = a.GetType().GetProperty(exprostr[k]);
+                            PropertyInfo oldpro = LNode[index].GetType().GetProperty(exprostr[k]);
+
+                            newpro.SetValue(a, oldpro.GetValue(LNode[index], null));
+                        }
+
+                        LNode.Add(a);
+                    }
+
+                }
+            }
+
+            LNode = Reorder(LNode);
+
+            //Add pro
+            string[] prostring = pro.Split(',');
+            double provalue = 0;
+
+            for (int i = 0; i < prostring.GetLength(0); i++)
+            {
+                for (int j = 0; j < LNode.Count; j++)
+                {
+                    for (int k = 0; k < b.GetLength(1); k++)
+                    {
+                        if (b[0, k] == LNode[j].X)
+                            provalue = b[i + 1, k];
+                    }
+                    PropertyInfo propertyInfo = LNode[j].GetType().GetProperty(prostring[i]);
+                    propertyInfo.SetValue(LNode[j], provalue);
+                }
+            }
+
+            return LNode;
+
+        }
+
+
+        public static List<Node> Reorder(List<Node> Node)
+        {
+            var nlong = Node.Where(p => p.BeamID == 1).ToList().Count;
+            var ntran = Node.Count / nlong;
+
+            Node = Node.OrderBy(p => p.BeamID).ThenBy(p => p.Y).ThenBy(p => p.X).ToList();
+
+            for (int i = 0; i < ntran; i++)
+                for (int j = 0; j < nlong; j++)
+                {
+                    Node[i * nlong + j].Joint = (i + 1) * 100 + j + 1;
+                }
+
+            return Node;
+        }
+
+
+
+
+
+
+
+
+        //public List<Nodeex> Node
+        //{ get; set; }
+
+        //public List<Sec> Sec()
+        //{
+        //    //Caluclate sec for only one beam
+        //    List<Nodeex> Node1 = Node.Where(p => p.BeamID == 1).ToList();
+        //    Node1.RemoveAt(Node1.Count - 1);
+
+        //    double nEb = Mat[0].Es / Mat[7].Ec;
+        //    double nEd = Mat[0].Es / Mat[6].Ec;
+        //    List<Sec> Sec = new List<Sec>();
+        //    for (int i = 0; i < Node1.Count; i++)
+        //        Sec.Add(new Sec(Node1[i], nEb, nEd));
+        //    return Sec;
+        //}
+
+        //public List<Mat> Mat
+        //{ get; set; }
+
+        //public s2k s2k()
+        //{            
+        //    return new s2k(Node, Const.Constring + @"\Sap2000\self.s2k");
+        //}
+
+    }
+}

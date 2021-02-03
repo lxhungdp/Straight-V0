@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Provider;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,7 +23,7 @@ namespace Mainform
 
         private void btApply_Click(object sender, EventArgs e)
         {
-            foreach (RadioButton item in groupBox1.Controls)
+            foreach (RadioButton item in panel1.Controls)
             {
                 if (item != null)
                     if (item.Checked)
@@ -33,6 +34,13 @@ namespace Mainform
             }        
            
         }
+
+        private void fRestrain_Load(object sender, EventArgs e)
+        {
+            pictureBox1.Load(Const.Folderstring + @"\Picture\support.PNG");
+        }
+
+        
     }
 
     

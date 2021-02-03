@@ -1,0 +1,157 @@
+﻿using OfficeOpenXml;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.OleDb;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Classes;
+using Dapper;
+using System.Diagnostics;
+
+namespace Test
+{
+    public partial class Form1 : Form
+    {
+
+
+
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string pathsap = @"d:\Google Drive\PUS Program\Home4\Sap2000\";
+            string s2kfile = "self" + ".s2k";
+
+            string cmdtext = "/C Sapre " + s2kfile;
+            Process p = new Process();
+            p.StartInfo.FileName = "CMD.exe";
+            p.StartInfo.WorkingDirectory = pathsap;
+            p.StartInfo.Arguments = cmdtext;
+            p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardInput = true;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.CreateNoWindow = true;
+            p.Start();
+            
+            p.WaitForExit();
+            string a = p.StandardOutput.ReadToEnd();
+            MessageBox.Show(a.IndexOf("I N P U T   C O M P L E T E").ToString());
+
+            string cmdtext1 = "/C Sapgo " + s2kfile;
+            Process p1 = new Process();
+            p1.StartInfo.FileName = "CMD.exe";
+            p1.StartInfo.WorkingDirectory = pathsap;
+            p1.StartInfo.Arguments = cmdtext1;
+            p1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            p1.StartInfo.UseShellExecute = false;
+            p1.StartInfo.RedirectStandardInput = true;
+            p1.StartInfo.RedirectStandardOutput = true;
+            p1.StartInfo.CreateNoWindow = true;
+            p1.Start();
+            p1.WaitForExit();
+            a = p1.StandardOutput.ReadToEnd();
+            
+            MessageBox.Show(a.IndexOf("A N A L Y S I S   C O M P L E T E").ToString());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string path = @"d:\Google Drive\PUS Program\Home4\Sap2000\SELF";
+            List<string> Elm = new List<string> { "G101", "G102", "G103", "G104", "G105" };
+            List<Forces> MST = new List<Forces>();
+
+           
+            var lines = File.ReadAllLines(path + ".OUT").SkipWhile(line => !line.Contains("F R A M E   E L E M E N T   I N T E R N A L   F O R C E S"));
+
+
+            for (int i = 0; i < 1; i++)
+            {
+                Forces mst1 = new Forces();
+                lines = lines
+                       .SkipWhile(line => !line.Contains("ELEM    " + Elm[i]));
+                       
+                
+                var a = lines
+                      .SkipWhile(line => !line.Contains("LOAD    " + "SELF"))
+                      .SkipWhile(line => !line.Contains("REL DIST"))
+                      .SkipWhile(line => !line.StartsWith(" 0.00"))
+                      .Skip(0)
+                      .SelectMany(line => line.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries))
+                      .ToList();
+
+                mst1.iMoment = double.Parse(a[6]);
+                mst1.iShear = double.Parse(a[2]);
+                mst1.iTorsion = double.Parse(a[4]);
+
+                //List<string> b = lines                          
+                //          .SkipWhile(line => !line.StartsWith(" 1.00"))
+                //          .Skip(0)
+                //          .SelectMany(line => line.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries))
+                //          .ToList();
+                //mst1.jMoment = double.Parse(b[6]);
+                //mst1.jShear = double.Parse(b[2]);
+                //mst1.jTorsion = double.Parse(b[4]);
+
+                MST.Add(mst1);
+            }
+
+
+           
+            
+            //for (int i = 0; i < Elm.Count; i++)
+            //{
+            //    Forces mst1 = new Forces();
+            //    List<string> a = File.ReadLines(path + ".OUT")
+            //               .SkipWhile(line => !line.Contains("F R A M E   E L E M E N T   I N T E R N A L   F O R C E S"))
+            //               .SkipWhile(line => !line.Contains("ELEM    " + Elm[i]))
+            //               .SkipWhile(line => !line.Contains("LOAD    " + "SELF"))
+            //               .SkipWhile(line => !line.Contains("REL DIST"))
+            //               .SkipWhile(line => !line.StartsWith(" 0.00"))
+            //               .Skip(0)
+            //               .SelectMany(line => line.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries))
+            //               .ToList();
+            //    mst1.iMoment = double.Parse(a[6]);
+            //    mst1.iShear = double.Parse(a[2]);
+            //    mst1.iTorsion = double.Parse(a[4]);
+
+            //    List<string> b = File.ReadLines(path + ".OUT")
+            //              .SkipWhile(line => !line.Contains("F R A M E   E L E M E N T   I N T E R N A L   F O R C E S"))
+            //              .SkipWhile(line => !line.Contains("ELEM    " + Elm[i]))
+            //              .SkipWhile(line => !line.Contains("LOAD    " + "SELF"))
+            //              .SkipWhile(line => !line.Contains("REL DIST"))
+            //              .SkipWhile(line => !line.StartsWith(" 1.00"))
+            //              .Skip(0)
+            //              .SelectMany(line => line.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries))
+            //              .ToList();
+            //    mst1.jMoment = double.Parse(b[6]);
+            //    mst1.jShear = double.Parse(b[2]);
+            //    mst1.jTorsion = double.Parse(b[4]);
+
+            //    MST.Add(mst1);
+            //}
+
+            dataGridView1.DataSource = MST;
+        }
+    }
+
+    
+}
+   
+
+    
+
+

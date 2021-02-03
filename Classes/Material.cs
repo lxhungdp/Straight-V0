@@ -77,6 +77,7 @@ namespace Classes
             get { return 0.077 * Math.Pow(2500, 1.5) * Math.Pow(fcktofcm[fckd], (1 / 3.0)); }
         }
 
+
         public static double nEd
         {
             get { return Es / Ecd; }

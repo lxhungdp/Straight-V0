@@ -1,0 +1,1887 @@
+﻿using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
+using Mainform.Properties;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.OleDb;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Provider;
+using Classes;
+using Dapper;
+using System.Data.SQLite;
+
+namespace Mainform
+{
+    public partial class Form1 : Form
+    {
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        public void Form1_Load(object sender, EventArgs e)
+        {
+            NewProject();
+            Fillvaluetoform();
+
+            //Iniinput();
+            IniGeneral();
+            Inimaterial();
+            IniBridge();
+            IniLoadings();
+            IniOther();
+            IniAnalysis();
+
+        }
+
+        private void Changecolor(DataGridView a)
+        {
+            a.DefaultCellStyle.SelectionBackColor = Color.White;
+            a.DefaultCellStyle.SelectionForeColor = Color.Red;
+            a.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            a.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(33, 89, 103);
+            a.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            a.EnableHeadersVisualStyles = false;
+            a.ClearSelection();
+            foreach (DataGridViewColumn dgvc in a.Columns)
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+            a.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised;
+            a.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+
+        }
+
+        
+        private void IniGeneral()
+        {
+            cbType.SelectedIndex = 0;
+            labelEx.Text = "Ex. For a bridges with 3 spans, the lengths are 30m, 40m, 30m, input should be 30+40+30";
+            labelCode1.Text = "(1) 도로교 설계기준 (한계상태설계법) 해설, (2015) - (사)한국교량및구조공화회∙교량설계핵심기술연구단";
+            labelCode2.Text = "(2) 강구조설계기준 및 해설 (하중저항계수법), (2018) - (사)한국강구조학회";
+            labelCode3.Text = "(3) AASHTO LRFD, (2017)";
+            ShowpageGeneral();
+        }
+
+        //Material tab
+        private void Inimaterial()
+        {
+            pictureMat.Load(Const.Constring + @"\Picture\Mat.PNG");
+            List<string> Mitems = new List<string> { "Flange", "Web", "Diaphragm", "Longitudinal Rib", "Longitudinal Stiffener", "Transverse Stiffener", "Deck", "Bottom Concrete", "Rebar in Deck", "Rebar in Bottom concrete", "Cross Beam", "Stringer", "Splice", "Shear Connector" };
+            dgvMat.ColumnCount = 2;
+            dgvMat.Columns[0].HeaderText = "No.";
+            dgvMat.Columns[1].HeaderText = "Items";
+            dgvMat.Columns[0].Width = 50;
+            dgvMat.Columns[0].ReadOnly = true;
+            dgvMat.Columns[1].ReadOnly = true;
+            dgvMat.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvMat.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+            for (int i = 0; i < Mitems.Count; i++)
+                dgvMat.Rows.Add((i + 1).ToString(), Mitems[i]);
+
+            DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
+            combo.DataSource = listBox1.Items;
+            dgvMat.Columns.Add(combo);
+            Changecolor(dgvMat);
+
+            combo.HeaderText = "Material";
+            combo.Name = "Material";
+            combo.Width = 200;
+        }
+
+
+        //Loading tab
+        private void IniLoadings()
+        {
+            List<string> LLiveload = new List<string> { "KL510", "DB24", "HL93" };
+            foreach (string L in LLiveload)
+                cbLLiveload.Items.Add(L);
+            checkLL.Checked = true;
+            cbLLiveload.Enabled = true;
+
+            cbLLgrade.Items.Clear();
+            List<string> LLiveloadgrade = new List<string> { "1 등급 : KL510", "2 등급 : KL510 * 75%", "3 등급 : 2 등급 * 75%" };
+            foreach (string L in LLiveloadgrade)
+                cbLLgrade.Items.Add(L);
+            cbLLiveload.SelectedIndex = Input.Tructype;
+            cbLLgrade.SelectedIndex = Input.Truckgrade;
+
+            dgvLane.Columns[0].HeaderText = "Number of lane";
+            dgvLane.Columns[1].HeaderText = "Multi-lane factor";
+
+            Changecolor(dgvTruck);
+            Changecolor(dgvLane);
+
+            dgvLane.Rows[0].Cells[0].Value = "1";
+            dgvLane.Rows[1].Cells[0].Value = "2";
+            dgvLane.Rows[2].Cells[0].Value = "3";
+            dgvLane.Rows[3].Cells[0].Value = "4";
+            dgvLane.Rows[4].Cells[0].Value = "> 5";
+            dgvLane.Columns[0].ReadOnly = true;
+        }
+
+        private void IniBridge()
+        {
+            flowLayoutPanel1.BackColor = Color.FromArgb(33, 115, 70);
+            panel1.BackColor = Color.FromArgb(33, 115, 70);
+            btGeneral.BackColor = Color.FromArgb(33, 115, 70);
+            btBridge.BackColor = Color.FromArgb(33, 115, 70);
+            btGeneralD.BackColor = Color.FromArgb(44, 152, 93);
+            btGirderD.BackColor = Color.FromArgb(44, 152, 93);
+            btHaunch.BackColor = Color.FromArgb(44, 152, 93);
+            btStif.BackColor = Color.FromArgb(44, 152, 93);
+            btOther.BackColor = Color.FromArgb(44, 152, 93);
+            btBack.BackColor = Color.FromArgb(33, 115, 70);
+            btApply.BackColor = Color.FromArgb(33, 115, 70);
+            btNext.BackColor = Color.FromArgb(33, 115, 70);
+            btMaterial.BackColor = Color.FromArgb(33, 115, 70);
+            btAnalysis.BackColor = Color.FromArgb(33, 115, 70);
+            btLiveLoad.BackColor = Color.FromArgb(33, 115, 70);
+            btResults.BackColor = Color.FromArgb(33, 115, 70);
+            btCheckings.BackColor = Color.FromArgb(33, 115, 70);
+            btFile.BackColor = Color.FromArgb(33, 115, 70);
+            btNew.BackColor = Color.FromArgb(44, 152, 93);
+            btOpen.BackColor = Color.FromArgb(44, 152, 93);
+            btSave.BackColor = Color.FromArgb(44, 152, 93);
+
+
+            Changecolor(gridCross);
+            Changecolor(gridTran);
+            Changecolor(gridSection);
+            Changecolor(gridHaunch);
+            Changecolor(gridCBox);
+            Changecolor(gridBCon);
+            Changecolor(gridTop);
+            Changecolor(gridBot);
+            Changecolor(gridWeb);
+            Changecolor(gridribTop);
+            Changecolor(gridribBot);
+            Changecolor(gridTranstif);
+
+            picSection.Load(Const.Constring + @"\Picture\Section.PNG");
+            picCross.Load(Const.Constring + @"\Picture\Cross.PNG");
+            picH1.Load(Const.Constring + @"\Picture\H1.PNG");
+            picH2.Load(Const.Constring + @"\Picture\H2.PNG");
+            picH3.Load(Const.Constring + @"\Picture\H3.PNG");
+            picds.Load(Const.Constring + @"\Picture\ds.PNG");
+            picSupport.Load(Const.Constring + @"\Picture\support.PNG");
+
+        }
+               
+
+        private void IniOther()
+        {
+
+
+            picBar.Load(Const.Constring + @"\Picture\Bar.PNG");
+
+            Changecolor(gridCrossbeam);
+            Changecolor(gridBar);
+            Changecolor(gridKframe);
+        }
+
+        private void IniAnalysis()
+        {
+            richAnalysis.Text = "To analyze the bridge structure, the frame elements must be discreted into segments. The more elements are discreted, the more accurate the results will be, but the program execution time will be long." +
+                " For this case, the discreted segment length of 2m to 5m is recommended. To do that, the main girder elements are divided by the rules as follows";
+
+            checkBox3.Checked = true;
+            checkBox3.Enabled = false;
+            checkBox4.Checked = true;
+            checkBox4.Enabled = false;           
+
+        }
+
+        private void Filldgvtruck(List<Tuple<double, double>> a)
+        {
+            //Insert truck
+            DataTable DTTruck = new DataTable();
+            DTTruck.Columns.Add("Coor");
+            DTTruck.Columns.Add("Aload");
+
+            for (int i = 0; i < a.Count; i++)
+            {
+                DTTruck.Rows.Add(a[i].Item1, a[i].Item2);
+            }
+            dgvTruck.DataSource = DTTruck;
+        }
+
+        //Fill form form input value
+        private void Fillvaluetoform()
+        {
+            //General
+            txtbridgename.Text = Input.bridgename;
+            numgirder.Value = Input.ngirder;
+            txtSpan.Text = Input.txtspan;
+
+            //Material         
+
+            txtMatname.Text = Input.Mat[0].Name;
+            cbMattype.SelectedIndex = 0;
+            numWs.Value = (decimal)Input.Mat[0].Ws;
+            numEs.Value = (decimal)Input.Mat[0].Es;
+            numG.Value = (decimal)Input.Mat[0].G;
+            numFy.Value = (decimal)Input.Mat[0].Fy;
+            numFu.Value = (decimal)Input.Mat[0].Fu;
+            numWc.Value = (decimal)Input.Mat[0].Wc;
+            numFc.Value = (decimal)Input.Mat[0].fc;
+
+            listBox1.DataSource = Input.Mat.Select(p => p.Name).ToList();
+
+            //Loading tab
+
+            numLane.Value = (decimal)Input.Laneload;
+            numPe.Value = (decimal)Input.Pload;
+            numOverload.Value = (decimal)Input.Overloading;
+            numCons.Value = (decimal)Input.Pforms;
+            numPara.Value = (decimal)Input.Pparapet;
+
+            dgvLane.ColumnCount = 2;
+            dgvLane.RowCount = 5;
+            for (int i = 0; i < Input.Lanefactor.Count; i++)
+                dgvLane.Rows[i].Cells[1].Value = Input.Lanefactor[i];
+
+            Filldgvtruck(Input.Truckaxle);
+
+            //Dim tab
+            numts.Value = (decimal)Input.ts;
+            numth.Value = (decimal)Input.th;
+            numbh.Value = (decimal)Input.bh;
+            numdrt.Value = (decimal)Input.drt;
+            numart.Value = (decimal)Input.art;
+            numcrt.Value = (decimal)Input.crt;
+            numdrb.Value = (decimal)Input.drb;
+            numarb.Value = (decimal)Input.arb;
+            numcrb.Value = (decimal)Input.crb;
+            numSr.Value = (decimal)Input.S;
+            numSd.Value = (decimal)Input.Sd;
+            numw.Value = (decimal)Input.w;
+            numD.Value = (decimal)Input.D1;
+            numctop.Value = (decimal)Input.ctop;
+            numcbot.Value = (decimal)Input.cbot;
+
+            //Stiff
+            numns.Value = (decimal)Input.ns;
+
+            //Analysis
+            numseg1.Value = (decimal)Input.numseg1;
+            numseg2.Value = (decimal)Input.numseg2;
+            checkKframe.Checked = Input.Divindex[0] == 1 ? true : false;
+            checkSChanged.Checked = Input.Divindex[1] == 1 ? true : false;
+
+        }
+
+        //Set for new project and previous project
+        private void NewProject()
+        {
+            //General tab
+            Input.bridgename = InitializeValues.bridgename();
+            Input.ngirder = InitializeValues.ngirder();
+            Input.txtspan = InitializeValues.txtspan();
+
+            //Material tab
+            Input.Mat = new List<Mat>(InitializeValues.Mat());
+            Input.Matuse = new List<Mat>(InitializeValues.Matuse());
+
+            //Loading tab
+            Input.Tructype = InitializeValues.Tructype();
+            Input.Truckgrade = InitializeValues.Truckgrade();
+            Input.Laneload = InitializeValues.Laneload();
+            Input.Pload = InitializeValues.Pload();
+            Input.Overloading = InitializeValues.Overloading();
+            Input.Pforms = InitializeValues.Pforms();
+            Input.Pparapet = InitializeValues.Pparapet();
+            Input.Lanefactor = new List<double>(InitializeValues.Lanefactor());
+            Input.Truckaxle = new List<Tuple<double, double>>(InitializeValues.Truckaxle());
+
+            // Grid tab
+            Input.Across = InitializeValues.Across(Input.Aspan());
+            Input.Atran = InitializeValues.Atran(Input.ngirder);
+            Input.Asection = InitializeValues.Asection(Input.ngirder);
+            Input.Asection1 = InitializeValues.Asection(Input.ngirder);
+
+            //Haunch
+            Input.Ahaunch = InitializeValues.Ahaunch(Input.Aspan());
+            Input.Acbox = InitializeValues.Acbox(Input.Aspan());
+            Input.Acon = InitializeValues.Acon();
+
+            //GridDim
+
+            Input.Atop = InitializeValues.Atop(Input.Acbox, Input.Aspan());
+            Input.Abot = InitializeValues.Abot(Input.Aspan());
+            Input.Aweb = InitializeValues.Aweb(Input.Aspan());
+            Input.ts = InitializeValues.ts();
+            Input.th = InitializeValues.th();
+            Input.bh = InitializeValues.bh();
+            Input.drt = InitializeValues.drt();
+            Input.art = InitializeValues.art();
+            Input.crt = InitializeValues.crt();
+            Input.drb = InitializeValues.drb();
+            Input.arb = InitializeValues.arb();
+            Input.crb = InitializeValues.crb();
+            Input.S = InitializeValues.S();
+            Input.Sd = InitializeValues.Sd();
+            Input.w = InitializeValues.w();
+            Input.D1 = InitializeValues.D1();
+            Input.ctop = InitializeValues.ctop();
+            Input.cbot = InitializeValues.cbot();
+
+            //GridStiff
+            Input.Aribtop = InitializeValues.Aribtop(Input.Atop1());
+            Input.Aribbot = InitializeValues.Aribbot(Input.Aspan());
+            Input.Atranstiff = InitializeValues.Atranstif(Input.Across);
+            Input.ns = InitializeValues.ns();
+
+            //other tab
+            Input.Crossbeam = new List<Crossbeam>(InitializeValues.Crossbeam(Input.Across, Input.Atran));            
+            Input.Parapet = new List<Parapet>(InitializeValues.Parapet(Input.Asection));            
+            Input.KFrame = new List<KFrame>(InitializeValues.KFrame(Input.Across, Input.Atranstiff));
+
+            //Analysis
+            Input.Divindex = new List<int>(InitializeValues.Divindex());
+            Input.numseg1 = InitializeValues.numseg1();
+            Input.numseg2 = InitializeValues.numseg2();
+
+        }
+               
+
+        private void OpenProject()
+        {
+            //General tab
+            DataTable Dgeneral = SQL.getDataTable("select * from IGeneral");
+            Input.bridgename = Dgeneral.Rows[0][0].ToString();
+            Input.ngirder = (int)Dgeneral.Rows[0][1];
+            Input.txtspan = Dgeneral.Rows[0][2].ToString();
+
+            //Material tab
+            List<Mat> LMat = SQL.getListmat("ILmat");
+            listBox1.DataSource = LMat.Select(p => p.Name).ToList();
+
+            //General tab
+            //DataTable general = Access.getDataTable("Select * from IGeneral", con);
+            //GenerateNode.ngirder = Convert.ToInt32(general.Rows[0][1]);
+            //GenerateNode.txtspan = general.Rows[0][2].ToString();
+            //numgirder.Value = GenerateNode.ngirder;
+            //txtSpan.Text = GenerateNode.txtspan;
+            //txtbridgename.Text = general.Rows[0][0].ToString();
+
+            ////Material tab 
+
+            //DataTable DTMatp = Access.getDataTable("Select * from Mat1", con);
+
+            //Listmatuse = (from DataRow dr in DTMatp.Rows
+            //              select new Mat()
+            //              {
+            //                  Name = dr["Name"].ToString(),
+            //                  Type = dr["Type"].ToString(),
+            //                  Ws = Convert.ToDouble(dr["Ws"]),
+            //                  Es = Convert.ToDouble(dr["Es"]),
+            //                  G = Convert.ToDouble(dr["G"]),
+            //                  Fy = Convert.ToDouble(dr["Fy"]),
+            //                  Fu = Convert.ToDouble(dr["Fu"]),
+            //                  Wc = Convert.ToDouble(dr["Wc"]),
+            //                  fc = Convert.ToDouble(dr["fc"]),
+            //                  Ec = Convert.ToDouble(dr["Ec"])
+            //              }).ToList();
+            ////Assign to Analysis
+            //Analysis.Mat = new List<Mat>(Listmatuse);
+
+            ////Dim tab
+            //GenerateNode.Across = Access.getMatrix("Select * from IAcross", con);
+            //GenerateNode.Atran = Access.getMatrix("Select * from IAtran", con);
+            //GenerateNode.Asection = Access.getMatrix("Select * from IAsection", con);
+            //GenerateNode.Asection1 = Access.getMatrix("Select * from IAsection", con);
+
+
+        }
+
+
+        private bool isCollapsed;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (isCollapsed)
+            {
+                btBridge.Image = Resources.Collapse_Arrow_20px;
+                panelBP.Height += 10;
+                if (panelBP.Size == panelBP.MaximumSize)
+                {
+                    timer1.Stop();
+                    isCollapsed = false;
+                }
+            }
+            else
+            {
+                btBridge.Image = Resources.Expand_Arrow_20px;
+                panelBP.Height -= 10;
+                if (panelBP.Size == panelBP.MinimumSize)
+                {
+                    timer1.Stop();
+                    isCollapsed = true;
+                }
+
+            }
+        }
+
+        private void btBridge_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+
+            ShowpageGrid("all", Input.Aspan());
+
+        }
+
+
+
+        private void btGeneral_Click(object sender, EventArgs e)
+        {
+            ShowpageGeneral();
+
+
+        }
+
+
+        private void btAnalysis_Click(object sender, EventArgs e)
+        {
+            ShowpageAnalysis();
+        }
+        private void btMaterial_Click(object sender, EventArgs e)
+        {
+            ShowpageMaterial();
+        }
+
+        private void btLiveLoad_Click(object sender, EventArgs e)
+        {
+            ShowpageLoading();
+        }
+
+        private void btGeneralD_Click(object sender, EventArgs e)
+        {
+            ShowpageGrid("", Input.Aspan());
+        }
+
+        private void btGirderD_Click(object sender, EventArgs e)
+        {
+            ShowpageDim("", Input.Aspan());
+        }
+        private void btHaunch_Click(object sender, EventArgs e)
+        {
+            ShowpageHaunch("");
+        }
+        private void btStif_Click(object sender, EventArgs e)
+        {
+            ShowpageStiff("", Input.Aspan());
+        }
+        private void btOther_Click(object sender, EventArgs e)
+        {
+            ShowpageOther("", Input.Aspan());
+        }
+
+        //Control tab page
+        void showtabpage(List<TabPage> a)
+        {
+            metroTabControl1.TabPages.Clear();
+            foreach (TabPage page in metroTabControl1.TabPages)
+                metroTabControl1.TabPages.Remove(page);
+            foreach (TabPage a1 in a)
+                metroTabControl1.TabPages.Add(a1);
+        }
+
+
+        void ShowpageGeneral()
+        {
+            List<TabPage> a = new List<TabPage> { pageGeneral };
+            showtabpage(a);
+            btApply.Text = "Apply";
+        }
+
+        void ShowpageMaterial()
+        {
+            List<TabPage> a = new List<TabPage> { pageMaterial };
+            showtabpage(a);
+            btApply.Text = "Apply";
+        }
+        void ShowpageLoading()
+        {
+            List<TabPage> a = new List<TabPage> { pageLoadings };
+            showtabpage(a);
+            btApply.Text = "Apply";
+        }
+        void ShowpageGrid(string a1, double[] a2)
+        {
+            if (a1 == "all")
+            {
+                List<TabPage> a = new List<TabPage>();
+                if (a2.GetLength(0) > 1)
+                    a = new List<TabPage> { pageGrid, pageHaunch, pageDim, pageStiffeners, pageOther };
+                else
+                    a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
+
+                showtabpage(a);
+            }
+
+            Decogrid.gridCross(gridCross, Input.Across);
+            Decogrid.gridTran(gridTran, Input.Atran);
+            Decogrid.gridSection(gridSection, Input.Asection);
+            Chart.Bridgegrid(Input.Node(), gridchart);
+
+            btApply.Text = "Apply";
+            metroTabControl1.SelectedTab = pageGrid;
+        }
+
+        void ShowpageHaunch(string a1)
+        {
+
+            if (a1 == "all")
+            {
+                List<TabPage> a = new List<TabPage> { pageGrid, pageHaunch, pageDim, pageStiffeners, pageOther };
+                showtabpage(a);
+
+            }
+            metroTabControl1.SelectedTab = pageHaunch;
+            btApply.Text = "Apply";
+
+            Decogrid.girdHaunch(gridHaunch, Input.Ahaunch);
+            Chart.Haunch(Input.Aspan(), Input.Ahaunch, chartHaunch);
+            Decogrid.gridCBox(gridCBox, Input.Acbox);
+            Decogrid.gridBCon(gridBCon, Input.Acon, Input.Aspan());
+
+
+
+        }
+
+        void ShowpageDim(string a1, double[] a2)
+        {
+            if (a1 == "all")
+            {
+                List<TabPage> a = new List<TabPage>();
+                if (a2.GetLength(0) > 1)
+                    a = new List<TabPage> { pageGrid, pageHaunch, pageDim, pageStiffeners, pageOther };
+                else
+                    a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
+                showtabpage(a);
+            }
+            if (Input.Aspan().GetLength(0) > 1)
+                panelD.Visible = false;
+            else
+                panelD.Visible = true;
+
+            metroTabControl1.SelectedTab = pageDim;
+            btApply.Text = "Apply";
+            Input.Atop = InitializeValues.Atop(Input.Acbox, Input.Aspan());
+            Input.Abot = InitializeValues.Abot(Input.Aspan());
+            Input.Aweb = InitializeValues.Aweb(Input.Aspan());
+            Decogrid.gridTop(gridTop, Input.Atop);
+            Decogrid.gridBot(gridBot, Input.Abot);
+            Decogrid.gridBot(gridWeb, Input.Aweb);
+
+        }
+
+        void ShowpageStiff(string a1, double[] a2)
+        {
+            if (a1 == "all")
+            {
+                List<TabPage> a = new List<TabPage>();
+                if (a2.GetLength(0) > 1)
+                    a = new List<TabPage> { pageGrid, pageHaunch, pageDim, pageStiffeners, pageOther };
+
+                else
+                    a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
+
+                showtabpage(a);
+            }
+
+            if (Input.Aspan().GetLength(0) > 1)
+                panelToprib.Visible = true;
+            else
+                panelToprib.Visible = false;
+
+            metroTabControl1.SelectedTab = pageStiffeners;
+            btApply.Text = "Apply";
+
+            Input.Aribtop = InitializeValues.Aribtop(Input.Atop1());
+            Input.Aribbot = InitializeValues.Aribbot(Input.Aspan());
+            Input.Atranstiff = InitializeValues.Atranstif(Input.Across);
+            Decogrid.gridRibtop(gridribTop, Input.Aribtop);
+            Decogrid.gridBot(gridribBot, Input.Aribbot);
+            Decogrid.gridCross(gridTranstif, Input.Atranstiff);
+
+        }
+
+        void ShowpageOther(string a1, double[] a2)
+        {
+            if (a1 == "all")
+            {
+                List<TabPage> a = new List<TabPage>();
+                if (a2.GetLength(0) > 1)
+                    a = new List<TabPage> { pageGrid, pageHaunch, pageDim, pageStiffeners, pageOther };
+                else
+                    a = new List<TabPage> { pageGrid, pageDim, pageStiffeners, pageOther };
+                showtabpage(a);
+            }
+
+            metroTabControl1.SelectedTab = pageOther;
+            btApply.Text = "Apply";
+
+            Input.Crossbeam = new List<Crossbeam>(InitializeValues.Crossbeam(Input.Across, Input.Atran));
+            Decogrid.gridCrossbeam(gridCrossbeam, Input.Crossbeam);
+            Input.Parapet = new List<Parapet>(InitializeValues.Parapet(Input.Asection));
+            Decogrid.gridCrossbeam(gridBar, Input.Parapet);
+            Input.KFrame = new List<KFrame>(InitializeValues.KFrame(Input.Across, Input.Atranstiff));
+            Decogrid.gridKFrame(gridKframe, Input.KFrame);
+        }
+
+        void ShowpageAnalysis()
+        {
+            List<TabPage> a = new List<TabPage> { pageAnalysis };
+            showtabpage(a);
+            btApply.Text = "Run";
+
+
+        }
+
+        void Showpageresults()
+        {
+            List<TabPage> a = new List<TabPage> { PageRDim, PageRPro, PageRForce, PageRStress };
+            showtabpage(a);
+            btApply.Text = "to Excel";
+        }
+
+
+
+        // Limit the input value in datagridview is only numec
+        private void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // allow only number and dot
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            //only allow one decimal point
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
+
+
+
+        //Allow only input number and "+"
+        private void txtSpan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '+'))
+            {
+                e.Handled = true;
+            }
+        }
+
+
+        private void btNext_Click(object sender, EventArgs e)
+        {
+            switch (metroTabControl1.SelectedTab.Name)
+            {
+                case "pageGeneral":
+                    {
+                        ShowpageMaterial();
+                        
+                    }
+                    break;
+
+                case "pageMaterial":
+                    {
+                        ShowpageLoading();
+
+                    }
+                    break;
+
+                case "pageLoadings":
+                    {
+                        ShowpageGrid("all", Input.Aspan());
+
+
+                    }
+                    break;
+
+
+
+                case "pageGrid":
+                    {
+                        if (Input.Aspan().GetLength(0) > 1)
+                            ShowpageHaunch("");
+                        else
+                        {
+                            ShowpageDim("", Input.Aspan());
+                        }
+                        
+                    }
+                    break;
+
+                case "pageHaunch":
+                    {
+
+                        ShowpageDim("", Input.Aspan());
+                        
+                    }
+                    break;
+
+
+                case "pageDim":
+                    {
+                        ShowpageStiff("", Input.Aspan());
+                        
+                    }
+                    break;
+
+                case "pageStiffeners":
+                    {
+                        ShowpageOther("", Input.Aspan());
+                        
+                    }
+                    break;
+                case "pageOther":
+                    {
+                        ShowpageAnalysis();
+                    }
+                    break;
+                case "pageAnalysis":
+                    {
+                        Showpageresults();
+                    }
+                    break;
+
+            }
+
+
+        }
+
+        private void btBack_Click(object sender, EventArgs e)
+        {
+            switch (metroTabControl1.SelectedTab.Name)
+            {
+                case "PageRDim":
+                case "PageRPro":
+                case "PageRForce":
+                case "PageRStress":
+                    {
+                        ShowpageAnalysis();
+                    }
+                    break;
+                case "pageAnalysis":
+                    {
+                        ShowpageOther("all", Input.Aspan());
+                    }
+                    break;
+                case "pageOther":
+                    {
+                        ShowpageStiff("", Input.Aspan());
+                    }
+                    break;
+
+                case "pageStiffeners":
+                    {
+
+                        ShowpageDim("", Input.Aspan());
+
+                    }
+                    break;
+                case "pageDim":
+                    {
+                        if (Input.Aspan().GetLength(0) > 1)
+                            ShowpageHaunch("");
+                        else
+                            ShowpageGrid("", Input.Aspan());
+                    }
+                    break;
+
+                case "pageHaunch":
+                    {
+
+                        ShowpageGrid("", Input.Aspan());
+                    }
+                    break;
+
+                case "pageGrid":
+                    {
+                        ShowpageLoading();
+                    }
+                    break;
+
+                case "pageLoadings":
+                    {
+                        ShowpageMaterial();
+                    }
+                    break;
+
+                case "pageMaterial":
+                    {
+                        ShowpageGeneral();
+                    }
+                    break;
+
+
+
+
+
+            }
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            int value = Convert.ToInt32(this.numgirder.Value);
+        }
+
+        List<Mat> Listmat = new List<Mat>();
+        List<Mat> Listmatuse = new List<Mat>(); 
+        List<string> savesupport = new List<string>();
+        Analysis Analysis = new Analysis();
+        Input Input = new Input();
+
+        private void btApply_Click(object sender, EventArgs e)
+        {
+            switch (metroTabControl1.SelectedTab.Name)
+            {
+                case "pageGeneral":
+                    {
+                        //Store to PUS
+                        Input.bridgename = txtbridgename.Text;
+                        Input.ngirder = Convert.ToInt32(numgirder.Value);
+                        Input.txtspan = txtSpan.Text;
+
+                        Input.Across = InitializeValues.Across(Input.Aspan());
+                        Input.Atran = InitializeValues.Atran(Input.ngirder);
+                        Input.Asection = InitializeValues.Asection(Input.ngirder);
+                        Input.Asection1 = InitializeValues.Asection(Input.ngirder);
+
+                        Input.Ahaunch = InitializeValues.Ahaunch(Input.Aspan());
+                        Input.Acbox = InitializeValues.Acbox(Input.Aspan());
+                        Input.Acon = InitializeValues.Acon();
+                    }
+                    break;
+
+                case "pageMaterial":
+                    {
+                        List<Mat> Items = new List<Mat>();
+                        Mat Mat1 = new Mat();
+                        for (int i = 0; i < dgvMat.RowCount; i++)
+                        {
+                            Mat1 = new Mat();
+
+                            if (dgvMat.Rows[i].Cells[2].Value != null)
+                            {
+                                Mat1.Name = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Name).FirstOrDefault();
+                                Mat1.Type = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Type).FirstOrDefault();
+                                Mat1.Ws = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Ws).FirstOrDefault();
+                                Mat1.Es = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Es).FirstOrDefault();
+                                Mat1.G = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.G).FirstOrDefault();
+                                Mat1.Fy = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Fy).FirstOrDefault();
+                                Mat1.Fu = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Fu).FirstOrDefault();
+                                Mat1.Wc = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Wc).FirstOrDefault();
+                                Mat1.fc = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.fc).FirstOrDefault();
+                                Mat1.Ec = Listmat.Where(p => p.Name == dgvMat.Rows[i].Cells[2].Value.ToString()).Select(p => p.Ec).FirstOrDefault();
+                            }
+
+                            Items.Add(Mat1);
+                        }
+
+                        SQL.delTable("ILmatuse");
+
+                        if (Items.Count > 0)
+                        {
+                            SQL.WriteList(Items, "ILmatuse", "All");
+                        }
+
+                        //Store to Input
+                        Input.Mat = new List<Mat>(Items);
+
+                    }
+                    break;
+
+                case "pageLoadings":
+                    {
+
+                        List<Tuple<double, double>> truck = new List<Tuple<double, double>>();
+                        for (int i = 0; i < dgvTruck.Rows.Count - 1; i++)
+                        {
+                            Tuple<double, double> a = Tuple.Create(Convert.ToDouble(dgvTruck.Rows[i].Cells[0].Value), Convert.ToDouble(dgvTruck.Rows[i].Cells[1].Value));
+                            truck.Add(a);
+                        }
+                        Input.Truckaxle = new List<Tuple<double, double>>(truck);
+
+                        List<double> lanefactor = new List<double>();
+                        for (int i = 0; i < dgvLane.Rows.Count; i++)
+                        {
+                            lanefactor.Add(Convert.ToDouble(dgvLane.Rows[i].Cells[1].Value));
+                        }
+                        Input.Lanefactor = new List<double>(lanefactor);
+
+                        Input.Tructype = cbLLiveload.SelectedIndex;
+                        Input.Truckgrade = cbLLgrade.SelectedIndex;
+                        Input.Laneload = (double)numLane.Value;
+                        Input.Pload = (double)numPe.Value;
+                        Input.Overloading = (double)numOverload.Value;
+                        Input.Pforms = (double)numCons.Value;
+                        Input.Pparapet = (double)numPara.Value;
+
+                    }
+                    break;
+
+                case "pageGrid":
+                    {
+                        Input.Asection = (double[,])Input.Asection1.Clone();
+                        savesupport = Input.Node().Select(p => p.Restrain).ToList();
+                    }
+                    break;
+
+                case "pageHaunch":
+                    {
+                        Input.Ahaunch = DGV.GridtoArray(gridHaunch);
+                        Chart.Haunch(Input.Aspan(), Input.Ahaunch, chartHaunch);
+                        Input.Acbox = DGV.GridtoArray(gridCBox);
+                        Input.Acon = DGV.GridtoArray_con(gridBCon, Input.Acon);
+
+                    }
+                    break;
+
+                case "pageDim":
+                    {
+                        Input.ts = (double)numts.Value;
+                        Input.th = (double)numth.Value;
+                        Input.bh = (double)numbh.Value;
+                        Input.drt = (double)numdrt.Value;
+                        Input.art = (double)numart.Value;
+                        Input.crt = (double)numcrt.Value;
+                        Input.drb = (double)numdrb.Value;
+                        Input.arb = (double)numarb.Value;
+                        Input.crb = (double)numcrb.Value;
+                        Input.S = (double)numSr.Value;
+                        Input.Sd = (double)numSd.Value;
+                        Input.w = (double)numw.Value;
+                        Input.D1 = (double)numD.Value;
+                        Input.ctop = (double)numctop.Value;
+                        Input.cbot = (double)numcbot.Value;                       
+
+                    }
+                    break;
+
+
+                case "pageStiffeners":
+                    {
+                        Input.ns = (double)numns.Value;
+                        
+                    }
+                    break;
+
+
+
+                case "pageOther":
+                    {
+                        Input.Crossbeam = new List<Crossbeam>(DGV.Crossbeam(gridCrossbeam));
+                        Input.KFrame = new List<KFrame>(DGV.KFrame(gridKframe));
+                        Input.Parapet = new List<Parapet>(DGV.Parapet(gridBar));
+
+                    }
+                    break;
+
+
+                case "pageAnalysis":
+                    {
+                        Input.Divindex = new List<int> { checkKframe.Checked ? 1 : 0, checkSChanged.Checked ? 1 : 0 };                        
+                        Input.numseg1 = (double)numseg1.Value;
+                        Input.numseg2 = (double)numseg2.Value;
+
+                        //Write to database
+                        //Access.writeList(GenerateNode.Parapet, "Parapet", con, "All");
+                        //Access.writeList(GenerateNode.Crossbeam, "Crossbeam", con, "All");
+                        //Access.writeList(GenerateNode.Node2(), "Node", con, "All");
+                        //Access.writeList(GenerateNode.Node3(), "Nodeex", con, "All");
+
+                        //List<Nodeex> Node = new List<Nodeex>(GenerateNode.Node3());
+                        //Asign to Analysis
+                        //Analysis.Node = new List<Nodeex>(new List<Nodeex>(GenerateNode.Node3()));
+                        //MessageBox.Show("1");
+                        //// Access.writeList(Analysis.Sec(), "Sec", con, "All");
+
+                        //NodeTo NodeTo = new NodeTo();
+                        //NodeTo.Node = new List<Nodeex>(Analysis.Node);
+                        //MessageBox.Show("2");
+                        //dataGridView1.DataSource = NodeTo.Elm;
+                        //MessageBox.Show("3");
+                        //Analysis.s2k().steelonly();
+                        //MessageBox.Show("4");
+
+                    }
+                    break;
+
+            }
+        }
+
+        int index;
+        DataGridView SelectedDGV;
+        private void grid_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            if ((e.Button != MouseButtons.Right) || !(sender is DataGridView a) || e.ColumnIndex == -1)
+                return;
+
+            contextMenuStrip1.Show(Cursor.Position);
+            index = e.ColumnIndex;
+
+            if (a == gridCross)
+            {
+                divideTool.Enabled = true;
+                addTool.Enabled = true;
+                if (Input.Across[0, index] == 1 || Input.Across[0, index] == 2)
+                    deleteTool.Enabled = false;
+                else
+                    deleteTool.Enabled = true;
+            }
+
+            else if (a == gridTran)
+            {
+                divideTool.Enabled = false;
+                if (Input.Atran[0, index] < 10)
+                    deleteTool.Enabled = false;
+                else
+                    deleteTool.Enabled = true;
+
+                if (Input.Atran[0, index] == 0)
+                    addTool.Enabled = false;
+                else
+                    addTool.Enabled = true;
+            }
+
+            else if (a == gridSection)
+            {
+                addTool.Enabled = true;
+                divideTool.Enabled = false;
+                if (a.ColumnCount <= 3)
+                    deleteTool.Enabled = false;
+                else
+                    deleteTool.Enabled = true;
+            }
+
+            else if (a == gridBCon)
+            {
+                divideTool.Enabled = false;
+                addTool.Enabled = true;
+
+                if (Input.Acon[Input.Acon.GetLength(0) - 1, index] == 1 || Input.Acon[Input.Acon.GetLength(0) - 1, index] == 2)
+                    deleteTool.Enabled = false;
+                else
+                    deleteTool.Enabled = true;
+
+            }
+            else if (a == gridTop)
+            {
+                divideTool.Enabled = false;
+                addTool.Enabled = true;
+                if (Input.Atop[0, index] == 1)
+                    deleteTool.Enabled = false;
+                else
+                    deleteTool.Enabled = true;
+            }
+
+            else if (a == gridBot || a == gridWeb || a == gridribBot)
+            {
+                divideTool.Enabled = false;
+                addTool.Enabled = true;
+                if (index == 0)
+                    deleteTool.Enabled = false;
+                else
+                    deleteTool.Enabled = true;
+            }
+
+
+            else if (a == gridTranstif)
+            {
+                divideTool.Enabled = true;
+                addTool.Enabled = true;
+                if (Input.Atranstiff[0, index] <= 10)
+                    deleteTool.Enabled = false;
+                else
+                    deleteTool.Enabled = true;
+            }
+
+            else if (a == gridribTop)
+            {
+
+                deleteTool.Enabled = true;
+                addTool.Enabled = true;
+                divideTool.Enabled = false;
+
+                if (Input.Aribtop[1, index] % 2 == 1)
+                {
+                    deleteTool.Enabled = false;
+                    addTool.Enabled = false;
+                    divideTool.Enabled = false;
+                }
+                else
+                {
+                    if (Input.Aribtop[0, index] <= 10)
+                        deleteTool.Enabled = false;
+                    else
+                        deleteTool.Enabled = true;
+                    addTool.Enabled = true;
+                }
+            }
+
+            SelectedDGV = a;
+        }
+
+
+
+        private void addTool_Click(object sender, EventArgs e)
+        {
+            ndiv = 2;
+
+            if (SelectedDGV == gridCross)
+            {
+                Input.Across = Matrix.Add(Input.Across, index, ndiv);
+                Decogrid.gridCross(gridCross, Input.Across);
+                Chart.Bridgegrid(Input.Node(), gridchart);
+            }
+
+            else if (SelectedDGV == gridTran)
+            {
+                Input.Atran = Matrix.Add(Input.Atran, index, ndiv);
+                Decogrid.gridTran(gridTran, Input.Atran);
+                Chart.Bridgegrid(Input.Node(), gridchart);
+            }
+
+            else if (SelectedDGV == gridSection)
+            {
+                Input.Asection = Matrix.Add_section(Input.Asection, index, ndiv);
+                Input.Asection1 = (double[,])Input.Asection.Clone();
+                Input.FillgridSection(gridSection, 2);
+            }
+
+            else if (SelectedDGV == gridBCon)
+            {
+                Input.Acon = Matrix.Add_con(Input.Acon, index);
+                Decogrid.gridBCon(gridBCon, Input.Acon, Input.Aspan());
+            }
+
+            else if (SelectedDGV == gridTop)
+            {
+                Input.Atop = Matrix.Add(Input.Atop, index, ndiv);
+                Decogrid.gridTop(gridTop, Input.Atop);
+            }
+
+            else if (SelectedDGV == gridBot)
+            {
+                Input.Abot = Matrix.Add_section(Input.Abot, index, ndiv);
+                Decogrid.gridBot(gridBot, Input.Abot);
+            }
+
+            else if (SelectedDGV == gridWeb)
+            {
+                Input.Aweb = Matrix.Add_section(Input.Aweb, index, ndiv);
+                Decogrid.gridBot(gridWeb, Input.Aweb);
+            }
+
+            else if (SelectedDGV == gridTranstif)
+            {
+                Input.Atranstiff = Matrix.Add(Input.Atranstiff, index, ndiv);
+                Decogrid.gridCross(gridTranstif, Input.Atranstiff);
+            }
+
+            else if (SelectedDGV == gridribBot)
+            {
+                Input.Aribbot = Matrix.Add_section(Input.Aribbot, index, ndiv);
+                Decogrid.gridBot(gridribBot, Input.Aribbot);
+            }
+
+            else if (SelectedDGV == gridribTop)
+            {
+                Input.Aribtop = Matrix.Add(Input.Aribtop, index, ndiv);
+                Decogrid.gridRibtop(gridribTop, Input.Aribtop);
+            }
+
+            if (SelectedDGV.Columns.Count > 10)
+            {
+                foreach (DataGridViewColumn c in SelectedDGV.Columns)
+                {
+                    c.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    c.MinimumWidth = 80;
+                }
+                SelectedDGV.Height = SelectedDGV.Rows.Count * 23 + 32 + 19;
+            }
+        }
+
+        private void grid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = e.RowIndex;
+            int col = e.ColumnIndex;
+
+            if (sender == gridCross)
+            {
+                Input.Across = DGV.Cellchanged(gridCross, Input.Across);
+                Input.Across = Matrix.Cellchanged(Input.Across, Input.Aspan());
+                Decogrid.gridCross(gridCross, Input.Across);
+                Chart.Bridgegrid(Input.Node(), gridchart);
+            }
+
+            else if (sender == gridTran)
+            {
+                Input.Atran = DGV.Cellchanged(gridTran, Input.Atran);
+                Input.FillgridSection(gridSection, 1);
+                Chart.Bridgegrid(Input.Node(), gridchart);
+            }
+
+            else if (sender == gridSection)
+            {
+                if (e.RowIndex == 0)
+                {
+                    Input.Asection1 = DGV.GridtoArray_sec(gridSection);
+                    Input.Asection1 = Matrix.Update(Input.Asection1, Input.sumsec());
+                    for (int i = 0; i < Input.Asection1.GetLength(1); i++)
+                        Input.Asection[0, i] = Input.Asection1[0, i];
+                    Input.FillgridSection(gridSection, 2);
+                }
+                else
+                {
+                    for (int i = 0; i < Input.Asection.GetLength(1); i++)
+                    {
+                        if (gridSection.Rows[1].Cells[i].Value.ToString().Contains("Barrier"))
+                        {
+                            Input.Asection1[1, i] = 1;
+                            gridSection.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(217, 217, 217);
+                            gridSection.EnableHeadersVisualStyles = false;
+                            gridSection.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(217, 217, 217);
+                            gridSection.Columns[i].DefaultCellStyle.SelectionBackColor = Color.FromArgb(217, 217, 217);
+                        }
+
+                        else if (gridSection.Rows[1].Cells[i].Value.ToString().Contains("Liveload"))
+                        {
+                            Input.Asection1[1, i] = 2;
+                            gridSection.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                            gridSection.EnableHeadersVisualStyles = false;
+                            gridSection.Columns[i].HeaderCell.Style.BackColor = Color.White;
+                            gridSection.Columns[i].DefaultCellStyle.SelectionBackColor = Color.White;
+                        }
+
+                        else
+                        {
+                            Input.Asection1[1, i] = 3;
+                            gridSection.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(218, 238, 243);
+                            gridSection.EnableHeadersVisualStyles = false;
+                            gridSection.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(218, 238, 243);
+                            gridSection.Columns[i].DefaultCellStyle.SelectionBackColor = Color.FromArgb(218, 238, 243);
+                        }
+                    }
+                }
+            }
+
+
+            else if (sender == gridHaunch)
+            {
+                for (int i = 1; i < gridHaunch.RowCount; i++)
+                    gridHaunch.Rows[i].Cells[3].Value = gridHaunch.Rows[i - 1].Cells[5].Value;
+            }
+
+
+            else if (sender == gridTop)
+            {
+                Input.Atop = DGV.Cellchanged(gridTop, Input.Atop);
+                Input.Atop = Matrix.Cellchanged(Input.Atop, Input.Atop1());
+                Decogrid.gridTop(gridTop, Input.Atop);
+            }
+
+            else if (sender == gridBot)
+            {
+                Input.Abot = DGV.GridtoArray(gridBot);
+                Input.Abot = Matrix.Update(Input.Abot, Input.sumspan());
+                Decogrid.gridBot(gridBot, Input.Abot);
+
+            }
+            else if (sender == gridWeb)
+            {
+                Input.Aweb = DGV.GridtoArray(gridWeb);
+                Input.Aweb = Matrix.Update(Input.Aweb, Input.sumspan());
+                Decogrid.gridBot(gridWeb, Input.Aweb);
+            }
+
+            if (sender == gridTranstif)
+            {
+                Input.Atranstiff = DGV.Cellchanged(gridTranstif, Input.Atranstiff);
+                Input.Atranstiff = Matrix.Cellchanged(Input.Atranstiff, Input.Across1());
+                Decogrid.gridCross(gridTranstif, Input.Atranstiff);
+
+            }
+
+            else if (sender == gridribBot)
+            {
+                Input.Aribbot = DGV.GridtoArray(gridribBot);
+                Input.Aribbot = Matrix.Update(Input.Aribbot, Input.sumspan());
+                Decogrid.gridBot(gridribBot, Input.Aribbot);
+            }
+
+            else if (sender == gridribTop)
+            {
+                Input.Aribtop = DGV.Cellchanged(gridribTop, Input.Aribtop);
+                Input.Aribtop = Matrix.Cellchanged(Input.Aribtop, Input.Atop1());
+                Decogrid.gridRibtop(gridribTop, Input.Aribtop);
+            }
+        }
+
+        private void deleteTool_Click(object sender, EventArgs e)
+        {
+            if (SelectedDGV == gridCross)
+            {
+                Input.Across = Matrix.Delete(Input.Across, index, 2);
+                Decogrid.gridCross(gridCross, Input.Across);
+                Chart.Bridgegrid(Input.Node(), gridchart);
+            }
+
+            else if (SelectedDGV == gridTran)
+            {
+                Input.Atran = Matrix.Delete(Input.Atran, index, 2);
+                Decogrid.gridTran(gridTran, Input.Atran);
+                Chart.Bridgegrid(Input.Node(), gridchart);
+            }
+
+            else if (SelectedDGV == gridSection)
+            {
+                Input.Asection = Matrix.Delete(Input.Asection, index, 0);
+                Input.Asection1 = (double[,])Input.Asection.Clone();
+                Input.FillgridSection(gridSection, 2);
+            }
+
+            else if (SelectedDGV == gridBCon)
+            {
+                Input.Acon = Matrix.Delete_con(Input.Acon, index);
+                Decogrid.gridBCon(gridBCon, Input.Acon, Input.Aspan());
+            }
+
+
+            else if (SelectedDGV == gridTop)
+            {
+                Input.Atop = Matrix.Delete(Input.Atop, index, 2);
+                Decogrid.gridTop(gridTop, Input.Atop);
+            }
+
+            else if (SelectedDGV == gridBot)
+            {
+                Input.Abot = Matrix.Delete(Input.Abot, index, 0);
+                Decogrid.gridBot(gridBot, Input.Abot);
+            }
+            else if (SelectedDGV == gridWeb)
+            {
+                Input.Aweb = Matrix.Delete(Input.Aweb, index, 0);
+                Decogrid.gridBot(gridWeb, Input.Aweb);
+            }
+
+            else if (SelectedDGV == gridTranstif)
+            {
+                Input.Atranstiff = Matrix.Delete(Input.Atranstiff, index, 2);
+                Decogrid.gridCross(gridTranstif, Input.Atranstiff);
+            }
+
+            else if (SelectedDGV == gridribBot)
+            {
+                Input.Aribbot = Matrix.Delete(Input.Aribbot, index, 0);
+                Decogrid.gridBot(gridribBot, Input.Aribbot);
+            }
+
+            else if (SelectedDGV == gridribTop)
+            {
+                Input.Aribtop = Matrix.Delete(Input.Aribtop, index, 2);
+                Decogrid.gridRibtop(gridribTop, Input.Aribtop);
+            }
+
+            if (SelectedDGV.Columns.Count <= 10)
+            {
+                foreach (DataGridViewColumn c in SelectedDGV.Columns)
+                    c.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                SelectedDGV.Height = SelectedDGV.Rows.Count * 23 + 32;
+            }
+            else
+            {
+                foreach (DataGridViewColumn c in SelectedDGV.Columns)
+                {
+                    c.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    c.MinimumWidth = 80;
+                }
+                SelectedDGV.Height = SelectedDGV.Rows.Count * 23 + 32 + 19;
+            }
+
+        }
+
+        int ndiv;
+        bool divideall;
+        private void divideToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fAddmore f = new fAddmore();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                ndiv = f.ndiv;
+                divideall = f.divideall;
+
+                if (SelectedDGV == gridCross)
+                {
+                    Input.Across = Matrix.Divide(Input.Across, index, ndiv, divideall);
+                    Decogrid.gridCross(gridCross, Input.Across);
+                    Chart.Bridgegrid(Input.Node(), gridchart);
+                }
+
+                else if (SelectedDGV == gridTranstif)
+                {
+                    Input.Atranstiff = Matrix.Divide(Input.Atranstiff, index, ndiv, divideall);
+                    Decogrid.gridCross(gridTranstif, Input.Atranstiff);
+                    Chart.Bridgegrid(Input.Node(), gridchart);
+                }
+
+                if (SelectedDGV.Columns.Count > 10)
+                    foreach (DataGridViewColumn c in SelectedDGV.Columns)
+                    {
+                        c.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                        c.MinimumWidth = 80;
+                        SelectedDGV.Height = SelectedDGV.Rows.Count * 23 + 32 + 19;
+                    }
+                SelectedDGV.ClearSelection();
+            }
+        }
+
+        string Scheck;
+        private void gridchart_DataClick(object sender, ChartPoint chartPoint)
+        {
+            var asPixels = gridchart.Base.ConvertToPixels(chartPoint.AsPoint());
+            fRestrain f = new fRestrain();
+
+            f.Location = new Point(Cursor.Position.X - f.Size.Width / 2, Cursor.Position.Y - f.Size.Height);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                Scheck = f.Scheck;
+                BindingSource bs = new BindingSource();
+
+                if (Scheck != "" && Scheck != null)
+                {
+                    Input.Supportchanged = Tuple.Create(chartPoint.X, chartPoint.Y, Scheck);
+                    Input.savessupport = savesupport;
+                    savesupport = Input.Node().Select(p => p.Restrain).ToList();
+                }
+
+                Chart.Bridgegrid(Input.Node(), gridchart);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbMattype.SelectedIndex == 0)
+            {
+                groupSteel1.Visible = false;
+                groupSteel2.Visible = false;
+                groupSteel3.Visible = false;
+                checkSteel.Enabled = false;
+                comboSteel.Enabled = false;
+                groupConcrete.Visible = true;
+                checkSteel.Checked = false;
+
+            }
+
+            else if (cbMattype.SelectedIndex == 1)
+            {
+                groupSteel1.Visible = true;
+                groupSteel2.Visible = true;
+                groupSteel3.Visible = false;
+                groupConcrete.Visible = false;
+                checkSteel.Enabled = true;
+
+            }
+            else
+            {
+                groupSteel1.Visible = false;
+                groupSteel2.Visible = false;
+                groupSteel3.Visible = false;
+                checkSteel.Enabled = false;
+                comboSteel.Enabled = false;
+                groupConcrete.Visible = false;
+                checkSteel.Checked = false;
+            }
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                double fcm = Convert.ToDouble(numFc.Value <= 40 ? (numFc.Value + 4.00M) : (numFc.Value >= 60 ? (numFc.Value + 6.00M) : (numFc.Value * 1.1M)));
+                numEc.Value = Convert.ToDecimal(0.077 * Math.Pow(2500, 1.5) * Math.Pow(fcm, (1 / 3.0)));
+            }
+        }
+
+
+        private void checkSteel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkSteel.Checked == true)
+            {
+                comboSteel.Enabled = true;
+
+                groupSteel2.Visible = false;
+                groupSteel3.Visible = true;
+                BindingSource bs = new BindingSource();
+                bs.DataSource = new List<string> { "SS235", "SS275", "SM275", "SM355", "SM420", "SM460", "HSB380", "HSB460", "HSB690" };
+                comboSteel.DataSource = bs;
+            }
+
+            else
+            {
+                comboSteel.Enabled = false;
+                groupSteel2.Visible = true;
+                groupSteel3.Visible = false;
+            }
+
+        }
+
+        //Add mat to listmat
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Mat Mat1 = new Mat();
+            Mat1.Name = txtMatname.Text;
+            Mat1.Type = cbMattype.Text;
+            Mat1.Ws = Convert.ToDouble(numWs.Value);
+            Mat1.Es = Convert.ToDouble(numEs.Value);
+            Mat1.G = Convert.ToDouble(numG.Value);
+            Mat1.Fy = Convert.ToDouble(numFy.Value);
+            Mat1.Fu = Convert.ToDouble(numFu.Value);
+            Mat1.Wc = Convert.ToDouble(numWc.Value);
+            Mat1.fc = Convert.ToDouble(numFc.Value);
+            Mat1.Ec = Convert.ToDouble(numEc.Value);
+
+            if (Input.Mat.Select(p => p.Name).ToList().IndexOf(Mat1.Name) != -1)
+                MessageBox.Show("Error: Duplicate Name");
+            else
+                Input.Mat.Add(Mat1);
+
+            listBox1.DataSource = Input.Mat.Select(p => p.Name).ToList();            
+
+            dgvMat.Invalidate();
+            dgvMat.Refresh();
+
+        }
+
+        
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+            string matname = listBox1.SelectedItem.ToString();
+            Mat matselect = Input.Mat.Where(p => p.Name == matname).FirstOrDefault();
+
+            txtMatname.Text = matselect.Name;
+            cbMattype.SelectedIndex = matselect.Type == "Concrete" ? 0 : 1;
+            numWs.Value = (decimal)matselect.Ws;
+            numEs.Value = (decimal)matselect.Es;
+            numG.Value = (decimal)matselect.G;
+            numFy.Value = (decimal)matselect.Fy;
+            numFu.Value = (decimal)matselect.Fu;
+            numWc.Value = (decimal)matselect.Wc;
+            numFc.Value = (decimal)matselect.fc;
+            numEc.Value = (decimal)matselect.Ec;
+
+        }
+
+        //Delete mat from Listmat
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                string matname = listBox1.SelectedItem.ToString();
+                Mat matselect = Input.Mat.Where(p => p.Name == matname).FirstOrDefault();
+                Input.Mat.Remove(matselect);
+                listBox1.DataSource = Input.Mat.Select(p => p.Name).ToList();
+            }
+            
+                dgvMat.Invalidate();
+                dgvMat.Refresh();          
+
+        }
+
+        //Modify
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                string matname = listBox1.SelectedItem.ToString();
+                Mat matselect = Input.Mat.Where(p => p.Name == matname).FirstOrDefault();
+                Input.Mat.Remove(matselect);
+
+                Mat Mat1 = new Mat();
+                Mat1.Name = txtMatname.Text;
+                Mat1.Type = cbMattype.Text;
+                Mat1.Ws = Convert.ToDouble(numWs.Value);
+                Mat1.Es = Convert.ToDouble(numEs.Value);
+                Mat1.G = Convert.ToDouble(numG.Value);
+                Mat1.Fy = Convert.ToDouble(numFy.Value);
+                Mat1.Fu = Convert.ToDouble(numFu.Value);
+                Mat1.Wc = Convert.ToDouble(numWc.Value);
+                Mat1.fc = Convert.ToDouble(numFc.Value);
+                Mat1.Ec = Convert.ToDouble(numEc.Value);
+
+                if (Input.Mat.Select(p => p.Name).ToList().IndexOf(Mat1.Name) != -1)
+                    MessageBox.Show("Error: Duplicate Name");
+                else
+                    Input.Mat.Add(Mat1);                
+            }
+            listBox1.DataSource = Input.Mat.Select(p => p.Name).ToList();
+        }
+
+        private void numFc_ValueChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                double fcm = Convert.ToDouble(numFc.Value <= 40 ? (numFc.Value + 4.00M) : (numFc.Value >= 60 ? (numFc.Value + 6.00M) : (numFc.Value * 1.1M)));
+                numEc.Value = Convert.ToDecimal(0.077 * Math.Pow(2500, 1.5) * Math.Pow(fcm, (1 / 3.0)));
+
+            }
+        }
+
+
+
+        // One click to select combobox
+
+        private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (sender == gridSection)
+                this.gridSection.MouseDown += this.HandleDataGridViewMouseDown;
+            else if (sender == dgvMat)
+            {
+                try
+                {
+                    this.dgvMat.MouseDown += this.HandleDataGridViewMouseDown;
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkLL.Checked == false)
+            {
+                cbLLiveload.Enabled = false;
+                label99.Visible = false;
+                cbLLgrade.Visible = false;
+            }
+
+            else
+            {
+                cbLLiveload.Enabled = true;
+                label99.Visible = true;
+                cbLLgrade.Visible = true;
+            }
+
+        }
+
+        private void cbLLiveload_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbLLiveload.SelectedIndex == 0)
+            {
+                label99.Visible = true;
+                cbLLgrade.Visible = true;
+
+                Filldgvtruck(InitializeValues.Truckaxle());
+                numLane.Value = (decimal)InitializeValues.Laneload();
+
+                cbLLgrade.Items.Clear();
+                List<string> LLiveloadgrade = new List<string> { "1 등급 : KL510", "2 등급 : KL510 * 75%", "3 등급 : 2 등급 * 75%" };
+                foreach (string L in LLiveloadgrade)
+                    cbLLgrade.Items.Add(L);
+                cbLLgrade.SelectedIndex = 0;
+            }
+
+            else if (cbLLiveload.SelectedIndex == 1)
+            {
+                label99.Visible = true;
+                cbLLgrade.Visible = true;
+                cbLLgrade.Items.Clear();
+                List<string> LLiveloadgrade = new List<string> { "1 등급 : DB-24", "2 등급 : DB-18", "3 등급 : DB-13.5" };
+                foreach (string L in LLiveloadgrade)
+                    cbLLgrade.Items.Add(L);
+                cbLLgrade.SelectedIndex = 0;
+            }
+
+            else
+            {
+                label99.Visible = false;
+                cbLLgrade.Visible = false;
+            }
+        }
+
+
+
+        private void btResults_Click(object sender, EventArgs e)
+        {
+            Showpageresults();
+        }
+
+
+
+        private void HandleDataGridViewMouseDown(object sender, MouseEventArgs e)
+        {
+            // See where the click is occurring
+            if (sender == gridSection)
+            {
+                DataGridView.HitTestInfo info = this.gridSection.HitTest(e.X, e.Y);
+
+                if (info.Type == DataGridViewHitTestType.Cell)
+                {
+                    switch (info.RowIndex)
+                    {
+                        case 1:
+                            this.gridSection.CurrentCell =
+                                this.gridSection.Rows[info.RowIndex].Cells[info.ColumnIndex];
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            else if (sender == dgvMat)
+            {
+                DataGridView.HitTestInfo info = this.dgvMat.HitTest(e.X, e.Y);
+
+                if (info.Type == DataGridViewHitTestType.Cell)
+                {
+                    switch (info.ColumnIndex)
+                    {
+                        // Add and remove case statements as necessary depending on
+                        // which columns have ComboBoxes in them.
+
+                        case 1: // Column index 1
+                        case 2: // Column index 2
+                            this.dgvMat.CurrentCell =
+                                this.dgvMat.Rows[info.RowIndex].Cells[info.ColumnIndex];
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+            }
+
+
+        }
+
+
+
+
+
+        private void btNew_Click(object sender, EventArgs e)
+        {
+            //Button About
+        }
+
+        private void btOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "|*.pus";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                if (!string.IsNullOrEmpty(ofd.FileName))
+                {
+                    txtFile.Text = ofd.FileName;
+                    SQL.filename = ofd.FileName;
+
+                    OpenProject();
+                    Fillvaluetoform();
+
+                }
+            }
+        }
+
+        private void btSave_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(SQL.filename))
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "|*.pus";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (!string.IsNullOrEmpty(sfd.FileName))
+                    {
+                        SQL.filename = sfd.FileName;
+                        SQL.CreateDB();
+                        SQL.InitializeDB();
+                        txtFile.Text = sfd.FileName;
+                    }
+                }
+            }
+
+            if (!string.IsNullOrEmpty(SQL.filename))
+            {
+                //Save General tab
+                SQL.WriteGeneral(Input.bridgename, Input.ngirder, Input.txtspan, "IGeneral");
+
+                //Save Material tab           
+                if (Input.Mat != null)
+                    SQL.WriteList(Input.Mat, "ILmatuse", "All");
+
+                //Save loading tab            
+                SQL.Writeloading(Input.Tructype, Input.Truckgrade, Input.Laneload, Input.Pload, Input.Overloading, Input.Pforms, Input.Pparapet, Input.Lanefactor, Input.Truckaxle, "ILoading", "ITruck");
+
+                //Save Grid tab
+                SQL.WriteGrid(Input.Across, Input.Atran, Input.Asection, "IAcross", "IAtran", "IAsection");
+
+                //Save Haunch tab
+                SQL.WriteHaunch(Input.Ahaunch, Input.Acbox, Input.Acon, "IAhaunch", "IAcbox", "IAcon");
+
+                //Save Dim tab
+                SQL.WriteDim(Input.Atop, Input.Abot, Input.Aweb, Input.ts, Input.th, Input.bh, Input.drt, Input.art, Input.crt, Input.drb, Input.arb, Input.crb, Input.S, Input.Sd, Input.w, Input.D1, Input.ctop, Input.cbot, "IAtop", "IAbot", "IAweb", "IADims");
+
+                //Save stiff
+                SQL.WriteStiff(Input.Atranstiff, Input.Aribbot, Input.Aribtop, Input.ns, "IAtranstiff", "IAribbot", "IAribtop", "Ins");
+
+                //Save other
+                SQL.Writeother(Input.Crossbeam, Input.Parapet, Input.KFrame, "ICrossbeam", "IParapet", "IKFrame");
+
+                //Save Analysis
+                SQL.WriteAnalysis(Input.Divindex, Input.numseg1, Input.numseg2, "IAnalysis");
+            } 
+        }
+
+
+
+        private void btFile_Click(object sender, EventArgs e)
+        {
+            timer2.Start();
+        }
+
+        private bool Filecollapsed;
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (Filecollapsed)
+            {
+                btFile.Image = Resources.Collapse_Arrow_20px;
+                panelFile.Height += 10;
+                if (panelFile.Size == panelFile.MaximumSize)
+                {
+                    timer2.Stop();
+                    Filecollapsed = false;
+                }
+            }
+            else
+            {
+                btFile.Image = Resources.Expand_Arrow_20px;
+                panelFile.Height -= 10;
+                if (panelFile.Size == panelFile.MinimumSize)
+                {
+                    timer2.Stop();
+                    Filecollapsed = true;
+                }
+
+            }
+        }
+    }
+
+
+}

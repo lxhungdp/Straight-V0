@@ -23,6 +23,25 @@ namespace Provider
             //cn.Close();
         }
 
+        public static double[,] getMatrix(string str, OleDbConnection cn)
+        {
+            cn.Close();
+            cn.Open();
+            OleDbDataAdapter dar;
+            dar = new OleDbDataAdapter(str, cn);
+            DataTable dt = new DataTable();
+            dar.Fill(dt);
+
+            double[,] mtr = new double[dt.Columns.Count, dt.Rows.Count];
+
+            for (int i = 0; i < mtr.GetLength(0); i++)
+                for (int j = 0; j < mtr.GetLength(1); j++)
+                    mtr[i, j] = Convert.ToDouble(dt.Rows[j][i]);
+
+            return mtr;
+            //cn.Close();
+        }
+
         public static void delTable(string str, OleDbConnection cn)
         {
             cn.Close();
@@ -178,9 +197,83 @@ namespace Provider
             
             
         }
-               
 
+        //Write general to db
+        public static void General(string bridgename, int ngirder, string txtspan, string table_name, OleDbConnection cn)
+        {
+            cn.Close();
+            cn.Open();
 
+            OleDbCommand cmd = new OleDbCommand("delete from " + table_name, cn);
+            cmd.ExecuteNonQuery();
+
+            cmd = new OleDbCommand();
+            cmd.Connection = cn;
+
+            string cmd1 = "insert into " + table_name + " (bridgename, ngirder, txtspan) Values ('" + bridgename + "' , '" + ngirder + "' , '" + txtspan + "' )";           
+            cmd.CommandText = cmd1;
+            cmd.ExecuteNonQuery();
+        }
+
+        public static void WriteAcross(double[,] Across, string table_name, OleDbConnection cn)
+        {
+            cn.Close();
+            cn.Open();
+
+            OleDbCommand cmd = new OleDbCommand("delete from " + table_name, cn);
+            cmd.ExecuteNonQuery();
+
+            cmd = new OleDbCommand();
+            cmd.Connection = cn;
+
+            string cmd1;
+            for (int i = 0; i < Across.GetLength(1); i++)
+            {                
+                cmd1 = "insert into " + table_name + " (Type, Order1, Length) Values ('" + Across[0, i] + "' , '" + Across[1, i] + "' , '" + Across[2, i] + "' )";
+                cmd.CommandText = cmd1;
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void WriteAsection(double[,] Asection, string table_name, OleDbConnection cn)
+        {
+            cn.Close();
+            cn.Open();
+
+            OleDbCommand cmd = new OleDbCommand("delete from " + table_name, cn);
+            cmd.ExecuteNonQuery();
+
+            cmd = new OleDbCommand();
+            cmd.Connection = cn;
+
+            string cmd1;
+            for (int i = 0; i < Asection.GetLength(1); i++)
+            {
+                cmd1 = "insert into " + table_name + " (Length, ID) Values ('" + Asection[0, i] + "' , '" + Asection[1, i]  + "' )";
+                cmd.CommandText = cmd1;
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void WriteDTHaunch(DataTable DTHaunch, string table_name, OleDbConnection cn)
+        {
+            cn.Close();
+            cn.Open();
+
+            OleDbCommand cmd = new OleDbCommand("delete from " + table_name, cn);
+            cmd.ExecuteNonQuery();
+
+            cmd = new OleDbCommand();
+            cmd.Connection = cn;
+
+            string cmd1;
+            for (int i = 0; i < DTHaunch.Rows.Count; i++)
+            {
+                cmd1 = "insert into " + table_name + " (L1, L2, L3, H1, H2, H3) Values ('" + DTHaunch.Rows[i][0] + "' , '" + DTHaunch.Rows[i][1] + "' , '" + DTHaunch.Rows[i][2] + "' , '" + DTHaunch.Rows[i][3] + "' , '" + DTHaunch.Rows[i][4] + "' , '" + DTHaunch.Rows[i][5] + "' )";
+                cmd.CommandText = cmd1;
+                cmd.ExecuteNonQuery();
+            }
+        }
 
         public static void delmat(string str, OleDbConnection cn)
         {

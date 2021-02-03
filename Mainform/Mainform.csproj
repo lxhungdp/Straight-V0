@@ -12,9 +12,11 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -33,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
@@ -51,10 +56,23 @@
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="MWArray, Version=2.14.1.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Provider\bin\Debug\MWArray.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.113.1\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -76,36 +94,86 @@
     <Compile Include="Add more.Designer.cs">
       <DependentUpon>Add more.cs</DependentUpon>
     </Compile>
-    <Compile Include="Const.cs" />
+    <Compile Include="Analysis.cs" />
+    <Compile Include="CContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CContent.Designer.cs">
+      <DependentUpon>CContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Decogrid.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Initialize.cs" />
+    <Compile Include="InitializeValues.cs" />
+    <Compile Include="Input.cs" />
     <Compile Include="MaterialProperty.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MaterialProperty.Designer.cs">
       <DependentUpon>MaterialProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="PDFShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDFShow.Designer.cs">
+      <DependentUpon>PDFShow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RDims.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RDims.Designer.cs">
+      <DependentUpon>RDims.cs</DependentUpon>
+    </Compile>
+    <Compile Include="REffWidth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="REffWidth.Designer.cs">
+      <DependentUpon>REffWidth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Restrain Type.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Restrain Type.Designer.cs">
       <DependentUpon>Restrain Type.cs</DependentUpon>
     </Compile>
+    <Compile Include="RForces.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RForces.Designer.cs">
+      <DependentUpon>RForces.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RNode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RNode.Designer.cs">
+      <DependentUpon>RNode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowData.Designer.cs">
+      <DependentUpon>ShowData.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Add more.resx">
       <DependentUpon>Add more.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CContent.resx">
+      <DependentUpon>CContent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MaterialProperty.resx">
       <DependentUpon>MaterialProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDFShow.resx">
+      <DependentUpon>PDFShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -117,8 +185,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RDims.resx">
+      <DependentUpon>RDims.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REffWidth.resx">
+      <DependentUpon>REffWidth.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Restrain Type.resx">
       <DependentUpon>Restrain Type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RForces.resx">
+      <DependentUpon>RForces.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RNode.resx">
+      <DependentUpon>RNode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowData.resx">
+      <DependentUpon>ShowData.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -148,10 +231,21 @@
       <Project>{4199be06-ba7d-4f0a-873d-b8d10df07e6a}</Project>
       <Name>Classes</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExportExcel\ExportExcel.csproj">
+      <Project>{14c17aed-a0cf-4dc7-bec4-a90095b33049}</Project>
+      <Name>ExportExcel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Provider\Provider.csproj">
       <Project>{8030485f-da7a-430d-b4f5-09910544e674}</Project>
       <Name>Provider</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets'))" />
+  </Target>
 </Project>

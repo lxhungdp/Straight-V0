@@ -1,0 +1,215 @@
+C:\Home2\Provider\bin\Debug\Provider.exe.config
+C:\Home2\Provider\bin\Debug\Provider.exe
+C:\Home2\Provider\bin\Debug\Provider.pdb
+C:\Home2\Provider\bin\Debug\Classes.exe
+C:\Home2\Provider\bin\Debug\LiveCharts.dll
+C:\Home2\Provider\bin\Debug\LiveCharts.WinForms.dll
+C:\Home2\Provider\bin\Debug\LiveCharts.Wpf.dll
+C:\Home2\Provider\bin\Debug\Classes.pdb
+C:\Home2\Provider\bin\Debug\Classes.exe.config
+C:\Home2\Provider\bin\Debug\LiveCharts.pdb
+C:\Home2\Provider\bin\Debug\LiveCharts.xml
+C:\Home2\Provider\bin\Debug\LiveCharts.WinForms.pdb
+C:\Home2\Provider\bin\Debug\LiveCharts.WinForms.xml
+C:\Home2\Provider\bin\Debug\LiveCharts.Wpf.pdb
+C:\Home2\Provider\bin\Debug\LiveCharts.Wpf.xml
+C:\Home2\Provider\obj\Debug\Provider.csprojAssemblyReference.cache
+C:\Home2\Provider\obj\Debug\Provider.Properties.Resources.resources
+C:\Home2\Provider\obj\Debug\Provider.csproj.GenerateResource.cache
+C:\Home2\Provider\obj\Debug\Provider.csproj.CopyComplete
+C:\Home2\Provider\obj\Debug\Provider.exe
+C:\Home2\Provider\obj\Debug\Provider.pdb
+C:\Home2\Provider\bin\Debug\EPPlus.dll
+C:\Home2\Provider\bin\Debug\EPPlus.xml
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\Provider.exe.config
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\Provider.exe
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\Provider.pdb
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\Classes.exe
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\EPPlus.dll
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.dll
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.WinForms.dll
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.Wpf.dll
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\Classes.pdb
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\Classes.exe.config
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\EPPlus.xml
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.pdb
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.xml
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.WinForms.pdb
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.WinForms.xml
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.Wpf.pdb
+D:\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.Wpf.xml
+D:\Google Drive\PUS Program\Home2\Provider\obj\Debug\Provider.csprojAssemblyReference.cache
+D:\Google Drive\PUS Program\Home2\Provider\obj\Debug\Provider.Properties.Resources.resources
+D:\Google Drive\PUS Program\Home2\Provider\obj\Debug\Provider.csproj.GenerateResource.cache
+D:\Google Drive\PUS Program\Home2\Provider\obj\Debug\Provider.csproj.CoreCompileInputs.cache
+D:\Google Drive\PUS Program\Home2\Provider\obj\Debug\Provider.csproj.CopyComplete
+D:\Google Drive\PUS Program\Home2\Provider\obj\Debug\Provider.exe
+D:\Google Drive\PUS Program\Home2\Provider\obj\Debug\Provider.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\Provider.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\Provider.exe
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\Provider.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\Classes.exe
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\EPPlus.dll
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.dll
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\Classes.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\Classes.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\EPPlus.xml
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.xml
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\obj\Debug\Provider.csprojAssemblyReference.cache
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\obj\Debug\Provider.Properties.Resources.resources
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\obj\Debug\Provider.csproj.GenerateResource.cache
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\obj\Debug\Provider.csproj.CopyComplete
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\obj\Debug\Provider.exe
+C:\Users\LXH\Google Drive\PUS Program\Home2\Provider\obj\Debug\Provider.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\Provider.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\Provider.exe
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\Provider.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\Classes.exe
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\EPPlus.dll
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.dll
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\Classes.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\Classes.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\EPPlus.xml
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.xml
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\obj\Debug\Provider.csprojAssemblyReference.cache
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\obj\Debug\Provider.Properties.Resources.resources
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\obj\Debug\Provider.csproj.GenerateResource.cache
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\obj\Debug\Provider.csproj.CopyComplete
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\obj\Debug\Provider.exe
+C:\Users\LXH\Google Drive\PUS Program\Home3\Provider\obj\Debug\Provider.pdb
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\Provider.exe.config
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\Provider.exe
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\Provider.pdb
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\Classes.exe
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\EPPlus.dll
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.dll
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.WinForms.dll
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.Wpf.dll
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\Classes.pdb
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\Classes.exe.config
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\EPPlus.xml
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.pdb
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.xml
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.WinForms.pdb
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.WinForms.xml
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.Wpf.pdb
+D:\Google Drive\PUS Program\Home3\Provider\bin\Debug\LiveCharts.Wpf.xml
+D:\Google Drive\PUS Program\Home3\Provider\obj\Debug\Provider.csprojAssemblyReference.cache
+D:\Google Drive\PUS Program\Home3\Provider\obj\Debug\Provider.Properties.Resources.resources
+D:\Google Drive\PUS Program\Home3\Provider\obj\Debug\Provider.csproj.GenerateResource.cache
+D:\Google Drive\PUS Program\Home3\Provider\obj\Debug\Provider.csproj.CoreCompileInputs.cache
+D:\Google Drive\PUS Program\Home3\Provider\obj\Debug\Provider.csproj.CopyComplete
+D:\Google Drive\PUS Program\Home3\Provider\obj\Debug\Provider.exe
+D:\Google Drive\PUS Program\Home3\Provider\obj\Debug\Provider.pdb
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\Provider.exe.config
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\Provider.exe
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\Provider.pdb
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\Classes.exe
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\EPPlus.dll
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.dll
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.WinForms.dll
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.Wpf.dll
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\Classes.pdb
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\Classes.exe.config
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\EPPlus.xml
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.pdb
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.xml
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.WinForms.pdb
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.WinForms.xml
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.Wpf.pdb
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.Wpf.xml
+D:\Google Drive\PUS Program\Home4\Provider\obj\Debug\Provider.csprojAssemblyReference.cache
+D:\Google Drive\PUS Program\Home4\Provider\obj\Debug\Provider.Properties.Resources.resources
+D:\Google Drive\PUS Program\Home4\Provider\obj\Debug\Provider.csproj.GenerateResource.cache
+D:\Google Drive\PUS Program\Home4\Provider\obj\Debug\Provider.csproj.CoreCompileInputs.cache
+D:\Google Drive\PUS Program\Home4\Provider\obj\Debug\Provider.csproj.CopyComplete
+D:\Google Drive\PUS Program\Home4\Provider\obj\Debug\Provider.exe
+D:\Google Drive\PUS Program\Home4\Provider\obj\Debug\Provider.pdb
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\System.Data.SQLite.dll
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\System.Data.SQLite.xml
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\System.Data.SQLite.dll.config
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\Dapper.dll
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\Dapper.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\obj\Debug\Provider.csprojAssemblyReference.cache
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\obj\Debug\Provider.Properties.Resources.resources
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\obj\Debug\Provider.csproj.GenerateResource.cache
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\obj\Debug\Provider.exe
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\obj\Debug\Provider.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\Provider.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\Provider.exe
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\Provider.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\Classes.exe
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\Dapper.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\EPPlus.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\System.Data.SQLite.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\Classes.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\Classes.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\Dapper.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\EPPlus.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\System.Data.SQLite.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\obj\Debug\Provider.csproj.CopyComplete
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\MathNet.Numerics.Data.Matlab.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\MathNet.Numerics.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\MathNet.Numerics.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Provider\bin\Debug\MathNet.Numerics.Data.Matlab.xml
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\MathNet.Numerics.Data.Matlab.dll
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\MathNet.Numerics.dll
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\MathNet.Numerics.xml
+D:\Google Drive\PUS Program\Home4\Provider\bin\Debug\MathNet.Numerics.Data.Matlab.xml
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\Provider.exe.config
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\Provider.exe
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\Provider.pdb
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\Classes.exe
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\Dapper.dll
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\EPPlus.dll
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\LiveCharts.dll
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\LiveCharts.WinForms.dll
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\LiveCharts.Wpf.dll
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\MathNet.Numerics.Data.Matlab.dll
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\MathNet.Numerics.dll
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\System.Data.SQLite.dll
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\Classes.pdb
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\Classes.exe.config
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\Dapper.xml
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\EPPlus.xml
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\LiveCharts.pdb
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\LiveCharts.xml
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\LiveCharts.WinForms.pdb
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\LiveCharts.WinForms.xml
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\LiveCharts.Wpf.pdb
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\LiveCharts.Wpf.xml
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\MathNet.Numerics.xml
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\MathNet.Numerics.Data.Matlab.xml
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\System.Data.SQLite.xml
+D:\Google Drive\PUS Program\1. Straight V0\Provider\bin\Debug\System.Data.SQLite.dll.config
+D:\Google Drive\PUS Program\1. Straight V0\Provider\obj\Debug\Provider.csprojAssemblyReference.cache
+D:\Google Drive\PUS Program\1. Straight V0\Provider\obj\Debug\Provider.Properties.Resources.resources
+D:\Google Drive\PUS Program\1. Straight V0\Provider\obj\Debug\Provider.csproj.GenerateResource.cache
+D:\Google Drive\PUS Program\1. Straight V0\Provider\obj\Debug\Provider.csproj.CoreCompileInputs.cache
+D:\Google Drive\PUS Program\1. Straight V0\Provider\obj\Debug\Provider.csproj.CopyComplete
+D:\Google Drive\PUS Program\1. Straight V0\Provider\obj\Debug\Provider.exe
+D:\Google Drive\PUS Program\1. Straight V0\Provider\obj\Debug\Provider.pdb

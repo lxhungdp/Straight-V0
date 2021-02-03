@@ -28,3 +28,143 @@ C:\Home1\Test\obj\Debug\Test.csproj.GenerateResource.cache
 C:\Home1\Test\obj\Debug\Test.csproj.CopyComplete
 C:\Home1\Test\obj\Debug\Test.exe
 C:\Home1\Test\obj\Debug\Test.pdb
+C:\Home2\Test\obj\Debug\Test.csprojAssemblyReference.cache
+C:\Home2\Test\obj\Debug\Test.Form1.resources
+C:\Home2\Test\obj\Debug\Test.Properties.Resources.resources
+C:\Home2\Test\obj\Debug\Test.csproj.GenerateResource.cache
+C:\Home2\Test\obj\Debug\Test.exe
+C:\Home2\Test\obj\Debug\Test.pdb
+C:\Home2\Test\bin\Debug\Test.exe.config
+C:\Home2\Test\bin\Debug\Test.exe
+C:\Home2\Test\bin\Debug\Test.pdb
+C:\Home2\Test\bin\Debug\EPPlus.dll
+C:\Home2\Test\bin\Debug\EPPlus.xml
+C:\Home2\Test\obj\Debug\Test.csproj.CopyComplete
+C:\Home2\Test\bin\Debug\Classes.exe
+C:\Home2\Test\bin\Debug\Dapper.dll
+C:\Home2\Test\bin\Debug\Classes.pdb
+C:\Home2\Test\bin\Debug\Classes.exe.config
+C:\Home2\Test\bin\Debug\Dapper.xml
+C:\Home2\Test\obj\Debug\Test.Form2.resources
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\bin\Debug\Test.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\bin\Debug\Test.exe
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\bin\Debug\Test.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\bin\Debug\Classes.exe
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\bin\Debug\Dapper.dll
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\bin\Debug\EPPlus.dll
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\bin\Debug\Classes.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\bin\Debug\Classes.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\bin\Debug\Dapper.xml
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\bin\Debug\EPPlus.xml
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\obj\Debug\Test.csprojAssemblyReference.cache
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\obj\Debug\Test.Form1.resources
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\obj\Debug\Test.Form2.resources
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\obj\Debug\Test.Properties.Resources.resources
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\obj\Debug\Test.csproj.GenerateResource.cache
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\obj\Debug\Test.csproj.CopyComplete
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\obj\Debug\Test.exe
+C:\Users\LXH\Google Drive\PUS Program\Home2\Test\obj\Debug\Test.pdb
+D:\Google Drive\PUS Program\Home3\Test\bin\Debug\Test.exe.config
+D:\Google Drive\PUS Program\Home3\Test\bin\Debug\Test.exe
+D:\Google Drive\PUS Program\Home3\Test\bin\Debug\Test.pdb
+D:\Google Drive\PUS Program\Home3\Test\bin\Debug\Classes.exe
+D:\Google Drive\PUS Program\Home3\Test\bin\Debug\Dapper.dll
+D:\Google Drive\PUS Program\Home3\Test\bin\Debug\EPPlus.dll
+D:\Google Drive\PUS Program\Home3\Test\bin\Debug\Classes.pdb
+D:\Google Drive\PUS Program\Home3\Test\bin\Debug\Classes.exe.config
+D:\Google Drive\PUS Program\Home3\Test\bin\Debug\Dapper.xml
+D:\Google Drive\PUS Program\Home3\Test\bin\Debug\EPPlus.xml
+D:\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.csprojAssemblyReference.cache
+D:\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.Form1.resources
+D:\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.Form2.resources
+D:\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.Properties.Resources.resources
+D:\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.csproj.GenerateResource.cache
+D:\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+D:\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.csproj.CopyComplete
+D:\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.exe
+D:\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\bin\Debug\Test.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\bin\Debug\Test.exe
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\bin\Debug\Test.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\bin\Debug\Classes.exe
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\bin\Debug\Dapper.dll
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\bin\Debug\EPPlus.dll
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\bin\Debug\Classes.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\bin\Debug\Classes.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\bin\Debug\Dapper.xml
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\bin\Debug\EPPlus.xml
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.csprojAssemblyReference.cache
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.Form1.resources
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.Form2.resources
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.Properties.Resources.resources
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.csproj.GenerateResource.cache
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.csproj.CopyComplete
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.exe
+C:\Users\LXH\Google Drive\PUS Program\Home3\Test\obj\Debug\Test.pdb
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\Test.exe.config
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\Test.exe
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\Test.pdb
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\Classes.exe
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\Dapper.dll
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\EPPlus.dll
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\Classes.pdb
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\Classes.exe.config
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\Dapper.xml
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\EPPlus.xml
+D:\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.csprojAssemblyReference.cache
+D:\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.Form1.resources
+D:\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.Form2.resources
+D:\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.Properties.Resources.resources
+D:\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.csproj.GenerateResource.cache
+D:\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+D:\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.csproj.CopyComplete
+D:\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.exe
+D:\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\Test.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\Test.exe
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\Test.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\Classes.exe
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\Dapper.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\EPPlus.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\Provider.exe
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\System.Data.SQLite.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\Classes.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\Classes.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\Provider.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\Provider.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\Dapper.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\EPPlus.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\System.Data.SQLite.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.csprojAssemblyReference.cache
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.Form1.resources
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.Form2.resources
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.Properties.Resources.resources
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.csproj.GenerateResource.cache
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.csproj.CopyComplete
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.exe
+C:\Users\LXH\Google Drive\PUS Program\Home4\Test\obj\Debug\Test.pdb
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\Provider.exe
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.WinForms.dll
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.dll
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\System.Data.SQLite.dll
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.Wpf.dll
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\Provider.pdb
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\Provider.exe.config
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.WinForms.pdb
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.WinForms.xml
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.pdb
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.xml
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\System.Data.SQLite.xml
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\System.Data.SQLite.dll.config
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.Wpf.pdb
+D:\Google Drive\PUS Program\Home4\Test\bin\Debug\LiveCharts.Wpf.xml

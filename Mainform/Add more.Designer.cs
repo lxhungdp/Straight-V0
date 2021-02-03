@@ -32,21 +32,22 @@
             this.nndiv = new System.Windows.Forms.NumericUpDown();
             this.btApply = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.checkApply = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nndiv)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 24);
+            this.label1.Location = new System.Drawing.Point(24, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 13);
+            this.label1.Size = new System.Drawing.Size(224, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "Number of sections to be divided into :";
             // 
             // nndiv
             // 
-            this.nndiv.Location = new System.Drawing.Point(240, 22);
+            this.nndiv.Location = new System.Drawing.Point(280, 20);
             this.nndiv.Maximum = new decimal(new int[] {
             10,
             0,
@@ -58,7 +59,7 @@
             0,
             0});
             this.nndiv.Name = "nndiv";
-            this.nndiv.Size = new System.Drawing.Size(53, 20);
+            this.nndiv.Size = new System.Drawing.Size(62, 21);
             this.nndiv.TabIndex = 6;
             this.nndiv.Value = new decimal(new int[] {
             2,
@@ -74,10 +75,10 @@
             this.btApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btApply.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btApply.ForeColor = System.Drawing.Color.White;
-            this.btApply.Location = new System.Drawing.Point(199, 65);
+            this.btApply.Location = new System.Drawing.Point(232, 85);
             this.btApply.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btApply.Name = "btApply";
-            this.btApply.Size = new System.Drawing.Size(94, 32);
+            this.btApply.Size = new System.Drawing.Size(110, 30);
             this.btApply.TabIndex = 9;
             this.btApply.Text = "Apply";
             this.btApply.UseVisualStyleBackColor = false;
@@ -90,20 +91,31 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(24, 65);
+            this.button1.Location = new System.Drawing.Point(28, 85);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 32);
+            this.button1.Size = new System.Drawing.Size(110, 30);
             this.button1.TabIndex = 10;
             this.button1.Text = "Close";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // checkApply
+            // 
+            this.checkApply.AutoSize = true;
+            this.checkApply.Location = new System.Drawing.Point(28, 50);
+            this.checkApply.Name = "checkApply";
+            this.checkApply.Size = new System.Drawing.Size(143, 16);
+            this.checkApply.TabIndex = 11;
+            this.checkApply.Text = "Apply for all sections";
+            this.checkApply.UseVisualStyleBackColor = true;
+            // 
             // fAddmore
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 115);
+            this.ClientSize = new System.Drawing.Size(371, 125);
+            this.Controls.Add(this.checkApply);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btApply);
             this.Controls.Add(this.nndiv);
@@ -124,5 +136,6 @@
         private System.Windows.Forms.NumericUpDown nndiv;
         private System.Windows.Forms.Button btApply;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox checkApply;
     }
 }

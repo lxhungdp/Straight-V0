@@ -1,0 +1,511 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Classes;
+using Provider;
+
+namespace Mainform
+{
+    public class Input
+    {
+        public Input()
+        {
+
+        }
+
+        //General tab
+        public string bridgename
+        { get; set; }
+
+        public int ngirder
+        { get; set; }
+
+        public string txtspan
+        { get; set; }
+
+        //Material tab
+        public List<Mat> Mat
+        { get; set; }
+
+        public List<Mat> Matuse
+        { get; set; }
+
+        //Loading tab 
+        public int Tructype
+        { get; set; }
+
+        public int Truckgrade
+        { get; set; }
+        public double Laneload
+        { get; set; }
+        public double Pload
+        { get; set; }
+        public double ADTT
+        { get; set; }
+        public double Overloading
+        { get; set; }
+        public double Pforms
+        { get; set; }
+        public double Pparapet
+        { get; set; }
+
+        public double tAshalt
+        { get; set; }
+
+        public double gAsphalt
+        { get; set; }
+
+        
+        public List<double> Lanefactor
+        { get; set; }
+
+        public List<Tuple<double, double>> Truckaxle
+        { get; set; }
+
+        //Grid tab
+
+        //Grid add cross beam
+        public double[,] Across
+        { get; set; }
+
+        //Grid add stringer
+        public double[,] Atran
+        { get; set; }
+
+        //Grid add section function
+        public double[,] Asection
+        { get; set; }
+
+        public double[,] Asection1
+        { get; set; }
+
+        public List<Shoe> Shoe
+        { get; set; }
+
+        //Haunch tab
+        public double[,] Ahaunch
+        { get; set; }
+
+        public double[,] Acbox
+        { get; set; }
+
+        
+        public double[,] Acon
+        { get; set; }
+
+        //Dim Tab
+        public double[,] Atop
+        { get; set; }
+
+        public double[,] Aweb
+        { get; set; }
+
+        public double[,] Abot
+        { get; set; }
+
+        public double ts
+        { get; set; }
+
+        public double th
+        { get; set; }
+
+        public double bh
+        { get; set; }
+
+        public double drt
+        { get; set; }
+        public double art
+        { get; set; }
+        public double crt
+        { get; set; }
+        public double drb
+        { get; set; }
+        public double arb
+        { get; set; }
+        public double crb
+        { get; set; }
+
+        public double Sr
+        { get; set; }
+        public double Sd
+        { get; set; }
+        public double Ss
+        { get; set; }
+        public int Sindex
+        { get; set; }
+        public double w
+        { get; set; }
+
+        public double D1
+        { get; set; }
+
+        public double ctop
+        { get; set; }
+        public double cbot
+        { get; set; }
+
+        //Stiff tab
+        public double[,] Aribtop
+        { get; set; }
+        public double[,] Aribbot
+        { get; set; }
+        public double[,] Atranstiff
+        { get; set; }
+
+        public double ns
+        { get; set; }
+
+        //Other tab
+        public static List<Crossbeam> Crossbeam
+        { get; set; }
+
+        public List<Parapet> Parapet
+        { get; set; }
+
+        public List<KFrame> KFrame
+        { get; set; }
+
+       //Analysis tab
+
+        public List<int> Divindex
+        { get; set; }
+
+        public double numseg1
+        { get; set; }
+
+        public double numseg2
+        { get; set; }
+
+        //Keep support type after changed
+        public List<string> Support
+        { get; set; }
+        //Change type of support
+        public Tuple<double, double, string> Supportchanged
+        { get; set; }
+
+        //Calculate
+        public double[] Aspan()
+        {
+            double[] Aspan;
+            Aspan = Array.ConvertAll(txtspan.ToString().Split('+'), Double.Parse);
+            for (int i = 0; i < Aspan.GetLength(0); i++)
+                Aspan[i] = Aspan[i] * 1000;
+            return Aspan;
+        }
+        public int pier()
+        {
+            return Math.Max(Aspan().GetLength(0) - 1, 1);
+        }
+
+        //Total length of bridge
+        public double sumspan()
+        {
+            return Aspan().Sum();
+        }
+
+        //Total width
+        public double sumsec()
+        {
+            double sumsec = 0;
+            for (int i = 0; i < Atran.GetLength(1); i++)
+            {
+                sumsec += Atran[2, i];
+            }
+            return sumsec;
+        }
+
+        //Distance between girder (to calculated Effective width)
+        public double[] Aspacing()
+        {
+            int[] id = new int[ngirder + 2];
+            int j = 0;
+
+            for (int i = 0; i < Atran.GetLength(1); i++)
+            {
+                if (Atran[0, i] <= 10)
+                {
+                    id[j] = i;
+                    j = j + 1;
+                }
+            }
+
+            id[j] = Atran.GetLength(1);
+
+            double[] s = new double[ngirder + 2];
+
+
+            for (int i = 0; i < id.GetLength(0) - 1; i++)
+            {
+                for (int k = id[i]; k < id[i + 1]; k++)
+                    s[i] = s[i] + Atran[2, k];
+            }
+            return s;
+        }
+
+
+
+        // Used to maintain the length of Atop
+        public double[] Atop1()
+        {
+            if (Aspan().GetLength(0) > 1)
+            {
+                int numinsup = Acbox.GetLength(0);
+                double[] Atop2 = new double[2 * numinsup + 1];
+
+                Atop2[0] = Aspan()[0] - Acbox[0,0];
+                Atop2[2 * numinsup] = Aspan()[numinsup] - Acbox[numinsup - 1, 1];
+                for (int i = 0; i < numinsup; i++)
+                    Atop2[i * 2 + 1] = Acbox[i, 0]  + Acbox[i, 1];
+                for (int i = 0; i < numinsup - 1; i++)
+                    Atop2[i * 2 + 2] = Aspan()[i + 1] - Acbox[i, 1]  - Acbox[i + 1, 0];
+
+                return Atop2;
+            }
+            else
+                return new double[1] { sumspan() };
+
+        }
+
+        //Used to maintain the length of Atranstiff
+        public double[] Across1()
+        {
+            double[] b = new double[Across.GetLength(1)];
+            for (int i = 0; i < Across.GetLength(1); i++)
+                b[i] = Across[2, i];
+            return b;
+        }
+
+        public void FillgridSection(DataGridView grid, int n)
+        {
+            //Set Asection again
+            if (n == 1)
+            {
+                double[,] Asection1 = (double[,])Asection.Clone();
+
+                if (sumsec() <= 1000)
+                {
+                    Asection1[0, 0] = sumsec();
+                    for (int i = 1; i < Asection1.GetLength(1); i++)
+                        Asection1[0, i] = 0;
+                }
+
+                else
+                {
+                    Asection1[0, 0] = 500;
+                    Asection1[0, Asection1.GetLength(1) - 1] = 500;
+                    for (int i = 1; i < Asection1.GetLength(1) - 1; i++)
+                        Asection1[0, i] = (sumsec() - 1000) / (Asection1.GetLength(1) - 2);
+                }
+                Asection = (double[,])Asection1.Clone();
+                Decogrid.gridSection(grid, Asection1);
+            }
+
+            else if (n == 2)
+                Decogrid.gridSection(grid, Asection);
+
+        }
+
+        public List<NodeInput> Node()
+        {
+            double[] Longcu = new double[Across.GetLength(1) + 1];
+            Longcu[0] = 0;
+            for (int i = 1; i < Across.GetLength(1) + 1; i++)
+            {
+                Longcu[i] = 0;
+                for (int j = 0; j < i; j++)
+                    Longcu[i] = Across[2, j] + Longcu[i];
+            }
+
+            double[] Trancu = new double[Atran.GetLength(1) - 1];
+
+            Trancu[0] = 0;
+            for (int i = 1; i < Atran.GetLength(1) - 1; i++)
+            {
+                Trancu[i] = 0;
+                for (int j = 0; j < i; j++)
+                    Trancu[i] = Atran[2, j + 1] + Trancu[i];
+            }
+
+            List<NodeInput> Nodet = new List<NodeInput>();
+            //Tuple<double, double> XYSupport1 = XYSupport(Across, Atran);
+            //Create grid from Across and Atran
+            for (int i = 0; i < Trancu.GetLength(0); i++)
+            {
+                for (int j = 0; j < Longcu.GetLength(0); j++)
+                {
+                    NodeInput a = new NodeInput();
+                    if (j == Longcu.GetLength(0) - 1)
+                        a.Type = 1;
+                    else
+                        a.Type = Across[0, j] <= 10 ? (int)Across[0, j] : 3;
+                    a.BeamID = i == Trancu.GetLength(0) - 1 ? ngirder : (int)Atran[0, i + 1];
+                    a.X = Longcu[j];
+                    a.Y = Trancu[i];
+                    a.Label = a.Type == 1 ? "Exterior Support" : (a.Type == 2 ? "Interior Support" : "Cross Beam");
+                    a.Restrain = Restraint(XYSupport(), a.X, a.Y, a.BeamID, a.Type);                    
+                    a.ntop = 2;
+                   
+                    Nodet.Add(a);
+                }
+            }
+
+            //Sort and rename the joint
+            Nodet = Reorder(Nodet);
+
+            //CHange type of support 
+
+            if (Support != null && Supportchanged != null)
+                if (Support.Count == Nodet.Count)
+                    for (int i = 0; i < Nodet.Count; i++)
+                    {
+                        if (Nodet[i].X == Supportchanged.Item1 && Nodet[i].Y == Supportchanged.Item2)
+                            Nodet[i].Restrain = Supportchanged.Item3;
+                        else
+                            Nodet[i].Restrain = Support[i];
+                    }
+           
+            
+            return Nodet;
+        }
+                       
+
+        public static List<NodeInput> Reorder(List<NodeInput> Node)
+        {
+            var nlong = Node.Where(p => p.BeamID == 1).ToList().Count;
+            var ntran = Node.Count / nlong;
+
+            Node = Node.OrderBy(p => p.BeamID).ThenBy(p => p.Y).ThenBy(p => p.X).ToList();
+
+            for (int i = 0; i < ntran; i++)
+                for (int j = 0; j < nlong; j++)
+                {
+                    Node[i * nlong + j].Joint = (i + 1) * 100 + j + 1;
+                }
+
+            return Node;
+        }
+
+
+        //Auto define type of support
+        public Tuple<double, double> XYSupport()
+        {
+            double[] Longcu = new double[Across.GetLength(1) + 1];
+            Longcu[0] = 0;
+            for (int i = 1; i < Across.GetLength(1) + 1; i++)
+            {
+                Longcu[i] = 0;
+                for (int j = 0; j < i; j++)
+                    Longcu[i] = Across[2, j] + Longcu[i];
+            }
+
+            List<double> LLong = new List<double>();
+            for (int i = 0; i < Longcu.GetLength(0) - 1; i++)
+                if (Across[0, i] <= 10)
+                    LLong.Add(Longcu[i]);
+            LLong.Add(Longcu[Longcu.GetLength(0) - 1]);
+
+            double[] Trancu = new double[Atran.GetLength(1) - 1];
+            Trancu[0] = 0;
+            for (int i = 1; i < Atran.GetLength(1) - 1; i++)
+            {
+                Trancu[i] = 0;
+                for (int j = 0; j < i; j++)
+                    Trancu[i] = Atran[2, j + 1] + Trancu[i];
+            }
+
+            List<double> LTran = new List<double>();
+            for (int i = 0; i < Trancu.GetLength(0) - 1; i++)
+                if (Atran[0, i + 1] <= 10)
+                    LTran.Add(Trancu[i]);
+            LTran.Add(Trancu[Trancu.GetLength(0) - 1]);
+
+            List<double> LX1 = LLong.Select(p => Math.Abs(p - LLong.Max() / 2)).ToList();
+            double Xmid = LLong[LX1.IndexOf(LX1.Min())];
+
+            LX1 = LTran.Select(p => Math.Abs(p - LTran.Max() / 2)).ToList();
+            double Ymid = LTran[LX1.IndexOf(LX1.Min())];
+
+            return Tuple.Create(Xmid, Ymid);
+        }
+
+        //public List<Shoe> NShoe
+        //{
+        //    get
+        //    {
+
+        //    }
+        //}
+
+        public string Restraint(Tuple<double, double> XYSupport, double X, double Y, int BeamID, int Type)
+        {
+            //Define type of support
+            string supp;
+            if (BeamID <= 10 && Type <= 2)
+            {
+                if (X == XYSupport.Item1)
+                {
+                    if (Y == XYSupport.Item2)
+                        supp = "Fixed";
+                    else
+                        supp = "LongFixed";
+                }
+                else if (Y == XYSupport.Item2)
+                    supp = "TranFixed";
+                else
+                    supp = "Free";
+            }
+            else
+                supp = "";          
+
+            return supp;
+        }
+
+        //Slope
+
+       public double S
+        {
+            get
+            {
+                if (Sindex == 0)
+                    return Sr;
+                else if (Sindex == 1)
+                    return Sd * 180 / Math.PI;
+                else
+                    return Math.Atan(1 / Ss);
+             }
+        }
+
+        //Eccentricity of Parapets from 1st girder, used to determine dead load due to parapet
+        public List<double> eParapet()
+        {
+            List<double> ecc = new List<double>();
+
+            for (int i = 0; i < Asection.GetLength(1); i++)
+            {
+                if (Asection[1, i] == 1)
+                { 
+                    //Distance from left edge of lane to left edge of deck, then to 1st girder
+                    double e = 0;
+                    for (int j = 0; j < i; j++)
+                        e += Asection[0, j];
+                    e = e - Atran[2, 0];
+
+                    ecc.Add(e);
+                }
+            }
+
+            //If no mid barrier
+            if (ecc.Count == 2)
+                ecc.Insert(1, 0.0);
+
+            return ecc;
+        }
+
+
+
+    }
+}

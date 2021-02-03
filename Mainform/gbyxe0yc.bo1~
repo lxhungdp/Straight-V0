@@ -1,0 +1,436 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using Classes;
+using Provider;
+
+namespace Mainform
+{
+    public class Analysis
+    {
+        private int Nseg = 1;
+
+        public Analysis()
+        {
+
+        }
+
+        public Input Input
+        { get; set; }
+
+        //Calculate
+
+
+        public int nspan()
+        {
+            return Input.Aspan().GetLength(0);
+        }
+
+
+        // Create Node;
+        public List<Node> Node1()
+        {
+            List<Node> Nodet = new List<Node>();
+
+            //Add Haunch, Closed box section and bottom concrete
+            if (nspan() > 1)
+            {
+                double[,] AddHaunch = Cumatrix(Haunch1().Harray, 0);
+                Nodet = Addnode(Input.Node(), AddHaunch, "Haunch", 4, "btop");
+            }
+
+            if (nspan() > 1)
+            {
+                double[,] AddClosedbox = Cumatrix(Provider.Haunch.Closedbox(Input.Aspan(), Input.Acbox), 0);
+                Nodet = Addnode(Nodet, AddClosedbox, "ntop", 4, "Haunch");
+            }
+
+            if (nspan() > 1)
+            {
+                double[,] AddBottomcon = Cumatrix(Provider.Haunch.Bottomcon(Input.Aspan(), Input.Acon), 0);
+                Nodet = Addnode(Nodet, AddBottomcon, "Hc", 4, "Haunch,ntop");
+            }
+
+            //Add Top, bottom flange and web to PUS
+            double[,] Addtop = Cumatrix(Input.Atop, 2);
+            Nodet = Addnode(Nodet, Addtop, "btop,ttop", 5, "Haunch,ntop,Hc");
+
+            double[,] Addweb = Cumatrix(Input.Aweb, 0);
+            Nodet = Addnode(Nodet, Addweb, "tw", 5, "Haunch,ntop,Hc,btop,ttop");
+
+            double[,] Addbot = Cumatrix(Input.Abot, 0);
+            Nodet = Addnode(Nodet, Addbot, "tbot", 5, "Haunch,ntop,Hc,btop,ttop,tw");
+
+            //Add other dims
+            double[] Odims = new double[] { Input.ts, Input.th, Input.bh, Input.drt, Input.art, Input.crt, Input.drb, Input.arb, Input.crb, Input.S, Input.w, Input.D1, Input.ctop, Input.cbot };
+            Nodet = Add1prop(Nodet, Odims, "ts,th,bh,drt,art,crt,drb,arb,crb,S,w,D,ctop,cbot");
+
+            //Add Rib            
+            double[,] Addribtop = Cumatrix(Input.Aribtop, 2);
+            Nodet = Addnode(Nodet, Addribtop, "nst,Hst,tst", 6, "Haunch,ntop,Hc,btop,ttop,tw,ts,th,bh,drt,art,crt,drb,arb,crb,S,w,D,ctop,cbot");
+
+            double[,] Addribbot = Cumatrix(Input.Aribbot, 0);
+            Nodet = Addnode(Nodet, Addribbot, "nsb,Hsb,tsb", 6, "Haunch,ntop,Hc,btop,ttop,tw,ts,th,bh,drt,art,crt,drb,arb,crb,S,w,D,ctop,cbot,nst,Hst,tst");
+
+            double[] Ans = new double[] { Input.ns };
+            Nodet = Add1prop(Nodet, Ans, "ns");
+
+            Nodet = Addd0(Nodet, Input.Atranstiff, "d0");
+
+            return Nodet;
+        }
+
+        public List<Node> Node2()
+        {
+            //Add Kframe and Lb
+            List<Node> Node2 = new List<Node>(AddKframe(Node1(), Input.KFrame));
+
+            //Remove the node which is unselected
+            List<int> Divindex = new List<int>();
+            if (Input.Divindex[0] == 0)
+                Divindex.AddRange(new List<int> { 5, 6 });
+            if (Input.Divindex[1] == 0)
+                Divindex.AddRange(new List<int> { 7 });
+
+            for (int i = 0; i < Divindex.Count; i++)
+                Node2 = Node2.Where(p => p.Type != Divindex[i]).ToList();
+
+            //Divide element by condition
+            Node2 = Selection(Node2, Input.numseg1, Input.numseg2);
+
+            return Node2;
+        }
+
+        public List<Nodeex> Node3()
+        {
+            List<Nodeex> Nodeex = new List<Nodeex>();
+            for (int i = 0; i < Node2().Count; i++)
+                Nodeex.Add(new Nodeex(Node2()[i], Haunch2().Dw[i], nspan(), new EffectiveWidth(Node2()[i], Input.Aspan(), Input.Aspacing())));
+
+            return Nodeex;
+        }
+
+        //Create element
+
+        public List<Elm> Elm()
+        {
+
+            List<Elm> a = new List<Elm>();
+
+            int nlong = Node3().Where(p => p.BeamID == 1).ToList().Count;
+            int ntran = Node3().Count / nlong;
+            int nmain = Node3().Where(p => p.BeamID <= 10).ToList().Count / nlong;
+            int nstringer = ntran - nmain;
+
+            List<Nodeex> stringer = Node3().Where(p => p.BeamID > 10).ToList();
+
+            //Main beam and stringer
+            for (int i = 0; i < ntran; i++)
+                for (int j = 0; j < nlong - 1; j++)
+                {
+
+                    Elm b = new Elm();
+                    b.Name = ((i + 1) * 100 + (j + 1)).ToString();
+                    b.iNode = Node3()[i * nlong + j].Joint;
+                    b.jNode = i * nlong + j + 1;
+                    if (Node3()[i + nlong].BeamID <= 10)
+                        b.Sec = j + 1;
+                    else
+                        //b.Sec = nlong + 1;
+                    b.Nseg = Nseg;
+                    a.Add(b);
+                }
+            
+
+            //Crossbeam
+            //int mat;
+            //List<Nodeex> cross = Node3().Where(p => (p.Type == 1 || p.Type == 2 || p.Type == 3) && p.BeamID == 1).ToList();
+            //for (int j = 0; j < ntran - 1; j++)
+            //    for (int i = 0; i < cross.Count; i++)
+            //    {
+            //        if (cross[i].Type == 1)
+            //            mat = ((nlong - 1) * ntran + 1);
+            //        else if (cross[i].Type == 2)
+            //            mat = ((nlong - 1) * ntran + 2);
+            //        else
+            //            mat = ((nlong - 1) * ntran + (cross.Where(p => p.Type == 2).ToList().Count > 0 ? 3 : 2));
+
+            //        Elm b = new Elm();
+            //        b.Name = ((ntran + 1 + j) * 100 + i + 1).ToString();
+            //        b.iNode = cross[i].Joint;
+            //        b.jNode = cross[i].Joint + nlong;
+            //        b.Sec = mat;
+            //        b.Nseg = Nseg;
+            //        a.Add(b);
+            //    }
+
+            return a;
+
+        }
+
+
+
+
+
+
+
+        public Haunch Haunch1()
+        {
+            return new Haunch(Input.Aspan(), Input.Ahaunch);
+        }
+
+        public Haunch Haunch2()
+        {
+            Haunch Haunch = new Haunch(Input.Aspan(), Input.Ahaunch);
+            Haunch.Sta = Node2().Select(p => p.X).ToList();
+
+            return Haunch;
+        }
+
+
+        //Tool 
+
+        public List<Node> Addnode(List<Node> LNode, double[,] b, string pro, int Type, string expro)
+        {
+            var nlong = LNode.Where(p => p.BeamID == 1).ToList().Count;
+            var n = LNode.Count / nlong;
+            string[] exprostr = expro.Split(',');
+            int index;
+            LNode = LNode.OrderBy(p => p.BeamID).ThenBy(p => p.Y).ThenBy(p => p.X).ToList();
+            //Insert the point if X is the new X
+            for (int i = 0; i < b.GetLength(1); i++)
+            {
+                if (LNode.Select(p => p.X).ToList().IndexOf(b[0, i]) == -1)
+                {
+                    for (int j = 0; j < n; j++) //Do for all girder
+                    {
+                        Node a = new Node();
+                        a.X = b[0, i];
+                        a.Z = 0;
+                        a.Y = LNode[j * nlong].Y;
+                        a.BeamID = LNode[j * nlong].BeamID;
+                        a.Type = Type;
+                        a.Label = "Section Changed";
+
+                        index = LNode.FindLastIndex(p => p.X <= b[0, i]);
+                        for (int k = 0; k < exprostr.GetLength(0); k++)
+                        {
+                            PropertyInfo newpro = a.GetType().GetProperty(exprostr[k]);
+                            PropertyInfo oldpro = LNode[index].GetType().GetProperty(exprostr[k]);
+
+                            newpro.SetValue(a, oldpro.GetValue(LNode[index], null));
+                        }
+
+                        LNode.Add(a);
+                    }
+
+                }
+            }
+
+            LNode = Reorder(LNode);
+
+            //Add pro
+            string[] prostring = pro.Split(',');
+            double provalue = 0;
+
+            for (int i = 0; i < prostring.GetLength(0); i++)
+            {
+                for (int j = 0; j < LNode.Count; j++)
+                {
+                    for (int k = 0; k < b.GetLength(1); k++)
+                    {
+                        if (b[0, k] == LNode[j].X)
+                            provalue = b[i + 1, k];
+                    }
+                    PropertyInfo propertyInfo = LNode[j].GetType().GetProperty(prostring[i]);
+                    propertyInfo.SetValue(LNode[j], provalue);
+                }
+            }
+
+            return LNode;
+
+        }
+
+
+        public static List<Node> Reorder(List<Node> Node)
+        {
+            var nlong = Node.Where(p => p.BeamID == 1).ToList().Count;
+            var ntran = Node.Count / nlong;
+
+            Node = Node.OrderBy(p => p.BeamID).ThenBy(p => p.Y).ThenBy(p => p.X).ToList();
+
+            for (int i = 0; i < ntran; i++)
+                for (int j = 0; j < nlong; j++)
+                {
+                    Node[i * nlong + j].Joint = (i + 1) * 100 + j + 1;
+                }
+
+            return Node;
+        }
+
+        //Cumulate the loc-row
+        public double[,] Cumatrix(double[,] a, int loc)
+        {
+            double[,] b = new double[a.GetLength(0) - loc, a.GetLength(1) + 1];
+
+            b[0, 0] = 0;
+            for (int i = 1; i < a.GetLength(1) + 1; i++)
+            {
+                b[0, i] = 0;
+                for (int j = 0; j < i; j++)
+                    b[0, i] = a[loc, j] + b[0, i];
+            }
+
+
+            for (int i = loc + 1; i < a.GetLength(0); i++)
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                    b[i - loc, j] = a[i, j];
+            }
+
+            return b;
+        }
+
+        public List<Node> Add1prop(List<Node> LNode, double[] b, string a)
+        {
+            string[] pro = a.Split(',');
+
+            for (int i = 0; i < pro.GetLength(0); i++)
+            {
+                for (int j = 0; j < LNode.Count; j++)
+                {
+                    PropertyInfo propertyInfo = LNode[j].GetType().GetProperty(pro[i]);
+                    propertyInfo.SetValue(LNode[j], b[i]);
+                }
+            }
+
+            return LNode;
+        }
+
+        public List<Node> Addd0(List<Node> LNode, double[,] Atop, string a)
+        {
+
+            var c = Cumatrix(Atop, 2);
+            double b = 0;
+
+            for (int j = 0; j < LNode.Count; j++)
+            {
+                for (int k = 0; k < c.GetLength(1) - 1; k++)
+                {
+                    if (c[0, k] <= LNode[j].X)
+                        b = Atop[2, k];
+                }
+                PropertyInfo propertyInfo = LNode[j].GetType().GetProperty(a);
+                propertyInfo.SetValue(LNode[j], b);
+            }
+
+            return LNode;
+        }
+
+        public List<Node> AddKframe(List<Node> Node, List<KFrame> KK)
+        {
+            var Node1 = Node.Where(p => p.BeamID == 1).ToList();
+            var nlong = Node1.Count;
+            var n = Node.Count / nlong;
+
+            var K = KK.Where(p => p.Location == true).ToList();
+
+            for (int i = 0; i < K.Count; i++)
+            {
+                int index = Node1.Select(p => p.X).ToList().IndexOf(K[i].Station * 1000);
+                if (index == -1)
+                {
+                    int id = Node1.FindLastIndex(p => p.X <= K[i].Station * 1000);
+                    for (int j = 0; j < n; j++)
+                    {
+                        Node a = Node[j * nlong + id].ShallowCopy();
+                        a.X = K[i].Station * 1000;
+                        a.Type = 7;
+                        a.Label = "K - Frame";
+                        a.Restrain = "";
+                        Node.Add(a);
+                    }
+
+                }
+                else
+                {
+                    for (int j = 0; j < n; j++)
+                    {
+                        Node[j * nlong + index].Type = 7;
+                        Node[j * nlong + index].Label = "K - Frame";
+                    }
+                }
+            }
+
+
+            //Reorder by X and Y
+            Node = Reorder(Node);
+
+            // Set Lb
+            Node1 = Node.Where(p => p.BeamID == 1).ToList();
+            var Lb = Node.Where(p => (p.Type == 1 || p.Type == 2 || p.Type == 3 || p.Type == 7) && p.BeamID == 1).Select(p => p.X).ToList();
+            nlong = Node1.Count;
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < nlong - 1; j++)
+                {
+                    int Lbindex = Lb.FindLastIndex(p => p <= Node1[j].X);
+                    Node[i * nlong + j].Lb = Lb[Lbindex + 1] - Lb[Lbindex];
+                }
+                Node[i * nlong + nlong - 1].Lb = Lb[Lb.Count - 1] - Lb[Lb.Count - 2];
+            }
+
+
+            return Node;
+        }
+
+        public List<Node> Selection(List<Node> LNode, double x1, double x2)
+        {
+            List<Node> b = new List<Node>();
+
+            List<Node> Node1 = LNode.Where(p => p.BeamID == 1).ToList();
+            int nlong = Node1.Count;
+            int ntran = LNode.Count / nlong;
+
+            List<Node> Nodeadd = new List<Node>();
+
+            for (int k = 0; k < ntran; k++)
+            {
+                for (int i = 0; i < nlong - 1; i++)
+                {
+                    double x = Node1[i].Haunch == 0 ? x1 * 1000 : x2 * 1000;
+
+                    if (Node1[i + 1].X - Node1[i].X > x)
+                    {
+                        int n = (int)Math.Ceiling((Node1[i + 1].X - Node1[i].X) / x) - 1;
+                        for (int j = 0; j < n; j++)
+                        {
+                            Node a = LNode[k * nlong + i].ShallowCopy();
+                            a.X = Node1[i].X + (Node1[i + 1].X - Node1[i].X) / (n + 1) * (j + 1);
+                            a.Type = 8;
+                            a.Label = "";
+                            a.Restrain = "";
+                            Nodeadd.Add(a);
+                        }
+
+                    }
+                }
+            }
+            b.AddRange(LNode);
+            b.AddRange(Nodeadd);
+            b = Reorder(b);
+            return b;
+        }
+
+
+
+
+
+
+
+    }
+}

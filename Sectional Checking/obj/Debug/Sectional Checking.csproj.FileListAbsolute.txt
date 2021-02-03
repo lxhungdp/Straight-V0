@@ -1,0 +1,30 @@
+C:\Home2\Sectional Checking\bin\Debug\Sectional Checking.exe.config
+C:\Home2\Sectional Checking\bin\Debug\Sectional Checking.exe
+C:\Home2\Sectional Checking\bin\Debug\Sectional Checking.pdb
+C:\Home2\Sectional Checking\bin\Debug\Classes.exe
+C:\Home2\Sectional Checking\bin\Debug\Dapper.dll
+C:\Home2\Sectional Checking\bin\Debug\Provider.exe
+C:\Home2\Sectional Checking\bin\Debug\LiveCharts.WinForms.dll
+C:\Home2\Sectional Checking\bin\Debug\LiveCharts.dll
+C:\Home2\Sectional Checking\bin\Debug\EPPlus.dll
+C:\Home2\Sectional Checking\bin\Debug\LiveCharts.Wpf.dll
+C:\Home2\Sectional Checking\bin\Debug\Classes.pdb
+C:\Home2\Sectional Checking\bin\Debug\Classes.exe.config
+C:\Home2\Sectional Checking\bin\Debug\Provider.pdb
+C:\Home2\Sectional Checking\bin\Debug\Provider.exe.config
+C:\Home2\Sectional Checking\bin\Debug\Dapper.xml
+C:\Home2\Sectional Checking\bin\Debug\LiveCharts.WinForms.pdb
+C:\Home2\Sectional Checking\bin\Debug\LiveCharts.WinForms.xml
+C:\Home2\Sectional Checking\bin\Debug\LiveCharts.pdb
+C:\Home2\Sectional Checking\bin\Debug\LiveCharts.xml
+C:\Home2\Sectional Checking\bin\Debug\EPPlus.xml
+C:\Home2\Sectional Checking\bin\Debug\LiveCharts.Wpf.pdb
+C:\Home2\Sectional Checking\bin\Debug\LiveCharts.Wpf.xml
+C:\Home2\Sectional Checking\obj\Debug\Sectional Checking.csprojAssemblyReference.cache
+C:\Home2\Sectional Checking\obj\Debug\Sectional_Checking.Form1.resources
+C:\Home2\Sectional Checking\obj\Debug\Sectional_Checking.Properties.Resources.resources
+C:\Home2\Sectional Checking\obj\Debug\Sectional Checking.csproj.GenerateResource.cache
+C:\Home2\Sectional Checking\obj\Debug\Sectional Checking.csproj.CopyComplete
+C:\Home2\Sectional Checking\obj\Debug\Sectional Checking.exe
+C:\Home2\Sectional Checking\obj\Debug\Sectional Checking.pdb
+C:\Home2\Sectional Checking\obj\Debug\Sectional_Checking.frmCons.resources

@@ -1,0 +1,68 @@
+C:\Home2\Classes\bin\Debug\Classes.exe.config
+C:\Home2\Classes\bin\Debug\Classes.exe
+C:\Home2\Classes\bin\Debug\Classes.pdb
+C:\Home2\Classes\obj\Debug\Classes.csprojAssemblyReference.cache
+C:\Home2\Classes\obj\Debug\Classes.Properties.Resources.resources
+C:\Home2\Classes\obj\Debug\Classes.csproj.GenerateResource.cache
+C:\Home2\Classes\obj\Debug\Classes.exe
+C:\Home2\Classes\obj\Debug\Classes.pdb
+D:\Google Drive\PUS Program\Home2\Classes\bin\Debug\Classes.exe.config
+D:\Google Drive\PUS Program\Home2\Classes\bin\Debug\Classes.exe
+D:\Google Drive\PUS Program\Home2\Classes\bin\Debug\Classes.pdb
+D:\Google Drive\PUS Program\Home2\Classes\obj\Debug\Classes.csprojAssemblyReference.cache
+D:\Google Drive\PUS Program\Home2\Classes\obj\Debug\Classes.Properties.Resources.resources
+D:\Google Drive\PUS Program\Home2\Classes\obj\Debug\Classes.csproj.GenerateResource.cache
+D:\Google Drive\PUS Program\Home2\Classes\obj\Debug\Classes.csproj.CoreCompileInputs.cache
+D:\Google Drive\PUS Program\Home2\Classes\obj\Debug\Classes.exe
+D:\Google Drive\PUS Program\Home2\Classes\obj\Debug\Classes.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home2\Classes\bin\Debug\Classes.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home2\Classes\bin\Debug\Classes.exe
+C:\Users\LXH\Google Drive\PUS Program\Home2\Classes\bin\Debug\Classes.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home2\Classes\obj\Debug\Classes.csprojAssemblyReference.cache
+C:\Users\LXH\Google Drive\PUS Program\Home2\Classes\obj\Debug\Classes.Properties.Resources.resources
+C:\Users\LXH\Google Drive\PUS Program\Home2\Classes\obj\Debug\Classes.csproj.GenerateResource.cache
+C:\Users\LXH\Google Drive\PUS Program\Home2\Classes\obj\Debug\Classes.exe
+C:\Users\LXH\Google Drive\PUS Program\Home2\Classes\obj\Debug\Classes.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home3\Classes\bin\Debug\Classes.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home3\Classes\bin\Debug\Classes.exe
+C:\Users\LXH\Google Drive\PUS Program\Home3\Classes\bin\Debug\Classes.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home3\Classes\obj\Debug\Classes.csprojAssemblyReference.cache
+C:\Users\LXH\Google Drive\PUS Program\Home3\Classes\obj\Debug\Classes.Properties.Resources.resources
+C:\Users\LXH\Google Drive\PUS Program\Home3\Classes\obj\Debug\Classes.csproj.GenerateResource.cache
+C:\Users\LXH\Google Drive\PUS Program\Home3\Classes\obj\Debug\Classes.exe
+C:\Users\LXH\Google Drive\PUS Program\Home3\Classes\obj\Debug\Classes.pdb
+D:\Google Drive\PUS Program\Home3\Classes\bin\Debug\Classes.exe.config
+D:\Google Drive\PUS Program\Home3\Classes\bin\Debug\Classes.exe
+D:\Google Drive\PUS Program\Home3\Classes\bin\Debug\Classes.pdb
+D:\Google Drive\PUS Program\Home3\Classes\obj\Debug\Classes.csprojAssemblyReference.cache
+D:\Google Drive\PUS Program\Home3\Classes\obj\Debug\Classes.Properties.Resources.resources
+D:\Google Drive\PUS Program\Home3\Classes\obj\Debug\Classes.csproj.GenerateResource.cache
+D:\Google Drive\PUS Program\Home3\Classes\obj\Debug\Classes.csproj.CoreCompileInputs.cache
+D:\Google Drive\PUS Program\Home3\Classes\obj\Debug\Classes.exe
+D:\Google Drive\PUS Program\Home3\Classes\obj\Debug\Classes.pdb
+D:\Google Drive\PUS Program\Home4\Classes\bin\Debug\Classes.exe.config
+D:\Google Drive\PUS Program\Home4\Classes\bin\Debug\Classes.exe
+D:\Google Drive\PUS Program\Home4\Classes\bin\Debug\Classes.pdb
+D:\Google Drive\PUS Program\Home4\Classes\obj\Debug\Classes.csprojAssemblyReference.cache
+D:\Google Drive\PUS Program\Home4\Classes\obj\Debug\Classes.Properties.Resources.resources
+D:\Google Drive\PUS Program\Home4\Classes\obj\Debug\Classes.csproj.GenerateResource.cache
+D:\Google Drive\PUS Program\Home4\Classes\obj\Debug\Classes.csproj.CoreCompileInputs.cache
+D:\Google Drive\PUS Program\Home4\Classes\obj\Debug\Classes.exe
+D:\Google Drive\PUS Program\Home4\Classes\obj\Debug\Classes.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Classes\bin\Debug\Classes.exe.config
+C:\Users\LXH\Google Drive\PUS Program\Home4\Classes\bin\Debug\Classes.exe
+C:\Users\LXH\Google Drive\PUS Program\Home4\Classes\bin\Debug\Classes.pdb
+C:\Users\LXH\Google Drive\PUS Program\Home4\Classes\obj\Debug\Classes.csprojAssemblyReference.cache
+C:\Users\LXH\Google Drive\PUS Program\Home4\Classes\obj\Debug\Classes.Properties.Resources.resources
+C:\Users\LXH\Google Drive\PUS Program\Home4\Classes\obj\Debug\Classes.csproj.GenerateResource.cache
+C:\Users\LXH\Google Drive\PUS Program\Home4\Classes\obj\Debug\Classes.exe
+C:\Users\LXH\Google Drive\PUS Program\Home4\Classes\obj\Debug\Classes.pdb
+D:\Google Drive\PUS Program\1. Straight V0\Classes\bin\Debug\Classes.exe.config
+D:\Google Drive\PUS Program\1. Straight V0\Classes\bin\Debug\Classes.exe
+D:\Google Drive\PUS Program\1. Straight V0\Classes\bin\Debug\Classes.pdb
+D:\Google Drive\PUS Program\1. Straight V0\Classes\obj\Debug\Classes.csprojAssemblyReference.cache
+D:\Google Drive\PUS Program\1. Straight V0\Classes\obj\Debug\Classes.Properties.Resources.resources
+D:\Google Drive\PUS Program\1. Straight V0\Classes\obj\Debug\Classes.csproj.GenerateResource.cache
+D:\Google Drive\PUS Program\1. Straight V0\Classes\obj\Debug\Classes.csproj.CoreCompileInputs.cache
+D:\Google Drive\PUS Program\1. Straight V0\Classes\obj\Debug\Classes.exe
+D:\Google Drive\PUS Program\1. Straight V0\Classes\obj\Debug\Classes.pdb

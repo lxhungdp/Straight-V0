@@ -1,0 +1,263 @@
+﻿using OfficeOpenXml;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.OleDb;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Classes;
+using Dapper;
+using System.Diagnostics;
+using Provider;
+using System.Threading;
+
+namespace Test
+{
+    public partial class Form1 : Form
+    {
+
+
+
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+       
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+
+            string pathsap = @"d:\Temporary\Sap\";
+            string name = "LIVE";
+            string s2kfile = name + ".s2k";
+            string copiedFileName;
+            List<string> output_list = new List<string>();
+
+            bool aa = output_list.Count == 1 ? true : false;
+
+            var processInfo = new ProcessStartInfo("cmd.exe", "/c Sapre " + s2kfile)
+            {
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                RedirectStandardError = true,
+                RedirectStandardOutput = true,
+                WorkingDirectory = pathsap
+            };
+                        
+            Process p = Process.Start(processInfo);
+
+            p.BeginErrorReadLine();
+
+            while ((copiedFileName = p.StandardOutput.ReadLine()) != null)
+            {
+                if (copiedFileName.Contains("I N P U T   C O M P L E T E"))
+                    output_list.Add(copiedFileName);
+            }
+
+            p.WaitForExit();
+
+            bool a = output_list[output_list.Count - 3].Contains("I N P U T   C O M P L E T E");
+
+
+            processInfo = new ProcessStartInfo("cmd.exe", "/c Sapgo " + s2kfile)
+            {
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                RedirectStandardError = true,
+                RedirectStandardOutput = true,
+                WorkingDirectory = pathsap,
+
+
+            };
+
+            p = Process.Start(processInfo);
+
+            p.BeginErrorReadLine();
+
+            while ((copiedFileName = p.StandardOutput.ReadLine()) != null)
+            {
+                output_list.Add(copiedFileName);
+            }
+
+            p.WaitForExit();
+
+            bool b = output_list[output_list.Count - 1].Contains("A N A L Y S I S   C O M P L E T E");
+
+
+            int check2 = output_list.IndexOf("A N A L Y S I S   C O M P L E T E");
+            MessageBox.Show(check2.ToString());
+
+
+            //new List<string>(Directory.GetFiles(pathsap)).ForEach(file =>
+            //{
+            //    if (file.IndexOf(name, StringComparison.OrdinalIgnoreCase) >= 0 &&
+            //        Path.GetExtension(file) != ".OUT" &&
+            //        Path.GetExtension(file) != ".s2k")
+            //        File.Delete(file);
+            //});
+
+
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            List<NodeForces> Def = new List<NodeForces>();
+
+            NodeForces D1 = new NodeForces();
+            D1.DC1 = 0;
+            Def.Add(D1);
+            
+
+            //string path = @"C:\Users\LXH\Google Drive\PUS Program\Home4\Sap2000\LIVE";
+            string nameread = "COMBT ------------------ MAX";
+            string prop = "LLmax";
+
+            List<string> Node = new List<string>() { "101", "102", "103", "210" };
+            
+            
+            PropertyInfo propertyInfo = Def[0].GetType().GetProperty(prop);
+
+            var lines = File.ReadAllLines(@"C:\Sap2000\live.OUT")
+                .SkipWhile(line => !line.Contains(" J O I N T   D I S P L A C E M E N T S"));
+                //.SkipWhile(line => !line.Contains(nameread))
+                //.SkipWhile(line => !line.Contains("JOINT"));
+
+            for (int i = 0; i < Def.Count; i++)
+            {
+                NodeForces Def1 = new NodeForces();
+
+                lines = lines
+                        .SkipWhile(line => !line.StartsWith("     " + Def[i].Node.ToString()));
+
+                var a = lines
+                        .SelectMany(line => line.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries))
+                        .ToList();
+
+                
+                propertyInfo.SetValue(Def[i], double.Parse(a[3]));
+            }
+
+            dataGridView1.DataSource = Def;
+
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            int a = 3;
+            int b = 4;
+
+            int c = (a - 1) / 2;
+            int d = (b - 1) / 2;
+
+
+        }
+
+        private void OnMouseEnterButton1(object sender, EventArgs e)
+        {
+            button1.BackColor = SystemColors.ButtonHighlight; // or Color.Red or whatever you want
+        }
+        private void OnMouseLeaveButton1(object sender, EventArgs e)
+        {
+            button1.BackColor = SystemColors.ButtonFace;
+        }
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                btn.BackColor = (btn.BackColor == SystemColors.Control) ? SystemColors.ActiveBorder : SystemColors.Control;
+                
+            }
+        }
+    }
+
+    public class Elm
+    {
+        private double A, B;
+       
+
+        public Elm(double A, double B)
+        {
+            this.A = A;
+            this.B = B;
+           
+        }
+
+        public ProgressBar B1
+        { get; set; }
+
+        public Label L1
+        { get; set; }
+
+        int Provalue
+        { get ; set; }
+
+        public double C1()
+        {
+
+            double C = 0;
+            B1.Value = 1;
+            L1.Text = "Calculate 1000";
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 10; j++)
+                    //for (int k = 0; k < 1000000; k++)
+                        C = A + B + i;
+            return C;
+        }
+        public double C2()
+        {
+            double C = 0;
+            B1.Value = 2;
+            L1.Text = "Calculate 2222";
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 10; j++)
+                    //for (int k = 0; k < 1000000; k++)
+                        C = C1() + B + i;
+            return C;
+        }
+        public double C3()
+        {
+            double C = 0;
+            B1.Value = 3;
+            L1.Text = "Calculate 333";
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 10; j++)
+                    //for (int k = 0; k < 1000000; k++)
+                        C = C2() + B + i;
+            return C;
+        }
+        public double C4()
+        {
+            double C = 0;
+            B1.Value = 4;
+            L1.Text = "Calculate 4444";
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 10; j++)
+                    //for (int k = 0; k < 1000000; k++)
+                        C = C3() + B + i;
+            return C;
+        }
+    }
+
+    
+}
+   
+
+    
+
+

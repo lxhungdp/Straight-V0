@@ -46,21 +46,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Check_Cons.cs" />
+    <Compile Include="Check_FLS.cs" />
+    <Compile Include="Check_SLS.cs" />
+    <Compile Include="Check_ULS.cs" />
+    <Compile Include="Crossbeam.cs" />
+    <Compile Include="ElmPrint.cs" />
+    <Compile Include="NodeForces.cs" />
     <Compile Include="Dim.cs" />
     <Compile Include="Dimtemp.cs" />
+    <Compile Include="EffectiveWidth.cs" />
+    <Compile Include="Elm.cs" />
+    <Compile Include="ElmForces.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="KFrame.cs" />
     <Compile Include="Liveload.cs" />
     <Compile Include="Mat.cs" />
     <Compile Include="Material.cs" />
-    <Compile Include="MST.cs" />
+    <Compile Include="NodeInput.cs" />
     <Compile Include="Node.cs" />
+    <Compile Include="NodePrint.cs" />
+    <Compile Include="Parapet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results.cs" />
+    <Compile Include="Sec.cs" />
+    <Compile Include="SecSap.cs" />
+    <Compile Include="Shoe.cs" />
+    <Compile Include="Stress.cs" />
+    <Compile Include="Support.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
